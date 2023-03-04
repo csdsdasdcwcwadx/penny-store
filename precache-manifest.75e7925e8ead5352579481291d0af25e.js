@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "78448432dde76828f7f6",
+    "revision": "edb55d921914b0e6f306",
     "url": "./app/css/style.css"
   },
   {
-    "revision": "78448432dde76828f7f6",
+    "revision": "edb55d921914b0e6f306",
     "url": "./app/js/index.js"
   },
   {
@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./app/js/index.js.LICENSE.txt"
   },
   {
-    "revision": "cddd5e995576fea131bbc74bd9d9fbcf",
+    "revision": "c7de596f96b4e20bea88bfbb8c7914f6",
     "url": "./index.html"
   }
 ]);
