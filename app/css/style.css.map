@@ -1,0 +1,1 @@
+{"version":3,"sources":["styles.module.scss"],"names":[],"mappings":"AAIA,cACI,qBAAsB,CAH1B,cACI,SAAU","file":"style.css","sourcesContent":["@import '@commonStyles/mixins.scss';\r\n\r\n.color {\r\n    color: red;\r\n}\r\n"]}

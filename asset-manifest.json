@@ -1,0 +1,19 @@
+{
+  "files": {
+    "app.css": "./app/css/style.css",
+    "app.js": "./app/js/index.js",
+    "app.js.map": "./app/js/index.js.map",
+    "app/css/style.css.map": "./app/css/style.css.map",
+    "app/js/index.js.LICENSE.txt": "./app/js/index.js.LICENSE.txt",
+    "index.html": "./index.html",
+    "precache-manifest.b4b55ee63fdffe985d94949ffd03850f.js": "./precache-manifest.b4b55ee63fdffe985d94949ffd03850f.js",
+    "service-worker.js": "./service-worker.js"
+  },
+  "entrypoints": {
+    "app": [
+      "app/css/style.css",
+      "app/js/index.js",
+      "app/js/index.js.map"
+    ]
+  }
+}
