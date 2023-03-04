@@ -1,0 +1,71 @@
+{
+    "TravelType": "2",
+    "ShowDiscountLabel": true,
+    "PaymentStatusTitle": "應付訂金",
+    "PaymentStatusContent": "＄10,000 應立即付訂",
+    "Price": [
+        {
+            "PriceStyle": "參團費",
+            "AdultsPrice": "＄26,888",
+            "ChildrenWithBed": "＄26,000",
+            "ChildrenNoPrice": "＄25,888",
+            "ChildrenExtraBed": "＄25,888",
+            "BabyPrice": "＄22,888",
+            "AdultsPriceOrig": "＄27,888",
+            "ChildrenWithBedOrig": "＄27,000",
+            "ChildrenNoPriceOrig": "＄26,888",
+            "ChildrenExtraBedOrig": "＄26,888",
+            "BabyPriceOrig": "＄23,888"
+        },
+        {
+            "PriceStyle": "單人房",
+            "AdultsPrice": "＄26,888",
+            "ChildrenWithBed": "＄26,000",
+            "ChildrenNoPrice": "＄25,888",
+            "ChildrenExtraBed": "＄25,888",
+            "BabyPrice": "＄22,888",
+            "AdultsPriceOrig": "＄27,888",
+            "ChildrenWithBedOrig": "＄27,000",
+            "ChildrenNoPriceOrig": "＄26,888",
+            "ChildrenExtraBedOrig": "＄26,888",
+            "BabyPriceOrig": "＄23,888"
+        },
+        {
+            "PriceStyle": "三人房",
+            "AdultsPrice": "＄26,888",
+            "ChildrenWithBed": "＄26,000",
+            "ChildrenNoPrice": "＄25,888",
+            "ChildrenExtraBed": "＄25,888",
+            "BabyPrice": "＄22,888",
+            "AdultsPriceOrig": "＄27,888",
+            "ChildrenWithBedOrig": "＄27,000",
+            "ChildrenNoPriceOrig": "＄26,888",
+            "ChildrenExtraBedOrig": "＄26,888",
+            "BabyPriceOrig": "＄23,888"
+        },
+        {
+            "PriceStyle": "四人房",
+            "AdultsPrice": "＄26,888",
+            "ChildrenWithBed": "＄26,000",
+            "ChildrenNoPrice": "＄25,888",
+            "ChildrenExtraBed": "＄25,888",
+            "BabyPrice": "＄22,888",
+            "AdultsPriceOrig": "＄27,888",
+            "ChildrenWithBedOrig": "＄27,000",
+            "ChildrenNoPriceOrig": "＄26,888",
+            "ChildrenExtraBedOrig": "＄26,888",
+            "BabyPriceOrig": "＄23,888"
+        }
+    ],
+    "CostInfo": [
+        {
+            "CostDesc": "簽證費",
+            "Cost": "包簽證費＄2,200"
+        },
+        {
+            "CostDesc": "機場稅",
+            "Cost": "包機場燃料油"
+        }
+    ],
+    "Remarks": "以上報價已是CLUB MED現折扣優惠後的標準房價格；詳細報價及優惠，詳見行程網頁說明！"
+}

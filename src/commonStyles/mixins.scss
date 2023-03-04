@@ -1,0 +1,13 @@
+$pc: 980px;
+
+@mixin only-mobile {
+    @media all and (max-width: 979px) {
+        @content;
+    }
+}
+
+@mixin only-pc {
+    @media all and (min-width: 980px) {
+        @content;
+    }
+}

@@ -1,0 +1,101 @@
+{
+    "ProductType": "3",
+    "IsB2E": false,
+    "CreditCardUrl": "https://uwww.liontravel.com/webaction/webaction_bank00.aspx?sProd=0&sKey1=21TE320CC",
+    "CruiseRoomUrl": "https://uwww.liontravel.com/webpd/webpdor02cr_1.aspx?sProd=21TE320CC&sProdcomp=T",
+    "GoAirline": "長榮航空",
+    "GoDepartureTime": "14:30",
+    "GoArriveTime": "20:30",
+    "GoDepartureAirport": "桃園機場",
+    "GoArriveAirport": "吉隆坡機場",
+    "GoTransferCount": 1,
+    "BackAirline": "長榮航空",
+    "BackDepartureTime": "14:30",
+    "BackArriveTime": "20:30",
+    "BackDepartureAirport": "吉隆坡機場",
+    "BackArriveAirport": "桃園機場",
+    "BackTransferCount": 1,
+    "TourIndex": 1,
+    "CheckCruiseInfo": false,
+    "TelType": 2,
+    "IsNoFlight": false,
+    "GroupInfo": {
+        "TourID": "17HKGBWXQ4",
+        "TourName": "玩樂369南北九州五日",
+        "NormGroupID": "12ead332-f460-4d55-b7f2-1322035216eb",
+        "NormGroup": "特選春櫻北海道5日",
+        "NormGroupImg": "https://static.liontech.com.tw/cmspic/PIC1608-007650/M_PIC1608-007650.jpg",
+        "TourDays": 5,
+        "GoDate": "2021/03/20",
+        "BackDate": "2021/03/21",
+        "IsSleepless": false,
+        "Status": 1,
+        "StatusUrl": "/Order/Choose?NormGroupID=13f95c84-6f0e-4dc0-93a5-4de059bdfeed&GroupID=21TE320CC-T&Sataus=1",
+        "TotalSeats": 50,
+        "QuotaSeats": 28,
+        "SpareSeats": 0,
+        "IsBooked": false,
+        "IsEnsureGroup": false,
+        "IsForeign": false,
+        "TravelType": 1,
+        "ThemeID": [],
+        "AgeCalculation": "2021/03/20",
+        "StraightLowestPrice": 2500,
+        "IndustryLowestPrice": 1500,
+        "EnterLowestprise": 0,
+        "IsVip": false,
+        "VipOrigPrice": 0,
+        "ArriveID": "AO-5H-9",
+        "MutiGroup": true,
+        "TourBu": "T",
+        "TourBuName": "旅天下",
+        "KKSeats": 0,
+        "RegisteredSeats": 22,
+        "KeepSeats": 0,
+        "OBSeats": 0,
+        "GroupID": "21TE320CC-T",
+        "ActualSeats": 22,
+        "WaitSeats": 0,
+        "LevelID": 1,
+        "TagList": [
+            {
+                "TagName": "金質獎",
+                "TagSort": 1
+            },
+            {
+                "TagName": "不同點進出",
+                "TagSort": 2
+            },
+            {
+                "TagName": "無小費",
+                "TagSort": 3
+            },
+            {
+                "TagName": "參團抽",
+                "TagSort": 4
+            },
+            {
+                "TagName": "熱氣球",
+                "TagSort": 5
+            }
+        ],
+        "TripTypeList": [
+            {
+                "TagName": "鐵路旅遊",
+                "TagSort": 1
+            }
+        ],
+        "Price": "2,500",
+        "OrigPrice": null,
+        "StartFromCityList": [
+            {
+                "CityName": "台北",
+                "CityCode": "TPE"
+            },
+            {
+                "CityName": "台中",
+                "CityCode": "TPE"
+            }
+        ]
+    }
+}

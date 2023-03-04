@@ -1,0 +1,46 @@
+[
+    {
+        "GroupID": "20JFN01BRA-T",
+        "IsEnsureGroup": true,
+        "TotalSeats": "30",
+        "QuotaSeats": "2",
+        "StraightLowestPrice": "35,000",
+        "IsVip": true,
+        "VipOrigPrice": 2.0,
+        "Status": 4,
+        "StatusName": "請洽專員"
+    },
+    {
+        "GroupID": "20JFN01BRA-T",
+        "IsEnsureGroup": true,
+        "TotalSeats": "10",
+        "QuotaSeats": "30",
+        "StraightLowestPrice": "59,500",
+        "IsVip": false,
+        "VipOrigPrice": 2.0,
+        "Status": 1,
+        "StatusName": "報名"
+    },
+    {
+        "GroupID": "20JFN01BRA-T",
+        "IsEnsureGroup": false,
+        "TotalSeats": "30",
+        "QuotaSeats": "2",
+        "StraightLowestPrice": "26,000",
+        "IsVip": false,
+        "VipOrigPrice": 2.0,
+        "Status": 1,
+        "StatusName": "報名"
+    },
+    {
+        "GroupID": "20JFN01BRA-T",
+        "IsEnsureGroup": true,
+        "TotalSeats": "20",
+        "QuotaSeats": "30",
+        "StraightLowestPrice": "35,000",
+        "IsVip": true,
+        "VipOrigPrice": 2.0,
+        "Status": 1,
+        "StatusName": "報名"
+    }
+]

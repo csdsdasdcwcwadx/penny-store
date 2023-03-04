@@ -1,0 +1,272 @@
+{
+    "GroupList": [
+        {
+            "GroupID": "17JFD22CIA-T",
+            "IsEnsureGroup": true,
+            "TotalSeats": 21,
+            "QuotaSeats": 20,
+            "StraightLowestPrice": 148900,
+            "IsVip": true,
+            "VipOrigPrice": 2.0,
+            "Status": 4,
+            "StatusName": "請洽專員",
+            "StatusClass": "apply",
+            "ArriveTaiwanDate": "2021/03/22",
+            "DirectionList": [
+                {
+                    "id": "1",
+                    "Name": "去程",
+                    "FlightList": [
+                        {
+                            "DepartureDate": "2021/03/10(三)",
+                            "DepartureTime": "23：35",
+                            "ArriveDate": "2021/03/11(日)",
+                            "ArriveTime": "04：15",
+                            "DepartureAirport": "桃園機場",
+                            "ArriveAirport": "杜拜機場",
+                            "Airline": "阿聯酋航空",
+                            "FlightNo": "EK367",
+                            "FlightTime": "8:40"
+                        },
+                        {
+                            "DepartureDate": "2021/03/11(四)",
+                            "DepartureTime": "09：15",
+                            "ArriveDate": "2021/03/11(日)",
+                            "ArriveTime": "14：30",
+                            "DepartureAirport": "杜拜機場",
+                            "ArriveAirport": "波爾多機場",
+                            "Airline": "阿聯酋航空",
+                            "FlightNo": "EK197",
+                            "FlightTime": "8:15"
+                        }
+                    ]
+                },
+                {
+                    "id": "O",
+                    "Name": "中段",
+                    "FlightList": [
+                        {
+                            "DepartureDate": "2021/03/21(日)",
+                            "DepartureTime": "14：15",
+                            "ArriveDate": "2021/03/22(一)",
+                            "ArriveTime": "00：55",
+                            "DepartureAirport": "里斯本機場",
+                            "ArriveAirport": "杜拜機場",
+                            "Airline": "阿聯酋航空",
+                            "FlightNo": "EK192",
+                            "FlightTime": "7:40"
+                        }
+                    ]
+                },
+                {
+                    "id": "9",
+                    "Name": "回程",
+                    "FlightList": [
+                        {
+                            "DepartureDate": "2021/03/22(一)",
+                            "DepartureTime": "03：40",
+                            "ArriveDate": "2020/03/22(一)",
+                            "ArriveTime": "16：15",
+                            "DepartureAirport": "杜拜機場",
+                            "ArriveAirport": "桃園機場",
+                            "Airline": "阿聯酋航空",
+                            "FlightNo": "EK367",
+                            "FlightTime": "8:35"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "GroupID": "17JFD22CIA-T",
+            "IsEnsureGroup": false,
+            "TotalSeats": 25,
+            "QuotaSeats": 24,
+            "StraightLowestPrice": 99900,
+            "IsVip": false,
+            "VipOrigPrice": 2.0,
+            "Status": 1,
+            "StatusName": "報名",
+            "StatusClass": "apply",
+            "ArriveTaiwanDate": "2021/03/28",
+            "DirectionList": [
+                {
+                    "id": "1",
+                    "Name": "去程",
+                    "FlightList": [
+                        {
+                            "DepartureDate": "2021/03/19(五)",
+                            "DepartureTime": "20：10",
+                            "ArriveDate": "2021/03/19(五)",
+                            "ArriveTime": "23：05",
+                            "DepartureAirport": "桃園機場",
+                            "ArriveAirport": "曼谷蘇凡納布機場",
+                            "Airline": "泰國航空",
+                            "FlightNo": "TG635",
+                            "FlightTime": "3:55"
+                        },
+                        {
+                            "DepartureDate": "2021/03/20(六)",
+                            "DepartureTime": "00：01",
+                            "ArriveDate": "2021/03/20(六)",
+                            "ArriveTime": "06：00",
+                            "DepartureAirport": "曼谷蘇凡納布機場",
+                            "ArriveAirport": "羅馬達文西機場",
+                            "Airline": "泰國航空",
+                            "FlightNo": "TG944",
+                            "FlightTime": "10:59"
+                        }
+                    ]
+                },
+                {
+                    "id": "9",
+                    "Name": "回程",
+                    "FlightList": [
+                        {
+                            "DepartureDate": "2021/03/27(六)",
+                            "DepartureTime": "13：30",
+                            "ArriveDate": "2020/03/28(日)",
+                            "ArriveTime": "06：05",
+                            "DepartureAirport": "羅馬達文西機場",
+                            "ArriveAirport": "曼谷蘇凡納布機場",
+                            "Airline": "泰國航空",
+                            "FlightNo": "TG945",
+                            "FlightTime": "11:35"
+                        },
+                        {
+                            "DepartureDate": "2021/03/28(日)",
+                            "DepartureTime": "13：30",
+                            "ArriveDate": "2020/03/28(日)",
+                            "ArriveTime": "12：45",
+                            "DepartureAirport": "曼谷蘇凡納布機場",
+                            "ArriveAirport": "桃園機場",
+                            "Airline": "泰國航空",
+                            "FlightNo": "TG632",
+                            "FlightTime": "3:20"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "GroupID": "17JFD22CIA-T",
+            "IsEnsureGroup": false,
+            "TotalSeats": 21,
+            "QuotaSeats": 18,
+            "StraightLowestPrice": 135900,
+            "IsVip": false,
+            "VipOrigPrice": 2.0,
+            "Status": 1,
+            "StatusName": "報名",
+            "StatusClass": "apply",
+            "ArriveTaiwanDate": "2021/04/09",
+            "DirectionList": [
+                {
+                    "id": "1",
+                    "Name": "去程",
+                    "FlightList": [
+                        {
+                            "DepartureDate": "2021/03/29(一)",
+                            "DepartureTime": "23：40",
+                            "ArriveDate": "2021/03/30(二)",
+                            "ArriveTime": "07：30",
+                            "DepartureAirport": "桃園機場",
+                            "ArriveAirport": "巴黎戴高樂機場",
+                            "Airline": "長榮航空",
+                            "FlightNo": "BR087",
+                            "FlightTime": "14:50"
+                        }
+                    ]
+                },
+                {
+                    "id": "9",
+                    "Name": "回程",
+                    "FlightList": [
+                        {
+                            "DepartureDate": "2021/04/08(四)",
+                            "DepartureTime": "21：40",
+                            "ArriveDate": "2020/04/09(五)",
+                            "ArriveTime": "20：00",
+                            "DepartureAirport": "阿姆斯特丹機場",
+                            "ArriveAirport": "桃園機場",
+                            "Airline": "長榮航空",
+                            "FlightNo": "BR076",
+                            "FlightTime": "15:20"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "GroupID": "17JFD22CIA-T",
+            "IsEnsureGroup": true,
+            "TotalSeats": 21,
+            "QuotaSeats": 20,
+            "StraightLowestPrice": 96900,
+            "IsVip": true,
+            "VipOrigPrice": 2.0,
+            "Status": 2,
+            "StatusName": "候補",
+            "StatusClass": "apply",
+            "ArriveTaiwanDate": "2021/04/25",
+            "DirectionList": [
+                {
+                    "id": "1",
+                    "Name": "去程",
+                    "FlightList": [
+                        {
+                            "DepartureDate": "2021/04/17(六)",
+                            "DepartureTime": "23：35",
+                            "ArriveDate": "2021/04/18(日)",
+                            "ArriveTime": "04：15",
+                            "DepartureAirport": "桃園機場",
+                            "ArriveAirport": "杜拜機場",
+                            "Airline": "阿聯酋航空",
+                            "FlightNo": "EK367",
+                            "FlightTime": "8:40"
+                        },
+                        {
+                            "DepartureDate": "2021/03/11(四)",
+                            "DepartureTime": "09：15",
+                            "ArriveDate": "2021/03/11(日)",
+                            "ArriveTime": "14：30",
+                            "DepartureAirport": "杜拜機場",
+                            "ArriveAirport": "波爾多機場",
+                            "Airline": "阿聯酋航空",
+                            "FlightNo": "EK197",
+                            "FlightTime": "8:15"
+                        }
+                    ]
+                },
+                {
+                    "id": "9",
+                    "Name": "回程",
+                    "FlightList": [
+                        {
+                            "DepartureDate": "2021/04/24(六)",
+                            "DepartureTime": "14：15",
+                            "ArriveDate": "2020/04/25(日)",
+                            "ArriveTime": "00：55",
+                            "DepartureAirport": "里斯本機場",
+                            "ArriveAirport": "杜拜機場",
+                            "Airline": "阿聯酋航空",
+                            "FlightNo": "EK192",
+                            "FlightTime": "7:40"
+                        },
+                        {
+                            "DepartureDate": "2021/04/25(日)",
+                            "DepartureTime": "03：40",
+                            "ArriveDate": "2020/04/25(日)",
+                            "ArriveTime": "16：15",
+                            "DepartureAirport": "杜拜機場",
+                            "ArriveAirport": "桃園機場",
+                            "Airline": "阿聯酋航空",
+                            "FlightNo": "EK366",
+                            "FlightTime": "8:35"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

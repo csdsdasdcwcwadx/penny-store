@@ -1,0 +1,105 @@
+{
+    "GroupID": "17AB119BR-T",
+    "GoDate": "2020/10/04",
+    "BackDate": "2020/10/13",
+    "TourDays": 10,
+    "TourName": "【浮潛X露營】澎湖：花火/燈光節！無人島免裝備露營．淨灘海廢藝術DIY．忘憂島浮潛．麵線體驗4日",
+    "TravelType": 1,
+    "IsCutPrice": true,
+    "IsFullPay": true,
+    "IsImmediatePay": true,
+    "OrderPrice": 3000,
+    "VisaPriceContain": [
+        {
+            "CostDesc": "簽證費",
+            "Cost": 500
+        }
+    ],
+    "VisaPrice": [
+        {
+            "CostDesc": "簽證費",
+            "Cost": 500
+        }
+    ],
+    "AirportPriceContain": [
+        {
+            "CostDesc": "機場稅",
+            "Cost": 500
+        }
+    ],
+    "AirportPrice": [
+        {
+            "CostDesc": "機場稅",
+            "Cost": 500
+        }
+    ],
+    "Meals": [
+        {
+            "CostDesc": "餐費",
+            "Cost": 500
+        }
+    ],
+    "StraightRemarks": "<ol class='supplement p-l-20 m-l-n-md-5'><li><span>此行程含兩地機場稅.燃油費.不含簽證.</span></li><li><span>為因應國際油價不斷攀高，航空公司為反映成本，須隨票增收燃油附加費， 該費用會隨國際油價而有所調整</span></li></ol>",
+    "IndustryRemards": "",
+    "PriceList": [
+        {
+            "PriceStyle": 0,
+            "PriceKind": "D",
+            "AdultsPrice": "26,888",
+            "ChildrenWithBed": "25,888",
+            "ChildrenNoPrice": "26,000",
+            "ChildrenExtraBed": "25,888",
+            "BabyPrice": "22,888",
+            "AdultsPriceOrig": "27,888",
+            "ChildrenWithBedOrig": "26,888",
+            "ChildrenNoPriceOrig": "27,000",
+            "ChildrenExtraBedOrig": "26,888",
+            "BabyPriceOrig": "23,888"
+        },
+        {
+            "PriceStyle": 1,
+            "PriceKind": "D",
+            "AdultsPrice": "26,888",
+            "ChildrenWithBed": "25,888",
+            "ChildrenNoPrice": "26,000",
+            "ChildrenExtraBed": "25,888",
+            "BabyPrice": "22,888",
+            "AdultsPriceOrig": "27,888",
+            "ChildrenWithBedOrig": "26,888",
+            "ChildrenNoPriceOrig": "27,000",
+            "ChildrenExtraBedOrig": "26,888",
+            "BabyPriceOrig": "23,888"
+        },
+        {
+            "PriceStyle": 2,
+            "PriceKind": "D",
+            "AdultsPrice": "26,888",
+            "ChildrenWithBed": "25,888",
+            "ChildrenNoPrice": "26,000",
+            "ChildrenExtraBed": "25,888",
+            "BabyPrice": "22,888",
+            "AdultsPriceOrig": "27,888",
+            "ChildrenWithBedOrig": "26,888",
+            "ChildrenNoPriceOrig": "27,000",
+            "ChildrenExtraBedOrig": "26,888",
+            "BabyPriceOrig": "23,888"
+        },
+        {
+            "PriceStyle": 3,
+            "PriceKind": "D",
+            "AdultsPrice": "26,888",
+            "ChildrenWithBed": "25,888",
+            "ChildrenNoPrice": "26,000",
+            "ChildrenExtraBed": "25,888",
+            "BabyPrice": "22,888",
+            "AdultsPriceOrig": "27,888",
+            "ChildrenWithBedOrig": "26,888",
+            "ChildrenNoPriceOrig": "27,000",
+            "ChildrenExtraBedOrig": "26,888",
+            "BabyPriceOrig": "23,888"
+        }
+    ],
+    "IsB2E": true,
+    "IsEmptyRemarks": false,
+    "IsDataNull": false
+}

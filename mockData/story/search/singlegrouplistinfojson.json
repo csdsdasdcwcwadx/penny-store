@@ -1,0 +1,450 @@
+{
+    "DepartureID": null,
+    "ArriveID": null,
+    "GoDateStart": null,
+    "GoDateEnd": null,
+    "GroupID": null,
+    "Keywords": null,
+    "IsEnsureGroup": false,
+    "IsSold": false,
+    "TravelType": 0,
+    "ThemeID": null,
+    "WeekDay": null,
+    "Days": null,
+    "PriceList": null,
+    "AirlineIDs": null,
+    "Level": null,
+    "TripTypes": null,
+    "Tags": null,
+    "SortType": 0,
+    "PageSize": 0,
+    "Page": 0,
+    "TotalCount": 38,
+    "TotalPage": 4,
+    "CurrentPage": 1,
+    "Count": 10,
+    "SingleGroupList": [
+        {
+            "NormGroupID": "14cd0efc-7ceb-4fac-b304-f0262e2e760b",
+            "TourName": "花蓮馬太鞍部落＋林田山懷舊之旅2天",
+            "TourDays": 2,
+            "TravelType": "1",
+            "GroupID": "21TE421B-ZP",
+            "GoDate": "2021/05/10(一)",
+            "Status": 5,
+            "StatusUrl": "",
+            "StatusText": "關團",
+            "TourBu": "旅天下",
+            "TotalSeats": 20,
+            "QuotaSeats": 19,
+            "IsEnsureGroup": true,
+            "ThemeID": [],
+            "StraightLowestPrice": "2,500",
+            "IndustryLowestPrice": "2,000",
+            "IsVip": true,
+            "VipOrigPrice": "0",
+            "IsCruise": true,
+            "HasFlight": true,
+            "LevelID": null,
+            "FeatureSrc": "S",
+            "TagList": [
+                {
+                    "TagName": "台鐵",
+                    "TagSort": 1
+                },
+                {
+                    "TagName": "鳴日號",
+                    "TagSort": 2
+                },
+                {
+                    "TagName": "環島",
+                    "TagSort": 3
+                },
+                {
+                    "TagName": "ux下線(交",
+                    "TagSort": 6
+                }
+            ],
+            "TripTypeList": [
+                {
+                    "TypeName": "鐵路",
+                    "TypeCode": "03"
+                },
+                {
+                    "TypeName": "鐵路",
+                    "TypeCode": "03"
+                },
+                {
+                    "TypeName": "鐵路",
+                    "TypeCode": "03"
+                },
+                {
+                    "TypeName": "鐵路",
+                    "TypeCode": "03"
+                },
+                {
+                    "TypeName": "鐵路",
+                    "TypeCode": "03"
+                }
+            ],
+            "TelType": 2
+        },
+        {
+            "NormGroupID": "14cd0efc-7ceb-4fac-b304-f0262e2e760b",
+            "TourName": "花蓮馬太鞍部落＋林田山懷舊之旅2天",
+            "TourDays": 2,
+            "TravelType": "1",
+            "GroupID": "21TE423B-ZP",
+            "GoDate": "04/23",
+            "Status": 5,
+            "StatusUrl": "",
+            "StatusText": "關團",
+            "TourBu": "旅天下",
+            "TotalSeats": 20,
+            "QuotaSeats": 19,
+            "IsEnsureGroup": false,
+            "ThemeID": [],
+            "StraightLowestPrice": "2,500",
+            "IndustryLowestPrice": "2,000",
+            "IsVip": false,
+            "VipOrigPrice": "0",
+            "IsCruise": false,
+            "HasFlight": false,
+            "LevelID": null,
+            "FeatureSrc": "S",
+            "TagList": [
+                {
+                    "TagName": "台鐵",
+                    "TagSort": 1
+                },
+                {
+                    "TagName": "鳴日號",
+                    "TagSort": 2
+                },
+                {
+                    "TagName": "環島",
+                    "TagSort": 3
+                },
+                {
+                    "TagName": "台鐵",
+                    "TagSort": 4
+                },
+                {
+                    "TagName": "ux下線(交",
+                    "TagSort": 6
+                },
+                {
+                    "TagName": "ux下線(交",
+                    "TagSort": 6
+                }
+            ],
+            "TripTypeList": [
+                {
+                    "TypeName": "鐵路",
+                    "TypeCode": "03"
+                },
+                {
+                    "TypeName": "郵輪",
+                    "TypeCode": "01"
+                }
+            ],
+            "TelType": 2
+        },
+        {
+            "NormGroupID": "14cd0efc-7ceb-4fac-b304-f0262e2e760b",
+            "TourName": "花蓮馬太鞍部落＋林田山懷舊之旅2天",
+            "TourDays": 2,
+            "TravelType": "1",
+            "GroupID": "21TE426B-ZP",
+            "GoDate": "04/26",
+            "Status": 5,
+            "StatusUrl": "",
+            "StatusText": "關團",
+            "TourBu": "旅天下",
+            "TotalSeats": 20,
+            "QuotaSeats": 20,
+            "IsEnsureGroup": false,
+            "ThemeID": [],
+            "StraightLowestPrice": "2,500",
+            "IndustryLowestPrice": "2,000",
+            "IsVip": false,
+            "VipOrigPrice": "0",
+            "IsCruise": false,
+            "HasFlight": false,
+            "LevelID": null,
+            "FeatureSrc": "S",
+            "TagList": [
+                {
+                    "TagName": "ux下線(交",
+                    "TagSort": 6
+                }
+            ],
+            "TripTypeList": [
+                {
+                    "TypeName": null,
+                    "TypeCode": null
+                }
+            ],
+            "TelType": 2
+        },
+        {
+            "NormGroupID": "14cd0efc-7ceb-4fac-b304-f0262e2e760b",
+            "TourName": "花蓮馬太鞍部落＋林田山懷舊之旅2天",
+            "TourDays": 2,
+            "TravelType": "1",
+            "GroupID": "21TE428B-ZP",
+            "GoDate": "04/28",
+            "Status": 5,
+            "StatusUrl": "",
+            "StatusText": "關團",
+            "TourBu": "旅天下",
+            "TotalSeats": 20,
+            "QuotaSeats": 19,
+            "IsEnsureGroup": false,
+            "ThemeID": [],
+            "StraightLowestPrice": "2,500",
+            "IndustryLowestPrice": "2,000",
+            "IsVip": false,
+            "VipOrigPrice": "0",
+            "IsCruise": false,
+            "HasFlight": false,
+            "LevelID": null,
+            "FeatureSrc": "S",
+            "TagList": [
+                {
+                    "TagName": "ux下線(交",
+                    "TagSort": 6
+                }
+            ],
+            "TripTypeList": [
+                {
+                    "TypeName": null,
+                    "TypeCode": null
+                }
+            ],
+            "TelType": 2
+        },
+        {
+            "NormGroupID": "14cd0efc-7ceb-4fac-b304-f0262e2e760b",
+            "TourName": "花蓮馬太鞍部落＋林田山懷舊之旅2天",
+            "TourDays": 2,
+            "TravelType": "1",
+            "GroupID": "21TE430B-ZP",
+            "GoDate": "04/30",
+            "Status": 5,
+            "StatusUrl": "",
+            "StatusText": "關團",
+            "TourBu": "旅天下",
+            "TotalSeats": 20,
+            "QuotaSeats": 20,
+            "IsEnsureGroup": false,
+            "ThemeID": [],
+            "StraightLowestPrice": "2,500",
+            "IndustryLowestPrice": "2,000",
+            "IsVip": false,
+            "VipOrigPrice": "0",
+            "IsCruise": false,
+            "HasFlight": false,
+            "LevelID": null,
+            "FeatureSrc": "S",
+            "TagList": [
+                {
+                    "TagName": "ux下線(交",
+                    "TagSort": 6
+                }
+            ],
+            "TripTypeList": [
+                {
+                    "TypeName": null,
+                    "TypeCode": null
+                }
+            ],
+            "TelType": 2
+        },
+        {
+            "NormGroupID": "14cd0efc-7ceb-4fac-b304-f0262e2e760b",
+            "TourName": "花蓮馬太鞍部落＋林田山懷舊之旅2天",
+            "TourDays": 2,
+            "TravelType": "1",
+            "GroupID": "21TE503B-ZP",
+            "GoDate": "05/03",
+            "Status": 1,
+            "StatusUrl": "/Order/Choose?NormGrupID=旅天下花蓮2日&GroupID=21TE503B-ZP&Status=1",
+            "StatusText": "報名",
+            "TourBu": "旅天下",
+            "TotalSeats": 20,
+            "QuotaSeats": 19,
+            "IsEnsureGroup": false,
+            "ThemeID": [],
+            "StraightLowestPrice": "2,500",
+            "IndustryLowestPrice": "2,000",
+            "IsVip": false,
+            "VipOrigPrice": "0",
+            "IsCruise": false,
+            "HasFlight": false,
+            "LevelID": null,
+            "FeatureSrc": "S",
+            "TagList": [
+                {
+                    "TagName": "ux下線(交",
+                    "TagSort": 6
+                }
+            ],
+            "TripTypeList": [
+                {
+                    "TypeName": null,
+                    "TypeCode": null
+                }
+            ],
+            "TelType": 2
+        },
+        {
+            "NormGroupID": "14cd0efc-7ceb-4fac-b304-f0262e2e760b",
+            "TourName": "花蓮馬太鞍部落＋林田山懷舊之旅2天",
+            "TourDays": 2,
+            "TravelType": "1",
+            "GroupID": "21TE505B-ZP",
+            "GoDate": "05/05",
+            "Status": 1,
+            "StatusUrl": "/Order/Choose?NormGrupID=旅天下花蓮2日&GroupID=21TE505B-ZP&Status=1",
+            "StatusText": "報名",
+            "TourBu": "旅天下",
+            "TotalSeats": 20,
+            "QuotaSeats": 20,
+            "IsEnsureGroup": false,
+            "ThemeID": [],
+            "StraightLowestPrice": "2,500",
+            "IndustryLowestPrice": "2,000",
+            "IsVip": false,
+            "VipOrigPrice": "0",
+            "IsCruise": false,
+            "HasFlight": false,
+            "LevelID": null,
+            "FeatureSrc": "S",
+            "TagList": [
+                {
+                    "TagName": "ux下線(交",
+                    "TagSort": 6
+                }
+            ],
+            "TripTypeList": [
+                {
+                    "TypeName": null,
+                    "TypeCode": null
+                }
+            ],
+            "TelType": 2
+        },
+        {
+            "NormGroupID": "14cd0efc-7ceb-4fac-b304-f0262e2e760b",
+            "TourName": "花蓮馬太鞍部落＋林田山懷舊之旅2天",
+            "TourDays": 2,
+            "TravelType": "1",
+            "GroupID": "21TE507B-ZP",
+            "GoDate": "05/07",
+            "Status": 1,
+            "StatusUrl": "/Order/Choose?NormGrupID=旅天下花蓮2日&GroupID=21TE507B-ZP&Status=1",
+            "StatusText": "報名",
+            "TourBu": "旅天下",
+            "TotalSeats": 20,
+            "QuotaSeats": 20,
+            "IsEnsureGroup": false,
+            "ThemeID": [],
+            "StraightLowestPrice": "2,500",
+            "IndustryLowestPrice": "2,000",
+            "IsVip": false,
+            "VipOrigPrice": "0",
+            "IsCruise": false,
+            "HasFlight": false,
+            "LevelID": null,
+            "FeatureSrc": "S",
+            "TagList": [
+                {
+                    "TagName": "ux下線(交",
+                    "TagSort": 6
+                }
+            ],
+            "TripTypeList": [
+                {
+                    "TypeName": null,
+                    "TypeCode": null
+                }
+            ],
+            "TelType": 2
+        },
+        {
+            "NormGroupID": "14cd0efc-7ceb-4fac-b304-f0262e2e760b",
+            "TourName": "花蓮馬太鞍部落＋林田山懷舊之旅2天",
+            "TourDays": 2,
+            "TravelType": "1",
+            "GroupID": "21TE510B-ZP",
+            "GoDate": "05/10",
+            "Status": 1,
+            "StatusUrl": "/Order/Choose?NormGrupID=旅天下花蓮2日&GroupID=21TE510B-ZP&Status=1",
+            "StatusText": "報名",
+            "TourBu": "旅天下",
+            "TotalSeats": 20,
+            "QuotaSeats": 20,
+            "IsEnsureGroup": false,
+            "ThemeID": [],
+            "StraightLowestPrice": "2,500",
+            "IndustryLowestPrice": "2,000",
+            "IsVip": false,
+            "VipOrigPrice": "0",
+            "IsCruise": false,
+            "HasFlight": false,
+            "LevelID": null,
+            "FeatureSrc": "S",
+            "TagList": [
+                {
+                    "TagName": "ux下線(交",
+                    "TagSort": 6
+                }
+            ],
+            "TripTypeList": [
+                {
+                    "TypeName": null,
+                    "TypeCode": null
+                }
+            ],
+            "TelType": 2
+        },
+        {
+            "NormGroupID": "14cd0efc-7ceb-4fac-b304-f0262e2e760b",
+            "TourName": "花蓮馬太鞍部落＋林田山懷舊之旅2天",
+            "TourDays": 2,
+            "TravelType": "1",
+            "GroupID": "21TE512B-ZP",
+            "GoDate": "05/12",
+            "Status": 1,
+            "StatusUrl": "/Order/Choose?NormGrupID=旅天下花蓮2日&GroupID=21TE512B-ZP&Status=1",
+            "StatusText": "報名",
+            "TourBu": "旅天下",
+            "TotalSeats": 20,
+            "QuotaSeats": 20,
+            "IsEnsureGroup": false,
+            "ThemeID": [],
+            "StraightLowestPrice": "2,500",
+            "IndustryLowestPrice": "2,000",
+            "IsVip": false,
+            "VipOrigPrice": "0",
+            "IsCruise": false,
+            "HasFlight": false,
+            "LevelID": null,
+            "FeatureSrc": "S",
+            "TagList": [
+                {
+                    "TagName": "ux下線(交",
+                    "TagSort": 6
+                }
+            ],
+            "TripTypeList": [
+                {
+                    "TypeName": null,
+                    "TypeCode": null
+                }
+            ],
+            "TelType": 2
+        }
+    ]
+}

@@ -1,0 +1,92 @@
+{
+    "NormGroupID": null,
+    "GoDateStart": null,
+    "GoDateEnd": null,
+    "IsPreview": false,
+    "GroupIDList": "21CA401-T,21CA4012-T",
+    "TourIDList": [
+        {
+            "TourID": "02CA826BR",
+            "AllMinGoDate": "2021-03-01",
+            "AllMaxGoDate": null,
+            "TourSummaryList": [
+                {
+                    "Year": "2021",
+                    "Month": "03",
+                    "DaySum": 3,
+                    "GroupSum": 3
+                },
+                {
+                    "Year": "2021",
+                    "Month": "04",
+                    "DaySum": 13,
+                    "GroupSum": 13
+                },
+                {
+                    "Year": "2021",
+                    "Month": "05",
+                    "DaySum": 13,
+                    "GroupSum": 13
+                },
+                {
+                    "Year": "2021",
+                    "Month": "06",
+                    "DaySum": 5,
+                    "GroupSum": 5
+                },
+                {
+                    "Year": "2021",
+                    "Month": "07",
+                    "DaySum": 13,
+                    "GroupSum": 13
+                },
+                {
+                    "Year": "2021",
+                    "Month": "08",
+                    "DaySum": 13,
+                    "GroupSum": 13
+                },
+                {
+                    "Year": "2021",
+                    "Month": "09",
+                    "DaySum": 13,
+                    "GroupSum": 13
+                },
+                {
+                    "Year": "2021",
+                    "Month": "10",
+                    "DaySum": 13,
+                    "GroupSum": 13
+                },
+                {
+                    "Year": "2021",
+                    "Month": "11",
+                    "DaySum": 13,
+                    "GroupSum": 13
+                },
+                {
+                    "Year": "2021",
+                    "Month": "12",
+                    "DaySum": 13,
+                    "GroupSum": 13
+                }
+            ]
+        },
+        {
+            "TourID": "200651PEK",
+            "AllMinGoDate": "2021-04-01",
+            "AllMaxGoDate": null,
+            "TourSummaryList": [
+                {
+                    "Year": "2021",
+                    "Month": "04",
+                    "DaySum": 1,
+                    "GroupSum": 1
+                }
+            ]
+        }
+    ],
+    "AllMinGoDate": "2021-04-02",
+    "AllMaxGoDate": "2021-12-31",
+    "CompareUrl": "/Common/Compare?NormGroupID=9aea3989-6968-4965-89b4-1266f191751f&GroupID=21CA401-T,21CA4012-T&CompareType=2&CompareCount=2&TravelType=1"
+}

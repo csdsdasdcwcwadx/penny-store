@@ -1,0 +1,124 @@
+{
+    "allGroup": [
+        {
+            "ScheduleType": "A",
+            "GroupID": "20TED11B-ZP",
+            "Guaranteed": true,
+            "Date": "2021-01-11",
+            "Weekday": "六",
+            "Price": "21,100",
+            "AvailableVacancy": "5",
+            "TotalVacnacy": "20",
+            "Status": "報名",
+            "IsVip": true
+        },
+        {
+            "ScheduleType": "A",
+            "GroupID": "20TED11B-ZP",
+            "Guaranteed": true,
+            "Date": "2021-01-11",
+            "Weekday": "一",
+            "Price": "3,200",
+            "AvailableVacancy": "5",
+            "TotalVacnacy": "20",
+            "Status": "報名",
+            "IsVip": true
+        },
+        {
+            "ScheduleType": "A",
+            "GroupID": "20TED11B-ZP",
+            "Guaranteed": true,
+            "Date": "2021-01-13",
+            "Weekday": "二",
+            "Price": "3,200",
+            "AvailableVacancy": "5",
+            "TotalVacnacy": "20",
+            "Status": "報名",
+            "IsVip": true
+        },
+        {
+            "ScheduleType": "A",
+            "GroupID": "20TED11B-ZP",
+            "Guaranteed": false,
+            "Date": "2021-01-15",
+            "Weekday": "二",
+            "Price": "1,1111",
+            "AvailableVacancy": "5",
+            "TotalVacnacy": "20",
+            "Status": "",
+            "IsVip": false
+        },
+        {
+            "ScheduleType": "A",
+            "GroupID": "20TED11B-ZP",
+            "Guaranteed": false,
+            "Date": "2021-01-10",
+            "Weekday": "二",
+            "Price": "5,0987",
+            "AvailableVacancy": "5",
+            "TotalVacnacy": "20",
+            "Status": "",
+            "IsVip": true
+        },
+        {
+            "ScheduleType": "A",
+            "GroupID": "20TED11B-ZP",
+            "Guaranteed": false,
+            "Date": "2021-01-10",
+            "Weekday": "二",
+            "Price": "5,0987",
+            "AvailableVacancy": "5",
+            "TotalVacnacy": "20",
+            "Status": "",
+            "IsVip": true
+        },
+        {
+            "ScheduleType": "A",
+            "GroupID": "20TED11B-ZP",
+            "Guaranteed": false,
+            "Date": "2020-12-25",
+            "Weekday": "二",
+            "Price": "5,0987",
+            "AvailableVacancy": "5",
+            "TotalVacnacy": "20",
+            "Status": "",
+            "IsVip": true
+        },
+        {
+            "ScheduleType": "A",
+            "GroupID": "20TED11B-ZP",
+            "Guaranteed": false,
+            "Date": "2021-02-04",
+            "Weekday": "二",
+            "Price": "5,0987",
+            "AvailableVacancy": "5",
+            "TotalVacnacy": "20",
+            "Status": "",
+            "IsVip": true
+        },
+        {
+            "ScheduleType": "A",
+            "GroupID": "20TED11B-ZP",
+            "Guaranteed": false,
+            "Date": "2021-01-26",
+            "Weekday": "二",
+            "Price": "5,0987",
+            "AvailableVacancy": "5",
+            "TotalVacnacy": "20",
+            "Status": "",
+            "IsVip": true
+        },
+        {
+            "ScheduleType": "A",
+            "GroupID": "20TED11B-ZP",
+            "Guaranteed": false,
+            "Date": "2021-01-20",
+            "Weekday": "二",
+            "Price": "5,0987",
+            "AvailableVacancy": "5",
+            "TotalVacnacy": "20",
+            "Status": "",
+            "IsVip": true
+        }
+    ]
+}

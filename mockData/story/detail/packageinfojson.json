@@ -1,0 +1,58 @@
+{
+    "NormGroupID": "0da15c8c-8f6f-4d85-ac53-e3345cebccee",
+    "GroupID": null,
+    "GoDate": null,
+    "IsFlightInfo": false,
+    "IsNoFlight": false,
+    "GroupList": [
+        {
+            "GroupID": "21JC601K-T",
+            "IsEnsureGroup": false,
+            "TotalSeats": 800,
+            "QuotaSeats": 746,
+            "StraightLowestPrice": 52900,
+            "IsVip": false,
+            "VipOrigPrice": 0,
+            "Status": 1,
+            "StatusName": "報名",
+            "StatusClass": "apply",
+            "ArriveTaiwanDate": "2021/06/03",
+            "DirectionList": [
+                {
+                    "Id": "1",
+                    "Name": "去程",
+                    "FlightList": [
+                        {
+                            "DepartureDate": "2021/06/01(二)",
+                            "DepartTime": "23:35",
+                            "ArriveDate": "2021/06/02(三)",
+                            "ArriveTime": "08:00",
+                            "DepartureAirport": "桃園機場",
+                            "ArriveAirport": "洛杉機機場",
+                            "Airline": "長榮航空",
+                            "FlightNo": "BR666",
+                            "FlightTime": "00:25"
+                        }
+                    ]
+                },
+                {
+                    "Id": "9",
+                    "Name": "回程",
+                    "FlightList": [
+                        {
+                            "DepartureDate": "2021/06/03(四)",
+                            "DepartTime": "08:00",
+                            "ArriveDate": "2021/06/03(四)",
+                            "ArriveTime": "23:55",
+                            "DepartureAirport": "洛杉機機場",
+                            "ArriveAirport": "桃園機場",
+                            "Airline": "長榮航空",
+                            "FlightNo": "BR888",
+                            "FlightTime": "00:-05"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

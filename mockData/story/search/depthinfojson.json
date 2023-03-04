@@ -1,0 +1,284 @@
+{
+    "DepartureID": null,
+    "ArriveID": null,
+    "GoDateStart": "2021/04/16",
+    "GoDateEnd": "2021/05/31",
+    "GroupID": null,
+    "Keywords": null,
+    "IsEnsureGroup": false,
+    "IsSold": false,
+    "TravelType": 0,
+    "ThemeID": null,
+    "WeekDays": [
+        {
+            "Value": 0,
+            "Text": "日"
+        },
+        {
+            "Value": 1,
+            "Text": "一"
+        },
+        {
+            "Value": 2,
+            "Text": "二"
+        },
+        {
+            "Value": 3,
+            "Text": "三"
+        },
+        {
+            "Value": 5,
+            "Text": "五"
+        },
+        {
+            "Value": 6,
+            "Text": "六"
+        }
+    ],
+    "DayList": [
+        {
+            "Value": 1,
+            "Text": "1天"
+        },
+        {
+            "Value": 2,
+            "Text": "2天"
+        },
+        {
+            "Value": 3,
+            "Text": "3天"
+        },
+        {
+            "Value": 4,
+            "Text": "4天"
+        }
+    ],
+    "PriceList": [
+        {
+            "PriceStart": 0,
+            "PriceEnd": 3999.0,
+            "IsCount": true,
+            "Text": "3,999以下"
+        },
+        {
+            "PriceStart": 4000.0,
+            "PriceEnd": 5999.0,
+            "IsCount": false,
+            "Text": "4,000~5,999"
+        },
+        {
+            "PriceStart": 6000.0,
+            "PriceEnd": 7999.0,
+            "IsCount": false,
+            "Text": "6,000~7,999"
+        },
+        {
+            "PriceStart": 8000.0,
+            "PriceEnd": 9999.0,
+            "IsCount": true,
+            "Text": "8,000~9,999"
+        },
+        {
+            "PriceStart": 10000.0,
+            "PriceEnd": 11999.0,
+            "IsCount": true,
+            "Text": "10,000~11,999"
+        },
+        {
+            "PriceStart": 12000.0,
+            "PriceEnd": 0,
+            "IsCount": true,
+            "Text": "12,000以上"
+        },
+        {
+            "PriceStart": 0,
+            "PriceEnd": 0,
+            "IsCount": true,
+            "Text": "0以下"
+        }
+    ],
+    "PriceRange": {
+        "PriceStart": 0,
+        "PriceEnd": 99999
+    },
+    "AirlineList": [
+        {
+            "AirlineName": "長榮航空",
+            "AirlineID": "BR"
+        }
+    ],
+    "LevelList": [],
+    "TripTypeList": [
+        {
+            "TypeName": "郵輪",
+            "TypeCode": "01"
+        },
+        {
+            "TypeName": "鐵路",
+            "TypeCode": "03"
+        }
+    ],
+    "CategoryList": [
+        {
+            "CategoryName": "大交通",
+            "CategoryCode": "03",
+            "CategorySort": 3,
+            "TypeList": [
+                {
+                    "TypeName": "郵輪",
+                    "TypeCode": "07",
+                    "TypeSort": 7,
+                    "TripTypeName": "郵輪",
+                    "TripTypeCode": "01",
+                    "TripTypeSort": 3,
+                    "GroupList": [
+                        {
+                            "GroupName": "船名",
+                            "GroupNo": "2",
+                            "GroupSort": 9,
+                            "TagList": [
+                                {
+                                    "TagName": "天秤星號",
+                                    "TagNo": "37",
+                                    "TagSort": 17,
+                                    "IsDelete": false
+                                }
+                            ]
+                        },
+                        {
+                            "GroupName": "入住房型",
+                            "GroupNo": "3",
+                            "GroupSort": 3,
+                            "TagList": [
+                                {
+                                    "TagName": "3人房",
+                                    "TagNo": "8",
+                                    "TagSort": 2,
+                                    "IsDelete": false
+                                },
+                                {
+                                    "TagName": "4人房",
+                                    "TagNo": "9",
+                                    "TagSort": 3,
+                                    "IsDelete": false
+                                }
+                            ]
+                        },
+                        {
+                            "GroupName": "艙房等級",
+                            "GroupNo": "4",
+                            "GroupSort": 4,
+                            "TagList": [
+                                {
+                                    "TagName": "露臺艙",
+                                    "TagNo": "15",
+                                    "TagSort": 3,
+                                    "IsDelete": false
+                                }
+                            ]
+                        },
+                        {
+                            "GroupName": "遊樂設施",
+                            "GroupNo": "38",
+                            "GroupSort": 6,
+                            "TagList": [
+                                {
+                                    "TagName": "溫泉",
+                                    "TagNo": "154",
+                                    "TagSort": 4,
+                                    "IsDelete": false
+                                },
+                                {
+                                    "TagName": "籃球場",
+                                    "TagNo": "155",
+                                    "TagSort": 2,
+                                    "IsDelete": false
+                                },
+                                {
+                                    "TagName": "博弈",
+                                    "TagNo": "157",
+                                    "TagSort": 1,
+                                    "IsDelete": false
+                                }
+                            ]
+                        },
+                        {
+                            "GroupName": "ux下線(交",
+                            "GroupNo": "1044",
+                            "GroupSort": 2,
+                            "TagList": [
+                                {
+                                    "TagName": "ux下線(交",
+                                    "TagNo": "1164",
+                                    "TagSort": 1,
+                                    "IsDelete": false
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "TypeName": "鐵路",
+                    "TypeCode": "08",
+                    "TypeSort": 8,
+                    "TripTypeName": "鐵路",
+                    "TripTypeCode": "03",
+                    "TripTypeSort": 1,
+                    "GroupList": [
+                        {
+                            "GroupName": "台灣鐵道公司",
+                            "GroupNo": "24",
+                            "GroupSort": 1,
+                            "TagList": [
+                                {
+                                    "TagName": "台鐵",
+                                    "TagNo": "116",
+                                    "TagSort": 1,
+                                    "IsDelete": false
+                                },
+                                {
+                                    "TagName": "林鐵",
+                                    "TagNo": "118",
+                                    "TagSort": 3,
+                                    "IsDelete": false
+                                }
+                            ]
+                        },
+                        {
+                            "GroupName": "台灣鐵道線別",
+                            "GroupNo": "25",
+                            "GroupSort": 2,
+                            "TagList": [
+                                {
+                                    "TagName": "環島",
+                                    "TagNo": "124",
+                                    "TagSort": 5,
+                                    "IsDelete": false
+                                }
+                            ]
+                        },
+                        {
+                            "GroupName": "台灣火車名",
+                            "GroupNo": "26",
+                            "GroupSort": 3,
+                            "TagList": [
+                                {
+                                    "TagName": "鳴日號",
+                                    "TagNo": "125",
+                                    "TagSort": 1,
+                                    "IsDelete": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "DepartureList": [
+        {
+            "CityCode": "TPE",
+            "CityName": "台北"
+        }
+    ]
+}

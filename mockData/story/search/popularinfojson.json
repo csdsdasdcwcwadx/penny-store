@@ -1,0 +1,389 @@
+[
+    {
+        "ShowCount": 0,
+        "Type": null,
+        "Country": null,
+        "DepartureID": null,
+        "ArriveID": null,
+        "GoDateStart": null,
+        "GoDateEnd": null,
+        "GroupID": null,
+        "Keyword": null,
+        "IsEnsureGroup": false,
+        "IsSold": false,
+        "ThemeID": null,
+        "WeekDay": null,
+        "Days": null,
+        "PriceList": null,
+        "AirlineDs": null,
+        "TravelType": 1,
+        "Level": null,
+        "Language": null,
+        "TripTypes": null,
+        "Tags": null,
+        "NormGroupID": "cbbc3645-11e5-426e-af14-d92cdd88c20c",
+        "TourName": "1一一一一一一一一一2一一一一一一一一一3一一一一一一一一一4一一一一一一一一一5一一一一一一一一一6一一一一一一一一一超過了唷",
+        "Keywords": ["小琉球", "海龜", "旅天下小琉球蘭嶼3日"],
+        "TourDays": 3,
+        "ImgNo": "",
+        "Img": ",",
+        "ImgM": ",",
+        "GroupStraightPrice": 12300.0,
+        "GroupIndustryPrice": 11000.0,
+        "GroupVip": false,
+        "GroupVipOrigPrice": 0,
+        "Status": 1,
+        "GroupList": [
+            {
+                "GroupID": "21TA430-T",
+                "GoDate": "2021-04-30",
+                "IsEnsureGroup": false,
+                "StraightLowestPrice": 8501.0,
+                "IndustryLowestPrice": 7501.0,
+                "IsVip": false,
+                "VipOrigPrice": 0.0,
+                "ArriveID": "AZ-60-9",
+                "AirLine": null
+            },
+            {
+                "GroupID": "21TA520-T",
+                "GoDate": "2021-05-20",
+                "IsEnsureGroup": false,
+                "StraightLowestPrice": 11670.0,
+                "IndustryLowestPrice": 9980.0,
+                "IsVip": false,
+                "VipOrigPrice": 0.0,
+                "ArriveID": "AZ-60-9",
+                "AirLine": null
+            },
+            {
+                "GroupID": "21TA509A-ZP",
+                "GoDate": "2021-05-09",
+                "IsEnsureGroup": false,
+                "StraightLowestPrice": 12300.0,
+                "IndustryLowestPrice": 11000.0,
+                "IsVip": false,
+                "VipOrigPrice": 0.0,
+                "ArriveID": "AZ-60-9",
+                "AirLine": null
+            },
+            {
+                "GroupID": "21TA620A-ZP",
+                "GoDate": "2021-06-20",
+                "IsEnsureGroup": false,
+                "StraightLowestPrice": 12300.0,
+                "IndustryLowestPrice": 11000.0,
+                "IsVip": false,
+                "VipOrigPrice": 0.0,
+                "ArriveID": "AZ-60-9",
+                "AirLine": null
+            },
+            {
+                "GroupID": "21TA711A-ZP",
+                "GoDate": "2021-07-11",
+                "IsEnsureGroup": false,
+                "StraightLowestPrice": 12300.0,
+                "IndustryLowestPrice": 11000.0,
+                "IsVip": false,
+                "VipOrigPrice": 0.0,
+                "ArriveID": "AZ-60-9",
+                "AirLine": null
+            }
+        ],
+        "TagList": [
+            {
+                "TagName": "台鐵",
+                "TagSort": 1
+            },
+            {
+                "TagName": "鳴日號",
+                "TagSort": 2
+            },
+            {
+                "TagName": "環島",
+                "TagSort": 3
+            },
+            {
+                "TagName": "台鐵",
+                "TagSort": 1
+            },
+            {
+                "TagName": "鳴日號",
+                "TagSort": 2
+            },
+            {
+                "TagName": "環島",
+                "TagSort": 3
+            }
+        ],
+        "TripTypeList": [
+            {
+                "Name": "鐵路",
+                "Code": "03"
+            },
+            {
+                "Name": "鐵路",
+                "Code": "03"
+            }
+        ],
+        "ProductType": "3"
+    },
+    {
+        "ShowCount": 0,
+        "Type": null,
+        "Country": null,
+        "DepartureID": null,
+        "ArriveID": null,
+        "GoDateStart": null,
+        "GoDateEnd": null,
+        "GroupID": null,
+        "Keyword": null,
+        "IsEnsureGroup": false,
+        "IsSold": false,
+        "ThemeID": null,
+        "WeekDay": null,
+        "Days": null,
+        "PriceList": null,
+        "AirlineDs": null,
+        "TravelType": 1,
+        "Level": null,
+        "Language": null,
+        "TripTypes": null,
+        "Tags": null,
+        "NormGroupID": "cbbc3645-11e5-426e-af14-d92cdd88c20c",
+        "TourName": "【(￣▽￣)跳島旅行】小琉球尋海龜．覓俏海星．達悟族的故鄉－蘭嶼．野銀地下屋．攀岩山羊三日【(￣▽￣)跳島旅行】小琉球尋海龜．覓俏海星．達悟族的故鄉－蘭嶼．野銀地下屋．攀岩山羊三日【(￣▽￣)跳島旅行】小琉球尋海龜．覓俏海星．達悟族的故鄉－蘭嶼．野銀地下屋．攀岩山羊三日【(￣▽￣)跳島旅行】小琉球尋海龜．覓俏海星．達悟族的故鄉－蘭嶼．野銀地下屋．攀岩山羊三日【(￣▽￣)跳島旅行】小琉球尋海龜．覓俏海星．達悟族的故鄉－蘭嶼．野銀地下屋．攀岩山羊三日【(￣▽￣)跳島旅行】小琉球尋海龜．覓俏海星．達悟族的故鄉－蘭嶼．野銀地下屋．攀岩山羊三日【(￣▽￣)跳島旅行】小琉球尋海龜．覓俏海星．達悟族的故鄉－蘭嶼．野銀地下屋．攀岩山羊三日",
+        "Keywords": ["小琉球", "海龜", "旅天下小琉球蘭嶼3日"],
+        "TourDays": 3,
+        "ImgNo": "",
+        "Img": ",",
+        "ImgM": ",",
+        "GroupStraightPrice": 12300.0,
+        "GroupIndustryPrice": 11000.0,
+        "GroupVip": false,
+        "GroupVipOrigPrice": 0,
+        "Status": 1,
+        "GroupList": [
+            {
+                "GroupID": "21TA430-T",
+                "GoDate": "2021-04-30",
+                "IsEnsureGroup": false,
+                "StraightLowestPrice": 8501.0,
+                "IndustryLowestPrice": 7501.0,
+                "IsVip": false,
+                "VipOrigPrice": 0.0,
+                "ArriveID": "AZ-60-9",
+                "AirLine": null
+            },
+            {
+                "GroupID": "21TA520-T",
+                "GoDate": "2021-05-20",
+                "IsEnsureGroup": false,
+                "StraightLowestPrice": 11670.0,
+                "IndustryLowestPrice": 9980.0,
+                "IsVip": false,
+                "VipOrigPrice": 0.0,
+                "ArriveID": "AZ-60-9",
+                "AirLine": null
+            },
+            {
+                "GroupID": "21TA509A-ZP",
+                "GoDate": "2021-05-09",
+                "IsEnsureGroup": false,
+                "StraightLowestPrice": 12300.0,
+                "IndustryLowestPrice": 11000.0,
+                "IsVip": false,
+                "VipOrigPrice": 0.0,
+                "ArriveID": "AZ-60-9",
+                "AirLine": null
+            },
+            {
+                "GroupID": "21TA620A-ZP",
+                "GoDate": "2021-06-20",
+                "IsEnsureGroup": false,
+                "StraightLowestPrice": 12300.0,
+                "IndustryLowestPrice": 11000.0,
+                "IsVip": false,
+                "VipOrigPrice": 0.0,
+                "ArriveID": "AZ-60-9",
+                "AirLine": null
+            },
+            {
+                "GroupID": "21TA711A-ZP",
+                "GoDate": "2021-07-11",
+                "IsEnsureGroup": false,
+                "StraightLowestPrice": 12300.0,
+                "IndustryLowestPrice": 11000.0,
+                "IsVip": false,
+                "VipOrigPrice": 0.0,
+                "ArriveID": "AZ-60-9",
+                "AirLine": null
+            }
+        ],
+        "TagList": [
+            {
+                "TagName": "台鐵",
+                "TagSort": 1
+            },
+            {
+                "TagName": "鳴日號",
+                "TagSort": 2
+            },
+            {
+                "TagName": "環島",
+                "TagSort": 3
+            },
+            {
+                "TagName": "台鐵",
+                "TagSort": 1
+            },
+            {
+                "TagName": "鳴日號",
+                "TagSort": 2
+            },
+            {
+                "TagName": "環島",
+                "TagSort": 3
+            }
+        ],
+        "TripTypeList": [
+            {
+                "Name": "鐵路",
+                "Code": "03"
+            },
+            {
+                "Name": "鐵路",
+                "Code": "03"
+            }
+        ],
+        "ProductType": "3"
+    },
+    {
+        "ShowCount": 0,
+        "Type": null,
+        "Country": null,
+        "DepartureID": null,
+        "ArriveID": null,
+        "GoDateStart": null,
+        "GoDateEnd": null,
+        "GroupID": null,
+        "Keyword": null,
+        "IsEnsureGroup": false,
+        "IsSold": false,
+        "ThemeID": null,
+        "WeekDay": null,
+        "Days": null,
+        "PriceList": null,
+        "AirlineDs": null,
+        "TravelType": 1,
+        "Level": null,
+        "Language": null,
+        "TripTypes": null,
+        "Tags": null,
+        "NormGroupID": "cbbc3645-11e5-426e-af14-d92cdd88c20c",
+        "TourName": "【(￣▽￣)跳島旅行】小琉球尋海龜．覓俏海星．達悟族的故鄉－蘭嶼．野銀地下屋．攀岩山羊三日",
+        "Keywords": ["小琉球", "海龜", "旅天下小琉球蘭嶼3日"],
+        "TourDays": 3,
+        "ImgNo": "",
+        "Img": ",",
+        "ImgM": ",",
+        "GroupStraightPrice": 12300.0,
+        "GroupIndustryPrice": 11000.0,
+        "GroupVip": false,
+        "GroupVipOrigPrice": 0,
+        "Status": 1,
+        "GroupList": [
+            {
+                "GroupID": "21TA430-T",
+                "GoDate": "2021-04-30",
+                "IsEnsureGroup": false,
+                "StraightLowestPrice": 8501.0,
+                "IndustryLowestPrice": 7501.0,
+                "IsVip": false,
+                "VipOrigPrice": 0.0,
+                "ArriveID": "AZ-60-9",
+                "AirLine": null
+            },
+            {
+                "GroupID": "21TA520-T",
+                "GoDate": "2021-05-20",
+                "IsEnsureGroup": false,
+                "StraightLowestPrice": 11670.0,
+                "IndustryLowestPrice": 9980.0,
+                "IsVip": false,
+                "VipOrigPrice": 0.0,
+                "ArriveID": "AZ-60-9",
+                "AirLine": null
+            },
+            {
+                "GroupID": "21TA509A-ZP",
+                "GoDate": "2021-05-09",
+                "IsEnsureGroup": false,
+                "StraightLowestPrice": 12300.0,
+                "IndustryLowestPrice": 11000.0,
+                "IsVip": false,
+                "VipOrigPrice": 0.0,
+                "ArriveID": "AZ-60-9",
+                "AirLine": null
+            },
+            {
+                "GroupID": "21TA620A-ZP",
+                "GoDate": "2021-06-20",
+                "IsEnsureGroup": false,
+                "StraightLowestPrice": 12300.0,
+                "IndustryLowestPrice": 11000.0,
+                "IsVip": false,
+                "VipOrigPrice": 0.0,
+                "ArriveID": "AZ-60-9",
+                "AirLine": null
+            },
+            {
+                "GroupID": "21TA711A-ZP",
+                "GoDate": "2021-07-11",
+                "IsEnsureGroup": false,
+                "StraightLowestPrice": 12300.0,
+                "IndustryLowestPrice": 11000.0,
+                "IsVip": false,
+                "VipOrigPrice": 0.0,
+                "ArriveID": "AZ-60-9",
+                "AirLine": null
+            }
+        ],
+        "TagList": [
+            {
+                "TagName": "台鐵",
+                "TagSort": 1
+            },
+            {
+                "TagName": "鳴日號",
+                "TagSort": 2
+            },
+            {
+                "TagName": "環島",
+                "TagSort": 3
+            },
+            {
+                "TagName": "台鐵",
+                "TagSort": 1
+            },
+            {
+                "TagName": "鳴日號",
+                "TagSort": 2
+            },
+            {
+                "TagName": "環島",
+                "TagSort": 3
+            }
+        ],
+        "TripTypeList": [
+            {
+                "Name": "鐵路",
+                "Code": "03"
+            },
+            {
+                "Name": "鐵路",
+                "Code": "03"
+            }
+        ],
+        "ProductType": "3"
+    }
+]

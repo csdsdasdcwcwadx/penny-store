@@ -1,0 +1,823 @@
+{
+    "DepartureID": null,
+    "ArriveID": null,
+    "GoDateStart": null,
+    "GoDateEnd": null,
+    "GroupID": null,
+    "Keywords": null,
+    "IsEnsureGroup": false,
+    "IsSold": false,
+    "TravelType": 0,
+    "ThemeID": null,
+    "WeekDay": null,
+    "Days": null,
+    "PriceList": null,
+    "AirlineIDs": null,
+    "Level": null,
+    "TripTypes": null,
+    "Tags": null,
+    "SortType": 0,
+    "PageSize": 0,
+    "Page": 0,
+    "TotalCount": 12,
+    "TotalPage": 2,
+    "CurrentPage": 1,
+    "Count": 10,
+    "NormGroupList": [
+        {
+            "Index": 0,
+            "NormGroupID": "156e4447-2e96-4230-bf37-84df1991102a",
+            "TourName": "『主題』我是國旅團之台灣走向世界盡頭",
+            "TourDays": 4,
+            "Img": null,
+            "ImgM": null,
+            "TravelType": 1,
+            "GroupStraightPrice": "8,501",
+            "GroupIndustryPrice": null,
+            "GroupIsVip": true,
+            "GroupVipOrigPrice": "0",
+            "Status": 1,
+            "ThemeID": null,
+            "GroupList": [
+                {
+                    "GroupID": "21TA430-T",
+                    "GoDate": "04/30",
+                    "Status": null,
+                    "StatusText": null,
+                    "StraightLowestPrice": "8,501",
+                    "IndustryLowestPrice": "7,501",
+                    "IsVip": false,
+                    "VipOrigPrice": "1,000"
+                }
+            ],
+            "IsCruise": true,
+            "TourBu": null,
+            "LevelID": null,
+            "FeatureSrc": null,
+            "ImgNo": null,
+            "TagList": [
+                {
+                    "TagName": "台鐵",
+                    "TagSort": 1
+                },
+                {
+                    "TagName": "鳴日號",
+                    "TagSort": 2
+                },
+                {
+                    "TagName": "環島",
+                    "TagSort": 3
+                }
+            ],
+            "TripTypeList": [
+                {
+                    "TypeName": "鐵路",
+                    "TypeCode": "03"
+                }
+            ],
+            "StartFromCityList": [
+                {
+                    "CityName": "台北",
+                    "CityCode": "TPE"
+                }
+            ],
+            "StationAddress": ["台北火車站000／北二門／雄獅站前門"]
+        },
+        {
+            "Index": 0,
+            "NormGroupID": "35ab3935-2a84-4a40-8665-edf0763148ba",
+            "TourName": "九份",
+            "TourDays": 1,
+            "Img": ",",
+            "ImgM": ",",
+            "TravelType": 1,
+            "GroupStraightPrice": "2,600",
+            "GroupIndustryPrice": null,
+            "GroupIsVip": true,
+            "GroupVipOrigPrice": "0",
+            "Status": 1,
+            "ThemeID": null,
+            "GroupList": [
+                {
+                    "GroupID": "21TN426D-ZP",
+                    "GoDate": "04/26",
+                    "Status": null,
+                    "StatusText": null,
+                    "StraightLowestPrice": "2,600",
+                    "IndustryLowestPrice": "2,350",
+                    "IsVip": false,
+                    "VipOrigPrice": "0"
+                },
+                {
+                    "GroupID": "21TN427D-ZP",
+                    "GoDate": "04/27",
+                    "Status": null,
+                    "StatusText": null,
+                    "StraightLowestPrice": "2,600",
+                    "IndustryLowestPrice": "2,350",
+                    "IsVip": false,
+                    "VipOrigPrice": "0"
+                },
+                {
+                    "GroupID": "21TN503D-ZP",
+                    "GoDate": "05/03",
+                    "Status": null,
+                    "StatusText": null,
+                    "StraightLowestPrice": "2,600",
+                    "IndustryLowestPrice": "2,350",
+                    "IsVip": false,
+                    "VipOrigPrice": "0"
+                }
+            ],
+            "IsCruise": false,
+            "TourBu": null,
+            "LevelID": null,
+            "FeatureSrc": null,
+            "ImgNo": null,
+            "TagList": [
+                {
+                    "TagName": "天秤星號",
+                    "TagSort": 1
+                },
+                {
+                    "TagName": "3人房",
+                    "TagSort": 2
+                },
+                {
+                    "TagName": "露臺艙",
+                    "TagSort": 3
+                },
+                {
+                    "TagName": "4人房",
+                    "TagSort": 4
+                }
+            ],
+            "TripTypeList": [
+                {
+                    "TypeName": "郵輪",
+                    "TypeCode": "01"
+                }
+            ],
+            "StartFromCityList": [
+                {
+                    "CityName": "台北",
+                    "CityCode": "TPE"
+                }
+            ],
+            "StationAddress": []
+        },
+        {
+            "Index": 0,
+            "NormGroupID": "cbbc3645-11e5-426e-af14-d92cdd88c20c",
+            "TourName": "【(￣▽￣)跳島旅行】小琉球尋海龜．覓俏海星．達悟族的故鄉－蘭嶼．野銀地下屋．攀岩山羊三日",
+            "TourDays": 3,
+            "Img": ",",
+            "ImgM": ",",
+            "TravelType": 1,
+            "GroupStraightPrice": "12,300",
+            "GroupIndustryPrice": null,
+            "GroupIsVip": false,
+            "GroupVipOrigPrice": "0",
+            "Status": 1,
+            "ThemeID": null,
+            "GroupList": [
+                {
+                    "GroupID": "21TA509A-ZP",
+                    "GoDate": "05/09",
+                    "Status": null,
+                    "StatusText": null,
+                    "StraightLowestPrice": "12,300",
+                    "IndustryLowestPrice": "11,000",
+                    "IsVip": false,
+                    "VipOrigPrice": "0"
+                },
+                {
+                    "GroupID": "21TA620A-ZP",
+                    "GoDate": "06/20",
+                    "Status": null,
+                    "StatusText": null,
+                    "StraightLowestPrice": "12,300",
+                    "IndustryLowestPrice": "11,000",
+                    "IsVip": false,
+                    "VipOrigPrice": "0"
+                },
+                {
+                    "GroupID": "21TA711A-ZP",
+                    "GoDate": "07/11",
+                    "Status": null,
+                    "StatusText": null,
+                    "StraightLowestPrice": "12,300",
+                    "IndustryLowestPrice": "11,000",
+                    "IsVip": false,
+                    "VipOrigPrice": "0"
+                }
+            ],
+            "IsCruise": false,
+            "TourBu": null,
+            "LevelID": null,
+            "FeatureSrc": null,
+            "ImgNo": null,
+            "TagList": [],
+            "TripTypeList": [],
+            "StartFromCityList": [
+                {
+                    "CityName": "台北",
+                    "CityCode": "TPE"
+                }
+            ],
+            "StationAddress": ["基隆市仁愛區仁二路253號", "自行前往"]
+        },
+        {
+            "Index": 1,
+            "NormGroupID": "8d90dcd5-5af4-45b4-9e54-d50e2a2dfe2a",
+            "TourName": "綠世界內灣小鎮一日遊",
+            "TourDays": 1,
+            "Img": "",
+            "ImgM": "",
+            "TravelType": 1,
+            "GroupStraightPrice": "2,600",
+            "GroupIndustryPrice": "2,350",
+            "GroupIsVip": true,
+            "GroupVipOrigPrice": null,
+            "Status": 1,
+            "ThemeID": ["11"],
+            "GroupList": [
+                {
+                    "GroupID": "21TN424C-ZP",
+                    "GoDate": "04/24",
+                    "Status": "selling",
+                    "StatusText": "熱銷中",
+                    "StraightLowestPrice": "2,600",
+                    "IndustryLowestPrice": "2,350",
+                    "IsVip": false,
+                    "VipOrigPrice": "0"
+                },
+                {
+                    "GroupID": "21TN425C-ZP",
+                    "GoDate": "04/25",
+                    "Status": "selling",
+                    "StatusText": "熱銷中",
+                    "StraightLowestPrice": "2,600",
+                    "IndustryLowestPrice": "2,350",
+                    "IsVip": false,
+                    "VipOrigPrice": "0"
+                },
+                {
+                    "GroupID": "21TN501C-ZP",
+                    "GoDate": "05/01",
+                    "Status": "selling",
+                    "StatusText": "熱銷中",
+                    "StraightLowestPrice": "2,600",
+                    "IndustryLowestPrice": "2,350",
+                    "IsVip": false,
+                    "VipOrigPrice": "0"
+                }
+            ],
+            "IsCruise": true,
+            "TourBu": "旅天下",
+            "LevelID": null,
+            "FeatureSrc": "S",
+            "ImgNo": "",
+            "TagList": [
+                {
+                    "TagName": "籃球場",
+                    "TagSort": 1
+                },
+                {
+                    "TagName": "博弈",
+                    "TagSort": 2
+                },
+                {
+                    "TagName": "林鐵",
+                    "TagSort": 3
+                },
+                {
+                    "TagName": "溫泉4",
+                    "TagSort": 4
+                },
+                {
+                    "TagName": "溫泉5",
+                    "TagSort": 5
+                },
+                {
+                    "TagName": "溫泉6",
+                    "TagSort": 6
+                }
+            ],
+            "TripTypeList": [
+                {
+                    "TypeName": "郵輪",
+                    "TypeCode": "01"
+                },
+                {
+                    "TypeName": "鐵路",
+                    "TypeCode": "03"
+                },
+                {
+                    "TypeName": "鐵路",
+                    "TypeCode": "02"
+                }
+            ],
+            "StartFromCityList": [
+                {
+                    "CityName": "台北",
+                    "CityCode": "TPE"
+                }
+            ],
+            "StationAddress": []
+        },
+        {
+            "Index": 2,
+            "NormGroupID": "35ab3935-2a84-4a40-8665-edf0763148ba",
+            "TourName": "九份",
+            "TourDays": 1,
+            "Img": "",
+            "ImgM": "",
+            "TravelType": 1,
+            "GroupStraightPrice": "2,600",
+            "GroupIndustryPrice": "2,350",
+            "GroupIsVip": false,
+            "GroupVipOrigPrice": null,
+            "Status": 1,
+            "ThemeID": ["3"],
+            "GroupList": [
+                {
+                    "GroupID": "21TN426D-ZP",
+                    "GoDate": "04/26",
+                    "Status": "selling",
+                    "StatusText": "熱銷中",
+                    "StraightLowestPrice": "2,600",
+                    "IndustryLowestPrice": "2,350",
+                    "IsVip": false,
+                    "VipOrigPrice": "0"
+                },
+                {
+                    "GroupID": "21TN427D-ZP",
+                    "GoDate": "04/27",
+                    "Status": "selling",
+                    "StatusText": "熱銷中",
+                    "StraightLowestPrice": "2,600",
+                    "IndustryLowestPrice": "2,350",
+                    "IsVip": false,
+                    "VipOrigPrice": "0"
+                },
+                {
+                    "GroupID": "21TN503D-ZP",
+                    "GoDate": "05/03",
+                    "Status": "selling",
+                    "StatusText": "熱銷中",
+                    "StraightLowestPrice": "2,600",
+                    "IndustryLowestPrice": "2,350",
+                    "IsVip": false,
+                    "VipOrigPrice": "0"
+                }
+            ],
+            "IsCruise": false,
+            "TourBu": "旅天下",
+            "LevelID": null,
+            "FeatureSrc": "S",
+            "ImgNo": "",
+            "TagList": [
+                {
+                    "TagName": "天秤星號",
+                    "TagSort": 1
+                },
+                {
+                    "TagName": "3人房",
+                    "TagSort": 2
+                },
+                {
+                    "TagName": "露臺艙",
+                    "TagSort": 3
+                },
+                {
+                    "TagName": "4人房",
+                    "TagSort": 4
+                }
+            ],
+            "TripTypeList": [
+                {
+                    "TypeName": "郵輪",
+                    "TypeCode": "01"
+                }
+            ],
+            "StartFromCityList": [
+                {
+                    "CityName": "台北",
+                    "CityCode": "TPE"
+                }
+            ],
+            "StationAddress": []
+        },
+        {
+            "Index": 3,
+            "NormGroupID": "14cd0efc-7ceb-4fac-b304-f0262e2e760b",
+            "TourName": "花蓮馬太鞍部落＋林田山懷舊之旅2天",
+            "TourDays": 2,
+            "Img": "",
+            "ImgM": "",
+            "TravelType": 1,
+            "GroupStraightPrice": "2,500",
+            "GroupIndustryPrice": "2,000",
+            "GroupIsVip": false,
+            "GroupVipOrigPrice": null,
+            "Status": 1,
+            "ThemeID": [],
+            "GroupList": [
+                {
+                    "GroupID": "21TE426B-ZP",
+                    "GoDate": "04/26",
+                    "Status": "selling",
+                    "StatusText": "熱銷中",
+                    "StraightLowestPrice": "2,500",
+                    "IndustryLowestPrice": "2,000",
+                    "IsVip": false,
+                    "VipOrigPrice": "0"
+                },
+                {
+                    "GroupID": "21TE428B-ZP",
+                    "GoDate": "04/28",
+                    "Status": "selling",
+                    "StatusText": "熱銷中",
+                    "StraightLowestPrice": "2,500",
+                    "IndustryLowestPrice": "2,000",
+                    "IsVip": false,
+                    "VipOrigPrice": "0"
+                },
+                {
+                    "GroupID": "21TE430B-ZP",
+                    "GoDate": "04/30",
+                    "Status": "selling",
+                    "StatusText": "熱銷中",
+                    "StraightLowestPrice": "2,500",
+                    "IndustryLowestPrice": "2,000",
+                    "IsVip": false,
+                    "VipOrigPrice": "0"
+                }
+            ],
+            "IsCruise": false,
+            "TourBu": "旅天下",
+            "LevelID": null,
+            "FeatureSrc": "S",
+            "ImgNo": "",
+            "TagList": [
+                {
+                    "TagName": "ux下線(交",
+                    "TagSort": 6
+                }
+            ],
+            "TripTypeList": [
+                {
+                    "TypeName": "郵輪",
+                    "TypeCode": "01"
+                }
+            ],
+            "StartFromCityList": [
+                {
+                    "CityName": "台北",
+                    "CityCode": "TPE"
+                }
+            ],
+            "StationAddress": []
+        },
+        {
+            "Index": 4,
+            "NormGroupID": "156e4447-2e96-4230-bf37-84df1991102a",
+            "TourName": "『主題』我是國旅團之台灣走向世界盡頭",
+            "TourDays": 4,
+            "Img": null,
+            "ImgM": null,
+            "TravelType": 1,
+            "GroupStraightPrice": "8,501",
+            "GroupIndustryPrice": "7,501",
+            "GroupIsVip": false,
+            "GroupVipOrigPrice": null,
+            "Status": 1,
+            "ThemeID": ["11"],
+            "GroupList": [
+                {
+                    "GroupID": "21TA430-T",
+                    "GoDate": "04/30",
+                    "Status": "selling",
+                    "StatusText": "熱銷中",
+                    "StraightLowestPrice": "8,501",
+                    "IndustryLowestPrice": "7,501",
+                    "IsVip": false,
+                    "VipOrigPrice": "0"
+                }
+            ],
+            "IsCruise": true,
+            "TourBu": null,
+            "LevelID": null,
+            "FeatureSrc": "S",
+            "ImgNo": null,
+            "TagList": [
+                {
+                    "TagName": "台鐵",
+                    "TagSort": 1
+                },
+                {
+                    "TagName": "鳴日號",
+                    "TagSort": 2
+                },
+                {
+                    "TagName": "環島",
+                    "TagSort": 3
+                }
+            ],
+            "TripTypeList": [
+                {
+                    "TypeName": "鐵路",
+                    "TypeCode": "03"
+                }
+            ],
+            "StartFromCityList": [
+                {
+                    "CityName": "台北",
+                    "CityCode": "TPE"
+                }
+            ],
+            "StationAddress": ["台北火車站／北二門／雄獅站前門"]
+        },
+        {
+            "Index": 5,
+            "NormGroupID": "cbbc3645-11e5-426e-af14-d92cdd88c20c",
+            "TourName": "【(￣▽￣)跳島旅行】小琉球尋海龜．覓俏海星．達悟族的故鄉－蘭嶼．野銀地下屋．攀岩山羊三日",
+            "TourDays": 3,
+            "Img": "",
+            "ImgM": "",
+            "TravelType": 1,
+            "GroupStraightPrice": "12,300",
+            "GroupIndustryPrice": "11,000",
+            "GroupIsVip": false,
+            "GroupVipOrigPrice": null,
+            "Status": 1,
+            "ThemeID": [],
+            "GroupList": [
+                {
+                    "GroupID": "21TA509A-ZP",
+                    "GoDate": "05/09",
+                    "Status": "selling",
+                    "StatusText": "熱銷中",
+                    "StraightLowestPrice": "12,300",
+                    "IndustryLowestPrice": "11,000",
+                    "IsVip": false,
+                    "VipOrigPrice": "0"
+                },
+                {
+                    "GroupID": "21TA620A-ZP",
+                    "GoDate": "06/20",
+                    "Status": "selling",
+                    "StatusText": "熱銷中",
+                    "StraightLowestPrice": "12,300",
+                    "IndustryLowestPrice": "11,000",
+                    "IsVip": false,
+                    "VipOrigPrice": "0"
+                },
+                {
+                    "GroupID": "21TA711A-ZP",
+                    "GoDate": "07/11",
+                    "Status": "selling",
+                    "StatusText": "熱銷中",
+                    "StraightLowestPrice": "12,300",
+                    "IndustryLowestPrice": "11,000",
+                    "IsVip": false,
+                    "VipOrigPrice": "0"
+                }
+            ],
+            "IsCruise": false,
+            "TourBu": "旅天下",
+            "LevelID": null,
+            "FeatureSrc": "S",
+            "ImgNo": "",
+            "TagList": [],
+            "TripTypeList": [],
+            "StartFromCityList": [
+                {
+                    "CityName": "台北",
+                    "CityCode": "TPE"
+                }
+            ],
+            "StationAddress": ["基隆市仁愛區仁二路253號", "自行前往"]
+        },
+        {
+            "Index": 6,
+            "NormGroupID": "0da15c8c-8f6f-4d85-ac53-e3345cebccee",
+            "TourName": "這個是標準團名的行程名稱",
+            "TourDays": 8,
+            "Img": null,
+            "ImgM": null,
+            "TravelType": 1,
+            "GroupStraightPrice": "52,900",
+            "GroupIndustryPrice": "48,900",
+            "GroupIsVip": false,
+            "GroupVipOrigPrice": null,
+            "Status": 1,
+            "ThemeID": [],
+            "GroupList": [
+                {
+                    "GroupID": "21JC601K-T",
+                    "GoDate": "06/01",
+                    "Status": "selling",
+                    "StatusText": "熱銷中",
+                    "StraightLowestPrice": "52,900",
+                    "IndustryLowestPrice": "48,900",
+                    "IsVip": false,
+                    "VipOrigPrice": "0"
+                }
+            ],
+            "IsCruise": false,
+            "TourBu": null,
+            "LevelID": "5",
+            "FeatureSrc": "S",
+            "ImgNo": null,
+            "TagList": [],
+            "TripTypeList": [],
+            "StartFromCityList": [
+                {
+                    "CityName": "基隆",
+                    "CityCode": "KLU"
+                }
+            ],
+            "StationAddress": [
+                "自行前往1",
+                "高雄市楠梓區興楠路183號",
+                "台北火車站／北二門／雄獅站前門"
+            ]
+        },
+        {
+            "Index": 7,
+            "NormGroupID": "cfe06857-01a8-49cb-8010-9cbdc10fc8da",
+            "TourName": "這個是旅天下標準團名的行程名稱",
+            "TourDays": 8,
+            "Img": null,
+            "ImgM": null,
+            "TravelType": 1,
+            "GroupStraightPrice": "54,000",
+            "GroupIndustryPrice": "51,000",
+            "GroupIsVip": false,
+            "GroupVipOrigPrice": null,
+            "Status": 1,
+            "ThemeID": ["11"],
+            "GroupList": [
+                {
+                    "GroupID": "21JC6019-ZP",
+                    "GoDate": "06/01",
+                    "Status": "selling",
+                    "StatusText": "熱銷中",
+                    "StraightLowestPrice": "54,000",
+                    "IndustryLowestPrice": "51,000",
+                    "IsVip": false,
+                    "VipOrigPrice": "0"
+                }
+            ],
+            "IsCruise": true,
+            "TourBu": "旅天下",
+            "LevelID": "5",
+            "FeatureSrc": "S",
+            "ImgNo": null,
+            "TagList": [],
+            "TripTypeList": [],
+            "StartFromCityList": [
+                {
+                    "CityName": "基隆",
+                    "CityCode": "KLU"
+                }
+            ],
+            "StationAddress": []
+        },
+        {
+            "Index": 8,
+            "NormGroupID": "b4b95b8c-83cb-4a43-ae85-3df56994b882",
+            "TourName": "雄獅非獨包主題愛MOVE威尼斯號8日",
+            "TourDays": 8,
+            "Img": null,
+            "ImgM": null,
+            "TravelType": 1,
+            "GroupStraightPrice": "52,000",
+            "GroupIndustryPrice": "48,000",
+            "GroupIsVip": false,
+            "GroupVipOrigPrice": null,
+            "Status": 1,
+            "ThemeID": ["11"],
+            "GroupList": [
+                {
+                    "GroupID": "21JC601S-T",
+                    "GoDate": "06/01",
+                    "Status": "selling",
+                    "StatusText": "熱銷中",
+                    "StraightLowestPrice": "52,000",
+                    "IndustryLowestPrice": "48,000",
+                    "IsVip": false,
+                    "VipOrigPrice": "0"
+                }
+            ],
+            "IsCruise": false,
+            "TourBu": null,
+            "LevelID": "5",
+            "FeatureSrc": "S",
+            "ImgNo": null,
+            "TagList": [],
+            "TripTypeList": [],
+            "StartFromCityList": [
+                {
+                    "CityName": "基隆",
+                    "CityCode": "KLU"
+                }
+            ],
+            "StationAddress": []
+        },
+        {
+            "Index": 9,
+            "NormGroupID": "55b59061-aec0-4717-8073-41fdacd95804",
+            "TourName": "這個是標準團名的行程名稱",
+            "TourDays": 3,
+            "Img": "https://www.liontravel.com/cto/View/TWTPE260_VIEW.jpg",
+            "ImgM": "https://www.liontravel.com/cto/View/TWTPE260_VIEW.jpg",
+            "TravelType": 1,
+            "GroupStraightPrice": "19,000",
+            "GroupIndustryPrice": "9,000",
+            "GroupIsVip": false,
+            "GroupVipOrigPrice": null,
+            "Status": 1,
+            "ThemeID": ["11"],
+            "GroupList": [
+                {
+                    "GroupID": "21TD601A-T",
+                    "GoDate": "06/01",
+                    "Status": "selling",
+                    "StatusText": "熱銷中",
+                    "StraightLowestPrice": "19,000",
+                    "IndustryLowestPrice": "9,000",
+                    "IsVip": false,
+                    "VipOrigPrice": "0"
+                }
+            ],
+            "IsCruise": false,
+            "TourBu": null,
+            "LevelID": "5",
+            "FeatureSrc": "S",
+            "ImgNo": null,
+            "TagList": [],
+            "TripTypeList": [],
+            "StartFromCityList": [
+                {
+                    "CityName": "基隆",
+                    "CityCode": "KLU"
+                }
+            ],
+            "StationAddress": []
+        },
+        {
+            "Index": 10,
+            "NormGroupID": "79ff510e-046f-4051-9a04-030bbabc4d64",
+            "TourName": "雙獅CR主題郵輪團測試獨包8日",
+            "TourDays": 8,
+            "Img": null,
+            "ImgM": null,
+            "TravelType": 1,
+            "GroupStraightPrice": "5,200",
+            "GroupIndustryPrice": "5,000",
+            "GroupIsVip": false,
+            "GroupVipOrigPrice": null,
+            "Status": 1,
+            "ThemeID": ["11"],
+            "GroupList": [
+                {
+                    "GroupID": "21JC620-ZP",
+                    "GoDate": "06/20",
+                    "Status": "selling",
+                    "StatusText": "熱銷中",
+                    "StraightLowestPrice": "5,200",
+                    "IndustryLowestPrice": "5,000",
+                    "IsVip": false,
+                    "VipOrigPrice": "0"
+                }
+            ],
+            "IsCruise": false,
+            "TourBu": "旅天下",
+            "LevelID": "5",
+            "FeatureSrc": "S",
+            "ImgNo": null,
+            "TagList": [
+                {
+                    "TagName": "內艙",
+                    "TagSort": 3
+                }
+            ],
+            "TripTypeList": [
+                {
+                    "TypeName": "郵輪",
+                    "TypeCode": "01"
+                }
+            ],
+            "StartFromCityList": [
+                {
+                    "CityName": "基隆",
+                    "CityCode": "KLU"
+                }
+            ],
+            "StationAddress": []
+        }
+    ]
+}

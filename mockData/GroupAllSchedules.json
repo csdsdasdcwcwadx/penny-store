@@ -1,0 +1,129 @@
+{
+    "NormGroupID": null,
+    "GoDateStart": null,
+    "GoDateEnd": null,
+    "IsPreview": false,
+    "GroupIDList": "21CA401-T,21CA4012-T",
+    "TourIDList": [
+        {
+            "TourID": "02CA826BR",
+            "AllMinGoDate": "2021-04-01",
+            "AllMaxGoDate": null,
+            "TourSummaryList": [
+                {
+                    "Year": "2021",
+                    "Month": "04",
+                    "DaySum": 1,
+                    "GroupSum": 1
+                }
+            ]
+        },
+        {
+            "TourID": "200651PEK",
+            "AllMinGoDate": "2021-04-01",
+            "AllMaxGoDate": null,
+            "TourSummaryList": [
+                {
+                    "Year": "2021",
+                    "Month": "04",
+                    "DaySum": 1,
+                    "GroupSum": 1
+                }
+            ]
+        },
+        {
+            "TourID": "200651PEK",
+            "AllMinGoDate": "2021-04-01",
+            "AllMaxGoDate": null,
+            "TourSummaryList": [
+                {
+                    "Year": "2021",
+                    "Month": "04",
+                    "DaySum": 1,
+                    "GroupSum": 1
+                }
+            ]
+        },
+        {
+            "TourID": "200651PEK",
+            "AllMinGoDate": "2021-04-01",
+            "AllMaxGoDate": null,
+            "TourSummaryList": [
+                {
+                    "Year": "2021",
+                    "Month": "04",
+                    "DaySum": 1,
+                    "GroupSum": 1
+                }
+            ]
+        },
+        {
+            "TourID": "200651PEK",
+            "AllMinGoDate": "2021-04-01",
+            "AllMaxGoDate": null,
+            "TourSummaryList": [
+                {
+                    "Year": "2021",
+                    "Month": "04",
+                    "DaySum": 1,
+                    "GroupSum": 1
+                }
+            ]
+        },
+        {
+            "TourID": "200651PEK",
+            "AllMinGoDate": "2021-04-01",
+            "AllMaxGoDate": null,
+            "TourSummaryList": [
+                {
+                    "Year": "2021",
+                    "Month": "04",
+                    "DaySum": 1,
+                    "GroupSum": 1
+                }
+            ]
+        },
+        {
+            "TourID": "200651PEK",
+            "AllMinGoDate": "2021-04-01",
+            "AllMaxGoDate": null,
+            "TourSummaryList": [
+                {
+                    "Year": "2021",
+                    "Month": "04",
+                    "DaySum": 1,
+                    "GroupSum": 1
+                }
+            ]
+        },
+        {
+            "TourID": "200651PEK",
+            "AllMinGoDate": "2021-04-01",
+            "AllMaxGoDate": null,
+            "TourSummaryList": [
+                {
+                    "Year": "2021",
+                    "Month": "04",
+                    "DaySum": 1,
+                    "GroupSum": 1
+                }
+            ]
+        },
+        {
+            "TourID": "200651PEK",
+            "AllMinGoDate": "2021-04-01",
+            "AllMaxGoDate": null,
+            "TourSummaryList": [
+                {
+                    "Year": "2021",
+                    "Month": "04",
+                    "DaySum": 1,
+                    "GroupSum": 1
+                }
+            ]
+        }
+    ],
+    "AllMinGoDate": "2021-04-01",
+    "AllMaxGoDate": "2021-04-01",
+    "CompareUrl": "/Common/Compare?NormGroupID=9aea3989-6968-4965-89b4-1266f191751f&GroupID=21CA401-T,21CA4012-T&CompareType=2&CompareCount=2&TravelType=1"
+}

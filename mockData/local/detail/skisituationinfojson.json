@@ -1,0 +1,20 @@
+{
+    "TourName": "ClubMed北海道TOMAMU冬季滑雪全包式假期五天四夜",
+    "GoDate": "2020/10/04",
+    "BackDate": "2020/10/13",
+    "TourDays": 10,
+    "SkiList": [
+        {
+            "SkiType": 1,
+            "PaidPeople": 10,
+            "ApplyTotal": 10,
+            "CoachName": "李小黑"
+        },
+        {
+            "SkiType": 2,
+            "PaidPeople": 10,
+            "ApplyTotal": 10,
+            "CoachName": "鳳小岳"
+        }
+    ]
+}

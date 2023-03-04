@@ -1,0 +1,16 @@
+{
+    "GroupID": null,
+    "TourID": null,
+    "StationInfoList": [
+        {
+            "Place": "自行前往",
+            "MusterTime": "07:30",
+            "Address": "自行前往"
+        },
+        {
+            "Place": "雄獅基隆門市",
+            "MusterTime": "08:30",
+            "Address": "基隆市仁愛區仁二路253號"
+        }
+    ]
+}

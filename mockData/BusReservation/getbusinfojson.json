@@ -1,0 +1,32 @@
+{
+    "OrderID": "2022-11392",
+    "GroupID": "22TM73166-T",
+    "TourName": "雄獅21【天天出發】Together一起旅行．台北武陵農場榮民、長者、學生接駁優惠",
+    "GoDate": "20220731",
+    "BackDate": "20220731",
+    "TourDays": 1,
+    "BusGType": "Serial",
+    "CarList": [
+        {
+            "csm00_csno": "C202200000031",
+            "csm00_cartype": "Bus41",
+            "csm00_bdt": "07/31",
+            "ImgName": "41-2.jpg",
+            "ImgNameList": [
+                "41-2.jpg"
+            ]
+        }
+    ],
+    "PassengerList": [
+        {
+            "Seq": 1,
+            "Name": "旅客客",
+            "SeatNumber": "2A"
+        },
+        {
+            "Seq": 2,
+            "Name": "旅客姓名名",
+            "SeatNumber": "2B"
+        }
+    ]
+}

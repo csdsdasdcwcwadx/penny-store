@@ -1,0 +1,90 @@
+@import './mixins.scss';
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC');
+
+html {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.pge_conl {
+    font-family: Segoe UI,Roboto,Helvetica Neue,Arial,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji,MicrosoftJhengHeiBoldFix,'\5FAE\8EDF\6B63\9ED1\9AD4',Microsoft JhengHei,sans-serif;
+
+    // 電話
+    a {
+        color: inherit;
+    }
+
+    // 聯絡雄獅 & 門市服務據點連結
+    dd:last-child {
+        a {
+            color: #0077b3;
+        }
+    }
+}
+
+.ic-ln {
+    &.iairplane {
+        &::before {
+            content: '\E6A6';
+        }
+    }
+
+    &.ibus {
+        &::before {
+            content: '\E682';
+        }
+    }
+
+    &.iboat {
+        &::before {
+            content: '\E688';
+        }
+    }
+
+    &.iwalk {
+        &::before {
+            content: '\E69E';
+        }
+    }
+
+    &.itrain {
+        &::before {
+            content: '\E69B';
+        }
+    }
+
+    &.icruise {
+        &::before {
+            content: '\E686';
+        }
+    }
+
+    &.ibike {
+        &::before {
+            content: '\E681';
+        }
+    }
+
+    &.iforestry {
+        &::before {
+            content: '\E972';
+        }
+    }
+
+    &.ifarming {
+        &::before {
+            content: '\E973';
+        }
+    }
+
+    &.iculture {
+        &::before {
+            content: '\E974';
+        }
+    }
+
+    &.iindigenous {
+        &::before {
+            content: '\E975';
+        }
+    }
+}

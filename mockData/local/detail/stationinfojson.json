@@ -1,0 +1,21 @@
+{
+    "GroupID": null,
+    "TourID": null,
+    "StationInfoList": [
+        {
+            "Place": "松山車站",
+            "MusterTime": "09:00",
+            "Address": "78978979"
+        },
+        {
+            "Place": "台東",
+            "MusterTime": "10:00",
+            "Address": "123"
+        },
+        {
+            "Place": "松山車站",
+            "MusterTime": "21:00",
+            "Address": "松山車站"
+        }
+    ]
+}
