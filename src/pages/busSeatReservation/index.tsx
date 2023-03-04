@@ -12,7 +12,7 @@ function BusSeatReservation() {
 
     return (
         <div className={styles.color}>
-            123456789
+            歡迎來到佩尼的商城
             <Body/>
         </div>
     );
