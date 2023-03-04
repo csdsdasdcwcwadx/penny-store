@@ -156,7 +156,6 @@ module.exports = function (webpackEnv) {
         // ].filter(Boolean),
         entry: {
             app: paths.appIndexJs,
-            busSeatReservation: paths.appBusSeatReservationJs,
         },
         output: {
             // The build folder.
@@ -531,33 +530,6 @@ module.exports = function (webpackEnv) {
                         filename: 'index.html',
                         template: paths.appHtml,
                         chunks: ['app'],
-                    },
-                    isEnvProduction
-                        ? {
-                              minify: {
-                                  removeComments: true,
-                                  collapseWhitespace: true,
-                                  removeRedundantAttributes: true,
-                                  useShortDoctype: true,
-                                  removeEmptyAttributes: true,
-                                  removeStyleLinkTypeAttributes: true,
-                                  keepClosingSlash: true,
-                                  minifyJS: true,
-                                  minifyCSS: true,
-                                  minifyURLs: true,
-                              },
-                          }
-                        : undefined
-                )
-            ),
-            new HtmlWebpackPlugin(
-                Object.assign(
-                    {},
-                    {
-                        inject: true,
-                        filename: 'busSeatReservation.html', // 打包後的 HTML 檔案名稱
-                        template: paths.appBusSeatReservationHtml, // 載入的 HTML 範本路徑
-                        chunks: ['busSeatReservation'], // 載入的分包 js 名稱
                     },
                     isEnvProduction
                         ? {

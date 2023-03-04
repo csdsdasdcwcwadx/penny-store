@@ -1,20 +1,22 @@
 {
-    "name": "origin-templates",
+    "homepage": "http://csdsdasdcwcwadx.github.io/penny-store",
+    "name": "penny-store",
     "description": "create-react-app & redux & typescript sample",
     "version": "0.1.0",
     "private": true,
     "scripts": {
         "start": "cross-env ENV=local PORT=3638 node scripts/start.js",
-        "build": "cross-env ENV=local SERVER=rel PUBLIC_URL=/dist node scripts/build.js",
         "demo": "cross-env ENV=local SERVER=rel PUBLIC_URL=./ node scripts/build.js",
-        "release": "cross-env ENV=rel SERVER=rel PUBLIC_URL=/_webassets/lightspeed/subsitebundles/Travel-React node scripts/build.js",
-        "prod": "cross-env ENV=prod SERVER=prod PUBLIC_URL=/_webassets/lightspeed/subsitebundles/Travel-React node scripts/build.js",
+        "build": "cross-env ENV=rel SERVER=rel PUBLIC_URL=./ node scripts/build.js",
+        "prod": "cross-env ENV=prod SERVER=prod PUBLIC_URL=./ node scripts/build.js",
         "test": "node scripts/test.js",
         "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook",
         "commit": "cz",
         "lint": "stylelint src/**/*.scss --syntax scss",
-        "lint:fix": "stylelint src/**/*.scss --syntax scss --fix"
+        "lint:fix": "stylelint src/**/*.scss --syntax scss --fix",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
     },
     "dependencies": {
         "@n8tb1t/use-scroll-position": "^2.0.3",
@@ -160,6 +162,7 @@
         "eslint-plugin-react-hooks": "^1.7.0",
         "file-loader": "4.3.0",
         "fs-extra": "^8.1.0",
+        "gh-pages": "^5.0.0",
         "html-webpack-plugin": "4.0.0-beta.11",
         "http-proxy-middleware": "^1.0.6",
         "identity-obj-proxy": "3.0.0",

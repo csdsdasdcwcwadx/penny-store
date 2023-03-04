@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom/client';
-import { Provider, useSelector } from 'react-redux';
-import { store } from '@Redux/busSeatReservation/store';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { RootState } from '@Redux/busSeatReservation/store';
 import styles from './styles.module.scss';
 import { Body } from '@components/BusSeatReservationPage';
@@ -20,10 +18,4 @@ function BusSeatReservation() {
     );
 }
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <BusSeatReservation />
-        </Provider>
-    </React.StrictMode>,
-);
+export default BusSeatReservation;
