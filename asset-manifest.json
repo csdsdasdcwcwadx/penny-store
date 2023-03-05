@@ -6,8 +6,20 @@
     "app/css/style.css.map": "./app/css/style.css.map",
     "app/js/index.js.LICENSE.txt": "./app/js/index.js.LICENSE.txt",
     "index.html": "./index.html",
-    "precache-manifest.75e7925e8ead5352579481291d0af25e.js": "./precache-manifest.75e7925e8ead5352579481291d0af25e.js",
-    "service-worker.js": "./service-worker.js"
+    "precache-manifest.971d15ce7f2b7f6532484474511c5e08.js": "./precache-manifest.971d15ce7f2b7f6532484474511c5e08.js",
+    "service-worker.js": "./service-worker.js",
+    "static/media/BALENCIAGA吊墜.jpg": "./static/media/BALENCIAGA吊墜.jpg",
+    "static/media/BALENCIAGA吊墜拷貝.jpg": "./static/media/BALENCIAGA吊墜拷貝.jpg",
+    "static/media/BALENCIAGA耳環.jpg": "./static/media/BALENCIAGA耳環.jpg",
+    "static/media/BALENCIAGA耳環拷貝.jpg": "./static/media/BALENCIAGA耳環拷貝.jpg",
+    "static/media/DIOR皮帶.jpg": "./static/media/DIOR皮帶.jpg",
+    "static/media/DIOR皮帶拷貝.jpg": "./static/media/DIOR皮帶拷貝.jpg",
+    "static/media/GUCCI耳環.jpg": "./static/media/GUCCI耳環.jpg",
+    "static/media/GUCCI耳環拷貝.jpg": "./static/media/GUCCI耳環拷貝.jpg",
+    "static/media/HERMES錢包.jpg": "./static/media/HERMES錢包.jpg",
+    "static/media/HERMES錢包拷貝.jpg": "./static/media/HERMES錢包拷貝.jpg",
+    "static/media/TODS鞋.jpg": "./static/media/TODS鞋.jpg",
+    "static/media/TODS鞋拷貝.jpg": "./static/media/TODS鞋拷貝.jpg"
   },
   "entrypoints": {
     "app": [
