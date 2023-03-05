@@ -1,0 +1,28 @@
+.Item {
+    margin: 0 auto;
+    margin-bottom: 0 10px 10px;
+    cursor: pointer;
+
+    .frame {
+        max-width: 240px;
+        height: 360px;
+        overflow: hidden;
+    }
+
+    img {
+        width: 100%;
+        height: inherit;
+        object-fit: cover;
+        transition: all .5s ease;
+
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+
+    .itemname {
+        display: block;
+        padding: 10px 0;
+        text-align: center;
+    }
+}

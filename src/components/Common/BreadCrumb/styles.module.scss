@@ -1,0 +1,9 @@
+@import '../../../commonStyles/variables.scss';
+
+.BreadCrumb {
+    cursor: pointer;
+
+    span:hover {
+        color: $mainColor;
+    }
+}

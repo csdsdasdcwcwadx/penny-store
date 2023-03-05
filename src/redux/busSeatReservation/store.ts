@@ -1,20 +1,12 @@
 import { configureStore, ThunkAction, Action, getDefaultMiddleware } from '@reduxjs/toolkit';
-import carData from './reducers/BusSeatJson';
+import reducer from './reducer';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './saga';
-import SwitchReducer from './reducers/SwitchBusSeatSelect';
-import OrderInfoDataReducer from './reducers/OrderInfoDataReducer';
-import isSelectingReducer from './reducers/isSelecting';
 
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
-    reducer: {
-        carData,
-        SwitchReducer,
-        OrderInfoDataReducer,
-        isSelectingReducer,
-    },
+    reducer,
     middleware: [...getDefaultMiddleware(), sagaMiddleware],
 });
 

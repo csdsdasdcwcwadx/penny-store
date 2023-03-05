@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './pages/busSeatReservation';
+import App from './pages';
 import { store } from '@Redux/busSeatReservation/store';
 import { Provider } from 'react-redux';
 
