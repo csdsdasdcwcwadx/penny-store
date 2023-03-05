@@ -1,22 +1,7 @@
 import * as actionTypes from './actionTypes';
+import { E_Page } from './interfaces';
 
-interface I_CarData {
-    CarData?: Array<Object>;
-
-    CarTypeName?: string;
-    CarTypeDescription?: string;
-    CarTypeCode?: string;
-    CarNumber?: number | null;
-    Seats?: Array<Array<object>>;
-
-    idx?: number;
-    type?: string;
-    text?: string;
-    row?: number;
-    col?: number;
-}
-
-export const setBusSeatInfo = (payload: I_CarData) => ({
+export const setBusSeatInfo = (payload: any) => ({
     type: actionTypes.SET_BUSSEATINFO,
     payload,
 });
@@ -25,3 +10,13 @@ export const setBusSeatInfoSUCCESS = (payload: any) => ({
     type: actionTypes.SET_BUSSEATINFO_SUCCESS,
     payload,
 });
+
+export const setListOpen = (payload: boolean) => ({
+    type: actionTypes.SET_LIST_OPEN,
+    payload,
+})
+
+export const setPage = (payload: E_Page) => ({
+    type: actionTypes.SET_PAGE,
+    payload,
+})

@@ -11,3 +11,15 @@ $pc: 980px;
         @content;
     }
 }
+
+@mixin small-pc {
+    @media (min-width: 690px) and (max-width: 979px) {
+        @content;
+    }
+}
+
+@mixin small-m {
+    @media all and (max-width: 689px) {
+        @content;
+    }
+}

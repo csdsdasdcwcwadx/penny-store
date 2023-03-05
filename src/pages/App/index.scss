@@ -1,19 +1,80 @@
-@import '@commonStyles/mixins.scss';
+@import '../../commonStyles/mixins.scss';
 @import '../../commonStyles/variables.scss';
 
 //全局不變動的樣式
 
 body {
     margin: 0;
+
+    &.setpage {
+        overflow: hidden;
+    }
+}
+
+
+.listpage {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    display: none;
+    width: 60vw;
+    height: 100vh;
+    color: #fff;
+    background-color: #504e4a;
+    z-index: 5;
+    opacity: 0;
+    transition: all .5s ease-in-out;
+
+    .close {
+        position: absolute;
+        right: 10px;
+        top: 5px;
+        cursor: pointer;
+    }
+
+    ul {
+        margin: 100px 0 80px;
+
+        li {
+            list-style-type: none;
+            font-size: 20px;
+            cursor: pointer;
+
+            &:not(:first-of-type) {
+                padding-top: 35px;
+            }
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &.show {
+        left: 0;
+        opacity: 1;
+    }
+
+    div {
+        padding-left: 40px;
+        cursor: pointer;
+
+        span:first-of-type {
+            padding-right: 10px;
+        }
+    }
 }
 
 .pages {
     background-color: $backColor;
-    // font-family: 'Courier New', Courier, monospace;
     font-family: sans-serif;
     color: #313437;
 
     .topper {
         padding: 0 20px;
+
+        @include small-m {
+            padding: 0 5px;
+        }
     }
 }

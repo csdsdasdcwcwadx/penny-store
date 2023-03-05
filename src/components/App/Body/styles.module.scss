@@ -1,4 +1,5 @@
 @import '../../../commonStyles/variables.scss';
+@import '../../../commonStyles/mixins.scss';
 
 .Body {
     background-color: $backColor;
@@ -20,7 +21,7 @@
     .function {
         display: flex;
         justify-content: space-between;
-        margin-top: 15px;
+        margin-top: 30px;
 
         span {
             font-size: small;
@@ -29,12 +30,27 @@
                 cursor: pointer;
             }
         }
+
+        @include small-m {
+            flex-direction: column;
+
+            span:first-of-type {
+                padding-bottom: 5px;
+            }
+        }
     }
 
     .display {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: repeat(1fr);
-        padding: 30px 40px 0;
+        margin-top: 30px;
+
+        @include small-pc {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        @include small-m {
+            grid-template-columns: 1fr 1fr;
+        }
     }
 }

@@ -16,7 +16,7 @@ export default function Items(props: I_props) {
     const { img } = props;
 
     return (
-        <a key={img.name} className={styles.Item}>
+        <a key={img.name} className={styles.Item} href={`${location.href}/product.html`}>
             <div className={styles.frame}><img src={img.src}/></div>
             <span className={styles.itemname}>{displayName(img.name)}</span>
         </a>

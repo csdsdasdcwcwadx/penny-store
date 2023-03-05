@@ -1,6 +1,7 @@
-@import '../../../../commonStyles/variables.scss';
+@import '../../../commonStyles/variables.scss';
 
 .BreadCrumb {
+    font-size: 13px;
     cursor: pointer;
 
     span:hover {
