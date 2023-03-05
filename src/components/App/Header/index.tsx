@@ -1,10 +1,10 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from './styles.module.scss';
 import { setListOpen } from '@Redux/App/actions';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@Redux/App/store';
 
-export default function Header() {
+function Header() {
     const dispatch = useDispatch();
     const { listOpen } = useSelector((store: RootState)=>store);
     return (
@@ -25,3 +25,5 @@ export default function Header() {
         </div>
     )
 }
+
+export default memo(Header);

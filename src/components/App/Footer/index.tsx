@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from './styles.module.scss';
 
-export default function Footer () {
+function Footer () {
     return (
         <footer className={styles.Footer}>
             <div>
@@ -20,3 +20,5 @@ export default function Footer () {
         </footer>
     )
 }
+
+export default memo(Footer);

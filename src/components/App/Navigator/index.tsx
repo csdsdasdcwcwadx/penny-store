@@ -1,11 +1,11 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from './styles.module.scss';
 import { setPage } from '@Redux/App/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { E_Page } from '@Redux/App/interfaces';
 import { RootState } from '@Redux/App/store';
 
-export default function Navigator() {
+function Navigator() {
     const dispatch = useDispatch();
     const { listOpen } = useSelector((store: RootState)=>store);
 
@@ -22,3 +22,5 @@ export default function Navigator() {
         </div>
     )
 }
+
+export default memo(Navigator);
