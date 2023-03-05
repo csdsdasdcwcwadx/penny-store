@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from './styles.module.scss';
 
 interface I_props {
@@ -12,7 +12,7 @@ const displayName = (name: string)=> {
     return name.replace(/\.[^/.]+$/, "");
 }
 
-export default function Items(props: I_props) {
+function Item(props: I_props) {
     const { img } = props;
 
     return (
@@ -22,3 +22,5 @@ export default function Items(props: I_props) {
         </a>
     )
 }
+
+export default memo(Item);

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, memo, useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import BreadCrumb from '../../Common/BreadCrumb';
 import Item from '@components/App/Item';
@@ -8,7 +8,7 @@ interface I_image {
     src: string;
 }
 
-export default function Body() {
+function Body() {
     const images = require.context('./imgs', false, /\.(png|jpe?g|svg)$/);
 
     const imageList = images.keys().map((imageName) => ({
@@ -35,3 +35,5 @@ export default function Body() {
         </div>
     );
 }
+
+export default memo(Body);

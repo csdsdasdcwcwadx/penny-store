@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from './styles.module.scss';
 
-export default function BreadCrumb() {
+function BreadCrumb() {
     return (
         <div className={styles.BreadCrumb}>
             <span>首頁</span> {">"} 
@@ -10,3 +10,5 @@ export default function BreadCrumb() {
         </div>
     )
 }
+
+export default memo(BreadCrumb);

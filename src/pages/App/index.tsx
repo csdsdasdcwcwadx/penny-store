@@ -9,7 +9,7 @@ import { E_Page } from '@Redux/App/interfaces';
 function BusSeatReservation() {
     const { listOpen } = useSelector((store: RootState)=>store);
     const dispatch = useDispatch();
-
+    
     useEffect(()=>{
         if(listOpen) {
             const listpage = document.querySelector('.listpage');
