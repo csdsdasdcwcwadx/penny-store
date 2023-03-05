@@ -1,7 +1,7 @@
-@import '@commonStyles/mixins.scss';
+@import '../../../commonStyles/variables.scss';
 
 .Body {
-    background-color: #abb8c3;
+    background-color: $backColor;
     padding-top: 40px;
 
     >div {

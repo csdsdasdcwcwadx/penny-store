@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '@Redux/busSeatReservation/store';
+import { RootState } from '@Redux/App/store';
 import './index.scss';
-import { Header, Body, Navigator, Footer } from '@components/index';
+import { Header, Body, Navigator, Footer } from '@components/App/index';
 
 function BusSeatReservation() {
 

@@ -1,5 +1,5 @@
 @import '@commonStyles/mixins.scss';
-@import '../commonStyles/variables.scss';
+@import '../../commonStyles/variables.scss';
 
 //全局不變動的樣式
 
@@ -10,7 +10,7 @@ body {
 .pages {
     background-color: $backColor;
     // font-family: 'Courier New', Courier, monospace;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: sans-serif;
     color: #313437;
 
     .topper {
