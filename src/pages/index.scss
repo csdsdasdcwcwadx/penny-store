@@ -1,0 +1,19 @@
+@import '@commonStyles/mixins.scss';
+@import '../commonStyles/variables.scss';
+
+//全局不變動的樣式
+
+body {
+    margin: 0;
+}
+
+.pages {
+    background-color: $backColor;
+    // font-family: 'Courier New', Courier, monospace;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #313437;
+
+    .topper {
+        padding: 0 20px;
+    }
+}

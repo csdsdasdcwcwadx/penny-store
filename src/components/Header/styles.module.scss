@@ -1,0 +1,28 @@
+@import '../../commonStyles/mixins.scss';
+@import '../../commonStyles/variables.scss';
+
+.Header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-bottom: 1.5px solid #ddd;
+
+    .logo {
+        font-size: 35px;
+        color: blue;
+    }
+
+    span {
+        display: inline-block;
+        cursor: pointer;
+
+        &:not(:last-of-type) {
+            margin-right: 10px;
+        }
+
+        &:hover {
+            color: $mainColor;
+        }
+    }
+}

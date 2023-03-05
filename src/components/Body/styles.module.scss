@@ -1,0 +1,40 @@
+@import '@commonStyles/mixins.scss';
+
+.Body {
+    background-color: #abb8c3;
+    padding-top: 40px;
+
+    >div {
+        text-align: center;
+    }
+
+    .title {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .breadcrumb {
+        padding-top: 20px;
+    }
+
+    .function {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+
+        span {
+            font-size: small;
+
+            &:last-of-type {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .display {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: repeat(1fr);
+        padding: 30px 40px 0;
+    }
+}
