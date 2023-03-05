@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import styles from './styles.module.scss';
-import BreadCrumb from '../Common/BreadCrumb';
-import Item from '@components/Item';
+import BreadCrumb from '../../Common/BreadCrumb';
+import Item from '@components/App/Item';
 
 interface I_image {
     name: string;

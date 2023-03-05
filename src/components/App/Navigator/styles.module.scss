@@ -1,0 +1,32 @@
+@import '../../../commonStyles/mixins.scss';
+@import '../../../commonStyles/variables.scss';
+
+.Navigator {
+
+    >ul {
+        display: flex;
+        justify-content: space-evenly;
+        height: 40px;
+        padding: 10px 30px;
+
+        @include only-mobile {
+            display: none;
+        }
+
+        >li {
+            min-width: 100px;
+            list-style-type: none;
+            padding-bottom: 10px;
+            text-align: center;
+            vertical-align: middle;
+            color: #504e4a;
+            cursor: pointer;
+
+            &:hover {
+                border-bottom: 2px solid $mainColor;
+                color: $mainColor;
+            }
+        }
+    }
+
+}

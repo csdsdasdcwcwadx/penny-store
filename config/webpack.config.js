@@ -156,6 +156,7 @@ module.exports = function (webpackEnv) {
         // ].filter(Boolean),
         entry: {
             app: paths.appIndexJs,
+            product: paths.appProductJs,
         },
         output: {
             // The build folder.
@@ -530,6 +531,33 @@ module.exports = function (webpackEnv) {
                         filename: 'index.html',
                         template: paths.appHtml,
                         chunks: ['app'],
+                    },
+                    isEnvProduction
+                        ? {
+                              minify: {
+                                  removeComments: true,
+                                  collapseWhitespace: true,
+                                  removeRedundantAttributes: true,
+                                  useShortDoctype: true,
+                                  removeEmptyAttributes: true,
+                                  removeStyleLinkTypeAttributes: true,
+                                  keepClosingSlash: true,
+                                  minifyJS: true,
+                                  minifyCSS: true,
+                                  minifyURLs: true,
+                              },
+                          }
+                        : undefined
+                )
+            ),
+            new HtmlWebpackPlugin(
+                Object.assign(
+                    {},
+                    {
+                        inject: true,
+                        filename: 'product.html',
+                        template: paths.appProductHtml,
+                        chunks: ['product'],
                     },
                     isEnvProduction
                         ? {
