@@ -11,11 +11,6 @@ export const setBusSeatInfoSUCCESS = (payload: any) => ({
     payload,
 });
 
-export const setListOpen = (payload: boolean) => ({
-    type: actionTypes.SET_LIST_OPEN,
-    payload,
-})
-
 export const setPage = (payload: E_Page) => ({
     type: actionTypes.SET_PAGE,
     payload,

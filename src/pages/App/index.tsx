@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '@Redux/App/store';
+import React from 'react';
 import './index.scss';
 import { Header, Body, Footer } from '@components/App/index';
 
