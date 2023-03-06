@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { store } from '@Redux/Product/store';
 import { Provider } from 'react-redux';
-import { Header, Footer } from '@components/Product';
+import { Header, Footer, Body } from '@components/Product';
 import './index.scss';
 
 export function Product() {
@@ -10,13 +10,14 @@ export function Product() {
         <div className='pages'>
             <div className='topper'>
                 <Header/>
+                <Body/>
             </div>
             <Footer/>
         </div>
     )
 }
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById('product') as HTMLElement).render(
     <React.StrictMode>
         <Provider store={store}>
             <Product/>

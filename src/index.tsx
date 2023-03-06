@@ -4,7 +4,7 @@ import App from './pages/App';
 import { store } from '@Redux/App/store';
 import { Provider } from 'react-redux';
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById('menu') as HTMLElement).render(
     <React.StrictMode>
         <Provider store={store}>
             <App/>

@@ -1,0 +1,51 @@
+@import '../../../commonStyles/variables.scss';
+@import '../../../commonStyles/mixins.scss';
+
+.Body {
+    .productarea {
+        display: flex;
+        margin-top: 40px;
+
+        .description {
+            padding-left: 45px;
+
+            span {
+                display: block;
+            }
+
+            .productname {
+                font-size: 30px;
+                font-weight: 600;
+            }
+
+            .productprice {
+                padding: 20px 0 30px 5px;
+                border-bottom: 1px solid #edeff2;
+                font-size: 12px;
+            }
+
+            .selection {
+
+                .info {
+                    padding: 30px 0 10px 6px;
+                }
+
+                .select {
+                    height: 40px;
+                    border: 2px solid #edeff2;
+                    border-radius: 5px;
+                    cursor: pointer;
+
+                    select {
+                        width: 98%;
+                        height: 40px;
+                        padding-left: 8px;
+                        border: none;
+                        outline: none;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}

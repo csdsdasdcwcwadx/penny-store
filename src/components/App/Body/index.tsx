@@ -1,7 +1,10 @@
-import React, { Fragment, memo, useEffect, useState } from 'react';
+import React, { memo } from 'react';
 import styles from './styles.module.scss';
 import BreadCrumb from '../../Common/BreadCrumb';
 import Item from '@components/App/Item';
+import { RootState } from '@Redux/App/store';
+import { E_Page } from '@Redux/App/interfaces';
+import { useSelector } from 'react-redux';
 
 interface I_image {
     name: string;
@@ -10,6 +13,24 @@ interface I_image {
 
 function Body() {
     const images = require.context('../../imgs', false, /\.(png|jpe?g|svg)$/);
+    const { page } = useSelector((store: RootState)=>store);
+
+    const handleType = (type: E_Page)=>{
+        switch(type) {
+            case E_Page.HOME:
+                return 'Home';
+            case E_Page.SHOPALL:
+                return '全部商品 | SHOP_ALL';
+            case E_Page.SALE:
+                return '優惠專區 | SALE';
+            case E_Page.RESTOCK:
+                return '熱騰騰現貨 | RESTOCK';
+            case E_Page.WEAR:
+                return '穿搭筆記本 | WEAR';
+            case E_Page.MORE:
+                return '更多';
+        }
+    }
 
     const imageList = images.keys().map((imageName) => ({
         name: imageName.replace('./', ''),
@@ -17,7 +38,7 @@ function Body() {
     }));
     return (
         <div className={styles.Body}>
-            <div className={styles.title}>熱騰騰現貨 | RESTOCK</div>
+            <div className={styles.title}>{handleType(page)}</div>
             <div className={styles.breadcrumb}>
                 <BreadCrumb/>
             </div>

@@ -3,7 +3,6 @@ import styles from './styles.module.scss';
 import { useDispatch } from "react-redux";
 import { setPage } from '@Redux/App/actions';
 import { E_Page } from '@Redux/App/interfaces';
-// import './index.scss';
 import cN from 'classnames';
 
 function Header() {
