@@ -9,7 +9,7 @@ interface I_image {
 }
 
 function Body() {
-    const images = require.context('./imgs', false, /\.(png|jpe?g|svg)$/);
+    const images = require.context('../../imgs', false, /\.(png|jpe?g|svg)$/);
 
     const imageList = images.keys().map((imageName) => ({
         name: imageName.replace('./', ''),
