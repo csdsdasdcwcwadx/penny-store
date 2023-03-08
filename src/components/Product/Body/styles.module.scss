@@ -2,11 +2,27 @@
 @import '../../../commonStyles/mixins.scss';
 
 .Body {
+    .breadcrumb {
+        padding-left: 50px;
+    }
+
     .productarea {
         display: flex;
+        justify-content: center;
         margin-top: 40px;
+        padding: 0 40px;
+
+        .imgframe {
+            max-height: 500px;
+
+            img {
+                width: 100%;
+                object-fit: cover;
+            }
+        }
 
         .description {
+            width: 100%;
             padding-left: 45px;
 
             span {
@@ -44,6 +60,66 @@
                         outline: none;
                         cursor: pointer;
                     }
+                }
+            }
+
+            .productothers {
+                display: flex;
+                padding-top: 40px;
+                height: 50px;
+
+                .productsums {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 30%;
+                    padding-right: 20px;
+
+                    input {
+                        width: 40%;
+                        margin: 0 10px;
+                        border: none;
+                        font-size: 25px;
+                        text-align: center;
+                        pointer-events: none;
+                        outline: none;
+                    }
+
+                    span {
+                        width: 30px;
+                        height: 30px;
+                        font-size: 20px;
+                        text-align: center;
+                        color: #fff;
+                        background-color: #000;
+                        border-radius: 50%;
+                        cursor: pointer;
+
+                        &.add {
+                            &::before {
+                                content: '+';
+                                position: relative;
+                                top: -1px;
+                            }
+                        }
+
+                        &.minus {
+                            &::before {
+                                content: '-';
+                                position: relative;
+                                top: -1px;
+                            }
+                        }
+                    }
+                }
+
+                button {
+                    width: 100%;
+                    border: none;
+                    border-radius: 3px;
+                    color: #fff;
+                    background-color: #a78a50;
+                    cursor: pointer;
                 }
             }
         }
