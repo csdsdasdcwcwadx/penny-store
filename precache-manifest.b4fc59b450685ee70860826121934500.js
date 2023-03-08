@@ -20,11 +20,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./product.html"
   },
   {
-    "revision": "ef389a3a2ed078be5b62",
+    "revision": "58a81c97b4b3cdacf63f",
     "url": "./product/css/style.css"
   },
   {
-    "revision": "ef389a3a2ed078be5b62",
+    "revision": "58a81c97b4b3cdacf63f",
     "url": "./product/js/index.js"
   },
   {
