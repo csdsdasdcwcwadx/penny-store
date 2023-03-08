@@ -3,13 +3,15 @@
     "app.css": "./app/css/style.css",
     "app.js": "./app/js/index.js",
     "app.js.map": "./app/js/index.js.map",
+    "product.css": "./product/css/style.css",
     "product.js": "./product/js/index.js",
     "product.js.map": "./product/js/index.js.map",
     "app/css/style.css.map": "./app/css/style.css.map",
     "app/js/index.js.LICENSE.txt": "./app/js/index.js.LICENSE.txt",
     "index.html": "./index.html",
-    "precache-manifest.7f4a5673c3f965ea0637734aa9b53385.js": "./precache-manifest.7f4a5673c3f965ea0637734aa9b53385.js",
+    "precache-manifest.b85752dfc58d05b8bfbe034c233de579.js": "./precache-manifest.b85752dfc58d05b8bfbe034c233de579.js",
     "product.html": "./product.html",
+    "product/css/style.css.map": "./product/css/style.css.map",
     "product/js/index.js.LICENSE.txt": "./product/js/index.js.LICENSE.txt",
     "service-worker.js": "./service-worker.js",
     "static/media/BALENCIAGA吊墜.jpg": "./static/media/BALENCIAGA吊墜.jpg",
@@ -32,6 +34,7 @@
       "app/js/index.js.map"
     ],
     "product": [
+      "product/css/style.css",
       "product/js/index.js",
       "product/js/index.js.map"
     ]
