@@ -1,0 +1,150 @@
+@import '../../../commonStyles/mixins.scss';
+@import '../../../commonStyles/variables.scss';
+
+body {
+    &.setpage {
+        overflow: hidden;
+    }
+}
+
+.Header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-bottom: 1.5px solid #ddd;
+
+    .logo {
+        font-size: 35px;
+        color: #00f;
+
+        @include small-pc {
+            font-size: 25px;
+        }
+
+        @include small-m {
+            font-size: 16px;
+        }
+    }
+
+    span {
+        display: inline-block;
+        cursor: pointer;
+
+        @include only-mobile {
+            &:not(.show) {
+                display: none;
+            }
+        }
+
+        &.show:first-of-type {
+            display: none;
+
+            @include only-mobile {
+                display: inline-block;
+            }
+        }
+
+        &:not(:last-of-type) {
+            margin-right: 10px;
+        }
+
+        &:hover {
+            color: $mainColor;
+        }
+    }
+}
+
+.Navigator {
+    padding-bottom: 40px;
+
+    >ul {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 10px 30px;
+        height: 40px;
+
+        @include only-mobile {
+            display: none;
+        }
+
+        >li {
+            padding-bottom: 10px;
+            min-width: 100px;
+            text-align: center;
+            color: #504e4a;
+            list-style-type: none;
+            vertical-align: middle;
+            cursor: pointer;
+
+            &:hover {
+                color: $mainColor;
+                border-bottom: 2px solid $mainColor;
+            }
+        }
+    }
+
+}
+
+.listpage {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    display: none;
+    width: 60vw;
+    height: 100vh;
+    color: #fff;
+    background-color: #504e4a;
+    opacity: 0;
+    z-index: 5;
+    transition: all 0.5s ease-in-out;
+
+    .close {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        cursor: pointer;
+    }
+
+    ul {
+        margin: 100px 0 80px;
+
+        li {
+            font-size: 14px;
+            list-style-type: none;
+            cursor: pointer;
+
+            &:not(:first-of-type) {
+                padding-top: 35px;
+            }
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &.show {
+        left: 0;
+        opacity: 1;
+    }
+
+    div {
+        padding-left: 40px;
+        cursor: pointer;
+
+        span:first-of-type {
+            padding-right: 10px;
+        }
+    }
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(34, 34, 34, 0.5);
+    z-index: 3;
+}

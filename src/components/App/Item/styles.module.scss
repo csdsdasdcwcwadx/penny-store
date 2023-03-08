@@ -5,17 +5,16 @@
     cursor: pointer;
 
     .frame {
-        max-width: 240px;
-        max-height: 360px;
-        margin: 0 auto;
         overflow: hidden;
+        margin: 0 auto;
+        max-height: 360px;
     }
 
     img {
         width: 100%;
         height: inherit;
         object-fit: cover;
-        transition: all .5s ease;
+        transition: all 0.5s ease;
 
         &:hover {
             transform: scale(1.2);

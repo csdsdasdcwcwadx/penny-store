@@ -1,5 +1,4 @@
 export interface I_AppState {
-    listOpen: boolean;
     page: E_Page;
 }
 

@@ -1,0 +1,161 @@
+@import '../../../commonStyles/variables.scss';
+@import '../../../commonStyles/mixins.scss';
+
+.Body {
+    .breadcrumb {
+        padding-left: 50px;
+
+        @include only-mobile {
+            padding-left: 0;
+            text-align: center;
+        }
+    }
+
+    .productarea {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+        padding: 0 20px;
+
+        @include only-mobile {
+            flex-direction: column;
+        }
+
+        .imgframe {
+            @include only-pc {
+                max-height: 500px;
+            }
+
+            img {
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .description {
+            width: 100%;
+
+            @include only-pc {
+                padding-left: 45px;
+            }
+
+            @include only-mobile {
+                margin-top: 20px;
+            }
+
+            span {
+                display: block;
+            }
+
+            .productname {
+                font-size: 30px;
+                font-weight: 600;
+            }
+
+            .productprice {
+                padding: 20px 0 30px 5px;
+                border-bottom: 1px solid #edeff2;
+                font-size: 12px;
+            }
+
+            .selection {
+
+                .info {
+                    padding: 30px 0 10px 6px;
+                }
+
+                .select {
+                    height: 40px;
+                    border: 2px solid #edeff2;
+                    border-radius: 5px;
+                    cursor: pointer;
+
+                    select {
+                        width: 98%;
+                        height: 40px;
+                        padding-left: 8px;
+                        border: none;
+                        outline: none;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .productothers {
+                display: flex;
+                padding-top: 40px;
+                height: 50px;
+
+                @include small-m {
+                    flex-direction: column;
+                    padding-top: 20px;
+                    height: auto;
+                }
+
+                .productsums {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 30%;
+                    padding-right: 20px;
+
+                    @include small-m {
+                        width: auto;
+                        padding-right: 0;
+                    }
+
+                    input {
+                        width: 20%;
+                        margin: 0 10px;
+                        border: none;
+                        font-size: 25px;
+                        text-align: center;
+                        pointer-events: none;
+                        outline: none;
+                    }
+
+                    span {
+                        width: 30px;
+                        height: 30px;
+                        font-size: 20px;
+                        text-align: center;
+                        color: #fff;
+                        background-color: #000;
+                        border-radius: 50%;
+                        cursor: pointer;
+
+                        &.add {
+                            &::before {
+                                content: '+';
+                                position: relative;
+                                top: -1px;
+                            }
+                        }
+
+                        &.minus {
+                            &::before {
+                                content: '-';
+                                position: relative;
+                                top: -1px;
+                            }
+                        }
+                    }
+                }
+
+                button {
+                    width: 100%;
+                    height: 35px;
+                    border: none;
+                    border-radius: 3px;
+                    color: #fff;
+                    background-color: #a78a50;
+                    cursor: pointer;
+
+                    @include small-m {
+                        margin-top: 20px;
+                    }
+                }
+            }
+        }
+    }
+}

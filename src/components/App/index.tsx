@@ -1,11 +1,9 @@
 import Body from './Body';
-import Header from './Header';
-import Navigator from './Navigator';
-import Footer from './Footer';
+import Header from '../Common/Header';
+import Footer from '../Common/Footer';
 
 export {
     Header,
     Body,
-    Navigator,
     Footer
 };

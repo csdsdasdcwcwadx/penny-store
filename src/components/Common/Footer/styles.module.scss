@@ -4,28 +4,28 @@
 .Footer {
     display: flex;
     justify-content: space-between;
-    background-color: #f9f5de;
     margin-top: 30px;
     padding: 50px 200px 50px 100px;
     color: #af6f3b;
+    background-color: #f9f5de;
+
+    @include only-mobile {
+        display: block;
+        padding: 20px 0 20px 50px;
+        font-size: 13px;
+    }
 
     >div {
         display: flex;
         flex-direction: column;
 
         span {
-            cursor: pointer;
             padding-top: 10px;
+            cursor: pointer;
 
             &:hover {
                 text-decoration: underline;
             }
         }
-    }
-
-    @include only-mobile {
-        display: block;
-        padding: 20px 0 20px 50px;
-        font-size: 13px;
     }
 }
