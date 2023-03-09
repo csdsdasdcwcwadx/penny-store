@@ -3,12 +3,27 @@ import BreadCrumb from "@components/Common/BreadCrumb";
 import styles from './styles.module.scss';
 import img from '@components/imgs/DIOR皮帶.jpg';
 import cN from 'classnames';
+import Select, { SelectInstance } from 'react-select'
 
 function Body() {
 
-    const [select, setSelect] = useState<string>('');
+    const sizeOptions = [
+        {label: '請選擇', value: '', isDisabled: true},
+        {label: 'S號', value: 'S'},
+        {label: 'M號', value: 'M'},
+        {label: 'L號', value: 'L'},
+    ]
+
+    const buyOptions = [
+        {label: '請選擇', value: '', isDisabled: true},
+        {label: '現貨', value: 'current'},
+        {label: '預購', value: 'preorder'},
+    ]
+
     const [counter, setCounter] = useState<number>(1);
-    
+    const [selectSize, setSelectSize] = useState('');
+    const [selectBuy, setSelectBuy] = useState('');
+
     return (
         <div className={styles.Body}>
             <div className={styles.breadcrumb}>
@@ -24,35 +39,32 @@ function Body() {
                     <div className={cN(styles.selection, styles.productsize)}>
                         <span className={styles.info}>尺寸</span>
                         <div className={styles.select}>
-                            <select onChange={e=>{
-                                setSelect(e.target.value);
-                            }}>
-                                <option value="none">請選取一個選項</option>
-                                <option value="S">S號</option>
-                                <option value="M">M號</option>
-                                <option value="L">L號</option>
-                            </select>
+                            <Select 
+                                options={sizeOptions} 
+                                onChange={e=>setSelectSize(e?.value || '')} 
+                                placeholder='請選擇' 
+                                isSearchable={false}
+                            />
                         </div>
                     </div>
                     <div className={cN(styles.selection, styles.productbuy)}>
                     <span className={styles.info}>現貨/預購</span>
                         <div className={styles.select}>
-                            <select>
-                                <option value="none">請選取一個選項</option>
-                                <option value="current">現貨</option>
-                                <option value="preorder">預購</option>
-                            </select>
+                            <Select 
+                                options={buyOptions} 
+                                onChange={e=>setSelectBuy(e?.value || '')} 
+                                placeholder='請選擇' 
+                                isSearchable={false}
+                            />
                         </div>
                     </div>
                     <div className={styles.productothers}> 
                         <div className={styles.productsums}>
                             <span className={styles.minus} onClick={()=>setCounter(pre=>{
-                                if(pre>1) {
-                                    return pre-1;
-                                }
+                                if(pre>1)return pre-1;
                                 return pre;
                             })}> </span>
-                            <input type="text" value={counter}/>
+                            <span className={styles.counter}>{counter}</span>
                             <span className={styles.add} onClick={()=>setCounter(pre=>pre+1)}> </span>
                         </div>
                         <button>加入購物車</button>
