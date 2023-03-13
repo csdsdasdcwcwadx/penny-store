@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './index.scss';
 import { Header, Body, Footer } from '@components/App/index';
 

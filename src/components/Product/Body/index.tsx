@@ -44,6 +44,15 @@ function Body() {
                                 onChange={e=>setSelectSize(e?.value || '')} 
                                 placeholder='請選擇' 
                                 isSearchable={false}
+                                theme={(theme)=>({
+                                    ...theme,
+                                    borderRadius: 5,
+                                    colors: {
+                                      ...theme.colors,
+                                      primary25: "#e6cd9b",
+                                      primary: "#a78a50"
+                                    }
+                                })}
                             />
                         </div>
                     </div>

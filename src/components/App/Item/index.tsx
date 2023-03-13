@@ -1,11 +1,9 @@
 import React, { memo, useEffect, useMemo, useState } from "react";
 import styles from './styles.module.scss';
+import { I_productinfo } from '@Redux/App/interfaces';
 
 interface I_props {
-    img: {
-        name: string;
-        src: string;
-    }
+    info: I_productinfo
 }
 
 const displayName = (name: string)=> {
@@ -13,7 +11,7 @@ const displayName = (name: string)=> {
 }
 
 function Item(props: I_props) {
-    const { img } = props;
+    const { info } = props;
     const [isLocal, setIsLocal] = useState<boolean>(false);
     const href = useMemo(()=>{
         if(isLocal){
@@ -28,9 +26,9 @@ function Item(props: I_props) {
     },[])
 
     return (
-        <a key={img.name} className={styles.Item} href={href}>
-            <div className={styles.frame}><img src={img.src}/></div>
-            <span className={styles.itemname}>{displayName(img.name)}</span>
+        <a className={styles.Item} href={href}>
+            <div className={styles.frame}>{info && <img src={URL.createObjectURL(new Blob([info.p_img]))}/>}</div>
+            <span className={styles.itemname}>{info.p_name}</span>
         </a>
     )
 }

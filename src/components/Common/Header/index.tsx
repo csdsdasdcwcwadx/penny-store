@@ -8,16 +8,17 @@ import cN from 'classnames';
 function Header() {
     const [listOpen, setListOpen] = useState<boolean>(false);
     const dispatch = useDispatch();
-
     const ListBlock = ()=>{
         return (
             <ul>
-                <li onClick={()=>dispatch(setPage(E_Page.HOME))}>Home</li>
-                <li onClick={()=>dispatch(setPage(E_Page.SHOPALL))}>全部商品 | SHOP ALL</li>
-                <li onClick={()=>dispatch(setPage(E_Page.SALE))}>優惠專區 | SALE</li>
-                <li onClick={()=>dispatch(setPage(E_Page.RESTOCK))}>熱騰騰現貨 | RESTOCK</li>
-                <li onClick={()=>dispatch(setPage(E_Page.WEAR))}>穿搭筆記本 | WEAR</li>
-                <li onClick={()=>dispatch(setPage(E_Page.MORE))}>更多</li>
+                {
+                    Object.entries<E_Page>(E_Page).map(([key, value], ind) => {
+                        return <li key={ind} onClick={() => {
+                            dispatch(setPage(E_Page[key as keyof typeof E_Page]));
+                            setListOpen(false);
+                        }}>{value}</li>
+                    })
+                }
             </ul>
         )
     }

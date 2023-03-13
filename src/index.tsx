@@ -5,9 +5,7 @@ import { store } from '@Redux/App/store';
 import { Provider } from 'react-redux';
 
 ReactDOM.createRoot(document.getElementById('menu') as HTMLElement).render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <App/>
-        </Provider>
-    </React.StrictMode>
+    <Provider store={store}>
+        <App/>
+    </Provider>
 );

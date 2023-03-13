@@ -18,9 +18,7 @@ export function Product() {
 }
 
 ReactDOM.createRoot(document.getElementById('product') as HTMLElement).render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <Product/>
-        </Provider>
-    </React.StrictMode>
+    <Provider store={store}>
+        <Product/>
+    </Provider>
 );
