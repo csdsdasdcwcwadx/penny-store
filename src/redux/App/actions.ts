@@ -6,6 +6,11 @@ export const setPage = (payload: E_Page) => ({
     payload,
 });
 
+export const setIsLoading = (payload: boolean) => ({
+    type: actionTypes.SET_ISLOADING,
+    payload,
+})
+
 // 呼叫 product/getallproduct
 export const call_getallproduct = (payload: any) => ({
     type: actionTypes.CALL_PRODUCT_GETALLPRODUCT,

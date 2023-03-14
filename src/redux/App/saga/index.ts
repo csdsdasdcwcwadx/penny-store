@@ -7,12 +7,13 @@ import * as actions from '../actions';
 // 目前只有 提供json 檔, 之後再拿api 做替換
 
 function* fetch_getallproduct(action: any): Generator<StrictEffect, any, any> {
+    yield put(actions.setIsLoading(true));
     const data = yield call(fetchAPI, {
         url: '/local/product/getallproduct',
         req: action.payload,
     });
-
     yield put(actions.set_getallproduct(data));
+    yield put(actions.setIsLoading(false));
 }
 
 function* watch_getallproduct() {

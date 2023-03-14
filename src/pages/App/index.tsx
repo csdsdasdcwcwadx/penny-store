@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './index.scss';
-import { Header, Body, Footer } from '@components/App/index';
+import { Header, Body, Footer, SideBar } from '@components/App/index';
 
 function App() {
     
@@ -10,6 +10,7 @@ function App() {
                 <Header/>
                 <Body/>
             </div>
+            <SideBar/>
             <Footer/>
         </div>
     );

@@ -1,24 +1,16 @@
 import React, { memo, useEffect, useMemo, useState } from "react";
 import styles from './styles.module.scss';
 import { I_productinfo } from '@Redux/App/interfaces';
+import { handleIMG } from "@utils/commonfunction"; 
 
 interface I_props {
     info: I_productinfo
 }
 
-const displayName = (name: string)=> {
-    return name.replace(/\.[^/.]+$/, "");
-}
-
 function Item(props: I_props) {
     const { info } = props;
+    const { p_id, p_name, p_price, p_amount, p_img, p_type } = info;
     const [isLocal, setIsLocal] = useState<boolean>(false);
-    const href = useMemo(()=>{
-        if(isLocal){
-            return `${location.href}/product.html`;
-        }
-        return `${location.href}product.html`;
-    },[isLocal])
 
     useEffect(()=>{
         const local = process.env.ENV === "local";
@@ -26,9 +18,11 @@ function Item(props: I_props) {
     },[])
 
     return (
-        <a className={styles.Item} href={href}>
-            <div className={styles.frame}>{info && <img src={URL.createObjectURL(new Blob([info.p_img]))}/>}</div>
-            <span className={styles.itemname}>{info.p_name}</span>
+        <a className={styles.Item} href={`/penny-store/product.html?p_id=${p_id}`}>
+            <div className={styles.frame}>
+                {info && <img src={handleIMG(p_img)}/>}
+            </div>
+            <span className={styles.itemname}>{p_name}</span>
         </a>
     )
 }

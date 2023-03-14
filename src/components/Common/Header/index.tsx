@@ -3,10 +3,12 @@ import styles from './styles.module.scss';
 import { useDispatch } from "react-redux";
 import { setPage } from '@Redux/App/actions';
 import { E_Page } from '@Redux/App/interfaces';
+import { handleNavigator } from '@utils/commonfunction';
 import cN from 'classnames';
 
 function Header() {
     const [listOpen, setListOpen] = useState<boolean>(false);
+    const isMenu = !!document.getElementById('menu');
     const dispatch = useDispatch();
     const ListBlock = ()=>{
         return (
@@ -14,15 +16,16 @@ function Header() {
                 {
                     Object.entries<E_Page>(E_Page).map(([key, value], ind) => {
                         return <li key={ind} onClick={() => {
-                            dispatch(setPage(E_Page[key as keyof typeof E_Page]));
                             setListOpen(false);
-                        }}>{value}</li>
+                            // 若不是首頁，就將上面的Navigator改成網址。
+                            if(!isMenu) window.location.href = `/penny-store?page_id=${value}`;
+                            else dispatch(setPage(E_Page[key as keyof typeof E_Page]));
+                        }}>{handleNavigator(value)}</li>
                     })
                 }
             </ul>
         )
     }
-
         
     useEffect(()=>{
         const { body } = document;
@@ -52,9 +55,9 @@ function Header() {
                     <span>fb</span>
                     <span>IG</span>
                 </div>
-                <div className={styles.logo}>
+                <a className={styles.logo} href='/penny-store?page_id='>
                     PENNY_SHOP
-                </div>
+                </a>
                 <div>
                     <span className={styles.show}>seh</span>
                     <span>會員登入</span>

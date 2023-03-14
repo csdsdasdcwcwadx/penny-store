@@ -17,6 +17,8 @@ body {
     .logo {
         font-size: 35px;
         color: #00f;
+        text-decoration: none;
+        cursor: pointer;
 
         @include small-pc {
             font-size: 25px;

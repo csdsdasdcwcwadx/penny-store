@@ -22,12 +22,16 @@
         }
 
         .imgframe {
+            overflow: hidden;
+
             @include only-pc {
-                max-height: 500px;
+                max-width: 500px;
             }
 
-            img {
+            >img {
+                position: relative;
                 width: 100%;
+                height: 100%;
                 object-fit: cover;
             }
         }
@@ -75,8 +79,8 @@
                         cursor: pointer;
                     }
 
-                    #react-select-3-listbox {
-                        padding-bottom: 0;
+                    .css-lm8j94-menu {
+                        background-color: #000 !important;
                     }
                 }
             }
@@ -132,6 +136,8 @@
 
                         &.add {
                             &::before {
+                                position: relative;
+                                bottom: 2px;
                                 content: '+';
                             }
                         }
@@ -142,6 +148,11 @@
                                 bottom: 2px;
                                 content: '-';
                             }
+                        }
+
+                        &.disabled {
+                            opacity: .5;
+                            cursor: auto;
                         }
                     }
                 }

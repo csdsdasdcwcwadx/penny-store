@@ -2,9 +2,18 @@
 
 .BreadCrumb {
     font-size: 13px;
-    cursor: pointer;
 
-    span:hover {
-        color: $mainColor;
+    span {
+
+        >a,
+        >span {
+            text-decoration: none;
+            color: #222;
+        }
+
+        a:hover {
+            color: $mainColor;
+            cursor: pointer;
+        }
     }
 }

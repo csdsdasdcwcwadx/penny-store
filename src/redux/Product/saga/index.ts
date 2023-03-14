@@ -8,23 +8,21 @@ import * as actions from '../actions';
 // 目前只有 提供json 檔, 之後再拿api 做替換
 const orderRoute = `${DomainByEnv()}/order`;
 
-
-//取得座位表
-function* fetch_getbusseatlistjson(action: any): Generator<StrictEffect, any, any> {
+function* fetch_getdetailproduct(action: any): Generator<StrictEffect, any, any> {
     const data = yield call(fetchAPI, {
-        url: `/getbusseatlistjson`,
+        url: `/local/product/getdetailproduct`,
         req: action.payload,
     });
 
-    yield put(actions.setBusSeatInfo(data));
+    yield put(actions.set_getdetailproduct({...data}));
 }
 
-// 使用 type 註冊 saga function
-// 使用時 呼叫 dispatch({type: })
-function* watchSetBusSeatInfo() {
-    yield takeEvery(actionTypes.TESTING, fetch_getbusseatlistjson);
+function* watchgetdetailproduct() {
+    yield takeEvery(actionTypes.CALL_PRODUCT_GETDETAIL, fetch_getdetailproduct);
 }
 
 export default function* rootSaga() {
-    yield all([watchSetBusSeatInfo()]);
+    yield all([
+        watchgetdetailproduct(),
+    ]);
 }

@@ -1,6 +1,7 @@
 export interface I_AppState {
     page: E_Page;
     getallproduct?: I_getallproduct;
+    isLoading: boolean;
 }
 
 export enum E_Page {
@@ -22,6 +23,9 @@ export interface I_productinfo {
     p_name: string;
     p_price: number;
     p_amount: number;
-    p_img: any;
+    p_img: {
+        data: Array<any>;
+        type: string;
+    };
     p_type: string;
 }
