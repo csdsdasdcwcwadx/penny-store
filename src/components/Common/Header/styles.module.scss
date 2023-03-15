@@ -88,28 +88,15 @@ body {
 
 }
 
-.listpage {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    display: none;
-    width: 60vw;
+.block {
+    width: 40vw;
     height: 100vh;
+    padding-top: 100px;
     color: #fff;
     background-color: #504e4a;
-    opacity: 0;
-    z-index: 5;
-    transition: all 0.5s ease-in-out;
-
-    .close {
-        position: absolute;
-        top: 5px;
-        right: 10px;
-        cursor: pointer;
-    }
 
     ul {
-        margin: 100px 0 80px;
+        margin-top: 0;
 
         li {
             font-size: 14px;
@@ -126,11 +113,6 @@ body {
         }
     }
 
-    &.show {
-        left: 0;
-        opacity: 1;
-    }
-
     div {
         padding-left: 40px;
         cursor: pointer;
@@ -139,14 +121,4 @@ body {
             padding-right: 10px;
         }
     }
-}
-
-.background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(34, 34, 34, 0.5);
-    z-index: 3;
 }

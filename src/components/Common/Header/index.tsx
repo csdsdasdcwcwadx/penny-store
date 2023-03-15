@@ -4,12 +4,14 @@ import { useDispatch } from "react-redux";
 import { setPage } from '@Redux/App/actions';
 import { E_Page } from '@Redux/App/interfaces';
 import { handleNavigator } from '@utils/commonfunction';
-import cN from 'classnames';
+import LightBox, { E_direction } from "../Modules/LightBox";
 
 function Header() {
     const [listOpen, setListOpen] = useState<boolean>(false);
+    // const [loginOpen, setLoginOpen] = useState<boolean>(false);
     const isMenu = !!document.getElementById('menu');
     const dispatch = useDispatch();
+
     const ListBlock = ()=>{
         return (
             <ul>
@@ -26,26 +28,6 @@ function Header() {
             </ul>
         )
     }
-        
-    useEffect(()=>{
-        const { body } = document;
-        if(listOpen) {
-            const listpage = document.querySelector('.listpage');
-            listpage?.setAttribute('style', 'display: block');
-            body.classList.add(styles.setpage);
-            setTimeout(()=>{
-                listpage?.classList.add(styles.show);
-            },50)
-        }
-        if(!listOpen) {
-            const listpage = document.querySelector('.listpage');
-            listpage?.classList.remove(styles.show);
-            setTimeout(()=>{
-                body.classList.remove(styles.setpage);
-                listpage?.removeAttribute('style');
-            },500)
-        }
-    },[listOpen])
 
     return (
         <>
@@ -67,16 +49,21 @@ function Header() {
             <div className={styles.Navigator}>
                 {ListBlock()}
             </div>
-            <div className={cN('listpage', styles.listpage)}>
-                <span className={cN(styles.close)} onClick={()=>setListOpen(false)}>叉叉</span>
-                {ListBlock()}
-                <div>
-                    <span>IG</span>
-                    <span>FB</span>
+            <LightBox 
+                isOpen={listOpen} 
+                handleDispatch={setListOpen}
+                direction={'LEFT' as E_direction}
+                theName={styles.block}
+            >
+                <div className={styles.block}>
+                    {ListBlock()}
+                    <div>
+                        <span>IG</span>
+                        <span>FB</span>
+                    </div>
+                    <div>會員登入</div>
                 </div>
-                <div>會員登入</div>
-            </div>
-            <div className={cN({[styles.background]:listOpen})} onClick={()=>setListOpen(false)}> </div>
+            </LightBox>
         </>
     )
 }

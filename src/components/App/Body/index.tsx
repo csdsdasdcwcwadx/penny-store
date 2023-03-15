@@ -1,12 +1,12 @@
 import React, { memo, useEffect } from 'react';
 import styles from './styles.module.scss';
-import BreadCrumb from '../../Common/BreadCrumb';
+import BreadCrumb from '../../Common/Modules/BreadCrumb';
 import Item from '@components/App/Item';
 import { RootState } from '@Redux/App/store';
 import { useSelector, useDispatch } from 'react-redux';
 import { call_getallproduct } from '@Redux/App/actions';
 import { I_productinfo } from '@Redux/App/interfaces';
-import Spinner from '@components/Common/Spinner';
+import Spinner from '@components/Common/Modules/Spinner';
 import { handleNavigator } from '@utils/commonfunction';
 
 function Body() {

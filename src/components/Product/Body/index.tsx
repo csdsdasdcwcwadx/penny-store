@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useMemo, useState } from "react";
-import BreadCrumb from "@components/Common/BreadCrumb";
+import BreadCrumb from "@components/Common/Modules/BreadCrumb";
 import styles from './styles.module.scss';
 import cN from 'classnames';
 import Select from 'react-select'
