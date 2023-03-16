@@ -5,10 +5,14 @@ import { setPage } from '@Redux/App/actions';
 import { E_Page } from '@Redux/App/interfaces';
 import { handleNavigator } from '@utils/commonfunction';
 import LightBox, { E_direction } from "../Modules/LightBox";
+import '../Modules/ic-ln/css.css';
+import google from '../../../imgs/google.jpg';
+import { auth, GoogleProvider } from '@utils/firebase-auth';
+import { signInWithRedirect, getRedirectResult } from 'firebase/auth';
 
 function Header() {
     const [listOpen, setListOpen] = useState<boolean>(false);
-    // const [loginOpen, setLoginOpen] = useState<boolean>(false);
+    const [loginOpen, setLoginOpen] = useState<boolean>(false);
     const isMenu = !!document.getElementById('menu');
     const dispatch = useDispatch();
 
@@ -29,6 +33,17 @@ function Header() {
         )
     }
 
+    useEffect(()=>{
+        (async function() {
+            try{
+                const credentials = await getRedirectResult(auth);
+                console.log("@@@", credentials)
+            }catch (e) {
+                console.error('error => ', e)
+            }
+        })()
+    },[])
+
     return (
         <>
             <div className={styles.Header}>
@@ -37,13 +52,13 @@ function Header() {
                     <span>fb</span>
                     <span>IG</span>
                 </div>
-                <a className={styles.logo} href='/penny-store?page_id='>
-                    PENNY_SHOP
-                </a>
+                <a className={styles.logo} href='/penny-store?page_id='>PENNY_SHOP</a>
                 <div>
                     <span className={styles.show}>seh</span>
-                    <span>會員登入</span>
-                    <span>sp</span>
+                    <span onClick={()=>setLoginOpen(true)}>會員登入</span>
+                    <span>
+                        <i className="icon ic-ln toolsearch" />
+                    </span>
                 </div>
             </div>
             <div className={styles.Navigator}>
@@ -61,9 +76,25 @@ function Header() {
                         <span>IG</span>
                         <span>FB</span>
                     </div>
-                    <div>會員登入</div>
+                    <div onClick={()=>signInWithRedirect(auth, GoogleProvider)}>會員登入</div>
                 </div>
             </LightBox>
+            <div className={styles.logincontainer}>
+                <LightBox
+                    isOpen={loginOpen}
+                    handleDispatch={setLoginOpen}
+                    direction={'TOP' as E_direction}
+                    theName={styles.loginblock}
+                >
+                    <div className={styles.loginblock}>
+                        <img className={styles.google} src={google} onClick={()=>signInWithRedirect(auth, GoogleProvider)}/>
+                        <div className={styles.registry}>
+                            <span>會員註冊</span>
+                        </div>
+                    </div>
+
+                </LightBox>
+            </div>
         </>
     )
 }

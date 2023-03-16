@@ -1,12 +1,6 @@
 @import '../../../commonStyles/mixins.scss';
 @import '../../../commonStyles/variables.scss';
 
-body {
-    &.setpage {
-        overflow: hidden;
-    }
-}
-
 .Header {
     display: flex;
     align-items: center;
@@ -119,6 +113,35 @@ body {
 
         span:first-of-type {
             padding-right: 10px;
+        }
+    }
+}
+
+.logincontainer {
+    i {
+        color: #000;
+    }
+
+    .loginblock {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 500px;
+        height: 300px;
+        border-radius: 6px;
+        background-color: #fff;
+
+        .google {
+            width: 70px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .registry {
+            display: block;
+            padding-top: 20px;
+            cursor: pointer;
         }
     }
 }

@@ -15,6 +15,10 @@ body.lockpage {
         right: 10px;
         color: #fff;
         cursor: pointer;
+
+        i {
+            font-size: 20px;
+        }
     }
 
     &.show {
@@ -42,7 +46,7 @@ body.lockpage {
     &.TOP {
         top: -100%;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translate(-50%, -50%);
 
         &.show {
             top: 50%;

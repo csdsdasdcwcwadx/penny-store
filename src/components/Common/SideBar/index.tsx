@@ -14,7 +14,7 @@ function SideBar () {
             <LightBox
                 isOpen={sidelistOpen}
                 handleDispatch={setSideListOpen}
-                direction={'TOP' as E_direction}
+                direction={'RIGHT' as E_direction}
                 theName={styles.sidepage}
             >
                 <div className={styles.sidepage}>

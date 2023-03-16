@@ -1,0 +1,54 @@
+{
+  "_args": [
+    [
+      "@magaele/ic-ln@1.0.7",
+      "E:\\F2E.Products\\LionTravel-Travel-React"
+    ]
+  ],
+  "_from": "@magaele/ic-ln@1.0.7",
+  "_id": "@magaele/ic-ln@1.0.7",
+  "_inBundle": false,
+  "_integrity": "sha512-JWbUQlbi1LVzf+ULzApeUcsHEK9ZHuN46rZ02A9/a08f9LBOan38A3X2wjezePbs76YngEFDc+E0tgtj0cXRnQ==",
+  "_location": "/@magaele/ic-ln",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "@magaele/ic-ln@1.0.7",
+    "name": "@magaele/ic-ln",
+    "escapedName": "@magaele%2fic-ln",
+    "scope": "@magaele",
+    "rawSpec": "1.0.7",
+    "saveSpec": null,
+    "fetchSpec": "1.0.7"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://nexus.liontravel.com/repository/npm-group/@magaele/ic-ln/-/ic-ln-1.0.7.tgz",
+  "_spec": "1.0.7",
+  "_where": "E:\\F2E.Products\\LionTravel-Travel-React",
+  "author": {
+    "name": "jivecheng"
+  },
+  "dependencies": {
+    "@magaele/core": "^1.0.0"
+  },
+  "description": "Destination menu and auto-complete module",
+  "keywords": [
+    "autocomplete",
+    "destination",
+    "menu"
+  ],
+  "license": "ISC",
+  "main": "module.js",
+  "name": "@magaele/ic-ln",
+  "repository": {
+    "type": "git",
+    "url": "https://azdevops.liontravel.com/LionTech/F2E.Modules/_git/ic-ln"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.7"
+}

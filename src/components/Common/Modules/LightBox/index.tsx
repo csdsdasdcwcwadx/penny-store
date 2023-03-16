@@ -1,7 +1,7 @@
-import React, { memo, ReactNode, useEffect } from "react";
+import React, { memo, ReactNode, useEffect, useState } from "react";
 import styles from './styles.module.scss';
 import cN from 'classnames';
-import styled from "styled-components";
+import '../ic-ln/css.css';
 
 export enum E_direction {
     TOP = 'TOP',
@@ -20,19 +20,22 @@ type I_props = {
 
 function LightBox ({isOpen, handleDispatch, children, direction, theName}: I_props) {
     const { body } = document;
+    const [dark, setDark] = useState<boolean>(false);
 
     useEffect (()=>{
         const parent = document.querySelector(`.blocker .${theName}`) as HTMLElement;
         const blocker = parent.parentNode as HTMLElement;
         if(isOpen) {
             blocker?.setAttribute('style', 'display: block');
+            setDark(true);
             body.classList.add(styles.lockpage);
             setTimeout(()=>{
                 blocker?.classList.add(styles.show);
-            },50)
+            },10)
         }else{
             blocker?.classList.remove(styles.show);
             setTimeout(()=>{
+                setDark(false);
                 body.classList.remove(styles.lockpage);
                 blocker?.removeAttribute('style');
             },500)
@@ -42,10 +45,12 @@ function LightBox ({isOpen, handleDispatch, children, direction, theName}: I_pro
     return (
         <>
             <div className={cN([styles.blocker], 'blocker', styles[direction])}>
-                <span className={cN(styles.close)} onClick={()=>handleDispatch(false)}>叉叉</span>
+                <span className={cN(styles.close)} onClick={()=>handleDispatch(false)}>
+                    <i className="icon ic-ln toolclose" />
+                </span>
                 {children}
             </div>
-            <div className={cN({[styles.background]:isOpen})} onClick={()=>handleDispatch(false)}> </div>
+            <div className={cN({[styles.background]:dark})} onClick={()=>handleDispatch(false)}> </div>
         </>
     )
 }
