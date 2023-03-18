@@ -122,15 +122,93 @@
         color: #000;
     }
 
-    .loginblock {
+    .membereventblock {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        width: 500px;
-        height: 300px;
+        width: 50vw;
+        height: 90vh;
         border-radius: 6px;
         background-color: #fff;
+
+        .memberevent {
+            width: 70%;
+            height: 80%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+
+            .buttons {
+                display: flex;
+
+                button {
+                    height: 50px;
+                    border: 0;
+                    background-color: #ddd;
+                    flex: 1;
+                    opacity: .5;
+                    cursor: pointer;
+
+                    &.active {
+                        background-color: #fff;
+                        opacity: 1;
+                    }
+                }
+            }
+
+            >div:not(.buttons) {
+                padding: 40px;
+
+                .title {
+                    margin-bottom: 5px;
+                    text-align: center;
+                }
+
+                .inputblock {
+                    margin-bottom: 5px;
+
+                    span {
+                        display: block;
+                        color: #222;
+                        margin: 0 0 5px 5px;
+                        font-size: 12px;
+                    }
+
+                    input {
+                        width: calc(99% - 20px);
+                        border: 1px solid #ddd;
+                        border-radius: 5px;
+                        padding: 10px;
+                        outline: none;
+
+                        &::placeholder {
+                            color: #ddd;
+                        }
+                    }
+
+                    .err {
+                        color: red;
+                        margin-bottom: 0;
+                    }
+                }
+
+                .buttonlist {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 0 20px;
+
+                    button {
+                        height: 30px;
+                        width: 40%;
+                        margin-top: 20px;
+                        border: 0;
+                        background-color: #ddd;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+        }
 
         .google {
             width: 70px;

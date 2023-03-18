@@ -2,6 +2,7 @@ import React, { memo, useState } from 'react';
 import cart from '../../../imgs/shopping-cart.jpg';
 import styles from './styles.module.scss';
 import LightBox, { E_direction } from '../Modules/LightBox';
+import '../Modules/ic-ln/css.css';
 
 function SideBar () {
     const [sidelistOpen, setSideListOpen] = useState<boolean>(false);
@@ -9,7 +10,7 @@ function SideBar () {
     return (
         <div className={styles.SideBar}>
             <div className={styles.cartframe} onClick={()=>setSideListOpen(true)}>
-                <img src={cart}/>
+                <i className='icon ic-ln toolbuy'/>
             </div>
             <LightBox
                 isOpen={sidelistOpen}
