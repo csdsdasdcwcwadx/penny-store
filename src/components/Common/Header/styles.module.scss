@@ -8,6 +8,50 @@
     padding: 10px 20px;
     border-bottom: 1.5px solid #ddd;
 
+    >div {
+        display: flex;
+        align-items: center;
+
+        >span,
+        >a {
+            display: inline-block;
+            cursor: pointer;
+
+            .facebook {
+                font-size: 29px;
+                color: #1877F2;
+            }
+
+            .instagram {
+                position: relative;
+                top: 2px;
+                height: 25px;
+            }
+
+            @include only-mobile {
+                &:not(.show) {
+                    display: none;
+                }
+            }
+
+            &.show:first-of-type {
+                display: none;
+
+                @include only-mobile {
+                    display: inline-block;
+                }
+            }
+
+            &:not(:last-of-type) {
+                margin-right: 10px;
+            }
+
+            &:hover {
+                color: $mainColor;
+            }
+        }
+    }
+
     .logo {
         font-size: 35px;
         color: #00f;
@@ -23,30 +67,56 @@
         }
     }
 
-    span {
-        display: inline-block;
+    .displaymember {
+        position: relative;
+        right: 10px;
+        display: flex;
+        align-items: center;
         cursor: pointer;
 
-        @include only-mobile {
-            &:not(.show) {
-                display: none;
-            }
+        >img {
+            position: relative;
+            right: 10px;
+            height: 40px;
+            border-radius: 50%;
         }
 
-        &.show:first-of-type {
+        .memberoptions {
+            position: absolute;
+            top: 40px;
             display: none;
+            border-radius: 5px;
+            background-color: #ddd;
+            cursor: auto;
 
-            @include only-mobile {
-                display: inline-block;
+            ul {
+                padding-left: 0;
+                list-style-type: none;
+                padding: 10px 15px;
+                margin: 0;
+
+                li {
+                    padding: 10px 0;
+                    text-align: center;
+                    cursor: pointer;
+
+                    &:not(:last-of-type) {
+                        border-bottom: 1px solid #222;
+                    }
+
+                    &:hover {
+                        color: #0870d0;
+                    }
+                }
             }
-        }
-
-        &:not(:last-of-type) {
-            margin-right: 10px;
         }
 
         &:hover {
-            color: $mainColor;
+            color: #000;
+
+            .memberoptions {
+                display: block;
+            }
         }
     }
 }
@@ -83,23 +153,45 @@
 }
 
 .block {
-    width: 40vw;
+    display: block;
+    width: 60vw;
     height: 100vh;
-    padding-top: 100px;
+    padding-top: 10px;
     color: #fff;
     background-color: #504e4a;
 
+    .displaymember {
+        display: block;
+        margin-left: 20px;
+
+        .memberinfo {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            margin-bottom: 40px;
+
+            img {
+                position: relative;
+                right: 10px;
+                height: 40px;
+                border-radius: 50%;
+            }
+        }
+
+        .memberoptions {
+            margin-top: 20px;
+        }
+    }
+
     ul {
-        margin-top: 0;
+        margin: 0;
+        padding-left: 0;
 
         li {
+            padding-bottom: 35px;
             font-size: 14px;
             list-style-type: none;
             cursor: pointer;
-
-            &:not(:first-of-type) {
-                padding-top: 35px;
-            }
 
             &:hover {
                 text-decoration: underline;
@@ -107,13 +199,50 @@
         }
     }
 
-    div {
+    >ul {
         padding-left: 40px;
+    }
+
+    div {
         cursor: pointer;
 
         span:first-of-type {
             padding-right: 10px;
         }
+
+        .facebook {
+            margin-right: 10px;
+            font-size: 25px;
+            background-color: #fff;
+            color: #1877F2;
+            border-radius: 50%;
+        }
+
+        .instagram {
+            position: relative;
+            top: 2px;
+            height: 25px;
+        }
+
+        .logout {
+            margin-left: 10px;
+        }
+    }
+
+    .logout {
+        position: fixed;
+        bottom: 0;
+        width: 60%;
+        padding: 10px;
+        border: 0;
+        border-top: 1px solid #bbb;
+        color: #222;
+        background-color: #f9f5de;
+        cursor: pointer;
+    }
+
+    .otheroptions {
+        margin-left: 40px;
     }
 }
 
@@ -164,37 +293,9 @@
                     text-align: center;
                 }
 
-                .inputblock {
-                    margin-bottom: 5px;
-
-                    span {
-                        display: block;
-                        color: #222;
-                        margin: 0 0 5px 5px;
-                        font-size: 12px;
-                    }
-
-                    input {
-                        width: calc(99% - 20px);
-                        border: 1px solid #ddd;
-                        border-radius: 5px;
-                        padding: 10px;
-                        outline: none;
-
-                        &::placeholder {
-                            color: #ddd;
-                        }
-                    }
-
-                    .err {
-                        color: red;
-                        margin-bottom: 0;
-                    }
-                }
-
                 .buttonlist {
                     display: flex;
-                    justify-content: space-between;
+                    justify-content: center;
                     padding: 0 20px;
 
                     button {

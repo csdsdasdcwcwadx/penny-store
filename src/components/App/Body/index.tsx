@@ -26,7 +26,7 @@ function Body() {
     },[dispatch, page])
 
     const handleBreadCrumb = () => {
-        const menu = {name: '首頁', href: 'localhost:3638/penny-store'}
+        const menu = {name: '首頁', href: '/penny-store?page_id='}
         return [menu, {name: handleNavigator(page), href: ''}];
     }
 
@@ -34,6 +34,12 @@ function Body() {
         isLoading ? <Spinner/> :
             <div className={styles.Body}>
                 <div className={styles.title}>{getallproduct && handleNavigator(page)}</div>
+                <button onClick={()=>{
+                    const member = JSON.parse(localStorage.getItem('memberinfo')!);
+                    const google = JSON.parse(localStorage.getItem('credentials')!);
+                    console.log("@@@", member)
+                    console.log("@@@", google)
+                }}>查看登錄狀態</button>
                 <div className={styles.breadcrumb}>
                     <BreadCrumb items={handleBreadCrumb()}/>
                 </div>

@@ -2,21 +2,24 @@ import React, { memo, useState, useEffect, useRef, useCallback } from "react";
 import styles from './styles.module.scss';
 import { useDispatch } from "react-redux";
 import { setPage } from '@Redux/App/actions';
-import { E_Page } from '@Redux/Common/interfaces';
+import { E_Page } from '@Redux/App/interfaces';
 import { handleNavigator } from '@utils/commonfunction';
 import LightBox, { E_direction } from "../Modules/LightBox";
 import '../Modules/ic-ln/css.css';
-import google from '../../../imgs/google.jpg';
 import { auth, GoogleProvider } from '@utils/firebase-auth';
-import { signInWithRedirect, getRedirectResult } from 'firebase/auth';
+import { signInWithRedirect, getRedirectResult, signInWithPopup, UserCredential } from 'firebase/auth';
 import cN from 'classnames';
+import InputBar from "../Modules/InputBar";
+import axios from "axios";
 
 function Header() {
     const [listOpen, setListOpen] = useState<boolean>(false);
     const [loginOpen, setLoginOpen] = useState<boolean>(false);
-    const isMenu = !!document.getElementById('menu');
+    const [credentials, setCredentials] = useState<UserCredential | null>();
+    const isMenu: boolean = !!document.getElementById('menu');
     const dispatch = useDispatch();
 
+    axios.defaults.withCredentials = true;
     const ListBlock = ()=>{
         return (
             <ul>
@@ -34,13 +37,40 @@ function Header() {
         )
     }
 
+    const handlelogout = async () => {
+        localStorage.removeItem('credentials');
+        localStorage.removeItem('memberinfo');
+        await axios.get('/local/member/logout');
+        location.reload();
+    }
+
     useEffect(()=>{
         (async function() {
             try{
-                const credentials = await getRedirectResult(auth);
-                console.log("@@@", credentials)
+                const loginAPI = await getRedirectResult(auth);
+                const obj = {
+                    m_email: loginAPI?.user.email,
+                }
+                try{
+                    const { data } = await axios.post('/local/member/loginmember', obj);
+                    // 若傳入的email不為空，並且登入失敗，則跳出alert。
+                    if(!data.status && obj.m_email) alert(data.message);
+                    // 若回傳結果為true，則將memberinfo寫進去localStorage
+                    if(data.status) localStorage.setItem('memberinfo', JSON.stringify(data));
+                    // google登入完後寫進去狀態
+                    if (loginAPI) {
+                        localStorage.setItem('credentials', JSON.stringify(loginAPI));
+                        setCredentials(loginAPI);
+                    }
+                    // 若當前localStorage有credentials，則將此設為狀態。
+                    if(localStorage.getItem('credentials')) {
+                        setCredentials(JSON.parse(localStorage.getItem('credentials')!));
+                    }
+                }catch(err) {
+                    console.error('error => ', err);
+                }
             }catch (e) {
-                console.error('error => ', e)
+                console.error('error => ', e);
             }
         })()
     },[])
@@ -50,15 +80,31 @@ function Header() {
             <div className={styles.Header}>
                 <div>
                     <span className={styles.show} onClick={()=>setListOpen(true)}>展開</span>
-                    <span>fb</span>
-                    <span>IG</span>
+                    <a><i className={cN('icon ic-ln toolfroundf', styles.facebook)}/></a>
+                    <a><img className={styles.instagram} src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png"/></a>
                 </div>
                 <a className={styles.logo} href='/penny-store?page_id='>PENNY_SHOP</a>
                 <div>
                     <span className={styles.show}>seh</span>
-                    <span onClick={()=>setLoginOpen(true)}>會員登入</span>
+                    {
+                        credentials ?
+                        <span className={styles.displaymember}>
+                            <img src={credentials.user.photoURL!}/>
+                            <span>{credentials.user.displayName} 您好!!</span>
+                            <div className={styles.memberoptions}>
+                                <ul>
+                                    <li>查看歷史訂單</li>
+                                    <li>查看歷史訂單</li>
+                                    <li>查看歷史訂單</li>
+                                    <li>查看歷史訂單</li>
+                                    <li onClick={handlelogout}>登出</li>
+                                </ul>
+                            </div>
+                        </span>:
+                        <span onClick={()=>setLoginOpen(true)}>會員登入</span>
+                    }
                     <span>
-                        <i className="icon ic-ln toolsearch" />
+                        <i className="icon ic-ln toolsearch"/>
                     </span>
                 </div>
             </div>
@@ -72,12 +118,30 @@ function Header() {
                 theName={styles.block}
             >
                 <div className={styles.block}>
+                    {
+                        credentials ?
+                        <span className={styles.displaymember}>
+                            <span className={styles.memberinfo}>
+                                <img src={credentials.user.photoURL!}/>
+                                <span>{credentials.user.displayName} 您好!!</span>
+                            </span>
+                            <div>
+                                <ul>
+                                    <li>查看歷史訂單</li>
+                                    <li>查看歷史訂單</li>
+                                    <li>查看歷史訂單</li>
+                                    <li>查看歷史訂單</li>
+                                </ul>
+                            </div>
+                        </span>:
+                        <span onClick={()=>{setListOpen(false);setLoginOpen(true)}}>會員登入</span>
+                    }
                     {ListBlock()}
-                    <div>
-                        <span>IG</span>
-                        <span>FB</span>
+                    <div className={styles.otheroptions}>
+                        <a><i className={cN('icon ic-ln toolfroundf', styles.facebook)}/></a>
+                        <a><img className={styles.instagram} src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png"/></a>
                     </div>
-                    <div onClick={()=>{setLoginOpen(true);setListOpen(false);}}>會員登入</div>
+                    {credentials && <button className={styles.logout} onClick={handlelogout}>登出</button>}
                 </div>
             </LightBox>
             {LoginandRegister(loginOpen, setLoginOpen)}
@@ -88,37 +152,39 @@ function Header() {
 function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
     const [memberEvent, setMemberEvent] = useState<string>('login');
     const m_name = useRef<HTMLInputElement>(null);
-    const m_email = useRef<HTMLInputElement>(null);
     const m_phone = useRef<HTMLInputElement>(null);
     const m_address = useRef<HTMLInputElement>(null);
-    const barList = [
-        {
-            name: '姓名',
-            placeholder: '請輸入姓名',
-        },
-        {
-            name: '信箱',
-            placeholder: '請輸入信箱',
-        },
-        {
-            name: '手機',
-            placeholder: '請輸入手機',
-        },
-        {
-            name: '地址',
-            placeholder: '請輸入地址',
-        }
-    ]
 
-    const handleRegistry = useCallback(() => {
-        const obj = {
-            m_name: m_name.current?.value,
-            m_email: m_email.current?.value,
-            m_address: m_address.current?.value,
-            m_phone: m_phone.current?.value,
+    const handleRegistry = useCallback( async () => {
+        if(document.getElementsByClassName('error').length === 0) {
+            try {
+                const google = await signInWithPopup(auth, GoogleProvider);
+                const obj = {
+                    m_name: m_name.current?.value,
+                    m_address: m_address.current?.value,
+                    m_phone: m_phone.current?.value,
+                    m_email: google.user.email,
+                }
+                try{
+                    const { data } = await axios.post('/local/member/registrymember', obj);
+                    alert(data.message);
+                    if(data.status) location.reload();
+                }catch(e) {
+                    console.error('error => ', e);
+                }
+            }catch(err) {
+                console.error('error => ', err);
+            }
         }
-        console.log("@@@", obj)
-    },[m_name, m_phone, m_email, m_address])
+    },[m_name, m_phone, m_address])
+
+    const handleLogin = async () => {
+        try {
+            await signInWithRedirect(auth, GoogleProvider);
+        }catch(e) {
+            console.error('error => ', e);
+        }
+    }
 
     return (
         <div className={styles.logincontainer}>
@@ -135,34 +201,19 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
                             <button onClick={()=>setMemberEvent('register')} className={cN({[styles.active]: memberEvent === 'register'})}>會員註冊</button>
                         </div>
                         {
-                            memberEvent === 'login' ? 
+                            memberEvent === 'login' ?
                                 <div>
                                     <div className={styles.title}>會員登入</div>
+                                    <div className={styles.buttonlist}>
+                                        <button onClick={handleLogin}>登入</button>
+                                    </div>
                                 </div> : 
                                 <div>
                                     <div className={styles.title}>會員註冊</div>
-                                    <div className={styles.inputblock}>
-                                        <span>姓名</span>
-                                        <input placeholder="請輸入姓名" ref={m_name}/>
-                                        <span className={styles.err}>錯誤訊息</span>
-                                    </div>
-                                    <div className={styles.inputblock}>
-                                        <span>信箱</span>
-                                        <input placeholder="請輸入信箱" ref={m_email}/>
-                                        <span className={styles.err}>錯誤訊息</span>
-                                    </div>
-                                    <div className={styles.inputblock}>
-                                        <span>手機</span>
-                                        <input placeholder="請輸入手機" ref={m_phone}/>
-                                        <span className={styles.err}>錯誤訊息</span>
-                                    </div>
-                                    <div className={styles.inputblock}>
-                                        <span>地址</span>
-                                        <input placeholder="請輸入地址" ref={m_address}/>
-                                        <span className={styles.err}>錯誤訊息</span>
-                                    </div>
+                                    <InputBar title='姓名' placeholder='請輸入姓名' type='name' ref={m_name}/>
+                                    <InputBar title='手機' placeholder='請輸入手機' type='phone' ref={m_phone}/>
+                                    <InputBar title='地址' placeholder='請輸入地址' type='address' ref={m_address}/>
                                     <div className={styles.buttonlist}>
-                                        <button>重設</button>
                                         <button onClick={handleRegistry}>送出</button>
                                     </div>
                                 </div>
@@ -170,14 +221,6 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
                     </div>
                 </div>
             </LightBox>
-        </div>
-    )
-}
-
-function InputBar () {
-    return (    
-        <div>
-            111
         </div>
     )
 }
