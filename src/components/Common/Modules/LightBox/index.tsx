@@ -16,9 +16,10 @@ type I_props = {
     children: ReactNode;
     direction: E_direction;
     theName: string;
+    isOverflow?: boolean;
 }
 
-function LightBox ({isOpen, handleDispatch, children, direction, theName}: I_props) {
+function LightBox ({isOpen, handleDispatch, children, direction, theName, isOverflow}: I_props) {
     const { body } = document;
     const [dark, setDark] = useState<boolean>(false);
 
@@ -44,7 +45,7 @@ function LightBox ({isOpen, handleDispatch, children, direction, theName}: I_pro
 
     return (
         <>
-            <div className={cN([styles.blocker], 'blocker', styles[direction])}>
+            <div className={cN([styles.blocker], 'blocker', styles[direction], {[styles.overflow]: isOverflow})}>
                 <span className={cN(styles.close)} onClick={()=>handleDispatch(false)}>
                     <i className="icon ic-ln toolclose" />
                 </span>

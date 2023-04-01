@@ -11,6 +11,7 @@ import { signInWithRedirect, getRedirectResult, signInWithPopup, UserCredential 
 import cN from 'classnames';
 import InputBar from "../Modules/InputBar";
 import axios from "axios";
+import domain from '@utils/domainByEnv';
 
 function Header() {
     const [listOpen, setListOpen] = useState<boolean>(false);
@@ -40,7 +41,7 @@ function Header() {
     const handlelogout = async () => {
         localStorage.removeItem('credentials');
         localStorage.removeItem('memberinfo');
-        await axios.get('/local/member/logout');
+        await axios.get(`${domain()}/member/logout`);
         location.reload();
     }
 
@@ -52,15 +53,17 @@ function Header() {
                     m_email: loginAPI?.user.email,
                 }
                 try{
-                    const { data } = await axios.post('/local/member/loginmember', obj);
+                    const { data } = await axios.post(`${domain()}/member/loginmember`, obj);
                     // 若傳入的email不為空，並且登入失敗，則跳出alert。
                     if(!data.status && obj.m_email) alert(data.message);
                     // 若回傳結果為true，則將memberinfo寫進去localStorage
-                    if(data.status) localStorage.setItem('memberinfo', JSON.stringify(data));
-                    // google登入完後寫進去狀態
-                    if (loginAPI) {
-                        localStorage.setItem('credentials', JSON.stringify(loginAPI));
-                        setCredentials(loginAPI);
+                    if(data.status) {
+                        localStorage.setItem('memberinfo', JSON.stringify(data));
+                        // google登入完後寫進去狀態
+                        if(loginAPI) {
+                            localStorage.setItem('credentials', JSON.stringify(loginAPI));
+                            setCredentials(loginAPI);
+                        }
                     }
                     // 若當前localStorage有credentials，則將此設為狀態。
                     if(localStorage.getItem('credentials')) {
@@ -81,7 +84,7 @@ function Header() {
                 <div>
                     <span className={styles.show} onClick={()=>setListOpen(true)}>展開</span>
                     <a><i className={cN('icon ic-ln toolfroundf', styles.facebook)}/></a>
-                    <a><img className={styles.instagram} src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png"/></a>
+                    <a href="https://www.instagram.com/zllondoner.tw/?igshid=YmMyMTA2M2Y%3D"><img className={styles.instagram} src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png"/></a>
                 </div>
                 <a className={styles.logo} href='/penny-store?page_id='>PENNY_SHOP</a>
                 <div>
@@ -134,7 +137,7 @@ function Header() {
                                 </ul>
                             </div>
                         </span>:
-                        <span onClick={()=>{setListOpen(false);setLoginOpen(true)}}>會員登入</span>
+                        <span className={styles.loginbut} onClick={()=>{setListOpen(false);setLoginOpen(true)}}>會員登入</span>
                     }
                     {ListBlock()}
                     <div className={styles.otheroptions}>
@@ -166,9 +169,12 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
                     m_email: google.user.email,
                 }
                 try{
-                    const { data } = await axios.post('/local/member/registrymember', obj);
+                    const { data } = await axios.post(`${domain()}/member/registrymember`, obj);
                     alert(data.message);
-                    if(data.status) location.reload();
+                    if(data.status) {
+                        localStorage.setItem('credentials', JSON.stringify(google));
+                        location.reload();
+                    }
                 }catch(e) {
                     console.error('error => ', e);
                 }

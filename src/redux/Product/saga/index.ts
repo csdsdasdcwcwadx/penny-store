@@ -1,16 +1,16 @@
 
 import { call, put, all, StrictEffect, takeEvery } from 'redux-saga/effects';
 import fetchAPI from '@utils/fetchAPI';
-import DomainByEnv from '@utils/domainByEnv';
 import * as actionTypes from '../actionTypes';
 import * as actions from '../actions';
+import domain from '@utils/domainByEnv';
+
 // 網域domain路徑
 // 目前只有 提供json 檔, 之後再拿api 做替換
-const orderRoute = `${DomainByEnv()}/order`;
 
 function* fetch_getdetailproduct(action: any): Generator<StrictEffect, any, any> {
     const data = yield call(fetchAPI, {
-        url: `/local/product/getdetailproduct`,
+        url: `${domain()}/product/getdetailproduct`,
         req: action.payload,
     });
 

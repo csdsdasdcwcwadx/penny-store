@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './index.scss';
 import { Header, Body, Footer, SideBar } from '@components/App/index';
 
@@ -10,8 +10,8 @@ function App() {
                 <Header/>
                 <Body/>
             </div>
-            <SideBar/>
             <Footer/>
+            <SideBar/>
         </div>
     );
 }

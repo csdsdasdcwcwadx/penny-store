@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useMemo, useState } from "react";
+import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
 import BreadCrumb from "@components/Common/Modules/BreadCrumb";
 import styles from './styles.module.scss';
 import cN from 'classnames';
@@ -9,6 +9,9 @@ import { RootState } from '@Redux/Product/store';
 import { handleIMG } from '@utils/commonfunction';
 import { handleNavigator } from '@utils/commonfunction';
 import { E_Page } from "@Redux/App/interfaces";
+import axios from "axios";
+import domain from '@utils/domainByEnv';
+import { SideBar } from "..";
 
 function Body() {
     const dispatch = useDispatch();
@@ -26,9 +29,17 @@ function Body() {
     ]
 
     const [counter, setCounter] = useState<number>(1);
+    // 尺寸
     const [selectSize, setSelectSize] = useState('');
+    // 是否有現貨
     const [selectBuy, setSelectBuy] = useState('');
+    // 設定sidebar產品更改
+    const [trigger, setTrigger] = useState(false);
+    const [alertion, setAlertion] = useState(false);
+    const [lateAlert, setLateAlert] = useState(false);
+    const [message, setMessage] = useState('');
     const { productdetail } = useSelector((store: RootState)=>store);
+    const member = JSON.parse(localStorage.getItem('memberinfo')!);
 
     useEffect (() => {
         const url = new URL (window.location.href);
@@ -44,6 +55,39 @@ function Body() {
         ];
         else return [];
     }
+
+    const handleAddChart = useCallback( async () => {
+        if(productdetail && member) {
+            const body = {
+                m_id: member.memberinfo[0].m_id,
+                p_id: productdetail?.productinfo[0].p_id,
+                s_amount: counter,
+                s_size: selectSize,
+                s_buy: selectBuy,
+            }
+
+            try{
+                const { data } = await axios.post(`${domain()}/shoplist/addshoplist`, body);
+                setMessage(data.message);
+                setAlertion(true);
+                setTrigger(pre=>!pre);
+                setTimeout(()=>{
+                    setLateAlert(true);
+                },40)
+                setTimeout(()=>{
+                    setLateAlert(false);
+                },1500)
+                setTimeout(()=>{
+                    setAlertion(false);
+                },2000)
+            }catch(e){
+                console.error(e);
+            }
+
+        } else {
+            alert('請先登入會員');
+        }
+    },[productdetail, counter, member, selectBuy, selectSize])
 
     const src = useMemo(() => {
         if(productdetail) return handleIMG(productdetail.productinfo[0].p_img);
@@ -142,10 +186,12 @@ function Body() {
                                         return pre;
                                     })}> </span>
                             </div>
-                            <button>加入購物車</button>
+                            <button onClick={handleAddChart}>加入購物車</button>
                         </div>
                     </div>
                 </div>
+                <SideBar trigger={trigger}/>
+                <div className={cN(styles.alertion, {[styles.show]: alertion}, {[styles.lateAlert]: lateAlert})}>{message}</div>
             </div>
     )
 }
