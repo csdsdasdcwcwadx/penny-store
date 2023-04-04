@@ -64,6 +64,7 @@ function Body() {
                 s_amount: counter,
                 s_size: selectSize,
                 s_buy: selectBuy,
+                restrict: productdetail.productinfo[0].p_amount,
             }
 
             try{
@@ -80,6 +81,7 @@ function Body() {
                 setTimeout(()=>{
                     setAlertion(false);
                 },2000)
+                setCounter(1);
             }catch(e){
                 console.error(e);
             }
@@ -131,7 +133,10 @@ function Body() {
                         <img src={src}/>
                     </div>
                     <div className={styles.description}>
-                        <span className={styles.productname}>{productdetail.productinfo[0].p_name}</span>
+                        <span className={styles.productname}>
+                            {productdetail.productinfo[0].p_name}
+                            <span className={styles.productleft}>剩餘商品數量 : {productdetail.productinfo[0].p_amount}</span>
+                        </span>
                         <span className={styles.productprice}>NT$ {productdetail.productinfo[0].p_price}</span>
                         <div className={cN(styles.selection, styles.productsize)}>
                             <span className={styles.info}>尺寸</span>

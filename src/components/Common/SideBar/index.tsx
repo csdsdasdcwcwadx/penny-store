@@ -79,12 +79,12 @@ function SideBar ({trigger}: I_props) {
                                         <img src={handleIMG(product.p_img)}/>
                                         <div className={styles.productcontent}>
                                             <p>{product.p_name}</p>
+                                            <div className={styles.detailinfo}>
+                                                <span>x {product.s_amount}件 </span>
+                                                <span> 共<span>{dollar}</span>元</span>
+                                            </div>
                                         </div>
                                         <i className='icon ic-ln tool_trash-f' onClick={()=>deleteProduct(product.s_id)}/>
-                                    </div>
-                                    <div className={styles.detailinfo}>
-                                        <span>x {product.s_amount}件 </span>
-                                        <span> 共<span>{dollar}</span>元</span>
                                     </div>
                                 </li>
                             );

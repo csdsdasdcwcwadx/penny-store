@@ -67,8 +67,18 @@ body {
                 .productcontent {
 
                     p {
+                        margin-bottom: 0;
                         padding-left: 10px;
-                        font-size: 14px;
+                        font-size: 16px;
+                    }
+
+                    .detailinfo {
+                        padding-left: 10px;
+                        font-size: 12px;
+
+                        span>span {
+                            font-size: 14px;
+                        }
                     }
                 }
 
@@ -93,15 +103,6 @@ body {
 
             &:last-of-type {
                 padding-bottom: 80px;
-            }
-
-            .detailinfo {
-                padding-left: 80px;
-                font-size: 12px;
-
-                span>span {
-                    font-size: 14px;
-                }
             }
         }
 

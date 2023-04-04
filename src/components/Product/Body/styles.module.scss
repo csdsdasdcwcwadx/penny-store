@@ -56,6 +56,20 @@
             .productname {
                 font-size: 30px;
                 font-weight: 600;
+
+                @include only-pc {
+                    display: flex;
+                    align-items: center;
+                }
+
+                .productleft {
+                    font-size: 15px;
+                    color: #bbb;
+
+                    @include only-pc {
+                        padding-left: 20px;
+                    }
+                }
             }
 
             .productprice {
@@ -179,8 +193,8 @@
         bottom: 20px;
         left: 50%;
         display: none;
-        width: 20%;
         height: 40px;
+        padding: 0 10px;
         text-align: center;
         color: #fff;
         background-color: #000;
