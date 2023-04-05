@@ -29,6 +29,7 @@ function SideBar ({trigger}: I_props) {
     const [sidelistOpen, setSideListOpen] = useState<boolean>(false);
     const [shoplist, setShoplist] = useState<Array<I_shoplistinfo>>([]);
     const isMobile = useMediaQuery({ query: '(max-width: 980px)' });
+    const isLocal = window.location.href.includes('localhost');
     let total = 0;
 
     useEffect(() => {
@@ -90,7 +91,11 @@ function SideBar ({trigger}: I_props) {
                             );
                         })
                     }
-                    <button>前往結賬 <div className={styles.producttotal}>小計 <span>{total}</span> 元</div></button>
+                    <button onClick={()=>window.location.href = `/penny-store/payment${isLocal?'.html':''}`}>
+                        前往結賬 
+                        <div className={styles.producttotal}>小計 
+                        <span>{total}</span> 元</div>
+                    </button>
                 </div>
             </LightBox>
         </div>

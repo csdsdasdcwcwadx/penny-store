@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { store } from '@Redux/Product/store';
+import { store } from '@Redux/Payment/store';
 import { Provider } from 'react-redux';
-import { Header, Footer, Body } from '@components/Product';
+import { Header, Body } from '@components/Payment';
 import './index.scss';
 
-export function Product() {
+export function Payment() {
     return (
         <div className='pages'>
             <div className='topper'>
-                付款頁
+                <Header/>
+                <Body/>
             </div>
         </div>
     )
@@ -17,6 +18,6 @@ export function Product() {
 
 ReactDOM.createRoot(document.getElementById('payment') as HTMLElement).render(
     <Provider store={store}>
-        <Product/>
+        <Payment/>
     </Provider>
 );
