@@ -10,15 +10,10 @@ interface I_props {
 function Item(props: I_props) {
     const { info } = props;
     const { p_id, p_name, p_price, p_amount, p_img, p_type } = info;
-    const [isLocal, setIsLocal] = useState<boolean>(false);
-
-    useEffect(()=>{
-        const local = process.env.ENV === "local";
-        setIsLocal(local);
-    },[])
+    const isLocal = window.location.href.includes('localhost');
 
     return (
-        <a className={styles.Item} href={`/penny-store/product.html?p_id=${p_id}`}>
+        <a className={styles.Item} href={`/penny-store/product${isLocal?'.html':''}?p_id=${p_id}`}>
             <div className={styles.frame}>
                 {info && <img src={handleIMG(p_img)}/>}
             </div>
