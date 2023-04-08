@@ -4,7 +4,7 @@ import { E_Page } from './interfaces';
 export const setPage = (payload: E_Page) => ({
     type: actionTypes.SET_PAGE,
     payload,
-});
+})
 
 export const setIsLoading = (payload: boolean) => ({
     type: actionTypes.SET_ISLOADING,

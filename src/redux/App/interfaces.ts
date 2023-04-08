@@ -29,3 +29,18 @@ export interface I_productinfo {
     };
     p_type: string;
 }
+
+export interface I_member {
+    message: string;
+    status: boolean;
+    memberinfo: Array<I_memberinfo>;
+}
+
+export interface I_memberinfo {
+    isAdmin: number;
+    m_address: string;
+    m_email: string;
+    m_id: string;
+    m_name: string;
+    m_phone: string;
+}

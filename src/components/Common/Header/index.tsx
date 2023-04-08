@@ -12,12 +12,16 @@ import cN from 'classnames';
 import InputBar from "../Modules/InputBar";
 import axios from "axios";
 import domain from '@utils/domainByEnv';
+import PubSub from 'pubsub-js';
+import { I_member } from "@Redux/App/interfaces";
 
 function Header() {
     const [listOpen, setListOpen] = useState<boolean>(false);
     const [loginOpen, setLoginOpen] = useState<boolean>(false);
+    const [memberinfo, setMemberinfo] = useState<I_member | undefined>();
     const [credentials, setCredentials] = useState<UserCredential | null>();
     const isMenu: boolean = !!document.getElementById('menu');
+    const isLocal = window.location.href.includes('localhost');
     const dispatch = useDispatch();
 
     axios.defaults.withCredentials = true;
@@ -38,6 +42,7 @@ function Header() {
         )
     }
 
+    // 登出區塊
     const handlelogout = async () => {
         localStorage.removeItem('credentials');
         localStorage.removeItem('memberinfo');
@@ -45,10 +50,13 @@ function Header() {
         location.reload();
     }
 
+    // 處理登入資訊
     useEffect(()=>{
         (async function() {
             try{
-                const loginAPI = await getRedirectResult(auth);
+                // 若有credentials 代表剛註冊完成
+                const credentials = JSON.parse(localStorage.getItem('credentials')!)
+                const loginAPI = await getRedirectResult(auth) || credentials;
                 const obj = {
                     m_email: loginAPI?.user.email,
                 }
@@ -59,6 +67,8 @@ function Header() {
                     // 若回傳結果為true，則將memberinfo寫進去localStorage
                     if(data.status) {
                         localStorage.setItem('memberinfo', JSON.stringify(data));
+                        setMemberinfo(data);
+                        PubSub.publish('isLogin', data);
                         // google登入完後寫進去狀態
                         if(loginAPI) {
                             localStorage.setItem('credentials', JSON.stringify(loginAPI));
@@ -66,9 +76,7 @@ function Header() {
                         }
                     }
                     // 若當前localStorage有credentials，則將此設為狀態。
-                    if(localStorage.getItem('credentials')) {
-                        setCredentials(JSON.parse(localStorage.getItem('credentials')!));
-                    }
+                    if(credentials) setCredentials(credentials);
                 }catch(err) {
                     console.error('error => ', err);
                 }
@@ -86,7 +94,10 @@ function Header() {
                     <a><i className={cN('icon ic-ln toolfroundf', styles.facebook)}/></a>
                     <a href="https://www.instagram.com/zllondoner.tw/?igshid=YmMyMTA2M2Y%3D"><img className={styles.instagram} src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png"/></a>
                 </div>
-                <a className={styles.logo} href='/penny-store?page_id='>PENNY_SHOP</a>
+                    <a 
+                        className={styles.logo} 
+                        href={memberinfo && memberinfo.memberinfo[0].isAdmin === 0 ?'/penny-store?page_id=':`/penny-store/backend${isLocal?'.html':''}`}
+                    >PENNY_SHOP</a>
                 <div>
                     <span className={styles.show}>seh</span>
                     {

@@ -36,37 +36,40 @@ function Body() {
     console.log(shoplist)
     return (
         <div>
-            <div className={styles.shoplist}>
-                <div className={styles.title}>
-                    <span className={styles.name}>商品名稱</span>
-                    <span className={styles.price}>單件價格</span>
-                    <span className={styles.amount}>商品數量</span>
-                    <span className={styles.total}>小計</span>
+            {
+                shoplist.length === 0 ? <div className={styles.noitem}>目前沒有任何商品</div>:
+                <div className={styles.shoplist}>
+                    <div className={styles.title}>
+                        <span className={styles.name}>商品名稱</span>
+                        <span className={styles.price}>單件價格</span>
+                        <span className={styles.amount}>商品數量</span>
+                        <span className={styles.total}>小計</span>
+                    </div>
+                    {
+                        shoplist.map((product)=>{
+                            const dollar = product.p_price*product.s_amount;
+                            total += dollar;
+                            return (
+                                <li key={product.p_id}>
+                                    <span className={styles.name}>
+                                        <img src={handleIMG(product.p_img)}/>
+                                        {product.p_name}
+                                    </span>
+                                    <span className={styles.price} data-title='單件價格'>{product.p_price}元</span>
+                                    <span className={styles.amount} data-title='商品數量'>{product.s_amount}</span>
+                                    <span className={styles.total} data-title='小計'>{product.p_price*product.s_amount}元</span>
+                                </li>
+                            )
+                        })
+                    }
+                    <div className={styles.calculate}>
+                        <span>總共</span>
+                        <span> </span>
+                        <span> </span>
+                        <span className={styles.totalcalculation}>{total}元</span>
+                    </div>
                 </div>
-                {
-                    shoplist.map((product)=>{
-                        const dollar = product.p_price*product.s_amount;
-                        total += dollar;
-                        return (
-                            <li key={product.p_id}>
-                                <span className={styles.name}>
-                                    <img src={handleIMG(product.p_img)}/>
-                                    {product.p_name}
-                                </span>
-                                <span className={styles.price} data-title='單件價格'>{product.p_price}</span>
-                                <span className={styles.amount} data-title='商品數量'>{product.s_amount}</span>
-                                <span className={styles.total} data-title='小計'>{product.p_price*product.s_amount}</span>
-                            </li>
-                        )
-                    })
-                }
-                <div className={styles.calculate}>
-                    <span>總共</span>
-                    <span> </span>
-                    <span> </span>
-                    <span className={styles.totalcalculation}>{total}</span>
-                </div>
-            </div>
+            }
         </div>
     );
 }

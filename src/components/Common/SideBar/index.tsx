@@ -8,6 +8,7 @@ import { I_productinfo } from '@Redux/Product/interface';
 import { handleIMG } from '@utils/commonfunction';
 import { useMediaQuery } from 'react-responsive';
 import cN from 'classnames';
+import PubSub from 'pubsub-js'
 
 interface I_shoplistinfo extends I_productinfo {
     s_amount: number;
@@ -28,13 +29,21 @@ interface I_props {
 function SideBar ({trigger}: I_props) {
     const [sidelistOpen, setSideListOpen] = useState<boolean>(false);
     const [shoplist, setShoplist] = useState<Array<I_shoplistinfo>>([]);
+    const [isLogin, setIsLogin] = useState<boolean>(false);
     const isMobile = useMediaQuery({ query: '(max-width: 980px)' });
     const isLocal = window.location.href.includes('localhost');
     let total = 0;
 
     useEffect(() => {
+        PubSub.subscribe('isLogin', ()=>{
+            setIsLogin(true);
+        })
+    },[])
+
+    useEffect(() => {
         const member = JSON.parse(localStorage.getItem('memberinfo')!);
-        member && (async function(){
+        isLogin && (async function(){
+            setIsLogin(true);
             try {
                 const {data} = await axios.post<I_getshoplist>(`${domain()}/shoplist/getshoplist`, {m_id: member.memberinfo[0].m_id});
                 setShoplist(data.shoplist);
@@ -42,7 +51,7 @@ function SideBar ({trigger}: I_props) {
                 console.error(e);
             }
         })()
-    },[trigger])
+    },[trigger, isLogin])
 
     const deleteProduct = async (id: string) => {
         try {
@@ -59,7 +68,7 @@ function SideBar ({trigger}: I_props) {
 
     return (
         <div className={styles.SideBar}>
-            <div className={styles.cartframe} onClick={()=>setSideListOpen(true)} data-number={shoplist.length}>
+            <div className={styles.cartframe} onClick={()=>isLogin?setSideListOpen(true):alert('請先登入會員')} data-number={shoplist.length}>
                 <i className='icon ic-ln toolbuy'/>
             </div>
             <LightBox
