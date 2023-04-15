@@ -1,13 +1,13 @@
 import * as actionTypes from './actionTypes';
 
-// 呼叫product_getdetail
-export const call_getdetailproduct = (payload: any) => ({
-    type: actionTypes.CALL_PRODUCT_GETDETAIL,
+// 呼叫 product/getallproduct
+export const call_getallproduct = (payload: any) => ({
+    type: actionTypes.CALL_PRODUCT_GETALLPRODUCT,
     payload,
-});
+})
 
-// 將product_getdetail寫進redux
-export const set_getdetailproduct = (payload: any) => ({
-    type: actionTypes.SET_PRODUCT_GETDETAIL,
+// product/getallproduct寫進redux
+export const set_getallproduct = (payload: any) => ({
+    type: actionTypes.SET_PRODUCT_GETALLPRODUCT,
     payload,
-});
+})
