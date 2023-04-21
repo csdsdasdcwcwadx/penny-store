@@ -112,11 +112,11 @@ function Body() {
                             const lefter = width/2 - (e.clientX-left+1);
                             const topper = height/2 - (e.clientY-top+1);
 
-                            img.style.top = `${topper}px`; // 往上是正 往下是負 56
-                            img.style.left = `${lefter}px`; // 往右是負 往左是正 -116
-                            img.style.scale = '2';
-                            console.log('(', e.clientX, ',', e.clientY, ')');
-                            // console.log('(', width, ',', height, ')') ( 303.65625 , 410.375 )
+                            if((width/2 - Math.abs(lefter) > 1) && (height/2 - Math.abs(topper) > 1) ) {
+                                img.style.top = `${topper}px`; // 往上是正 往下是負 56
+                                img.style.left = `${lefter}px`; // 往右是負 往左是正 -116
+                                img.style.scale = '2';
+                            }
                         }
                     }} onMouseLeave={e=>{
                         const img = e.target as HTMLElement;
