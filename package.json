@@ -9,10 +9,10 @@
     },
     "private": true,
     "scripts": {
-        "start": "cross-env ENV=local PORT=3638 node scripts/start.js",
+        "start": "cross-env ENV=prod PORT=3638 node scripts/start.js",
         "demo": "cross-env ENV=local SERVER=rel PUBLIC_URL=./ node scripts/build.js",
-        "build": "cross-env ENV=rel SERVER=rel PUBLIC_URL=./ node scripts/build.js",
-        "prod": "cross-env ENV=prod SERVER=prod PUBLIC_URL=./ node scripts/build.js",
+        "rel": "cross-env ENV=rel SERVER=rel PUBLIC_URL=./ node scripts/build.js",
+        "build": "cross-env ENV=prod SERVER=prod PUBLIC_URL=./ node scripts/build.js",
         "test": "node scripts/test.js",
         "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook",
@@ -20,7 +20,8 @@
         "lint": "stylelint src/**/*.scss --syntax scss",
         "lint:fix": "stylelint src/**/*.scss --syntax scss --fix",
         "predeploy": "npm run build",
-        "deploy": "gh-pages -d build"
+        "deploy": "gh-pages -d build",
+        "dev": "cross-env ENV=local PORT=3638 node scripts/start.js"
     },
     "dependencies": {
         "@n8tb1t/use-scroll-position": "^2.0.3",
