@@ -4,7 +4,7 @@ module.exports = function (app) {
     app.use(
         '/local',
         createProxyMiddleware({
-            target: 'http://localhost:3000/',
+            target: 'http://localhost:3001/',
             changeOrigin: true,
             pathRewrite: { '/local': '' },
         })
