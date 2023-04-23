@@ -5,7 +5,7 @@ import Item from '@components/App/Item';
 import { RootState } from '@Redux/App/store';
 import { useSelector, useDispatch } from 'react-redux';
 import { call_getallproduct } from '@Redux/App/actions';
-import { I_productinfo } from '@Redux/App/interfaces';
+import { I_productinfo } from '@Redux/Product/interface';
 import Spinner from '@components/Common/Modules/Spinner';
 import { handleNavigator } from '@utils/commonfunction';
 
@@ -45,7 +45,7 @@ function Body() {
                 </div>
                 <div className={styles.function}>
                     <span>共{getallproduct?.productinfo.length}項結果</span>
-                    <span>依最新項目排序</span>
+                    {/* <span>依最新項目排序</span> */}
                 </div>
                 <div className={styles.display}>
                     {
