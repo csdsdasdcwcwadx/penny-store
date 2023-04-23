@@ -1,4 +1,4 @@
-export default (isProxy: boolean = true) => {
+export default () => {
     if (process.env.STORYBOOK) {
         return '/mockData';
     }
@@ -11,17 +11,6 @@ export default (isProxy: boolean = true) => {
         // else 不須需要 proxy，要在本機上直接連到 u 機
         //      例如點擊 本機 <a> 標籤，要導到 u 機的產品頁，則傳入 false
         default:
-            return isProxy ? '/ub2b-travel' : '//ub2b-travel.liontravel.com';
+            return '/local';
     }
 };
-
-export const member = (() => {
-    switch (process.env.ENV) {
-        case 'prod':
-            return '//member.liontravel.com';
-        case 'rel':
-            return '//umember.liontravel.com';
-        default:
-            return '/umember';
-    }
-})();

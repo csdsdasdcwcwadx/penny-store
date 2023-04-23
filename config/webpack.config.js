@@ -157,6 +157,8 @@ module.exports = function (webpackEnv) {
         entry: {
             app: paths.appIndexJs,
             product: paths.appProductJs,
+            payment: paths.appPaymentJs,
+            backend: paths.appBackendJs,
         },
         output: {
             // The build folder.
@@ -558,6 +560,60 @@ module.exports = function (webpackEnv) {
                         filename: 'product.html',
                         template: paths.appProductHtml,
                         chunks: ['product'],
+                    },
+                    isEnvProduction
+                        ? {
+                              minify: {
+                                  removeComments: true,
+                                  collapseWhitespace: true,
+                                  removeRedundantAttributes: true,
+                                  useShortDoctype: true,
+                                  removeEmptyAttributes: true,
+                                  removeStyleLinkTypeAttributes: true,
+                                  keepClosingSlash: true,
+                                  minifyJS: true,
+                                  minifyCSS: true,
+                                  minifyURLs: true,
+                              },
+                          }
+                        : undefined
+                )
+            ),
+            new HtmlWebpackPlugin(
+                Object.assign(
+                    {},
+                    {
+                        inject: true,
+                        filename: 'payment.html',
+                        template: paths.appPaymentHtml,
+                        chunks: ['payment'],
+                    },
+                    isEnvProduction
+                        ? {
+                              minify: {
+                                  removeComments: true,
+                                  collapseWhitespace: true,
+                                  removeRedundantAttributes: true,
+                                  useShortDoctype: true,
+                                  removeEmptyAttributes: true,
+                                  removeStyleLinkTypeAttributes: true,
+                                  keepClosingSlash: true,
+                                  minifyJS: true,
+                                  minifyCSS: true,
+                                  minifyURLs: true,
+                              },
+                          }
+                        : undefined
+                )
+            ),
+            new HtmlWebpackPlugin(
+                Object.assign(
+                    {},
+                    {
+                        inject: true,
+                        filename: 'backend.html',
+                        template: paths.appBackendHtml,
+                        chunks: ['backend'],
                     },
                     isEnvProduction
                         ? {

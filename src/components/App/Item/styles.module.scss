@@ -1,4 +1,6 @@
 .Item {
+    display: flex;
+    flex-direction: column;
     margin: 0 auto;
     margin: 0 10px 10px;
     text-decoration: none;
@@ -8,16 +10,18 @@
         overflow: hidden;
         margin: 0 auto;
         max-height: 360px;
-    }
+        margin-bottom: auto;
 
-    img {
-        width: 100%;
-        height: inherit;
-        object-fit: cover;
-        transition: all 0.5s ease;
+        img,
+        div {
+            width: 100%;
+            height: inherit;
+            object-fit: cover;
+            transition: all 0.5s ease;
 
-        &:hover {
-            transform: scale(1.2);
+            &:hover {
+                transform: scale(1.2);
+            }
         }
     }
 

@@ -1,0 +1,19 @@
+@import '../../../../commonStyles/variables.scss';
+
+.BreadCrumb {
+    font-size: 13px;
+
+    span {
+
+        >a,
+        >span {
+            text-decoration: none;
+            color: #222;
+        }
+
+        a:hover {
+            color: $mainColor;
+            cursor: pointer;
+        }
+    }
+}

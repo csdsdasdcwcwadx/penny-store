@@ -2,11 +2,11 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function (app) {
     app.use(
-        '/utravel',
+        '/local',
         createProxyMiddleware({
-            target: 'https://utravel.liontravel.com/',
+            target: 'http://localhost:3000/',
             changeOrigin: true,
-            pathRewrite: { '/utravel': '' },
+            pathRewrite: { '/local': '' },
         })
     );
 };

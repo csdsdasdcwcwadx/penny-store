@@ -1,0 +1,134 @@
+.body {
+
+    .productwrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+
+        .product {
+            display: flex;
+            flex-direction: column;
+            margin-top: 30px;
+            width: 250px;
+            list-style-type: none;
+            border: 1px solid #bbb;
+
+            &:not(:last-of-type) {
+                margin-right: 30px;
+            }
+
+            img {
+                height: 60px;
+                width: 60px;
+                object-fit: cover;
+            }
+
+            .buttons {
+                margin-top: auto;
+
+                button {
+                    cursor: pointer;
+
+                    &:first-of-type {
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+    }
+
+    .addnew {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+        width: 80px;
+        height: 30px;
+        background-color: #504e4a;
+        color: #fff;
+        cursor: pointer;
+    }
+}
+
+i {
+    color: #000;
+}
+
+.addingBlock {
+    width: 50vw;
+    height: 90vh;
+    background-color: #fff;
+
+    .input {
+        padding: 40px;
+    }
+
+    .selection {
+        >span {
+            display: block;
+            margin: 0 0 5px 5px;
+            font-size: 12px;
+        }
+
+        select {
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            outline: none;
+            cursor: pointer;
+        }
+    }
+
+    [type="file"] {
+        margin-top: 20px;
+    }
+
+    button {
+        margin-top: 20px;
+        cursor: pointer;
+    }
+
+    .buttongroup {
+        text-align: center;
+    }
+}
+
+.fixBlock {
+    width: 50vw;
+    height: 90vh;
+    background-color: #fff;
+
+    .input {
+        padding: 40px;
+    }
+
+    .selection {
+        >span {
+            display: block;
+            margin: 0 0 5px 5px;
+            font-size: 12px;
+        }
+
+        select {
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            outline: none;
+            cursor: pointer;
+        }
+    }
+
+    [type="file"] {
+        margin-top: 20px;
+    }
+
+    button {
+        margin-top: 20px;
+        cursor: pointer;
+    }
+
+    .buttongroup {
+        text-align: center;
+    }
+}

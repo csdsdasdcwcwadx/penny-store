@@ -1,59 +1,60 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
 import styles from './styles.module.scss';
-import BreadCrumb from '../../Common/BreadCrumb';
+import BreadCrumb from '../../Common/Modules/BreadCrumb';
 import Item from '@components/App/Item';
 import { RootState } from '@Redux/App/store';
-import { E_Page } from '@Redux/App/interfaces';
-import { useSelector } from 'react-redux';
-
-interface I_image {
-    name: string;
-    src: string;
-}
+import { useSelector, useDispatch } from 'react-redux';
+import { call_getallproduct } from '@Redux/App/actions';
+import { I_productinfo } from '@Redux/Product/interface';
+import Spinner from '@components/Common/Modules/Spinner';
+import { handleNavigator } from '@utils/commonfunction';
 
 function Body() {
-    const images = require.context('../../imgs', false, /\.(png|jpe?g|svg)$/);
-    const { page } = useSelector((store: RootState)=>store);
+    const { page, getallproduct, isLoading } = useSelector((store: RootState)=>store); 
+    const dispatch = useDispatch();
 
-    const handleType = (type: E_Page)=>{
-        switch(type) {
-            case E_Page.HOME:
-                return 'Home';
-            case E_Page.SHOPALL:
-                return '全部商品 | SHOP_ALL';
-            case E_Page.SALE:
-                return '優惠專區 | SALE';
-            case E_Page.RESTOCK:
-                return '熱騰騰現貨 | RESTOCK';
-            case E_Page.WEAR:
-                return '穿搭筆記本 | WEAR';
-            case E_Page.MORE:
-                return '更多';
+    useEffect(() => {
+        const url = new URL (window.location.href);
+        const page_id = url.searchParams.get('page_id');
+        if(page_id === '' || page_id) {
+            window.history.pushState({}, '', window.location.href.split('?')[0]);
+            dispatch(call_getallproduct({p_type: page_id}));
+        }else{
+            dispatch(call_getallproduct({p_type: page}));
         }
+
+    },[dispatch, page])
+
+    const handleBreadCrumb = () => {
+        const menu = {name: '首頁', href: '/penny-store?page_id='}
+        return [menu, {name: handleNavigator(page), href: ''}];
     }
 
-    const imageList = images.keys().map((imageName) => ({
-        name: imageName.replace('./', ''),
-        src: images(imageName),
-    }));
     return (
-        <div className={styles.Body}>
-            <div className={styles.title}>{handleType(page)}</div>
-            <div className={styles.breadcrumb}>
-                <BreadCrumb/>
+        isLoading ? <Spinner/> :
+            <div className={styles.Body}>
+                <div className={styles.title}>{getallproduct && handleNavigator(page)}</div>
+                <button onClick={()=>{
+                    const member = JSON.parse(localStorage.getItem('memberinfo')!);
+                    const google = JSON.parse(localStorage.getItem('credentials')!);
+                    console.log("@@@", member)
+                    console.log("@@@", google)
+                }}>查看登錄狀態</button>
+                <div className={styles.breadcrumb}>
+                    <BreadCrumb items={handleBreadCrumb()}/>
+                </div>
+                <div className={styles.function}>
+                    <span>共{getallproduct?.productinfo.length}項結果</span>
+                    {/* <span>依最新項目排序</span> */}
+                </div>
+                <div className={styles.display}>
+                    {
+                        getallproduct?.productinfo.map((info: I_productinfo) => {
+                            return <Item key={info.p_id} info={info}/>
+                        })
+                    }
+                </div>
             </div>
-            <div className={styles.function}>
-                <span>顯示第1至12項結果，共28項</span>
-                <span>依最新項目排序</span>
-            </div>
-            <div className={styles.display}>
-                {
-                    imageList.map((img: I_image)=>{
-                        return <Item key={img.name} img={img}/>
-                    })
-                }
-            </div>
-        </div>
     );
 }
 

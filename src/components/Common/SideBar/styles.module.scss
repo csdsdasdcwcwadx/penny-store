@@ -1,0 +1,133 @@
+body {
+    &.setpage {
+        overflow: hidden;
+    }
+}
+
+.SideBar {
+    .cartframe {
+        position: fixed;
+        right: 5%;
+        bottom: 5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        background-color: #edd8f7;
+        border-radius: 50%;
+        font-size: 30px;
+        cursor: pointer;
+
+        i {
+            margin-left: 10px;
+        }
+
+        &::after {
+            content: attr(data-number);
+            position: relative;
+            bottom: 18px;
+            color: #f9f5de;
+            background-color: #ff0000;
+            width: 10px;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    }
+
+    .sidepage {
+        width: 30vw;
+        height: auto;
+        min-height: 100vh;
+        color: #fff;
+        background-color: #504e4a;
+
+        li {
+            list-style-type: none;
+
+            .productlist {
+                display: flex;
+                align-items: center;
+                padding-left: 20px;
+                list-style-type: none;
+
+                img {
+                    width: 50px;
+                    height: 50px;
+                    object-fit: cover;
+                }
+
+                .productcontent {
+
+                    p {
+                        margin-bottom: 0;
+                        padding-left: 10px;
+                        font-size: 16px;
+                    }
+
+                    .detailinfo {
+                        padding-left: 10px;
+                        font-size: 12px;
+
+                        span>span {
+                            font-size: 14px;
+                        }
+                    }
+                }
+
+                i {
+                    position: absolute;
+                    right: 20px;
+                    cursor: pointer;
+
+                    &:hover {
+                        color: #ff0000;
+                    }
+                }
+            }
+
+            &:first-of-type {
+                padding-top: 40px;
+            }
+
+            &:not(:first-of-type) {
+                margin-top: 20px;
+            }
+
+            &:last-of-type {
+                padding-bottom: 80px;
+            }
+        }
+
+        button {
+            position: fixed;
+            bottom: 0;
+            width: 30vw;
+            padding: 10px;
+            border-top: 1px solid #bbb;
+            color: #222;
+            background-color: #f9f5de;
+            font-size: 16px;
+            cursor: pointer;
+
+            .producttotal {
+                font-size: 12px;
+            }
+        }
+
+        &.isMobile {
+            width: 60vw;
+
+            button {
+                width: 60vw;
+            }
+        }
+    }
+}
