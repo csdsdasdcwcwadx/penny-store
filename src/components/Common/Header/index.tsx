@@ -9,7 +9,7 @@ import '../Modules/ic-ln/css.css';
 import { auth, GoogleProvider } from '@utils/firebase-auth';
 import { signInWithRedirect, getRedirectResult, signInWithPopup, UserCredential } from 'firebase/auth';
 import cN from 'classnames';
-import InputBar from "../Modules/InputBar";
+import InputBar, { E_RegexType } from "../Modules/InputBar";
 import axios from "axios";
 import domain from '@utils/domainByEnv';
 import PubSub from 'pubsub-js';
@@ -128,7 +128,7 @@ function Header() {
             <LightBox 
                 isOpen={listOpen} 
                 handleDispatch={setListOpen}
-                direction={'LEFT' as E_direction}
+                direction={E_direction.LEFT}
                 theName={styles.block}
             >
                 <div className={styles.block}>
@@ -227,9 +227,9 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
                                 </div> : 
                                 <div>
                                     <div className={styles.title}>會員註冊</div>
-                                    <InputBar title='姓名' placeholder='請輸入姓名' type='name' ref={m_name}/>
-                                    <InputBar title='手機' placeholder='請輸入手機' type='phone' ref={m_phone}/>
-                                    <InputBar title='地址' placeholder='請輸入地址' type='address' ref={m_address}/>
+                                    <InputBar title='姓名' placeholder='請輸入姓名' type={E_RegexType.NAME} ref={m_name}/>
+                                    <InputBar title='手機' placeholder='請輸入手機' type={E_RegexType.PHONE} ref={m_phone}/>
+                                    <InputBar title='地址' placeholder='請輸入地址' type={E_RegexType.ADDRESS} ref={m_address}/>
                                     <div className={styles.buttonlist}>
                                         <button onClick={handleRegistry}>送出</button>
                                     </div>

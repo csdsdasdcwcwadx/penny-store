@@ -19,4 +19,6 @@ export interface I_productinfo {
         type: string;
     };
     p_type: string;
+    p_size: boolean;
+    p_current: boolean;
 }

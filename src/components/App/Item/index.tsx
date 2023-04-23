@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useMemo, useState } from "react";
 import styles from './styles.module.scss';
-import { I_productinfo } from '@Redux/App/interfaces';
+import { I_productinfo } from '@Redux/Product/interface';
 import { handleIMG } from "@utils/commonfunction"; 
 
 interface I_props {
