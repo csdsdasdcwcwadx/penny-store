@@ -3,6 +3,10 @@
     "name": "penny-store",
     "description": "create-react-app & redux & typescript sample",
     "version": "0.1.0",
+    "engines": {
+        "node": "14.16.1",
+        "npm": "6.14.12"
+    },
     "private": true,
     "scripts": {
         "start": "cross-env ENV=local PORT=3638 node scripts/start.js",
