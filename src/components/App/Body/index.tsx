@@ -50,7 +50,7 @@ function Body() {
                 <div className={styles.display}>
                     {
                         getallproduct?.productinfo.map((info: I_productinfo, ind) => {
-                            return <Item key={ind} info={info}/>
+                            return <Item key={info.p_id} info={info}/>
                         })
                     }
                 </div>
