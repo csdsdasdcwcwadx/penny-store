@@ -9,4 +9,13 @@ module.exports = function (app) {
             pathRewrite: { '/local': '' },
         })
     );
+
+    app.use(
+        '/heroku',
+        createProxyMiddleware({
+            target: 'https://londoner.herokuapp.com/',
+            changeOrigin: true,
+            pathRewrite: { '/heroku': '' },
+        })
+    );
 };
