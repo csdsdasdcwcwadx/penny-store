@@ -97,7 +97,7 @@ function Header() {
                     <a 
                         className={styles.logo} 
                         href={memberinfo && memberinfo.memberinfo[0].isAdmin === 0 ?'/penny-store?page_id=':`/penny-store/backend${isLocal?'.html':''}`}
-                    >PENNY_SHOP</a>
+                    >LONDONER</a>
                 <div>
                     <span className={styles.show}>seh</span>
                     {

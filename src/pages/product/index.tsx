@@ -12,6 +12,9 @@ export function Product() {
                 <Header/>
                 <Body/>
             </div>
+            <div>
+                1234556778
+            </div>
             <Footer/>
         </div>
     )
