@@ -4,7 +4,7 @@ type I_FetchParams = { url: string; req: any };
 
 async function fetchAPI({ url, req }: I_FetchParams) {
     try {
-        const { data } = await axios.post(url, req);
+        const { data } = await axios.post(url, req, {withCredentials: true});
         return data;
     } catch (ex) {
         console.log(`${url} Exception =>`, ex);
