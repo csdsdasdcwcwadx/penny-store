@@ -10,7 +10,7 @@ import { handleIMG } from '@utils/commonfunction';
 import { handleNavigator } from '@utils/commonfunction';
 import { E_Page } from "@Redux/App/interfaces";
 import axios from "axios";
-import domain from '@utils/domainByEnv';
+import domain, {handlepath} from '@utils/domainByEnv';
 import { SideBar } from "..";
 
 function Body() {
@@ -47,10 +47,10 @@ function Body() {
     },[dispatch])
 
     const handleBreadCrumb = () => {
-        const menu = {name: '首頁', href: '/penny-store'};
+        const menu = {name: '首頁', href: handlepath()};
         if(productdetail) return [
             menu,
-            {name: handleNavigator(productdetail.productinfo[0].p_type as E_Page), href: `/penny-store?page_id=${productdetail.productinfo[0].p_type}`},
+            {name: handleNavigator(productdetail.productinfo[0].p_type as E_Page), href: `${handlepath()}?page_id=${productdetail.productinfo[0].p_type}`},
             {name: productdetail.productinfo[0].p_name, href: ''}
         ];
         else return [];

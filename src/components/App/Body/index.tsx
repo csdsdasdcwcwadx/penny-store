@@ -8,6 +8,7 @@ import { call_getallproduct } from '@Redux/App/actions';
 import { I_productinfo } from '@Redux/Product/interface';
 import Spinner from '@components/Common/Modules/Spinner';
 import { handleNavigator } from '@utils/commonfunction';
+import { handlepath } from '@utils/domainByEnv';
 
 function Body() {
     const { page, getallproduct, isLoading } = useSelector((store: RootState)=>store); 
@@ -26,7 +27,7 @@ function Body() {
     },[dispatch, page])
 
     const handleBreadCrumb = () => {
-        const menu = {name: '首頁', href: '/penny-store?page_id='}
+        const menu = {name: '首頁', href: `${handlepath()}?page_id=`}
         return [menu, {name: handleNavigator(page), href: ''}];
     }
 

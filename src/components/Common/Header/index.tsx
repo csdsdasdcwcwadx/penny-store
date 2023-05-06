@@ -11,7 +11,7 @@ import { signInWithRedirect, getRedirectResult, signInWithPopup, UserCredential 
 import cN from 'classnames';
 import InputBar, { E_RegexType } from "../Modules/InputBar";
 import axios from "axios";
-import domain from '@utils/domainByEnv';
+import domain, { handlepath } from '@utils/domainByEnv';
 import PubSub from 'pubsub-js';
 import { I_member } from "@Redux/App/interfaces";
 
@@ -33,7 +33,7 @@ function Header() {
                         return <li key={ind} onClick={() => {
                             setListOpen(false);
                             // 若不是首頁，就將上面的Navigator改成網址。
-                            if(!isMenu) window.location.href = `/penny-store?page_id=${value}`;
+                            if(!isMenu) window.location.href = `${handlepath()}?page_id=${value}`;
                             else dispatch(setPage(E_Page[key as keyof typeof E_Page]));
                         }}>{handleNavigator(value)}</li>
                     })
@@ -96,7 +96,7 @@ function Header() {
                 </div>
                     <a 
                         className={styles.logo} 
-                        href={memberinfo && memberinfo.memberinfo[0].isAdmin === 0 ?'/penny-store?page_id=':`/penny-store/backend${isLocal?'.html':''}`}
+                        href={memberinfo && memberinfo.memberinfo[0].isAdmin === 0 ?`${handlepath()}?page_id=`:`/backend${isLocal?'.html':''}`}
                     >LONDONER</a>
                 <div>
                     <span className={styles.show}>seh</span>

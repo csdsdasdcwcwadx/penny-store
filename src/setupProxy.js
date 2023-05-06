@@ -10,12 +10,12 @@ module.exports = function (app) {
         })
     );
 
-    app.use(
-        '/heroku',
-        createProxyMiddleware({
-            target: 'https://londoner.herokuapp.com/',
-            changeOrigin: true,
-            pathRewrite: { '/heroku': '' },
-        })
-    );
+    // app.use(
+    //     '/heroku',
+    //     createProxyMiddleware({
+    //         target: 'https://londoner.herokuapp.com/',
+    //         changeOrigin: true,
+    //         pathRewrite: { '/heroku': '' },
+    //     })
+    // );
 };

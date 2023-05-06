@@ -2,7 +2,7 @@ import React, { memo, useEffect, useMemo, useState } from 'react';
 import styles from './styles.module.scss';
 import LightBox, { E_direction } from '../Modules/LightBox';
 import '../Modules/ic-ln/css.css';
-import domain from '@utils/domainByEnv';
+import domain, {handlepath} from '@utils/domainByEnv';
 import axios from 'axios';
 import { I_productinfo } from '@Redux/Product/interface';
 import { handleIMG } from '@utils/commonfunction';
@@ -100,7 +100,7 @@ function SideBar ({trigger}: I_props) {
                             );
                         })
                     }
-                    <button onClick={()=>window.location.href = `/penny-store/payment${isLocal?'.html':''}`}>
+                    <button onClick={()=>window.location.href = `${handlepath()}/payment${isLocal?'.html':''}`}>
                         前往結賬 
                         <div className={styles.producttotal}>小計 
                         <span>{total}</span> 元</div>

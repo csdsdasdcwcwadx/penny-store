@@ -14,3 +14,14 @@ export default () => {
             return '/local';
     }
 };
+
+export const handlepath = () => {
+    switch (process.env.ENV) {
+        case 'prod':
+        case 'rel':
+            return '/';
+        default:
+            return '/penny-store';
+
+    }
+}
