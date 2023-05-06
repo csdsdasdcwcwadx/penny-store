@@ -18,3 +18,6 @@ If you want to learn more about creating good readme files then refer the follow
 - [ASP.NET Core](https://github.com/aspnet/Home)
 - [Visual Studio Code](https://github.com/Microsoft/vscode)
 - [Chakra Core](https://github.com/Microsoft/ChakraCore)
+
+# front-end
+若要重新部署到 github 需要重新更新 custom domain 成 www.londoner.tw
