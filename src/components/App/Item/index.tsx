@@ -1,7 +1,8 @@
-import React, { memo, useEffect, useMemo, useState } from "react";
+import React, { memo } from "react";
 import styles from './styles.module.scss';
 import { I_productinfo } from '@Redux/Product/interface';
 import { handleIMG } from "@utils/commonfunction"; 
+import { handlepath } from "@utils/domainByEnv";
 
 interface I_props {
     info: I_productinfo
@@ -13,7 +14,7 @@ function Item(props: I_props) {
     const isLocal = window.location.href.includes('localhost');
 
     return (
-        <a className={styles.Item} href={`/penny-store/product${isLocal?'.html':''}?p_id=${p_id}`}>
+        <a className={styles.Item} href={`${handlepath()}/product${isLocal?'.html':''}?p_id=${p_id}`}>
             <div className={styles.frame}>
                 {info && <img src={handleIMG(p_img)}/>}
             </div>
