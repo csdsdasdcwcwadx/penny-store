@@ -15,13 +15,6 @@ import { SideBar } from "..";
 
 function Body() {
     const dispatch = useDispatch();
-    const sizeOptions = [
-        {label: '請選擇', value: '', isDisabled: true},
-        {label: 'S號', value: 'S'},
-        {label: 'M號', value: 'M'},
-        {label: 'L號', value: 'L'},
-    ]
-
     const buyOptions = [
         {label: '請選擇', value: '', isDisabled: true},
         {label: '現貨', value: 'current'},
@@ -41,9 +34,20 @@ function Body() {
     const { productdetail } = useSelector((store: RootState)=>store);
     const member = JSON.parse(localStorage.getItem('memberinfo')!);
 
+    const sizeOptions = useMemo(() => {
+        const options = [{label: '請選擇', value: '', isDisabled: true, id: ''}];
+        if(productdetail) {
+            const { productinfo } = productdetail!;
+            productinfo.forEach((product) => {
+                options.push({label: product.p_size, value: product.p_size, isDisabled: false, id: product.p_id});
+            })
+        }
+        return options;
+    },[productdetail])
+
     useEffect (() => {
         const url = new URL (window.location.href);
-        dispatch(call_getdetailproduct({p_id: url.searchParams.get('p_id')}));
+        dispatch(call_getdetailproduct({p_dentical: url.searchParams.get('p_dentical')}));
     },[dispatch])
 
     const handleBreadCrumb = () => {
@@ -60,9 +64,8 @@ function Body() {
         if(productdetail && member) {
             const body = {
                 m_id: member.memberinfo[0].m_id,
-                p_id: productdetail?.productinfo[0].p_id,
+                p_id: productdetail.productinfo[0].p_size ? selectSize : productdetail.productinfo[0].p_id,
                 s_amount: counter,
-                s_size: selectSize,
                 s_buy: selectBuy,
                 restrict: productdetail.productinfo[0].p_amount,
             }
@@ -140,26 +143,28 @@ function Body() {
                             <span className={styles.productleft}>剩餘商品數量 : {productdetail.productinfo[0].p_amount}</span>
                         </span>
                         <span className={styles.productprice}>NT$ {productdetail.productinfo[0].p_price}</span>
-                        <div className={cN(styles.selection, styles.productsize)}>
-                            <span className={styles.info}>尺寸</span>
-                            <div className={styles.select}>
-                                <Select 
-                                    options={sizeOptions} 
-                                    onChange={e=>setSelectSize(e?.value || '')} 
-                                    placeholder='請選擇' 
-                                    isSearchable={false}
-                                    theme={(theme)=>({
-                                        ...theme,
-                                        borderRadius: 5,
-                                        colors: {
-                                            ...theme.colors,
-                                            primary25: "#e6cd9b",
-                                            primary: "#a78a50",
-                                        }
-                                    })}
-                                />
+                        {
+                            productdetail.productinfo[0].p_size && <div className={cN(styles.selection, styles.productsize)}>
+                                <span className={styles.info}>尺寸</span>
+                                <div className={styles.select}>
+                                    <Select 
+                                        options={sizeOptions} 
+                                        onChange={e=>setSelectSize(e?.id!)} 
+                                        placeholder='請選擇' 
+                                        isSearchable={false}
+                                        theme={(theme)=>({
+                                            ...theme,
+                                            borderRadius: 5,
+                                            colors: {
+                                                ...theme.colors,
+                                                primary25: "#e6cd9b",
+                                                primary: "#a78a50",
+                                            }
+                                        })}
+                                    />
+                                </div>
                             </div>
-                        </div>
+                        }
                         <div className={cN(styles.selection, styles.productbuy)}>
                         <span className={styles.info}>現貨/預購</span>
                             <div className={styles.select}>
@@ -199,6 +204,7 @@ function Body() {
                 </div>
                 <SideBar trigger={trigger}/>
                 <div className={cN(styles.alertion, {[styles.show]: alertion}, {[styles.lateAlert]: lateAlert})}>{message}</div>
+                <div className={styles.desinfo}>{productdetail.productinfo[0].p_info}</div>
             </div>
     )
 }

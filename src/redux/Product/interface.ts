@@ -19,6 +19,7 @@ export interface I_productinfo {
         type: string;
     };
     p_type: string;
-    p_size: boolean;
-    p_current: boolean;
+    p_size: string;
+    p_dentical: string;
+    p_info: string;
 }

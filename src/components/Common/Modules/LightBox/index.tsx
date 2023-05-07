@@ -27,7 +27,7 @@ function LightBox ({isOpen, handleDispatch, children, direction, theName, isOver
         const parent = document.querySelector(`.blocker .${theName}`) as HTMLElement;
         const blocker = parent.parentNode as HTMLElement;
         if(isOpen) {
-            blocker?.setAttribute('style', 'display: block');
+            blocker?.setAttribute('style', `display: block; background-color: ${getComputedStyle(parent).backgroundColor};`);
             setDark(true);
             body.classList.add(styles.lockpage);
             setTimeout(()=>{

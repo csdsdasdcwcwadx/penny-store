@@ -18,6 +18,7 @@ export interface I_getallproduct {
     message: string;
     status: boolean;
     productinfo: Array<I_productinfo>;
+    pages: number
 }
 
 export interface I_member {
