@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import BreadCrumb from '../../Common/Modules/BreadCrumb';
 import Item from '@components/App/Item';
@@ -9,9 +9,11 @@ import { I_productinfo } from '@Redux/Product/interface';
 import Spinner from '@components/Common/Modules/Spinner';
 import { handleNavigator } from '@utils/commonfunction';
 import { handlepath } from '@utils/domainByEnv';
+import PageNumber from '@components/App/PageNumber';
 
 function Body() {
-    const { page, getallproduct, isLoading } = useSelector((store: RootState)=>store); 
+    const { page, getallproduct, isLoading } = useSelector((store: RootState)=>store);
+    const [ serial, setSerial ] = useState(1);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -19,12 +21,12 @@ function Body() {
         const page_id = url.searchParams.get('page_id');
         if(page_id === '' || page_id) {
             window.history.pushState({}, '', window.location.href.split('?')[0]);
-            dispatch(call_getallproduct({p_type: page_id}));
+            dispatch(call_getallproduct({p_type: page_id, currpage: serial}));
         }else{
-            dispatch(call_getallproduct({p_type: page}));
+            dispatch(call_getallproduct({p_type: page, currpage: serial}));
         }
 
-    },[dispatch, page])
+    },[dispatch, page, serial])
 
     const handleBreadCrumb = () => {
         const menu = {name: '首頁', href: `${handlepath()}?page_id=`}
@@ -54,6 +56,13 @@ function Body() {
                             return <Item key={info.p_id} info={info}/>
                         })
                     }
+                </div>
+                <div className={styles.pagenumber}>
+                    <PageNumber num={serial-1} click={setSerial} maxpage={getallproduct?.pages || 1}/>
+                    <PageNumber num={serial} click={setSerial} maxpage={getallproduct?.pages || 1}/>
+                    <PageNumber num={serial+1} click={setSerial} maxpage={getallproduct?.pages || 1}/>
+                    <div>......</div>
+                    <PageNumber num={getallproduct?.pages || 1} click={setSerial} maxpage={getallproduct?.pages || 1}/>
                 </div>
             </div>
     );

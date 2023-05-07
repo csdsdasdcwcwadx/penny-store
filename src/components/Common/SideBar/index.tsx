@@ -92,6 +92,7 @@ function SideBar ({trigger}: I_props) {
                                             <div className={styles.detailinfo}>
                                                 <span>x {product.s_amount}件 </span>
                                                 <span> 共<span>{dollar}</span>元</span>
+                                                {product.p_size && <span> {product.p_size}號</span>}
                                             </div>
                                         </div>
                                         <i className='icon ic-ln tool_trash-f' onClick={()=>deleteProduct(product.s_id)}/>

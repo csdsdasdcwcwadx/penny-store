@@ -6,8 +6,8 @@ import { E_Page } from '@Redux/App/interfaces';
 import { handleNavigator } from '@utils/commonfunction';
 import LightBox, { E_direction } from "../Modules/LightBox";
 import '../Modules/ic-ln/css.css';
-import { auth, GoogleProvider } from '@utils/firebase-auth';
-import { signInWithRedirect, getRedirectResult, signInWithPopup, UserCredential } from 'firebase/auth';
+import { auth, GoogleProvider, MailProvider } from '@utils/firebase-auth';
+import { signInWithRedirect, getRedirectResult, signInWithPopup, UserCredential, signInWithEmailLink } from 'firebase/auth';
 import cN from 'classnames';
 import InputBar, { E_RegexType } from "../Modules/InputBar";
 import axios from "axios";
@@ -96,7 +96,7 @@ function Header() {
                 </div>
                     <a 
                         className={styles.logo} 
-                        href={memberinfo && memberinfo.memberinfo[0].isAdmin === 0 ?`${handlepath()}?page_id=`:`/backend${isLocal?'.html':''}`}
+                        href={memberinfo && memberinfo.memberinfo[0].isAdmin === 0 ?`${handlepath()}?page_id=`:`${handlepath()}/backend${isLocal?'.html':''}`}
                     >LONDONER</a>
                 <div>
                     <span className={styles.show}>seh</span>

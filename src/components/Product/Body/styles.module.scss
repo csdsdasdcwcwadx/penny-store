@@ -75,7 +75,7 @@
             .productprice {
                 padding: 20px 0 30px 5px;
                 border-bottom: 1px solid #edeff2;
-                font-size: 12px;
+                font-size: 20px;
             }
 
             .selection {
@@ -212,5 +212,9 @@
         &.lateAlert {
             opacity: 1;
         }
+    }
+
+    .desinfo {
+        padding: 20px;
     }
 }
