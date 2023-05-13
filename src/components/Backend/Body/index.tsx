@@ -2,6 +2,7 @@ import React, { memo, useEffect, useState } from "react";
 import styles from './styles.module.scss';
 import ProductSettings from "../ProductSettings";
 import Data from "../Data";
+import { handlepath } from "@utils/domainByEnv";
 
 enum E_currentType {
     PRODUCT = 'PRODUCT',
@@ -10,6 +11,21 @@ enum E_currentType {
 
 function Body () {
     const [current, setCurrent] = useState<E_currentType>(E_currentType.PRODUCT);
+
+    useEffect (() => {
+        const member = JSON.parse(localStorage.getItem('memberinfo')!);
+        const google = JSON.parse(localStorage.getItem('credentials')!);
+
+        if(!member && !google) {
+            alert('請先登入會員');
+            window.location.href = `${handlepath()}`;
+
+        }
+        if(member && member.memberinfo[0].isAdmin !== 1) {
+            alert('不符合會員資格');
+            window.location.href = `${handlepath()}`;
+        }
+    },[])
 
     return (
         <div>

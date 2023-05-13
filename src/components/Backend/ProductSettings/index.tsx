@@ -54,7 +54,8 @@ function ProductSettings () {
     }
 
     const handle_add = useCallback(async () =>{
-        if(document.getElementsByClassName('error').length === 0) {
+        const error = document.getElementsByClassName('error');
+        if(error.length === 0) {
             const formData = new FormData();
             formData.append('p_dentical', p_dentical.current?.value!);
             formData.append('p_name', p_name.current?.value!);
@@ -78,6 +79,8 @@ function ProductSettings () {
             }catch(err) {
                 console.error(err);
             }
+        }else {
+            alert(error[0].textContent);
         }
     },[p_img])
 
@@ -96,7 +99,7 @@ function ProductSettings () {
                         <InputBar title="商品價格" placeholder="請輸入商品價格" type={E_RegexType.NAME} ref={p_price}/>
                         <InputBar title="商品數量" placeholder="請輸入商品數量" type={E_RegexType.NAME} ref={p_amount}/>
                         <InputBar title="商品尺寸" placeholder="請輸入商品尺寸" type={E_RegexType.NAME} ref={p_size}/>
-                        <InputBar title="商品說明" placeholder="請輸入商品說明" type={E_RegexType.NAME} ref={p_info}/>
+                        <InputBar title="商品說明" placeholder="請輸入商品說明" type={E_RegexType.NAME} ref={p_info} unnecessary={true}/>
                         <div className={styles.selection}>
                             <span>商品種類</span>
                             <select placeholder="請選擇商品種類" ref={p_type}>
@@ -122,7 +125,8 @@ function ProductSettings () {
 
     const handle_fix = useCallback(async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         const button = e.target as HTMLElement;
-        if(button.parentNode?.parentNode?.querySelector('.error') === null) {
+        const error = button.parentNode?.parentNode?.querySelector('.error');
+        if(error === null) {
             if(fixItem) {
                 const formData = new FormData();
                 const { p_id } = fixItem;
@@ -152,6 +156,8 @@ function ProductSettings () {
                     console.error(err);
                 }
             }
+        }else {
+            alert(error?.textContent);
         }
     },[dispatch, fixItem, fix_p_img])
 
@@ -202,7 +208,8 @@ function ProductSettings () {
                                 placeholder="請輸入商品說明" 
                                 type={E_RegexType.NAME}
                                 value={p_info}
-                                ref={fix_p_info}/>
+                                ref={fix_p_info}
+                                unnecessary={true}/>
     
                             <div className={styles.selection}>
                                 <span>商品種類</span>

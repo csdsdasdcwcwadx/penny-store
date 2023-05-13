@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useState } from 'react';
-import domain from '@utils/domainByEnv';
+import domain, { handlepath } from '@utils/domainByEnv';
 import axios from 'axios';
 import { I_productinfo } from '@Redux/Product/interface';
 import styles from './styles.module.scss';
@@ -19,11 +19,16 @@ interface I_getshoplist {
 
 function Body() {
     const [shoplist, setShoplist] = useState<Array<I_shoplistinfo>>([]);
-    const [toggleState, setToggleState] = useState(false);
     let total = 0;
 
     useEffect(() => {
         const member = JSON.parse(localStorage.getItem('memberinfo')!);
+        const google = JSON.parse(localStorage.getItem('credentials')!);
+
+        if(!member && !google) {
+            alert('會員尚未登入');
+            window.location.href = `${handlepath()}`;
+        }
         member && (async function(){
             try {
                 const {data} = await axios.post<I_getshoplist>(`${domain()}/shoplist/getshoplist`, {m_id: member.memberinfo[0].m_id});
@@ -33,7 +38,7 @@ function Body() {
             }
         })()
     },[])
-    console.log(shoplist)
+
     return (
         <div>
             {

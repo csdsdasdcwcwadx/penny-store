@@ -159,6 +159,7 @@ module.exports = function (webpackEnv) {
             product: paths.appProductJs,
             payment: paths.appPaymentJs,
             backend: paths.appBackendJs,
+            success: paths.appPaymentSuccessJs,
         },
         output: {
             // The build folder.
@@ -614,6 +615,33 @@ module.exports = function (webpackEnv) {
                         filename: 'backend.html',
                         template: paths.appBackendHtml,
                         chunks: ['backend'],
+                    },
+                    isEnvProduction
+                        ? {
+                              minify: {
+                                  removeComments: true,
+                                  collapseWhitespace: true,
+                                  removeRedundantAttributes: true,
+                                  useShortDoctype: true,
+                                  removeEmptyAttributes: true,
+                                  removeStyleLinkTypeAttributes: true,
+                                  keepClosingSlash: true,
+                                  minifyJS: true,
+                                  minifyCSS: true,
+                                  minifyURLs: true,
+                              },
+                          }
+                        : undefined
+                )
+            ),
+            new HtmlWebpackPlugin(
+                Object.assign(
+                    {},
+                    {
+                        inject: true,
+                        filename: 'payment/success.html',
+                        template: paths.appPaymentSuccessHtml,
+                        chunks: ['success'],
                     },
                     isEnvProduction
                         ? {

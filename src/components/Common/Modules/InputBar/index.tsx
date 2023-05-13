@@ -14,9 +14,10 @@ interface I_props {
     placeholder: string;
     type: E_RegexType;
     value?: string | number;
+    unnecessary?: boolean;
 }
 
-function InputBar ({title, placeholder, type, value}: I_props, ref: React.ForwardedRef<HTMLInputElement>) {
+function InputBar ({title, placeholder, type, value, unnecessary}: I_props, ref: React.ForwardedRef<HTMLInputElement>) {
     const [input, setInput] = useState<string>('');
     const [errMsg, setErrMsg] = useState<string | undefined>();
 
@@ -44,16 +45,16 @@ function InputBar ({title, placeholder, type, value}: I_props, ref: React.Forwar
                     flag = false;
                     setErrMsg('此欄位須為數字');
                 }
-                if(input === '') {
+                if(!unnecessary && input === '') {
                     flag = false;
-                    setErrMsg('此欄位必填');
+                    setErrMsg(`${title}必填`);
                 }
                 break;
             case E_RegexType.NAME:
             case E_RegexType.ADDRESS:
-                if(input === '') {
+                if(!unnecessary && input === '') {
                     flag = false;
-                    setErrMsg('此欄位必填');
+                    setErrMsg(`${title}必填`);
                 }
                 break;
             case E_RegexType.EMAIL:
@@ -61,19 +62,19 @@ function InputBar ({title, placeholder, type, value}: I_props, ref: React.Forwar
                     flag = false;
                     setErrMsg('此欄位須為信箱格式');
                 }
-                if(input === '') {
+                if(!unnecessary && input === '') {
                     flag = false;
-                    setErrMsg('此欄位必填');
+                    setErrMsg(`${title}必填`);
                 }
                 break;
             default:
-                if(input === '') {
+                if(!unnecessary && input === '') {
                     flag = false;
-                    setErrMsg('此欄位必填');
+                    setErrMsg(`${title}必填`);
                 }
         }
         if(flag) setErrMsg(undefined);
-    },[input, type])
+    },[input, type, unnecessary, title])
 
     return (
         <div className={styles.inputblock}>
