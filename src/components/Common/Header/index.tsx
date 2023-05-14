@@ -36,7 +36,7 @@ function Header() {
 
     // 前往結賬
     const handlepayment = () => {
-        window.location.href = `${handlepath()}/payment${isLocal?'.html':''}`
+        window.location.href = `${handlepath()}/payment${isLocal?'.html':''}`;
     }
 
     const ListBlock = ()=>{

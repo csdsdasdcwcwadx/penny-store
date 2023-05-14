@@ -17,13 +17,15 @@ interface I_getshoplist {
     shoplist: Array<I_shoplistinfo>;
 }
 
+const member = JSON.parse(localStorage.getItem('memberinfo')!);
+const google = JSON.parse(localStorage.getItem('credentials')!);
+
 function Body() {
     const [shoplist, setShoplist] = useState<Array<I_shoplistinfo>>([]);
+    const isLocal = window.location.href.includes('localhost');
     let total = 0;
 
     useEffect(() => {
-        const member = JSON.parse(localStorage.getItem('memberinfo')!);
-        const google = JSON.parse(localStorage.getItem('credentials')!);
 
         if(!member && !google) {
             alert('會員尚未登入');
@@ -39,8 +41,26 @@ function Body() {
         })()
     },[])
 
+    const handlePayment = async () => {
+        const post = {
+            isSuccess: true,
+            name: '蔡濡安',
+            account: '123456',
+            money: '10000', 
+            token: 'wufhwdhvl',
+            shoplist,
+        }
+        try{
+            const {data} = await axios.post(`${domain()}/common/payment`, post);
+            alert(data.message);
+            window.location.href = `${handlepath()}/order${isLocal?'.html':''}`
+        }catch(e) {
+            console.error(e);
+        }
+    }
+
     return (
-        <div>
+        member && google && <div>
             {
                 shoplist.length === 0 ? <div className={styles.noitem}>目前沒有任何商品</div>:
                 <div className={styles.shoplist}>
@@ -68,11 +88,12 @@ function Body() {
                         })
                     }
                     <div className={styles.calculate}>
-                        <span>總共</span>
+                        <span>合計</span>
                         <span> </span>
                         <span> </span>
                         <span className={styles.totalcalculation}>{total}元</span>
                     </div>
+                    <button onClick={handlePayment}>付款測試用</button>
                 </div>
             }
         </div>
