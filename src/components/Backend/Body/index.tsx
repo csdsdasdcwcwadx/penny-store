@@ -7,6 +7,7 @@ import { handlepath } from "@utils/domainByEnv";
 enum E_currentType {
     PRODUCT = 'PRODUCT',
     ANDATA = 'ANDATA',
+    SHIPPING = 'SHIPPING',
 }
 
 function Body () {
@@ -32,6 +33,7 @@ function Body () {
             <div className={styles.header}>
                 <button onClick={()=>setCurrent(E_currentType.PRODUCT)}>商品列表設定</button>
                 <button onClick={()=>setCurrent(E_currentType.ANDATA)}>數據查看</button>
+                <button onClick={()=>setCurrent(E_currentType.SHIPPING)}>出貨訂單</button>
             </div>
             {
                 current === E_currentType.PRODUCT ? <ProductSettings/>:<Data/>

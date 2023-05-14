@@ -159,7 +159,7 @@ module.exports = function (webpackEnv) {
             product: paths.appProductJs,
             payment: paths.appPaymentJs,
             backend: paths.appBackendJs,
-            success: paths.appPaymentSuccessJs,
+            order: paths.appOrderJs,
         },
         output: {
             // The build folder.
@@ -639,9 +639,9 @@ module.exports = function (webpackEnv) {
                     {},
                     {
                         inject: true,
-                        filename: 'payment/success.html',
-                        template: paths.appPaymentSuccessHtml,
-                        chunks: ['success'],
+                        filename: 'order.html',
+                        template: paths.appOrderHtml,
+                        chunks: ['order'],
                     },
                     isEnvProduction
                         ? {

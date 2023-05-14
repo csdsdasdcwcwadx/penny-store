@@ -2,17 +2,18 @@ import React from "react";
 import ReactDOM from 'react-dom/client';
 import { store } from '@Redux/Product/store';
 import { Provider } from 'react-redux';
+import { Body } from '@components/Order';
 
-export function Success() {
+export function Order() {
     return (
         <div>
-            success
+            <Body/>
         </div>
     )
 }
 
-ReactDOM.createRoot(document.getElementById('paymentsuccess') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById('order') as HTMLElement).render(
     <Provider store={store}>
-        <Success/>
+        <Order/>
     </Provider>
 );
