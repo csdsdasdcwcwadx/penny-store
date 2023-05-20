@@ -1,13 +1,18 @@
 import React from "react";
 import ReactDOM from 'react-dom/client';
-import { store } from '@Redux/Product/store';
+import { store } from '@Redux/Order/store';
 import { Provider } from 'react-redux';
-import { Body } from '@components/Order';
+import { Body, Header, Footer } from '@components/Order';
+import './index.scss';
 
 export function Order() {
     return (
-        <div>
-            <Body/>
+        <div className='pages'>
+            <div className='topper'>
+                <Header/>
+                <Body/>
+            </div>
+            <Footer/>
         </div>
     )
 }

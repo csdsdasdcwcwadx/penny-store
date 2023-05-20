@@ -1,0 +1,22 @@
+@import '../../../../commonStyles/variables.scss';
+@import '../../../../commonStyles/mixins.scss';
+
+.orderlist {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+
+    @include only-mobile {
+        display: block;
+    }
+
+    .checkout {
+        display: block;
+        cursor: pointer;
+    }
+}
+
+.order {}
