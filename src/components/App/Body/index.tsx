@@ -9,7 +9,7 @@ import { I_productinfo } from '@Redux/Product/interface';
 import Spinner from '@components/Common/Modules/Spinner';
 import { handleNavigator } from '@utils/commonfunction';
 import { handlepath } from '@utils/domainByEnv';
-import PageNumber from '@components/App/PageNumber';
+import PageNumber from '@components/Common/PageNumber';
 import { E_Page } from '@Redux/App/interfaces';
 
 let prePage: E_Page;
@@ -67,13 +67,7 @@ function Body() {
                     }
                 </div>
                     {
-                        getallproduct?.pages ? <div className={styles.pagenumber}>
-                            <PageNumber num={serial-1} click={setSerial} maxpage={getallproduct.pages} serial={serial}/>
-                            <PageNumber num={serial} click={setSerial} maxpage={getallproduct.pages} serial={serial}/>
-                            <PageNumber num={serial+1} click={setSerial} maxpage={getallproduct.pages} serial={serial}/>
-                            <div>......</div>
-                            <PageNumber num={getallproduct.pages} click={setSerial} maxpage={getallproduct.pages}/>
-                        </div> : ''
+                        getallproduct?.pages ? <PageNumber serial={serial} setSerial={setSerial} maxpage={getallproduct.pages}/> : ''
                     }
             </div>
     );

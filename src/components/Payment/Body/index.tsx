@@ -53,7 +53,7 @@ function Body() {
         try{
             const {data} = await axios.post(`${domain()}/common/payment`, post);
             alert(data.message);
-            window.location.href = `${handlepath()}/order${isLocal?'.html':''}`
+            if(data.status) window.location.href = `${handlepath()}/order${isLocal?'.html':''}`;
         }catch(e) {
             console.error(e);
         }

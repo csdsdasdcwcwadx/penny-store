@@ -1,0 +1,20 @@
+@import '../../commonStyles/mixins.scss';
+@import '../../commonStyles/variables.scss';
+
+body {
+    margin: 0;
+}
+
+.pages {
+    font-family: sans-serif;
+    color: #313437;
+    background-color: $backColor;
+
+    .topper {
+        padding: 0 20px;
+
+        @include small-m {
+            padding: 0 5px;
+        }
+    }
+}
