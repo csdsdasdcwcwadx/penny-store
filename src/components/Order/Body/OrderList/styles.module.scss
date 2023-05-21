@@ -2,21 +2,163 @@
 @import '../../../../commonStyles/mixins.scss';
 
 .orderlist {
-    display: flex;
-    justify-content: space-between;
     margin-bottom: 30px;
-    padding: 20px;
+    padding: 15px;
     border: 1px solid #bbb;
     border-radius: 5px;
+
+    .adjustment {
+        width: 100%;
+
+        .ordertitle {
+            @include only-pc {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .title {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .checkout {
+                font-weight: 500;
+                cursor: pointer;
+
+                @include only-mobile {
+                    display: flex;
+                    padding-top: 15px;
+                }
+
+                span {
+                    display: block;
+                    text-align: center;
+                }
+
+                i {
+                    display: block;
+                    transform: rotate(90deg);
+
+                    @include only-pc {
+                        margin-top: 30px;
+                        font-size: 40px;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+
+        .titlecontent {
+            display: flex;
+            justify-content: space-between;
+
+            > {
+                width: 10%;
+            }
+        }
+    }
+
+    &.isActive {
+        .adjustment {
+            .ordertitle {
+                width: 100%;
+                border-bottom: 1px solid #bbb;
+                padding-bottom: 10px;
+            }
+
+            .ordercontent {
+                display: table;
+                width: 100%;
+                padding-top: 10px;
+
+                @include only-mobile {
+                    display: block;
+                }
+
+                .ordernav {
+                    display: table-row-group;
+
+                    @include only-mobile {
+                        display: none;
+                    }
+
+                    >nav {
+                        display: table-cell;
+                        text-align: center;
+                        font-weight: 700;
+
+                        @include only-mobile {
+                            display: none;
+                        }
+                    }
+                }
+
+                .ordersum:not(:last-of-type) {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .isHide {
+        display: none;
+    }
+
+    @include only-mobile {
+        display: block;
+    }
+}
+
+.orderitem {
+    display: table-row-group;
 
     @include only-mobile {
         display: block;
     }
 
-    .checkout {
-        display: block;
-        cursor: pointer;
+    >div {
+        display: table-cell;
+        text-align: center;
+
+        @include only-mobile {
+            display: flex;
+            justify-content: space-between;
+            text-align: left;
+
+            &::before {
+                content: attr(data-title);
+                width: 100px;
+                font-weight: 500;
+            }
+        }
+
+        &.photo {
+            text-align: left;
+
+            @include only-mobile {
+                display: block;
+                margin-bottom: 15px;
+            }
+
+            img {
+                position: relative;
+                top: 13px;
+                width: 50px;
+                height: 50px;
+                margin-right: 10px;
+            }
+        }
     }
 }
 
-.order {}
+.ordersum {
+    display: table-row-group;
+
+    >div {
+        display: table-cell;
+        padding-top: 30px;
+        text-align: center;
+        font-weight: 500;
+        font-size: 17px;
+    }
+}

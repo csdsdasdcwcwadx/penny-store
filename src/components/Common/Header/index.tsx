@@ -60,7 +60,7 @@ function Header() {
     const userBlock = () => {
         return (
             <>
-                <li>查看歷史訂單</li>
+                <li onClick={()=>{window.location.href = `${handlepath()}/order${isLocal?'.html':''}`}}>查看歷史訂單</li>
                 <li>查看歷史訂單</li>
                 <li>查看歷史訂單</li>
                 <li onClick={()=>handlepayment()}>前往結賬</li>
