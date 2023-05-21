@@ -7,15 +7,17 @@ import { set_opendetail } from '@Redux/Order/actions';
 import cN from 'classnames';
 import { handleIMG } from "@utils/commonfunction";
 import '@components/Common/Modules/ic-ln/css.css';
-import { SlideToggle } from '@todys/react-slide-toggle';
+// import { SlideToggle } from '@todys/react-slide-toggle';
 
 interface I_props1 {
     orders: Array<I_orderinfo>;
 }
 
 const handleDate = (date: string, isTime: boolean = false) => {
-    if(isTime) return date.split('T')[1].split('.')[0];
-    return date.split('T')[0];
+    const utcDateTime = date;
+    const localDateTime = new Date(utcDateTime).toLocaleString('en-US', { timeZone: 'Asia/Taipei', hour12: false });
+    if(isTime) return localDateTime.split(',')[1];
+    return localDateTime.split(',')[0];
 }
 
 const handlePayment = (payment: number) => {
@@ -37,7 +39,6 @@ function OrderList({orders}: I_props1) {
                     <div>
                         <div>訂單編號 : {orders[0].o_dentical}</div>
                         <div>訂單日期 : {handleDate(orders[0].o_date)}</div>
-                        <div>訂單時間 : {handleDate(orders[0].o_date, true)}</div>
                         <div>訂單時間 : {handleDate(orders[0].o_date, true)}</div>
                         <div className={styles.status}>付款狀態 : {handlePayment(orders[0].o_payment)}</div>
                     </div>
