@@ -9,23 +9,32 @@ import { I_productinfo } from '@Redux/Product/interface';
 import Spinner from '@components/Common/Modules/Spinner';
 import { handleNavigator } from '@utils/commonfunction';
 import { handlepath } from '@utils/domainByEnv';
-import PageNumber from '@components/App/PageNumber';
+import PageNumber from '@components/Common/PageNumber';
+import { E_Page } from '@Redux/App/interfaces';
 
+let prePage: E_Page;
 function Body() {
     const { page, getallproduct, isLoading } = useSelector((store: RootState)=>store);
     const [ serial, setSerial ] = useState(1);
     const dispatch = useDispatch();
 
-    useEffect(() => {
+    useEffect (() => {
         const url = new URL (window.location.href);
         const page_id = url.searchParams.get('page_id');
+        // 從其他分頁過來
         if(page_id === '' || page_id) {
             window.history.pushState({}, '', window.location.href.split('?')[0]);
-            dispatch(call_getallproduct({p_type: page_id, currpage: serial}));
+            dispatch(call_getallproduct({p_type: page_id, currpage: 1}));
         }else{
-            dispatch(call_getallproduct({p_type: page, currpage: serial}));
+            // 從當前頁面選取類別
+            if(prePage !== page) {
+                dispatch(call_getallproduct({p_type: page, currpage: 1}));
+                prePage = page;
+                setSerial(1);
+            }else{
+                dispatch(call_getallproduct({p_type: page, currpage: serial}));
+            }
         }
-
     },[dispatch, page, serial])
 
     const handleBreadCrumb = () => {
@@ -57,13 +66,9 @@ function Body() {
                         })
                     }
                 </div>
-                <div className={styles.pagenumber}>
-                    <PageNumber num={serial-1} click={setSerial} maxpage={getallproduct?.pages || 1}/>
-                    <PageNumber num={serial} click={setSerial} maxpage={getallproduct?.pages || 1}/>
-                    <PageNumber num={serial+1} click={setSerial} maxpage={getallproduct?.pages || 1}/>
-                    <div>......</div>
-                    <PageNumber num={getallproduct?.pages || 1} click={setSerial} maxpage={getallproduct?.pages || 1}/>
-                </div>
+                    {
+                        getallproduct?.pages ? <PageNumber serial={serial} setSerial={setSerial} maxpage={getallproduct.pages}/> : ''
+                    }
             </div>
     );
 }

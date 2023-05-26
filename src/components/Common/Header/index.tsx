@@ -25,6 +25,20 @@ function Header() {
     const dispatch = useDispatch();
 
     axios.defaults.withCredentials = true;
+
+    // 登出
+    const handlelogout = async () => {
+        localStorage.removeItem('credentials');
+        localStorage.removeItem('memberinfo');
+        await axios.get(`${domain()}/member/logout`);
+        location.reload();
+    }
+
+    // 前往結賬
+    const handlepayment = () => {
+        window.location.href = `${handlepath()}/payment${isLocal?'.html':''}`;
+    }
+
     const ListBlock = ()=>{
         return (
             <ul>
@@ -41,13 +55,17 @@ function Header() {
             </ul>
         )
     }
-
-    // 登出區塊
-    const handlelogout = async () => {
-        localStorage.removeItem('credentials');
-        localStorage.removeItem('memberinfo');
-        await axios.get(`${domain()}/member/logout`);
-        location.reload();
+    
+    // 使用者列表區塊
+    const userBlock = () => {
+        return (
+            <>
+                <li onClick={()=>{window.location.href = `${handlepath()}/order${isLocal?'.html':''}`}}>查看歷史訂單</li>
+                <li>查看歷史訂單</li>
+                <li>查看歷史訂單</li>
+                <li onClick={()=>handlepayment()}>前往結賬</li>
+            </>
+        )
     }
 
     // 處理登入資訊
@@ -90,7 +108,9 @@ function Header() {
         <>
             <div className={styles.Header}>
                 <div>
-                    <span className={styles.show} onClick={()=>setListOpen(true)}>展開</span>
+                    <span className={cN(styles.show, styles.toolmenu)} onClick={()=>setListOpen(true)}>
+                        <i className="icon ic-ln toolmenu"/>
+                    </span>
                     <a><i className={cN('icon ic-ln toolfroundf', styles.facebook)}/></a>
                     <a href="https://www.instagram.com/zllondoner.tw/?igshid=YmMyMTA2M2Y%3D"><img className={styles.instagram} src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png"/></a>
                 </div>
@@ -99,7 +119,7 @@ function Header() {
                         href={memberinfo && memberinfo.memberinfo[0].isAdmin === 0 ?`${handlepath()}?page_id=`:`${handlepath()}/backend${isLocal?'.html':''}`}
                     >LONDONER</a>
                 <div>
-                    <span className={styles.show}>seh</span>
+                    {/* <span className={styles.show}>seh</span> */}
                     {
                         credentials ?
                         <span className={styles.displaymember}>
@@ -107,19 +127,16 @@ function Header() {
                             <span>{credentials.user.displayName} 您好!!</span>
                             <div className={styles.memberoptions}>
                                 <ul>
-                                    <li>查看歷史訂單</li>
-                                    <li>查看歷史訂單</li>
-                                    <li>查看歷史訂單</li>
-                                    <li>查看歷史訂單</li>
+                                    {userBlock()}
                                     <li onClick={handlelogout}>登出</li>
                                 </ul>
                             </div>
                         </span>:
                         <span onClick={()=>setLoginOpen(true)}>會員登入</span>
                     }
-                    <span>
+                    {/* <span>
                         <i className="icon ic-ln toolsearch"/>
-                    </span>
+                    </span> */}
                 </div>
             </div>
             <div className={styles.Navigator}>
@@ -141,10 +158,7 @@ function Header() {
                             </span>
                             <div>
                                 <ul>
-                                    <li>查看歷史訂單</li>
-                                    <li>查看歷史訂單</li>
-                                    <li>查看歷史訂單</li>
-                                    <li>查看歷史訂單</li>
+                                    {userBlock()}
                                 </ul>
                             </div>
                         </span>:

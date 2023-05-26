@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useState } from 'react';
-import domain from '@utils/domainByEnv';
+import domain, { handlepath } from '@utils/domainByEnv';
 import axios from 'axios';
 import { I_productinfo } from '@Redux/Product/interface';
 import styles from './styles.module.scss';
@@ -17,13 +17,20 @@ interface I_getshoplist {
     shoplist: Array<I_shoplistinfo>;
 }
 
+const member = JSON.parse(localStorage.getItem('memberinfo')!);
+const google = JSON.parse(localStorage.getItem('credentials')!);
+
 function Body() {
     const [shoplist, setShoplist] = useState<Array<I_shoplistinfo>>([]);
-    const [toggleState, setToggleState] = useState(false);
+    const isLocal = window.location.href.includes('localhost');
     let total = 0;
 
     useEffect(() => {
-        const member = JSON.parse(localStorage.getItem('memberinfo')!);
+
+        if(!member && !google) {
+            alert('會員尚未登入');
+            window.location.href = `${handlepath()}`;
+        }
         member && (async function(){
             try {
                 const {data} = await axios.post<I_getshoplist>(`${domain()}/shoplist/getshoplist`, {m_id: member.memberinfo[0].m_id});
@@ -33,9 +40,27 @@ function Body() {
             }
         })()
     },[])
-    console.log(shoplist)
+
+    const handlePayment = async (isSuccess: boolean = true) => {
+        const post = {
+            isSuccess,
+            name: '蔡濡安',
+            account: '123456',
+            money: '10000', 
+            token: 'wufhwdhvl',
+            shoplist,
+        }
+        try{
+            const {data} = await axios.post(`${domain()}/common/payment`, post);
+            alert(data.message);
+            if(data.status) window.location.href = `${handlepath()}/order${isLocal?'.html':''}`;
+        }catch(e) {
+            console.error(e);
+        }
+    }
+
     return (
-        <div>
+        member && google && <div>
             {
                 shoplist.length === 0 ? <div className={styles.noitem}>目前沒有任何商品</div>:
                 <div className={styles.shoplist}>
@@ -63,11 +88,13 @@ function Body() {
                         })
                     }
                     <div className={styles.calculate}>
-                        <span>總共</span>
+                        <span>合計</span>
                         <span> </span>
                         <span> </span>
                         <span className={styles.totalcalculation}>{total}元</span>
                     </div>
+                    <button onClick={() => handlePayment()}>付款測試用(成功)</button>
+                    <button onClick={() => handlePayment(false)}>付款測試用(失敗)</button>
                 </div>
             }
         </div>

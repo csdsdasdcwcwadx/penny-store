@@ -10,13 +10,16 @@ import axios from "axios";
 import InputBar, { E_RegexType } from "@components/Common/Modules/InputBar";
 import { E_Page } from "@Redux/App/interfaces";
 import { I_productinfo, I_productdetail } from "@Redux/Product/interface";
+import PageNumber from '@components/Common/PageNumber';
+import Spinner from "@components/Common/Modules/Spinner";
 
 function ProductSettings () {
     const dispatch = useDispatch();
-    const { productdetail } = useSelector((store: RootState)=>store);
+    const { productdetail, isLoading } = useSelector((store: RootState)=>store);
     const [open_adding, setOpen_adding] = useState(false);
     const [open_fix, setOpen_fix] = useState(false);
     const [fixItem, setFixItem] = useState<I_productinfo>();
+    const [ serial, setSerial ] = useState(1);
 
     // 新增產品所需要用到的參數
     const p_name = useRef<HTMLInputElement>(null);
@@ -45,7 +48,7 @@ function ProductSettings () {
                 const { data } = await axios.post<I_productdetail>(`${domain()}/product/removeproduct`, {p_id: product.p_id});
                 data.message && alert(data.message);
                 if(data.status) {
-                    dispatch(call_getallproduct({p_type: '', backend: true}));
+                    dispatch(call_getallproduct({p_type: '', currpage: serial}));
                 }
             }catch(err) {
                 console.error(err);
@@ -54,7 +57,8 @@ function ProductSettings () {
     }
 
     const handle_add = useCallback(async () =>{
-        if(document.getElementsByClassName('error').length === 0) {
+        const error = document.getElementsByClassName('error');
+        if(error.length === 0) {
             const formData = new FormData();
             formData.append('p_dentical', p_dentical.current?.value!);
             formData.append('p_name', p_name.current?.value!);
@@ -78,6 +82,8 @@ function ProductSettings () {
             }catch(err) {
                 console.error(err);
             }
+        }else {
+            alert(error[0].textContent);
         }
     },[p_img])
 
@@ -96,7 +102,7 @@ function ProductSettings () {
                         <InputBar title="商品價格" placeholder="請輸入商品價格" type={E_RegexType.NAME} ref={p_price}/>
                         <InputBar title="商品數量" placeholder="請輸入商品數量" type={E_RegexType.NAME} ref={p_amount}/>
                         <InputBar title="商品尺寸" placeholder="請輸入商品尺寸" type={E_RegexType.NAME} ref={p_size}/>
-                        <InputBar title="商品說明" placeholder="請輸入商品說明" type={E_RegexType.NAME} ref={p_info}/>
+                        <InputBar title="商品說明" placeholder="請輸入商品說明" type={E_RegexType.NAME} ref={p_info} unnecessary={true}/>
                         <div className={styles.selection}>
                             <span>商品種類</span>
                             <select placeholder="請選擇商品種類" ref={p_type}>
@@ -122,7 +128,8 @@ function ProductSettings () {
 
     const handle_fix = useCallback(async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         const button = e.target as HTMLElement;
-        if(button.parentNode?.parentNode?.querySelector('.error') === null) {
+        const error = button.parentNode?.parentNode?.querySelector('.error');
+        if(error === null) {
             if(fixItem) {
                 const formData = new FormData();
                 const { p_id } = fixItem;
@@ -145,15 +152,17 @@ function ProductSettings () {
                     data.message && alert(data.message);
                     if(data.status) {
                         setOpen_fix(false);
-                        dispatch(call_getallproduct({p_type: '', backend: true}));
+                        dispatch(call_getallproduct({p_type: '', currpage: serial}));
                     }
         
                 }catch(err) {
                     console.error(err);
                 }
             }
+        }else {
+            alert(error?.textContent);
         }
-    },[dispatch, fixItem, fix_p_img])
+    },[dispatch, fixItem, fix_p_img, serial])
 
     const fixBlock = useCallback(() => {
         if(fixItem) {
@@ -202,7 +211,8 @@ function ProductSettings () {
                                 placeholder="請輸入商品說明" 
                                 type={E_RegexType.NAME}
                                 value={p_info}
-                                ref={fix_p_info}/>
+                                ref={fix_p_info}
+                                unnecessary={true}/>
     
                             <div className={styles.selection}>
                                 <span>商品種類</span>
@@ -231,8 +241,8 @@ function ProductSettings () {
     },[fixItem, handle_fix, open_fix])
 
     useEffect(()=>{
-        dispatch(call_getallproduct({p_type: '', backend: true}));
-    },[dispatch])
+        dispatch(call_getallproduct({p_type: '', currpage: serial}));
+    },[dispatch, serial])
 
     useEffect(() => {
         if(!open_fix) {
@@ -244,6 +254,7 @@ function ProductSettings () {
         <div className={styles.body}>
             <div className={styles.productwrapper}>
             {
+                isLoading ? <Spinner/> :
                 productdetail?.productinfo.map((product) => {
                     return (
                         <li key={product.p_id} className={styles.product}>
@@ -267,6 +278,9 @@ function ProductSettings () {
             <div className={styles.addnew} onClick={() => setOpen_adding(true)}>新增產品</div>
             {fixBlock()}
             {addingBlock()}
+            {
+                productdetail && <PageNumber serial={serial} setSerial={setSerial} maxpage={productdetail.pages}/>
+            }
         </div>
     )
 }

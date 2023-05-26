@@ -22,4 +22,5 @@ export interface I_productinfo {
     p_size: string;
     p_dentical: string;
     p_info: string;
+    p_date: string;
 }

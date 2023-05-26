@@ -8,6 +8,16 @@
     padding: 10px 20px;
     border-bottom: 1.5px solid #ddd;
 
+    .toolmenu {
+        padding-top: 3px;
+        font-size: 25px;
+
+        @include small-m {
+            padding-top: 0;
+            font-size: 16px;
+        }
+    }
+
     >div {
         display: flex;
         align-items: center;

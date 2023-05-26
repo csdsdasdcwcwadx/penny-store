@@ -8,7 +8,7 @@ import { I_productinfo } from '@Redux/Product/interface';
 import { handleIMG } from '@utils/commonfunction';
 import { useMediaQuery } from 'react-responsive';
 import cN from 'classnames';
-import PubSub from 'pubsub-js'
+import PubSub from 'pubsub-js';
 
 interface I_shoplistinfo extends I_productinfo {
     s_amount: number;

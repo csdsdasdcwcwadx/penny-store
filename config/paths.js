@@ -62,6 +62,8 @@ module.exports = {
     appPaymentJs: resolveModule(resolveApp, 'src/pages/payment/index'),
     appBackendHtml: resolveApp('public/backend.html'),
     appBackendJs: resolveModule(resolveApp, 'src/pages/backend/index'),
+    appOrderHtml: resolveApp('public/order.html'),
+    appOrderJs: resolveModule(resolveApp, 'src/pages/order/index'),
     appPackageJson: resolveApp('package.json'),
     appSrc: resolveApp('src'),
     appTsConfig: resolveApp('tsconfig.json'),
