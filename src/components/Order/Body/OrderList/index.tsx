@@ -29,7 +29,7 @@ function OrderList({orders}: I_props1) {
     const { openDetail } = useSelector((store: RootState)=>store);
     let total = 0;
     const isActive = useMemo(() => {
-        return openDetail === orders[0].o_dentical
+        return openDetail === orders[0].o_dentical;
     },[openDetail, orders])
 
     return (

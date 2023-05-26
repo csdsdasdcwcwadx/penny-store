@@ -11,3 +11,8 @@ export const set_getallproduct = (payload: any) => ({
     type: actionTypes.SET_PRODUCT_GETALLPRODUCT,
     payload,
 })
+
+export const setIsLoading = (payload: boolean) => ({
+    type: actionTypes.SET_ISLOADING,
+    payload,
+})

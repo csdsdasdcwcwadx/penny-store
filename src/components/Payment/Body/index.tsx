@@ -41,9 +41,9 @@ function Body() {
         })()
     },[])
 
-    const handlePayment = async () => {
+    const handlePayment = async (isSuccess: boolean = true) => {
         const post = {
-            isSuccess: true,
+            isSuccess,
             name: '蔡濡安',
             account: '123456',
             money: '10000', 
@@ -93,7 +93,8 @@ function Body() {
                         <span> </span>
                         <span className={styles.totalcalculation}>{total}元</span>
                     </div>
-                    <button onClick={handlePayment}>付款測試用</button>
+                    <button onClick={() => handlePayment()}>付款測試用(成功)</button>
+                    <button onClick={() => handlePayment(false)}>付款測試用(失敗)</button>
                 </div>
             }
         </div>

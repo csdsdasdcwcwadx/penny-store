@@ -10,13 +10,16 @@ import axios from "axios";
 import InputBar, { E_RegexType } from "@components/Common/Modules/InputBar";
 import { E_Page } from "@Redux/App/interfaces";
 import { I_productinfo, I_productdetail } from "@Redux/Product/interface";
+import PageNumber from '@components/Common/PageNumber';
+import Spinner from "@components/Common/Modules/Spinner";
 
 function ProductSettings () {
     const dispatch = useDispatch();
-    const { productdetail } = useSelector((store: RootState)=>store);
+    const { productdetail, isLoading } = useSelector((store: RootState)=>store);
     const [open_adding, setOpen_adding] = useState(false);
     const [open_fix, setOpen_fix] = useState(false);
     const [fixItem, setFixItem] = useState<I_productinfo>();
+    const [ serial, setSerial ] = useState(1);
 
     // 新增產品所需要用到的參數
     const p_name = useRef<HTMLInputElement>(null);
@@ -45,7 +48,7 @@ function ProductSettings () {
                 const { data } = await axios.post<I_productdetail>(`${domain()}/product/removeproduct`, {p_id: product.p_id});
                 data.message && alert(data.message);
                 if(data.status) {
-                    dispatch(call_getallproduct({p_type: '', backend: true}));
+                    dispatch(call_getallproduct({p_type: '', currpage: serial}));
                 }
             }catch(err) {
                 console.error(err);
@@ -149,7 +152,7 @@ function ProductSettings () {
                     data.message && alert(data.message);
                     if(data.status) {
                         setOpen_fix(false);
-                        dispatch(call_getallproduct({p_type: '', backend: true}));
+                        dispatch(call_getallproduct({p_type: '', currpage: serial}));
                     }
         
                 }catch(err) {
@@ -159,7 +162,7 @@ function ProductSettings () {
         }else {
             alert(error?.textContent);
         }
-    },[dispatch, fixItem, fix_p_img])
+    },[dispatch, fixItem, fix_p_img, serial])
 
     const fixBlock = useCallback(() => {
         if(fixItem) {
@@ -238,8 +241,8 @@ function ProductSettings () {
     },[fixItem, handle_fix, open_fix])
 
     useEffect(()=>{
-        dispatch(call_getallproduct({p_type: '', backend: true}));
-    },[dispatch])
+        dispatch(call_getallproduct({p_type: '', currpage: serial}));
+    },[dispatch, serial])
 
     useEffect(() => {
         if(!open_fix) {
@@ -251,6 +254,7 @@ function ProductSettings () {
         <div className={styles.body}>
             <div className={styles.productwrapper}>
             {
+                isLoading ? <Spinner/> :
                 productdetail?.productinfo.map((product) => {
                     return (
                         <li key={product.p_id} className={styles.product}>
@@ -274,6 +278,9 @@ function ProductSettings () {
             <div className={styles.addnew} onClick={() => setOpen_adding(true)}>新增產品</div>
             {fixBlock()}
             {addingBlock()}
+            {
+                productdetail && <PageNumber serial={serial} setSerial={setSerial} maxpage={productdetail.pages}/>
+            }
         </div>
     )
 }
