@@ -12,6 +12,8 @@ export default function reducer(State = initialState, action: any) {
             return {...State, productdetail: action.payload};
         case actionTypes.SET_ISLOADING:
             return {...State, isLoading: action.payload};
+        case actionTypes.SET_ORDER_LISTSHIPPING:
+            return {...State, orderdetail: action.payload};
         default:
             return State;
     }

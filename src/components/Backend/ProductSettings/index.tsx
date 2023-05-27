@@ -12,6 +12,7 @@ import { E_Page } from "@Redux/App/interfaces";
 import { I_productinfo, I_productdetail } from "@Redux/Product/interface";
 import PageNumber from '@components/Common/PageNumber';
 import Spinner from "@components/Common/Modules/Spinner";
+import cN from 'classnames';
 
 function ProductSettings () {
     const dispatch = useDispatch();
@@ -252,7 +253,7 @@ function ProductSettings () {
 
     return (
         <div className={styles.body}>
-            <div className={styles.productwrapper}>
+            <div className={cN(styles.productwrapper, {[styles.isLoading]: isLoading})}>
             {
                 isLoading ? <Spinner/> :
                 productdetail?.productinfo.map((product) => {

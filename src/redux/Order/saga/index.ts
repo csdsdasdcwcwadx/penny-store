@@ -8,12 +8,14 @@ import domain from '@utils/domainByEnv';
 // 目前只有 提供json 檔, 之後再拿api 做替換
 
 function* fetch_getlistshipping(action: any): Generator<StrictEffect, any, any> {
+    yield put(actions.setIsLoading(true));
     const data = yield call(fetchAPI, {
         url: `${domain()}/order/listshipping`,
         req: action.payload,
     });
 
     yield put(actions.set_listshipping({...data}));
+    yield put(actions.setIsLoading(false));
 }
 
 function* watchgetlistshipping() {

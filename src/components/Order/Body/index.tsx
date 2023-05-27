@@ -6,11 +6,12 @@ import { RootState } from '@Redux/Order/store';
 import OrderList from "./OrderList";
 import PageNumber from "@components/Common/PageNumber";
 import { handlepath } from '@utils/domainByEnv';
+import Spinner from "@components/Common/Modules/Spinner";
 
 function Body () {
     const [ serial, setSerial ] = useState(1);
     const dispatch = useDispatch();
-    const { ordershipping } = useSelector((store: RootState)=>store);
+    const { ordershipping, isLoading } = useSelector((store: RootState)=>store);
 
     useEffect(() =>{
         const member = JSON.parse(localStorage.getItem('memberinfo')!);
@@ -33,7 +34,7 @@ function Body () {
                         })
                     }
                     <PageNumber serial={serial} setSerial={setSerial} maxpage={ordershipping.pages}/>
-                </div> : <div>尚無訂單資訊</div> : <div>尚未取得訂單資訊</div>
+                </div> : <div>尚無訂單資訊</div> : <Spinner/>
             }
         </div>
     )

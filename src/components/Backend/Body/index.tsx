@@ -2,7 +2,20 @@ import React, { memo, useEffect, useState } from "react";
 import styles from './styles.module.scss';
 import ProductSettings from "../ProductSettings";
 import Data from "../Data";
+import Shipping from "../Shipping";
 import { handlepath } from "@utils/domainByEnv";
+import cN from 'classnames';
+
+const handleCurrentType = (name: E_currentType) => {
+    switch(name){
+        case E_currentType.ANDATA:
+            return '查看數據';
+        case E_currentType.PRODUCT:
+            return '商品列表設定';
+        case E_currentType.SHIPPING:
+            return '出貨訂單';
+    }
+}
 
 enum E_currentType {
     PRODUCT = 'PRODUCT',
@@ -11,7 +24,7 @@ enum E_currentType {
 }
 
 function Body () {
-    const [current, setCurrent] = useState<E_currentType>(E_currentType.PRODUCT);
+    const [current, setCurrent] = useState<E_currentType>(E_currentType.SHIPPING);
 
     useEffect (() => {
         const member = JSON.parse(localStorage.getItem('memberinfo')!);
@@ -29,15 +42,23 @@ function Body () {
     },[])
 
     return (
-        <div>
+        <div className={styles.backend}>
             <div className={styles.header}>
-                <button onClick={()=>setCurrent(E_currentType.PRODUCT)}>商品列表設定</button>
-                <button onClick={()=>setCurrent(E_currentType.ANDATA)}>數據查看</button>
-                <button onClick={()=>setCurrent(E_currentType.SHIPPING)}>出貨訂單</button>
+                {
+                    Object.keys(E_currentType).map((obj, ind) => {
+                        return (
+                            <button className={cN({})} key={ind} onClick={()=>setCurrent(obj as E_currentType)}>{handleCurrentType(obj as E_currentType)}</button>
+                        )
+                    })
+                }
             </div>
-            {
-                current === E_currentType.PRODUCT ? <ProductSettings/>:<Data/>
-            }
+            <div className={styles.backendbody}>
+                {
+                    current === E_currentType.PRODUCT ? <ProductSettings/>:
+                    current === E_currentType.ANDATA ? <Data/>:
+                    <Shipping/>
+                }
+            </div>
         </div>
     )
 }

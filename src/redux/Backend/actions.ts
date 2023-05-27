@@ -12,6 +12,16 @@ export const set_getallproduct = (payload: any) => ({
     payload,
 })
 
+export const call_listshipping = (payload: any) => ({
+    type: actionTypes.CALL_ORDER_LISTSHIPPING,
+    payload,
+})
+
+export const set_listshipping = (payload: any) => ({
+    type: actionTypes.SET_ORDER_LISTSHIPPING,
+    payload,
+})
+
 export const setIsLoading = (payload: boolean) => ({
     type: actionTypes.SET_ISLOADING,
     payload,

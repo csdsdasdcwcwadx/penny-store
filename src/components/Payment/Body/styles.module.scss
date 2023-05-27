@@ -98,6 +98,99 @@
             }
         }
     }
+
+    &.isclose {
+
+        >li,
+        .calculate {
+            display: none;
+        }
+    }
+}
+
+.openshoplist {
+    padding-top: 30px;
+    text-align: center;
+    font-size: 25px;
+    cursor: pointer;
+
+    span {
+        display: block;
+    }
+
+    i {
+        display: block;
+        transform: rotate(270deg);
+    }
+
+    &.isclose {
+        i {
+            transform: rotate(90deg);
+        }
+    }
+}
+
+
+.paymentinfo {
+    display: block;
+    margin-top: 30px;
+
+    h2 {
+        font-size: 40px;
+        text-align: center;
+        color: #222;
+    }
+
+    .paymentcontent {
+        width: 50%;
+        margin: auto;
+
+        .checkbox {
+            line-height: 20px;
+            padding-left: calc(20px + 5px);
+            position: relative;
+            display: inline-block;
+
+            input {
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 20px;
+                z-index: 10;
+                cursor: pointer;
+            }
+
+            input+.indicator {
+                border: 1px solid #bbb;
+                border-radius: 2px;
+                height: 15px;
+                width: 15px;
+                position: absolute;
+                top: 0;
+                left: 0px;
+            }
+
+            input[type='checkbox']:checked+.indicator::after {
+                content: " ";
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: calc(15px / 10 * 3);
+                height: calc(15px / 10 * 5);
+                border: solid #0077b3;
+                border-width: 0 2px 2px 0;
+                border-color: #af6f3b;
+                transform: translate(-50%, -65%) rotate(45deg);
+            }
+        }
+
+        >div:not(.checkbox) {
+            margin-top: 10px;
+        }
+    }
 }
 
 .noitem {

@@ -15,15 +15,22 @@ interface I_props {
     type: E_RegexType;
     value?: string | number;
     unnecessary?: boolean;
+    trigger?: boolean
 }
 
-function InputBar ({title, placeholder, type, value, unnecessary}: I_props, ref: React.ForwardedRef<HTMLInputElement>) {
+function InputBar ({title, placeholder, type, value, unnecessary, trigger}: I_props, ref: React.ForwardedRef<HTMLInputElement>) {
     const [input, setInput] = useState<string>('');
     const [errMsg, setErrMsg] = useState<string | undefined>();
 
     useEffect(() => {
         value && setInput(`${value}`);
     },[value])
+
+    useEffect(() => {
+        if(trigger) setErrMsg(undefined);
+        else setErrMsg(`${title}必填`);
+    },[trigger, title])
+
 
     useEffect(() => {
         

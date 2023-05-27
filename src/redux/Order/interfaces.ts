@@ -3,6 +3,7 @@ import { E_Page } from "@Redux/App/interfaces";
 export interface I_RootState {
     ordershipping?: I_listshipping;
     openDetail?: string;
+    isLoading: boolean;
 }
 
 export interface I_listshipping {
@@ -21,16 +22,15 @@ export interface I_orderinfo {
     o_price: number;
     o_payment: number;
     o_dentical: string;
-    p_name: string;
-    p_amount: number;
-    p_price: number;
-    p_img: {
+    isShip: number;
+    o_name: string;
+    o_phone: string;
+    o_address: string;
+    o_img: {
         data: Array<any>;
         type: string;
     };
-    p_type: E_Page;
-    p_size: string;
-    p_dentical: string;
-    p_info: string;
+    o_size: string;
+    op_name: string
 }
 

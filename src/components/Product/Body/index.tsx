@@ -12,6 +12,7 @@ import { E_Page } from "@Redux/App/interfaces";
 import axios from "axios";
 import domain, {handlepath} from '@utils/domainByEnv';
 import { SideBar } from "..";
+import Spinner from "@components/Common/Modules/Spinner";
 
 function Body() {
     const dispatch = useDispatch();
@@ -99,7 +100,7 @@ function Body() {
     },[productdetail])
 
     return (
-        !productdetail ? <div>找不到商品</div> :
+        !productdetail ? <Spinner/> :
             <div className={styles.Body}>
                 <div className={styles.breadcrumb}>
                     <BreadCrumb items={handleBreadCrumb()}/>

@@ -4,6 +4,10 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
 
+        &.isLoading {
+            display: block;
+        }
+
         .product {
             display: flex;
             flex-direction: column;
