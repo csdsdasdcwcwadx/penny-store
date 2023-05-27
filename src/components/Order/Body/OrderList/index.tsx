@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from '@Redux/Order/store';
 import { set_opendetail } from '@Redux/Order/actions';
 import cN from 'classnames';
-import { handleIMG } from "@utils/commonfunction";
+import { handleIMG, handleShipment } from "@utils/commonfunction";
 import '@components/Common/Modules/ic-ln/css.css';
+import { handlePayment } from "@utils/commonfunction";
 // import { SlideToggle } from '@todys/react-slide-toggle';
 
 interface I_props1 {
@@ -18,10 +19,6 @@ const handleDate = (date: string, isTime: boolean = false) => {
     const localDateTime = new Date(utcDateTime).toLocaleString('en-US', { timeZone: 'Asia/Taipei', hour12: false });
     if(isTime) return localDateTime.split(',')[1];
     return localDateTime.split(',')[0];
-}
-
-const handlePayment = (payment: number) => {
-    return payment === 1 ? '已付款' : '尚未付款';
 }
 
 function OrderList({orders}: I_props1) {
@@ -41,6 +38,7 @@ function OrderList({orders}: I_props1) {
                         <div>訂單日期 : {handleDate(orders[0].o_date)}</div>
                         <div>訂單時間 : {handleDate(orders[0].o_date, true)}</div>
                         <div className={styles.status}>付款狀態 : {handlePayment(orders[0].o_payment)}</div>
+                        <div className={styles.status}>出貨狀態 : {handleShipment(orders[0].isShip)}</div>
                     </div>
                     <a onClick={()=>dispatch(set_opendetail(orders[0].o_dentical))} className={styles.checkout}>
                         <span>查看訂單明細</span>
@@ -78,8 +76,8 @@ function Order({order, total}: I_props2) {
         <>
             <div className={styles.orderitem}>
                 <div className={styles.photo}>
-                    <img src={handleIMG(order.p_img)}/>
-                    <span>{order.p_name}</span>
+                    <img src={handleIMG(order.o_img)}/>
+                    <span>{order.op_name}</span>
                 </div>
                 <div data-title='產品價格'>
                     <span>{order.o_price}元</span>
@@ -88,7 +86,7 @@ function Order({order, total}: I_props2) {
                     <span>{order.o_amount}</span>
                 </div>
                 <div data-title='尺寸'>
-                    <span>{order.p_size}</span>
+                    <span>{order.o_size}</span>
                 </div>
                 <div data-title='小計'>
                     <span>{order.o_price*order.o_amount}元</span>

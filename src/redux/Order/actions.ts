@@ -14,3 +14,8 @@ export const set_opendetail = (payload: any) => ({
     type: actionTypes.SET_OPENDETAIL,
     payload,
 })
+
+export const setIsLoading = (payload: boolean) => ({
+    type: actionTypes.SET_ISLOADING,
+    payload,
+})

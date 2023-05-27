@@ -1,0 +1,188 @@
+@import '../../../commonStyles/variables.scss';
+@import '../../../commonStyles/mixins.scss';
+
+.Shipping {
+    margin-top: 50px;
+
+    .ordertable {
+        display: table;
+        width: calc(100% - 12px);
+        margin-bottom: 20px;
+
+        .ordernav {
+            display: table-row-group;
+
+            nav {
+                display: table-cell;
+                text-align: center;
+                width: 10%;
+
+                @include only-mobile {
+                    width: auto;
+                }
+
+                &.photo {
+                    width: 40%;
+
+                    @include only-mobile {
+                        width: auto;
+                    }
+                }
+            }
+
+            @include only-mobile {
+                display: none;
+            }
+        }
+    }
+
+    .orderdatatable {
+        .orderouter {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0;
+            border: 1px solid #bbb;
+            border-bottom: none;
+            border-radius: 5px 5px 0 0;
+            padding: 20px;
+            cursor: pointer;
+
+            button {
+                cursor: pointer;
+            }
+
+            >div {
+                display: flex;
+                flex-direction: column;
+
+                >span {
+                    @include only-pc {
+                        display: flex;
+                    }
+
+                    span {
+                        display: block;
+
+                        &:first-of-type {
+                            font-weight: 500;
+
+                            @include only-pc {
+                                width: 130px;
+                                text-align: right;
+                            }
+                        }
+
+                        &:last-of-type {
+                            width: 250px;
+                        }
+                    }
+                }
+
+                &:last-of-type {
+                    width: 400px;
+                }
+            }
+
+            .hasShip {
+                display: flex;
+                align-items: center;
+                color: #019292;
+                font-size: 25px;
+
+                i {
+                    position: relative;
+                    display: block;
+                    color: #019292;
+                }
+            }
+
+            @include only-mobile {
+                flex-direction: column;
+                align-items: unset;
+                justify-content: left;
+
+                button {
+                    width: 100px;
+                    height: 30px;
+                }
+            }
+        }
+
+        .orders {
+            display: table;
+            width: calc(100% - 12px);
+            margin-bottom: 30px;
+            padding: 0 0 10px 10px;
+            border: 1px solid #bbb;
+            border-radius: 0 0 5px 5px;
+
+            @include only-mobile {
+                width: calc(100% - 22px);
+                padding: 10px;
+            }
+
+            .order {
+                display: table-row-group;
+
+                >div {
+                    display: table-cell;
+                    text-align: center;
+                    width: 10%;
+
+                    @include only-mobile {
+                        display: flex;
+                        justify-content: space-between;
+                        text-align: left;
+                        width: auto;
+
+                        &::before {
+                            content: attr(data-title);
+                            width: 100px;
+                            font-weight: 500;
+                        }
+                    }
+
+                    &.photo {
+                        text-align: left;
+                        width: 40%;
+
+                        @include only-mobile {
+                            display: block;
+                            margin-bottom: 15px;
+                            width: auto;
+                        }
+
+                        img {
+                            position: relative;
+                            top: 13px;
+                            width: 50px;
+                            height: 50px;
+                            margin-right: 10px;
+                        }
+                    }
+                }
+
+                &.sum {
+                    font-size: 20px;
+
+                    div {
+                        padding-top: 20px;
+                    }
+                }
+            }
+        }
+
+        &.isClosed {
+            .orderouter {
+                margin-bottom: 20px;
+                border: 1px solid #bbb;
+                border-radius: 5px;
+            }
+
+            .orders {
+                display: none;
+            }
+        }
+    }
+}

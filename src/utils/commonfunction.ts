@@ -24,3 +24,11 @@ export const handleNavigator = (type: E_Page) => {
     }
 
 }
+
+export const handlePayment = (payment: number) => {
+    return payment === 1 ? '已付款' : '尚未付款';
+}
+
+export const handleShipment = (isShip: number) => {
+    return isShip === 1 ? '已出貨(約15-20個工作天送達)' : '尚未出貨';
+}
