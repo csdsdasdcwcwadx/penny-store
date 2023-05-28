@@ -116,7 +116,7 @@ function Header() {
                 </div>
                     <a 
                         className={styles.logo} 
-                        href={memberinfo && memberinfo.memberinfo[0].isAdmin === 0 ?`${handlepath()}?page_id=`:`${handlepath()}/backend${isLocal?'.html':''}`}
+                        href={memberinfo && memberinfo.memberinfo[0].isAdmin === 1 ?`${handlepath()}/backend${isLocal?'.html':''}`:`${handlepath()}?page_id=`}
                     >LONDONER</a>
                 <div>
                     {/* <span className={styles.show}>seh</span> */}

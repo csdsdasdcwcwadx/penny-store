@@ -71,16 +71,25 @@ function Body() {
         ];
         else return [];
     }
+    
+    const chosenItem = useMemo(() => {
+        if(productdetail) {
+            const chosen = productdetail.productinfo.find(e=>{
+                return e.p_color === selectColor && e.p_size === selectSize;
+            })
+            return chosen;
+        }
+        return undefined;
+    },[productdetail, selectColor, selectSize])
+
+    console.log("@@@", chosenItem)
 
     const handleAddChart = useCallback( async () => {
 
         if(productdetail && member) {
-            const chosen = productdetail.productinfo.find(e=>{
-                return e.p_color === selectColor && e.p_size === selectSize;
-            })
             const body = {
                 m_id: member.memberinfo[0].m_id,
-                p_id: chosen?.p_id,
+                p_id: chosenItem?.p_id,
                 s_amount: counter,
                 restrict: productdetail.productinfo[0].p_amount,
             }
@@ -134,7 +143,7 @@ function Body() {
         } else {
             alert('請先登入會員');
         }
-    },[productdetail, counter, member, selectSize, selectColor])
+    },[productdetail, member, chosenItem, counter])
 
     const src = useMemo(() => {
         if(productdetail) return handleIMG(productdetail.productinfo[0].p_img);
@@ -182,8 +191,10 @@ function Body() {
                     <div className={styles.description}>
                         <span className={styles.productname}>
                             {productdetail.productinfo[0].p_name}
-                            {/* <span className={styles.productleft}>剩餘商品數量 : 
-                            {productdetail.productinfo[0].p_amount > 0 ? productdetail.productinfo[0].p_amount : 0}</span> */}
+                            {
+                                chosenItem && chosenItem.p_amount <= 5 && 
+                                    <span className={styles.productleft}>{chosenItem.p_amount > 0 ? `商品數量剩餘 : ${chosenItem.p_amount}` : '目前尚無現貨，預購天數約15-20個工作天'}</span>
+                            }
                         </span>
                         <span className={styles.productprice}>NT$ {productdetail.productinfo[0].p_price}</span>
                         {
@@ -248,7 +259,7 @@ function Body() {
                 </div>
                 <SideBar trigger={trigger}/>
                 <div className={cN(styles.alertion, {[styles.show]: alertion}, {[styles.lateAlert]: lateAlert})}>{message}</div>
-                <div className={styles.desinfo}>{productdetail.productinfo[0].p_info}</div>
+                <div className={styles.desinfo} dangerouslySetInnerHTML={{ __html: productdetail.productinfo[0].p_info }}/>
             </div>
     )
 }
