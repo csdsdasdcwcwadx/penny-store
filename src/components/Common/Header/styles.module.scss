@@ -277,11 +277,19 @@
         border-radius: 6px;
         background-color: #fff;
 
+        @include only-mobile {
+            width: 90vw;
+        }
+
         .memberevent {
             width: 70%;
             height: 80%;
             border: 1px solid #ddd;
             border-radius: 5px;
+
+            @include only-mobile {
+                height: 90%;
+            }
 
             .buttons {
                 display: flex;

@@ -20,10 +20,10 @@ type I_props = {
 }
 
 function LightBox ({isOpen, handleDispatch, children, direction, theName, isOverflow}: I_props) {
-    const { body } = document;
     const [dark, setDark] = useState<boolean>(false);
 
     useEffect (()=>{
+        const { body } = document;
         const parent = document.querySelector(`.blocker .${theName}`) as HTMLElement;
         const blocker = parent.parentNode as HTMLElement;
         if(isOpen) {
@@ -41,7 +41,7 @@ function LightBox ({isOpen, handleDispatch, children, direction, theName, isOver
                 blocker?.removeAttribute('style');
             },500)
         }
-    },[body.classList, isOpen, theName])
+    },[isOpen, theName])
 
     return (
         <>

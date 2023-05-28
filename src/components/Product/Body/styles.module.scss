@@ -62,14 +62,14 @@
                     align-items: center;
                 }
 
-                // .productleft {
-                //     font-size: 15px;
-                //     color: #bbb;
+                .productleft {
+                    font-size: 20px;
+                    color: #e00909;
 
-                //     @include only-pc {
-                //         padding-left: 20px;
-                //     }
-                // }
+                    @include only-pc {
+                        padding-left: 20px;
+                    }
+                }
             }
 
             .productprice {
@@ -215,8 +215,9 @@
     }
 
     .desinfo {
+        display: flex;
+        justify-content: center;
         padding: 40px;
         padding-bottom: 20px;
-        text-align: center;
     }
 }
