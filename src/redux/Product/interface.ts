@@ -23,4 +23,5 @@ export interface I_productinfo {
     p_dentical: string;
     p_info: string;
     p_date: string;
+    p_color: string;
 }

@@ -30,6 +30,7 @@ function ProductSettings () {
     const p_size = useRef<HTMLInputElement>(null);
     const p_dentical = useRef<HTMLInputElement>(null);
     const p_info = useRef<HTMLInputElement>(null);
+    const p_color = useRef<HTMLInputElement>(null);
     const [p_img, setP_img] = useState<File>();
 
     // 修改產品所需要用到的參數
@@ -40,6 +41,7 @@ function ProductSettings () {
     const fix_p_size = useRef<HTMLInputElement>(null);
     const fix_p_dentical = useRef<HTMLInputElement>(null);
     const fix_p_info = useRef<HTMLInputElement>(null);
+    const fix_p_color = useRef<HTMLInputElement>(null);
     const [fix_p_img, setFix_p_img] = useState<File>();
 
     const handle_delete = async (product: I_productinfo) => {
@@ -49,7 +51,7 @@ function ProductSettings () {
                 const { data } = await axios.post<I_productdetail>(`${domain()}/product/removeproduct`, {p_id: product.p_id});
                 data.message && alert(data.message);
                 if(data.status) {
-                    dispatch(call_getallproduct({p_type: '', currpage: serial}));
+                    dispatch(call_getallproduct({p_type: '', currpage: serial, frombackend: true}));
                 }
             }catch(err) {
                 console.error(err);
@@ -68,6 +70,7 @@ function ProductSettings () {
             formData.append('p_type', p_type.current?.value!);
             formData.append('p_img', p_img!);
             formData.append('p_size', p_size.current?.value!);
+            formData.append('p_color', p_color.current?.value!);
             formData.append('p_info', p_info.current?.value!);
             try {
                 const { data } = await axios.post(`${domain()}/product/registryproduct`, formData, {
@@ -98,12 +101,13 @@ function ProductSettings () {
             >
                 <div className={styles.addingBlock}>
                     <div className={styles.input}>
-                        <InputBar title="商品編號" placeholder="請輸入商品編號" type={E_RegexType.NAME} ref={p_dentical}/>
-                        <InputBar title="商品名稱" placeholder="請輸入商品名稱" type={E_RegexType.NAME} ref={p_name}/>
-                        <InputBar title="商品價格" placeholder="請輸入商品價格" type={E_RegexType.NAME} ref={p_price}/>
-                        <InputBar title="商品數量" placeholder="請輸入商品數量" type={E_RegexType.NAME} ref={p_amount}/>
-                        <InputBar title="商品尺寸" placeholder="請輸入商品尺寸" type={E_RegexType.NAME} ref={p_size}/>
-                        <InputBar title="商品說明" placeholder="請輸入商品說明" type={E_RegexType.NAME} ref={p_info} unnecessary={true}/>
+                        <InputBar title="商品編號" placeholder="請輸入商品編號" type={E_RegexType.NAME} ref={p_dentical} maxlength={8}/>
+                        <InputBar title="商品名稱" placeholder="請輸入商品名稱" type={E_RegexType.NAME} ref={p_name} maxlength={20}/>
+                        <InputBar title="商品價格" placeholder="請輸入商品價格" type={E_RegexType.NAME} ref={p_price} maxlength={11}/>
+                        <InputBar title="商品數量" placeholder="請輸入商品數量" type={E_RegexType.NAME} ref={p_amount} maxlength={11}/>
+                        <InputBar title="商品尺寸" placeholder="請輸入商品尺寸" type={E_RegexType.NAME} ref={p_size} maxlength={15}/>
+                        <InputBar title="商品顏色" placeholder="請輸入商品顏色" type={E_RegexType.NAME} ref={p_color} maxlength={20}/>
+                        <InputBar title="商品說明" placeholder="請輸入商品說明" type={E_RegexType.NAME} ref={p_info} unnecessary={true} maxlength={255}/>
                         <div className={styles.selection}>
                             <span>商品種類</span>
                             <select placeholder="請選擇商品種類" ref={p_type}>
@@ -143,6 +147,7 @@ function ProductSettings () {
                 formData.append('p_type', fix_p_type.current?.value!);
                 formData.append('p_img', fix_p_img!);
                 formData.append('p_size', fix_p_size.current?.value!);
+                formData.append('p_color', fix_p_color.current?.value!);
                 formData.append('p_info', fix_p_info.current?.value!);
                 try {
                     const { data } = await axios.post(`${domain()}/product/updateproduct`, formData, {
@@ -153,7 +158,7 @@ function ProductSettings () {
                     data.message && alert(data.message);
                     if(data.status) {
                         setOpen_fix(false);
-                        dispatch(call_getallproduct({p_type: '', currpage: serial}));
+                        dispatch(call_getallproduct({p_type: '', currpage: serial, frombackend: true}));
                     }
         
                 }catch(err) {
@@ -167,7 +172,7 @@ function ProductSettings () {
 
     const fixBlock = useCallback(() => {
         if(fixItem) {
-            const { p_name, p_price, p_amount, p_type, p_dentical, p_size, p_info } = fixItem;
+            const { p_name, p_price, p_amount, p_type, p_dentical, p_size, p_info, p_color } = fixItem;
             return (
                 <LightBox
                     isOpen = {open_fix}
@@ -182,38 +187,51 @@ function ProductSettings () {
                                 placeholder="請輸入商品編號"
                                 type={E_RegexType.NAME}
                                 value={p_dentical}
-                                ref={fix_p_dentical}/>
+                                ref={fix_p_dentical}
+                                maxlength={8}/>
                             <InputBar
                                 title="商品名稱"
                                 placeholder="請輸入商品名稱"
                                 type={E_RegexType.NAME}
                                 value={p_name}
-                                ref={fix_p_name}/>
+                                ref={fix_p_name}
+                                maxlength={20}/>
                             <InputBar
                                 title="商品價格"
                                 placeholder="請輸入商品價格"
                                 type={E_RegexType.NAME}
                                 value={p_price}
-                                ref={fix_p_price}/>
+                                ref={fix_p_price}
+                                maxlength={11}/>
                             <InputBar
                                 title="商品數量"
                                 placeholder="請輸入商品數量"
                                 type={E_RegexType.NAME}
                                 value={p_amount}
-                                ref={fix_p_amount}/>
+                                ref={fix_p_amount}
+                                maxlength={11}/>
                             <InputBar 
                                 title="商品尺寸" 
                                 placeholder="請輸入商品尺寸" 
                                 type={E_RegexType.NAME}
                                 value={p_size}
-                                ref={fix_p_size}/>
+                                ref={fix_p_size}
+                                maxlength={15}/>
+                            <InputBar 
+                                title="商品顏色" 
+                                placeholder="請輸入商品顏色" 
+                                type={E_RegexType.NAME}
+                                value={p_color}
+                                ref={fix_p_color}
+                                maxlength={20}/>
                             <InputBar 
                                 title="商品說明" 
                                 placeholder="請輸入商品說明" 
                                 type={E_RegexType.NAME}
                                 value={p_info}
                                 ref={fix_p_info}
-                                unnecessary={true}/>
+                                unnecessary={true}
+                                maxlength={255}/>
     
                             <div className={styles.selection}>
                                 <span>商品種類</span>
@@ -242,7 +260,7 @@ function ProductSettings () {
     },[fixItem, handle_fix, open_fix])
 
     useEffect(()=>{
-        dispatch(call_getallproduct({p_type: '', currpage: serial}));
+        dispatch(call_getallproduct({p_type: '', currpage: serial, frombackend: true}));
     },[dispatch, serial])
 
     useEffect(() => {
@@ -266,6 +284,7 @@ function ProductSettings () {
                             <span>商品種類：{handleNavigator(product.p_type as E_Page)}</span>
                             <span>商品數量：{product.p_amount}</span>
                             <span>商品尺寸：{product.p_size}</span>
+                            <span>商品顏色：{product.p_color}</span>
                             <span>商品資訊：{product.p_info}</span>
                             <div className={styles.buttons}>
                                 <button onClick={() => handle_delete(product)}>刪除</button>

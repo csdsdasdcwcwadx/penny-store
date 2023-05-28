@@ -62,14 +62,14 @@
                     align-items: center;
                 }
 
-                .productleft {
-                    font-size: 15px;
-                    color: #bbb;
+                // .productleft {
+                //     font-size: 15px;
+                //     color: #bbb;
 
-                    @include only-pc {
-                        padding-left: 20px;
-                    }
-                }
+                //     @include only-pc {
+                //         padding-left: 20px;
+                //     }
+                // }
             }
 
             .productprice {

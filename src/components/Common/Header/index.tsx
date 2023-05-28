@@ -241,9 +241,9 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
                                 </div> : 
                                 <div>
                                     <div className={styles.title}>會員註冊</div>
-                                    <InputBar title='姓名' placeholder='請輸入姓名' type={E_RegexType.NAME} ref={m_name}/>
-                                    <InputBar title='手機' placeholder='請輸入手機' type={E_RegexType.PHONE} ref={m_phone}/>
-                                    <InputBar title='地址' placeholder='請輸入地址' type={E_RegexType.ADDRESS} ref={m_address}/>
+                                    <InputBar title='姓名' placeholder='請輸入姓名' type={E_RegexType.NAME} ref={m_name} maxlength={10}/>
+                                    <InputBar title='手機' placeholder='請輸入手機' type={E_RegexType.PHONE} ref={m_phone} maxlength={20}/>
+                                    <InputBar title='地址' placeholder='請輸入地址' type={E_RegexType.ADDRESS} ref={m_address} maxlength={255}/>
                                     <div className={styles.buttonlist}>
                                         <button onClick={handleRegistry}>送出</button>
                                     </div>

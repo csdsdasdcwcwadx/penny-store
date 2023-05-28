@@ -24,7 +24,7 @@ enum E_currentType {
 }
 
 function Body () {
-    const [current, setCurrent] = useState<E_currentType>(E_currentType.SHIPPING);
+    const [current, setCurrent] = useState<E_currentType>(E_currentType.PRODUCT);
 
     useEffect (() => {
         const member = JSON.parse(localStorage.getItem('memberinfo')!);

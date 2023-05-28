@@ -88,7 +88,7 @@ function SideBar ({trigger}: I_props) {
                                     <div className={styles.productlist}>
                                         <img src={handleIMG(product.p_img)}/>
                                         <div className={styles.productcontent}>
-                                            <p>{product.p_name}</p>
+                                            <p>{product.p_name}({product.p_color})</p>
                                             <div className={styles.detailinfo}>
                                                 <span>x {product.s_amount}件 </span>
                                                 <span> 共<span>{dollar}</span>元</span>
