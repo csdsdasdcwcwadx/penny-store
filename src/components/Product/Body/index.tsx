@@ -16,17 +16,12 @@ import Spinner from "@components/Common/Modules/Spinner";
 
 function Body() {
     const dispatch = useDispatch();
-    const buyOptions = [
-        {label: '請選擇', value: '', isDisabled: true},
-        {label: '現貨', value: 'current'},
-        {label: '預購', value: 'preorder'},
-    ]
 
     const [counter, setCounter] = useState<number>(1);
     // 尺寸
     const [selectSize, setSelectSize] = useState('');
-    // 是否有現貨
-    const [selectBuy, setSelectBuy] = useState('');
+    // 顏色
+    const [selectColor, setselectColor] = useState('');
     // 設定sidebar產品更改
     const [trigger, setTrigger] = useState(false);
     const [alertion, setAlertion] = useState(false);
@@ -40,8 +35,24 @@ function Body() {
         if(productdetail) {
             const { productinfo } = productdetail!;
             productinfo.forEach((product) => {
-                options.push({label: product.p_size, value: product.p_size, isDisabled: false, id: product.p_id});
+                if(!options.find(e=>e.value === product.p_size)) {
+                    options.push({label: product.p_size, value: product.p_size, isDisabled: false, id: product.p_id})
+                }
             })
+        }
+        return options;
+    },[productdetail])
+
+    const colorOptions = useMemo(() => {
+        const options = [{label: '請選擇', value: '', isDisabled: true, id: ''}];
+        if(productdetail) {
+            const { productinfo } = productdetail!;
+            productinfo.forEach((product) => {
+                if(!options.find(e=>e.value === product.p_color)) {
+                    options.push({label: product.p_color, value: product.p_color, isDisabled: false, id: product.p_id})
+                }
+            })
+
         }
         return options;
     },[productdetail])
@@ -62,30 +73,60 @@ function Body() {
     }
 
     const handleAddChart = useCallback( async () => {
+
         if(productdetail && member) {
+            const chosen = productdetail.productinfo.find(e=>{
+                return e.p_color === selectColor && e.p_size === selectSize;
+            })
             const body = {
                 m_id: member.memberinfo[0].m_id,
-                p_id: productdetail.productinfo[0].p_size ? selectSize : productdetail.productinfo[0].p_id,
+                p_id: chosen?.p_id,
                 s_amount: counter,
-                s_buy: selectBuy,
                 restrict: productdetail.productinfo[0].p_amount,
             }
 
             try{
                 const { data } = await axios.post(`${domain()}/shoplist/addshoplist`, body);
-                setMessage(data.message);
-                setAlertion(true);
-                setTrigger(pre=>!pre);
-                setTimeout(()=>{
-                    setLateAlert(true);
-                },40)
-                setTimeout(()=>{
-                    setLateAlert(false);
-                },1500)
-                setTimeout(()=>{
-                    setAlertion(false);
-                },2000)
-                setCounter(1);
+                if(data.status) {
+                    setMessage(data.message);
+                    setAlertion(true);
+                    setTrigger(pre=>!pre);
+                    setTimeout(()=>{
+                        setLateAlert(true);
+                    },40)
+                    setTimeout(()=>{
+                        setLateAlert(false);
+                    },1500)
+                    setTimeout(()=>{
+                        setAlertion(false);
+                    },2000)
+                    setCounter(1);
+                }else{
+                    if(data.message === null) {
+                        if(confirm('此商品目前現貨不足，是否要等候預購(約15-20個工作天)')) {
+                            const { data } = await axios.post(`${domain()}/shoplist/addshoplist`, {...body, pass: true});
+                            if(data.status) {
+                                setMessage(data.message);
+                                setAlertion(true);
+                                setTrigger(pre=>!pre);
+                                setTimeout(()=>{
+                                    setLateAlert(true);
+                                },40)
+                                setTimeout(()=>{
+                                    setLateAlert(false);
+                                },1500)
+                                setTimeout(()=>{
+                                    setAlertion(false);
+                                },2000)
+                                setCounter(1);
+                            } else {
+                                alert(data.message);
+                            }
+                        }
+                    } else {
+                        alert(data.message);
+                    }
+                }
             }catch(e){
                 console.error(e);
             }
@@ -93,7 +134,7 @@ function Body() {
         } else {
             alert('請先登入會員');
         }
-    },[productdetail, counter, member, selectBuy, selectSize])
+    },[productdetail, counter, member, selectSize, selectColor])
 
     const src = useMemo(() => {
         if(productdetail) return handleIMG(productdetail.productinfo[0].p_img);
@@ -141,16 +182,17 @@ function Body() {
                     <div className={styles.description}>
                         <span className={styles.productname}>
                             {productdetail.productinfo[0].p_name}
-                            <span className={styles.productleft}>剩餘商品數量 : {productdetail.productinfo[0].p_amount}</span>
+                            {/* <span className={styles.productleft}>剩餘商品數量 : 
+                            {productdetail.productinfo[0].p_amount > 0 ? productdetail.productinfo[0].p_amount : 0}</span> */}
                         </span>
                         <span className={styles.productprice}>NT$ {productdetail.productinfo[0].p_price}</span>
                         {
                             productdetail.productinfo[0].p_size && <div className={cN(styles.selection, styles.productsize)}>
                                 <span className={styles.info}>尺寸</span>
                                 <div className={styles.select}>
-                                    <Select 
+                                    <Select
                                         options={sizeOptions} 
-                                        onChange={e=>setSelectSize(e?.id!)} 
+                                        onChange={e=>setSelectSize(e?.value!)} 
                                         placeholder='請選擇' 
                                         isSearchable={false}
                                         theme={(theme)=>({
@@ -167,11 +209,11 @@ function Body() {
                             </div>
                         }
                         <div className={cN(styles.selection, styles.productbuy)}>
-                        <span className={styles.info}>現貨/預購</span>
+                            <span className={styles.info}>顏色</span>
                             <div className={styles.select}>
                                 <Select 
-                                    options={buyOptions} 
-                                    onChange={e=>setSelectBuy(e?.value || '')} 
+                                    options={colorOptions} 
+                                    onChange={e=>setselectColor(e?.value!)} 
                                     placeholder='請選擇' 
                                     isSearchable={false}
                                     theme={(theme)=>({
@@ -193,10 +235,11 @@ function Body() {
                                     return pre;
                                 })}> </span>
                                 <span className={styles.counter}>{counter}</span>
-                                <span className={cN(styles.add, {[styles.disabled]: counter === productdetail.productinfo[0].p_amount})} 
+                                <span className={cN(styles.add)} 
                                         onClick={()=>setCounter(pre=>{
-                                        if(pre<productdetail.productinfo[0].p_amount) return pre+1;
-                                        return pre;
+                                        // if(pre<productdetail.productinfo[0].p_amount) return pre+1;
+                                        // return pre;
+                                        return pre+1;
                                     })}> </span>
                             </div>
                             <button onClick={handleAddChart}>加入購物車</button>

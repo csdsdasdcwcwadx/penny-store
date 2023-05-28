@@ -93,6 +93,8 @@ function Body() {
                         <div className={styles.title}>
                             <span className={styles.name}>商品名稱</span>
                             <span className={styles.price}>單件價格</span>
+                            <span>商品顏色</span>
+                            <span>商品尺寸</span>
                             <span className={styles.amount}>商品數量</span>
                             <span className={styles.total}>小計</span>
                         </div>
@@ -107,6 +109,8 @@ function Body() {
                                             {product.p_name}
                                         </span>
                                         <span className={styles.price} data-title='單件價格'>{product.p_price}元</span>
+                                        <span data-title='商品顏色'>{product.p_color}</span>
+                                        <span data-title='商品尺寸'>{product.p_size}</span>
                                         <span className={styles.amount} data-title='商品數量'>{product.s_amount}</span>
                                         <span className={styles.total} data-title='小計'>{product.p_price*product.s_amount}元</span>
                                     </li>
@@ -115,6 +119,8 @@ function Body() {
                         }
                         <div className={styles.calculate}>
                             <span>合計</span>
+                            <span> </span>
+                            <span> </span>
                             <span> </span>
                             <span> </span>
                             <span className={styles.totalcalculation}>{total}元</span>
@@ -137,9 +143,9 @@ function Body() {
                                 <span className={styles.indicator}> </span>
                                 <span>收件人資料同會員資料</span>
                             </div>
-                            <InputBar title='姓名' placeholder='請輸入姓名' type={E_RegexType.NAME} ref={name} trigger={checked}/>
-                            <InputBar title='手機' placeholder='請輸入聯絡電話' type={E_RegexType.PHONE} ref={phone} trigger={checked}/>
-                            <InputBar title='地址' placeholder='請輸入收件地址' type={E_RegexType.ADDRESS} ref={address} trigger={checked}/>
+                            <InputBar title='姓名' placeholder='請輸入姓名' type={E_RegexType.NAME} ref={name} trigger={checked} maxlength={10}/>
+                            <InputBar title='手機' placeholder='請輸入聯絡電話' type={E_RegexType.PHONE} ref={phone} trigger={checked} maxlength={20}/>
+                            <InputBar title='地址' placeholder='請輸入收件地址' type={E_RegexType.ADDRESS} ref={address} trigger={checked} maxlength={255}/>
                         </div>
                     </section>
                     <button onClick={() => handlePayment()}>付款測試用(成功)</button>

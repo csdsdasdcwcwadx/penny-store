@@ -15,10 +15,11 @@ interface I_props {
     type: E_RegexType;
     value?: string | number;
     unnecessary?: boolean;
-    trigger?: boolean
+    trigger?: boolean;
+    maxlength: number;
 }
 
-function InputBar ({title, placeholder, type, value, unnecessary, trigger}: I_props, ref: React.ForwardedRef<HTMLInputElement>) {
+function InputBar ({title, placeholder, type, value, unnecessary, trigger, maxlength}: I_props, ref: React.ForwardedRef<HTMLInputElement>) {
     const [input, setInput] = useState<string>('');
     const [errMsg, setErrMsg] = useState<string | undefined>();
 
@@ -86,7 +87,7 @@ function InputBar ({title, placeholder, type, value, unnecessary, trigger}: I_pr
     return (
         <div className={styles.inputblock}>
             <span>{title}</span>
-            <input placeholder={placeholder} onChange={e=>setInput(e.target.value)} ref={ref} defaultValue={value}/>
+            <input placeholder={placeholder} onChange={e=>setInput(e.target.value)} ref={ref} defaultValue={value} maxLength={maxlength}/>
             {errMsg && <span className={cN(styles.err, 'error')}>{errMsg}</span>}
         </div>
     );

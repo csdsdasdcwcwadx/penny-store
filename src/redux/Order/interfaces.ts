@@ -31,6 +31,7 @@ export interface I_orderinfo {
         type: string;
     };
     o_size: string;
-    op_name: string
+    op_name: string;
+    o_color: string;
 }
 

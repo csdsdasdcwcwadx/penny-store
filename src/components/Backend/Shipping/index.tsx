@@ -7,7 +7,7 @@ import PageNumber from '@components/Common/PageNumber';
 import { handleIMG } from "@utils/commonfunction";
 import { I_orderinfo } from "@Redux/Order/interfaces";
 import cN from 'classnames';
-import { handlePayment } from "@utils/commonfunction";
+import { handlePayment, handleDate } from "@utils/commonfunction";
 import domain from '@utils/domainByEnv';
 import axios from "axios";
 import '@components/Common/Modules/ic-ln/css.css';
@@ -29,6 +29,7 @@ function Shipping() {
                     <nav className={styles.photo}>產品名稱</nav>
                     <nav>產品價格</nav>
                     <nav>購買數量</nav>
+                    <nav>顏色</nav>
                     <nav>尺寸</nav>
                     <nav>小計</nav>
                 </div>
@@ -82,6 +83,8 @@ function Orders ({orders, serial}: I_props) {
                 <div>
                     <div>單號 : {orders[0].o_dentical}</div>
                     <div>是否付款 : {handlePayment(orders[0].o_payment)}</div>
+                    <div>下單日期 : {handleDate(orders[0].o_date)}</div>
+                    <div>下單時間 : {handleDate(orders[0].o_date, true)}</div>
                     {
                         orders[0].isShip ? <div className={styles.hasShip}><i className="icon ic-ln toolchoosen"/><span>訂單已出貨</span></div> : 
                         <button onClick={e => changeShipment(e, orders[0].o_dentical)}>訂單出貨</button>
@@ -110,6 +113,9 @@ function Orders ({orders, serial}: I_props) {
                                 <div data-title='購買數量'>
                                     <span>{order.o_amount}</span>
                                 </div>
+                                <div data-title='顏色'>
+                                    <span>{order.o_color}</span>
+                                </div>
                                 <div data-title='尺寸'>
                                     <span>{order.o_size}</span>
                                 </div>
@@ -121,6 +127,7 @@ function Orders ({orders, serial}: I_props) {
                     })
                 }
                 <div className={cN(styles.order, styles.sum)}>
+                    <div> </div>
                     <div> </div>
                     <div> </div>
                     <div> </div>

@@ -7,7 +7,7 @@
     .ordertable {
         display: table;
         width: calc(100% - 12px);
-        margin-bottom: 20px;
+        margin: 0 15px 20px;
 
         .ordernav {
             display: table-row-group;
@@ -22,7 +22,7 @@
                 }
 
                 &.photo {
-                    width: 40%;
+                    width: 20%;
 
                     @include only-mobile {
                         width: auto;
@@ -145,7 +145,7 @@
 
                     &.photo {
                         text-align: left;
-                        width: 40%;
+                        width: 20%;
 
                         @include only-mobile {
                             display: block;

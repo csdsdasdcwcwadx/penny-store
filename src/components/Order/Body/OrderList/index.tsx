@@ -7,18 +7,11 @@ import { set_opendetail } from '@Redux/Order/actions';
 import cN from 'classnames';
 import { handleIMG, handleShipment } from "@utils/commonfunction";
 import '@components/Common/Modules/ic-ln/css.css';
-import { handlePayment } from "@utils/commonfunction";
+import { handlePayment, handleDate } from "@utils/commonfunction";
 // import { SlideToggle } from '@todys/react-slide-toggle';
 
 interface I_props1 {
     orders: Array<I_orderinfo>;
-}
-
-const handleDate = (date: string, isTime: boolean = false) => {
-    const utcDateTime = date;
-    const localDateTime = new Date(utcDateTime).toLocaleString('en-US', { timeZone: 'Asia/Taipei', hour12: false });
-    if(isTime) return localDateTime.split(',')[1];
-    return localDateTime.split(',')[0];
 }
 
 function OrderList({orders}: I_props1) {
@@ -50,6 +43,7 @@ function OrderList({orders}: I_props1) {
                         <nav>產品名稱</nav>
                         <nav>產品價格</nav>
                         <nav>購買數量</nav>
+                        <nav>顏色</nav>
                         <nav>尺寸</nav>
                         <nav>小計</nav>
                     </div>
@@ -85,6 +79,9 @@ function Order({order, total}: I_props2) {
                 <div data-title='購買數量'>
                     <span>{order.o_amount}</span>
                 </div>
+                <div data-title='顏色'>
+                    <span>{order.o_color}</span>
+                </div>
                 <div data-title='尺寸'>
                     <span>{order.o_size}</span>
                 </div>
@@ -93,6 +90,7 @@ function Order({order, total}: I_props2) {
                 </div>
             </div>
             <div className={styles.ordersum}>
+                <div> </div>
                 <div> </div>
                 <div> </div>
                 <div> </div>
