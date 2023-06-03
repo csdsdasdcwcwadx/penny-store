@@ -24,7 +24,7 @@ enum E_currentType {
 }
 
 function Body () {
-    const [current, setCurrent] = useState<E_currentType>(E_currentType.PRODUCT);
+    const [current, setCurrent] = useState<E_currentType>(E_currentType.ANDATA);
 
     useEffect (() => {
         const member = JSON.parse(localStorage.getItem('memberinfo')!);
@@ -47,7 +47,7 @@ function Body () {
                 {
                     Object.keys(E_currentType).map((obj, ind) => {
                         return (
-                            <button className={cN({})} key={ind} onClick={()=>setCurrent(obj as E_currentType)}>{handleCurrentType(obj as E_currentType)}</button>
+                            <button className={cN({[styles.active]: obj === current})} key={ind} onClick={()=>setCurrent(obj as E_currentType)}>{handleCurrentType(obj as E_currentType)}</button>
                         )
                     })
                 }

@@ -36,9 +36,22 @@ function* watch_listshipping() {
     yield takeEvery(actionTypes.CALL_ORDER_LISTSHIPPING, fetch_listshipping);
 }
 
+function* fetch_getalldata(action: any): Generator<StrictEffect, any, any> {
+    const data = yield call(fetchAPI, {
+        url: `${domain()}/product/productgetalldata`,
+        req: action.payload,
+    });
+    yield put(actions.set_getalldata(data));
+}
+
+function* watch_getalldata() {
+    yield takeEvery(actionTypes.CALL_PRODUCT_GETALLDATA, fetch_getalldata);
+}
+
 export default function* rootSaga() {
     yield all([
         watch_getallproduct(),
         watch_listshipping(),
+        watch_getalldata(),
     ]);
 }

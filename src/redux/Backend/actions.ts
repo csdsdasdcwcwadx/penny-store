@@ -26,3 +26,13 @@ export const setIsLoading = (payload: boolean) => ({
     type: actionTypes.SET_ISLOADING,
     payload,
 })
+
+export const call_getalldata = (payload: any) => ({
+    type: actionTypes.CALL_PRODUCT_GETALLDATA,
+    payload,
+})
+
+export const set_getalldata = (payload: any) => ({
+    type: actionTypes.SET_PRODUCT_GETALLDATA,
+    payload,
+})

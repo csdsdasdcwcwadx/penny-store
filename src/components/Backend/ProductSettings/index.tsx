@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from '@Redux/Backend/store';
 import { call_getallproduct } from '@Redux/Backend/actions';
 import styles from './styles.module.scss';
-import { handleNavigator, handleIMG } from "@utils/commonfunction";
+import { handleNavigator, handleIMG, handleIsOff } from "@utils/commonfunction";
 import LightBox, { E_direction } from "@components/Common/Modules/LightBox";
 import domain from '@utils/domainByEnv';
 import axios from "axios";
@@ -43,6 +43,19 @@ function ProductSettings () {
     const fix_p_info = useRef<HTMLInputElement>(null);
     const fix_p_color = useRef<HTMLInputElement>(null);
     const [fix_p_img, setFix_p_img] = useState<File>();
+
+    const handle_off = async (product: I_productinfo) => {
+        try{
+            const {data} = await axios.post(`${domain()}/product/productsetoff`, {p_id: product.p_id});
+            if(data.status) {
+                alert('商品處理成功');
+                location.reload();
+            }
+            else alert('商品處理失敗');
+        }catch(e) {
+            console.error(e);
+        }
+    }
 
     const handle_delete = async (product: I_productinfo) => {
         const result = confirm('是否確認要刪除此產品 ? ');
@@ -276,8 +289,11 @@ function ProductSettings () {
                 isLoading ? <Spinner/> :
                 productdetail?.productinfo.map((product) => {
                     return (
-                        <li key={product.p_id} className={styles.product}>
-                            <img src={handleIMG(product.p_img)}/>
+                        <li key={product.p_id} className={cN(styles.product, {[styles.isoff]: product.p_isoff === 1})}>
+                            <div className={styles.img}>
+                                <img src={handleIMG(product.p_img)}/>
+                                <span>{handleIsOff(product.p_isoff)}</span>
+                            </div>
                             <span>商品編號：{product.p_dentical}</span>
                             <span>商品名稱：{product.p_name}</span>
                             <span>商品價格：{product.p_price}元</span>
@@ -289,6 +305,7 @@ function ProductSettings () {
                             <div className={styles.buttons}>
                                 <button onClick={() => handle_delete(product)}>刪除</button>
                                 <button onClick={() => {setFixItem(product); setOpen_fix(true);}}>修改</button>
+                                <button onClick={() => handle_off(product)}>{handleIsOff(product.p_isoff, true)}</button>
                             </div>
                         </li>
                     )

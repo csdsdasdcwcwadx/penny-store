@@ -16,6 +16,10 @@
             list-style-type: none;
             border: 1px solid #bbb;
 
+            &.isoff {
+                text-decoration: line-through;
+            }
+
             &:not(:last-of-type) {
                 margin-right: 30px;
             }
@@ -30,11 +34,8 @@
                 margin-top: auto;
 
                 button {
+                    margin-right: 5px;
                     cursor: pointer;
-
-                    &:first-of-type {
-                        margin-right: 5px;
-                    }
                 }
             }
         }
@@ -93,6 +94,7 @@ i {
     }
 
     .buttongroup {
+        padding-bottom: 20px;
         text-align: center;
     }
 }
@@ -133,6 +135,7 @@ i {
     }
 
     .buttongroup {
+        padding-bottom: 20px;
         text-align: center;
     }
 }
