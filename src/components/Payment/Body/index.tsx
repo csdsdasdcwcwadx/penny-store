@@ -69,6 +69,7 @@ function Body() {
             name: name.current?.value,
             address: address.current?.value,
             phone: phone.current?.value,
+            email: member.memberinfo[0].m_email,
             account: '123456',
             money: '10000', 
             token: 'wufhwdhvl',
