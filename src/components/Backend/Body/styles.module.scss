@@ -23,6 +23,12 @@ body {
             background-color: #b57c1e;
             color: #fff;
         }
+
+        &.active {
+            background-color: #b57c1e;
+            color: #fff;
+            cursor: auto;
+        }
     }
 }
 

@@ -7,7 +7,7 @@ import PageNumber from '@components/Common/PageNumber';
 import { handleIMG } from "@utils/commonfunction";
 import { I_orderinfo } from "@Redux/Order/interfaces";
 import cN from 'classnames';
-import { handlePayment, handleDate } from "@utils/commonfunction";
+import { handlePayment, handleDate, handleDistribution } from "@utils/commonfunction";
 import domain from '@utils/domainByEnv';
 import axios from "axios";
 import '@components/Common/Modules/ic-ln/css.css';
@@ -81,7 +81,7 @@ function Orders ({orders, serial}: I_props) {
         <div className={cN(styles.orderdatatable, {[styles.isClosed]: !isOpen})}>
             <div className={styles.orderouter} onClick={() => setIsOpen(pre => !pre)}>
                 <div>
-                    <div>單號 : {orders[0].o_dentical}</div>
+                    <div>單號 : {orders[0].o_dentical}({handleDistribution(orders[0].o_distributed)})</div>
                     <div>是否付款 : {handlePayment(orders[0].o_payment)}</div>
                     <div>下單日期 : {handleDate(orders[0].o_date)}</div>
                     <div>下單時間 : {handleDate(orders[0].o_date, true)}</div>

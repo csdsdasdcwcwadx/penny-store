@@ -39,3 +39,21 @@ export const handleDate = (date: string, isTime: boolean = false) => {
     if(isTime) return localDateTime.split(',')[1];
     return localDateTime.split(',')[0];
 }
+
+export const handleIsOff = (isoff: number, reverse: boolean = false) => {
+    if(reverse) return isoff === 1 ? '上架' : '下架';
+    else return isoff === 1 ? '已下架' : '已上架';
+}
+
+export function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+export const handleDistribution = (distribute: number) => {
+    return distribute === 0 ? '同時出貨': '分批出貨'
+}

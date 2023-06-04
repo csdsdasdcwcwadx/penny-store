@@ -26,15 +26,14 @@ function Body () {
     return (
         <div className={styles.paymentSuccess}>
             {
-                ordershipping ? ordershipping.orderinfo.length > 0 ? 
-                <div>
-                    {
-                        ordershipping.orderinfo.map((orders, ind) => {
-                            return <OrderList key={ind} orders={orders}/>
-                        })
-                    }
-                    <PageNumber serial={serial} setSerial={setSerial} maxpage={ordershipping.pages}/>
-                </div> : <div>尚無訂單資訊</div> : <Spinner/>
+                isLoading ? <Spinner/> : <div>
+                {
+                    ordershipping?.orderinfo.map((orders, ind) => {
+                        return <OrderList key={ind} orders={orders}/>
+                    })
+                }
+                <PageNumber serial={serial} setSerial={setSerial} maxpage={ordershipping?.pages || 0}/>
+            </div>
             }
         </div>
     )
