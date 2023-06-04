@@ -151,6 +151,11 @@
             position: relative;
             display: inline-block;
 
+            &.distributed {
+                display: block;
+                margin-top: 10px;
+            }
+
             input {
                 opacity: 0;
                 position: absolute;

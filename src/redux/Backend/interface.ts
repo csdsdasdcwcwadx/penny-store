@@ -13,9 +13,18 @@ interface I_productdata {
     message: string;
     status: boolean;
     productdatainfo: Array<I_productdatainfo>;
+    productdatainfoall: Array<I_productdatainfoall>;
 }
 
 interface I_productdatainfo extends I_productinfo {
+    p_id: string;
+    adding: number;
+    buys: number;
+    click: number;
+    clickSum: number;
+}
+
+interface I_productdatainfoall extends I_productinfo {
     p_id: string;
     adding: number;
     buys: number;

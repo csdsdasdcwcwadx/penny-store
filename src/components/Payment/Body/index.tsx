@@ -28,6 +28,7 @@ function Body() {
     const isLocal = window.location.href.includes('localhost');
     const [isOpen, setIsOpen] = useState(false);
     const [checked, setChecked] = useState(false);
+    const [distributed, setDistributed] = useState(false);
     const name = useRef<HTMLInputElement>(null);
     const phone = useRef<HTMLInputElement>(null);
     const address = useRef<HTMLInputElement>(null);
@@ -64,25 +65,29 @@ function Body() {
     },[checked])
 
     const handlePayment = async (isSuccess: boolean = true) => {
-        const post = {
-            isSuccess,
-            name: name.current?.value,
-            address: address.current?.value,
-            phone: phone.current?.value,
-            email: member.memberinfo[0].m_email,
-            account: '123456',
-            money: '10000', 
-            token: 'wufhwdhvl',
-            shoplist,
-        }
-
-        try{
-            const {data} = await axios.post(`${domain()}/common/payment`, post);
-            alert(data.message);
-            if(data.status) window.location.href = `${handlepath()}/order${isLocal?'.html':''}`;
-        }catch(e) {
-            console.error(e);
-        }
+        const error = document.getElementsByClassName('error');
+        if(error.length === 0) {
+            const post = {
+                isSuccess,
+                name: name.current?.value,
+                address: address.current?.value,
+                phone: phone.current?.value,
+                email: member.memberinfo[0].m_email,
+                distributed,
+                account: '123456',
+                money: '10000', 
+                token: 'wufhwdhvl',
+                shoplist,
+            }
+    
+            try{
+                const {data} = await axios.post(`${domain()}/common/payment`, post);
+                alert(data.message);
+                if(data.status) window.location.href = `${handlepath()}/order${isLocal?'.html':''}`;
+            }catch(e) {
+                console.error(e);
+            }
+        }else alert(error[0].textContent);
     }
 
     return (
@@ -130,7 +135,7 @@ function Body() {
                     <div className={cN(styles.openshoplist, {[styles.isclose]: !isOpen})} onClick={() => {
                         setIsOpen(pre=>!pre);
                     }}>
-                        <span>展開</span>
+                        <span>展開(查看購買項目)</span>
                         <i className='icon ic-ln toollistleft'/>
                     </div>
                     <section className={styles.paymentinfo}>
@@ -143,6 +148,14 @@ function Body() {
                                 }}/>
                                 <span className={styles.indicator}> </span>
                                 <span>收件人資料同會員資料</span>
+                            </div>
+                            <div className={cN(styles.checkbox, styles.distributed)}>
+                                <input type='checkbox' onChange={e => {
+                                    setDistributed(e.target.checked);
+
+                                }}/>
+                                <span className={styles.indicator}> </span>
+                                <span>分批出貨</span>
                             </div>
                             <InputBar title='姓名' placeholder='請輸入姓名' type={E_RegexType.NAME} ref={name} trigger={checked} maxlength={10}/>
                             <InputBar title='手機' placeholder='請輸入聯絡電話' type={E_RegexType.PHONE} ref={phone} trigger={checked} maxlength={20}/>

@@ -45,15 +45,17 @@ function ProductSettings () {
     const [fix_p_img, setFix_p_img] = useState<File>();
 
     const handle_off = async (product: I_productinfo) => {
-        try{
-            const {data} = await axios.post(`${domain()}/product/productsetoff`, {p_id: product.p_id});
-            if(data.status) {
-                alert('商品處理成功');
-                location.reload();
+        if(confirm(`是否要將此產品${handleIsOff(product.p_isoff, true)}`)) {
+            try{
+                const {data} = await axios.post(`${domain()}/product/productsetoff`, {p_id: product.p_id});
+                if(data.status) {
+                    alert('商品處理成功');
+                    location.reload();
+                }
+                else alert('商品處理失敗');
+            }catch(e) {
+                console.error(e);
             }
-            else alert('商品處理失敗');
-        }catch(e) {
-            console.error(e);
         }
     }
 
@@ -99,9 +101,7 @@ function ProductSettings () {
             }catch(err) {
                 console.error(err);
             }
-        }else {
-            alert(error[0].textContent);
-        }
+        }else alert(error[0].textContent);
     },[p_img])
 
     const addingBlock = useCallback(() => {
