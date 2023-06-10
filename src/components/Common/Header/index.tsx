@@ -115,11 +115,17 @@ function Header() {
                     <a href="https://www.instagram.com/zllondoner.tw/?igshid=YmMyMTA2M2Y%3D"><img className={styles.instagram} src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png"/></a>
                 </div>
                     <a 
-                        className={styles.logo} 
-                        href={memberinfo && memberinfo.memberinfo[0].isAdmin === 1 ?`${handlepath()}/backend${isLocal?'.html':''}`:`${handlepath()}?page_id=`}
+                        className={styles.logo}
+                        onClick={async () => {
+                            try {
+                                const { data } = await axios.post(`${domain()}/member/isavailable`, {isLocal});
+                                window.location.href = `${handlepath()}${data.url}`;
+                            }catch(e) {
+                                console.error(e);
+                            }
+                        }}
                     >LONDONER</a>
                 <div>
-                    {/* <span className={styles.show}>seh</span> */}
                     {
                         credentials ?
                         <span className={styles.displaymember}>

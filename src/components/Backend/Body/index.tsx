@@ -3,8 +3,9 @@ import styles from './styles.module.scss';
 import ProductSettings from "../ProductSettings";
 import Data from "../Data";
 import Shipping from "../Shipping";
-import { handlepath } from "@utils/domainByEnv";
+import domain, { handlepath } from "@utils/domainByEnv";
 import cN from 'classnames';
+import axios from "axios";
 
 const handleCurrentType = (name: E_currentType) => {
     switch(name){
@@ -27,6 +28,7 @@ const currentData = localStorage.getItem('currentData');
 
 function Body () {
     const [current, setCurrent] = useState<E_currentType>(currentData as E_currentType || E_currentType.PRODUCT);
+    const [isadmin, setIsadmin] = useState(false);
 
     const handleCurrentData = (obj: E_currentType) => {
         setCurrent(obj);
@@ -36,36 +38,50 @@ function Body () {
     useEffect (() => {
         const member = JSON.parse(localStorage.getItem('memberinfo')!);
         const google = JSON.parse(localStorage.getItem('credentials')!);
+        const isLocal = window.location.href.includes('localhost');
 
         if(!member && !google) {
             alert('請先登入會員');
             window.location.href = `${handlepath()}`;
 
         }
-        if(member && member.memberinfo[0].isAdmin !== 1) {
-            alert('不符合會員資格');
-            window.location.href = `${handlepath()}`;
-        }
+
+        (async function() {
+            try {
+                const { data } = await axios.post(`${domain()}/member/isavailable`, {isLocal});
+                if(!data.isadmin) {
+                    window.location.href = `${handlepath()}${data.url}`;
+                }else {
+                    setIsadmin(true);
+                }
+            }catch(e) {
+                console.error(e);
+            }
+        })()
     },[])
 
     return (
-        <div className={styles.backend}>
-            <div className={styles.header}>
-                {
-                    Object.keys(E_currentType).map((obj, ind) => {
-                        return (
-                            <button className={cN({[styles.active]: obj === current})} key={ind} onClick={()=>handleCurrentData(obj as E_currentType)}>{handleCurrentType(obj as E_currentType)}</button>
-                        )
-                    })
-                }
-            </div>
-            <div className={styles.backendbody}>
-                {
-                    current === E_currentType.PRODUCT ? <ProductSettings/>:
-                    current === E_currentType.ANDATA ? <Data/>:
-                    <Shipping/>
-                }
-            </div>
+        <div>
+            {
+                isadmin && <div className={styles.backend}>
+                    <div className={styles.header}>
+                        {
+                            Object.keys(E_currentType).map((obj, ind) => {
+                                return (
+                                    <button className={cN({[styles.active]: obj === current})} key={ind} onClick={()=>handleCurrentData(obj as E_currentType)}>{handleCurrentType(obj as E_currentType)}</button>
+                                )
+                            })
+                        }
+                    </div>
+                    <div className={styles.backendbody}>
+                        {
+                            current === E_currentType.PRODUCT ? <ProductSettings/>:
+                            current === E_currentType.ANDATA ? <Data/>:
+                            <Shipping/>
+                        }
+                    </div>
+                </div>
+            }
         </div>
     )
 }

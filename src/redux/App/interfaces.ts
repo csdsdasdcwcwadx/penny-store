@@ -28,7 +28,6 @@ export interface I_member {
 }
 
 export interface I_memberinfo {
-    isAdmin: number;
     m_address: string;
     m_email: string;
     m_id: string;
