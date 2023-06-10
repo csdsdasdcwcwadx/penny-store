@@ -77,7 +77,7 @@ function Body() {
                 account: '123456',
                 money: '10000', 
                 token: 'wufhwdhvl',
-                shoplist,
+                m_id: member.memberinfo[0].m_id,
             }
     
             try{
