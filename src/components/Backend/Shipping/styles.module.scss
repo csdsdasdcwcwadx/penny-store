@@ -4,6 +4,15 @@
 .Shipping {
     margin-top: 50px;
 
+    .listshipping {
+        padding-bottom: 20px;
+
+        button {
+            margin-right: 20px;
+            cursor: pointer;
+        }
+    }
+
     .ordertable {
         display: table;
         width: calc(100% - 12px);

@@ -36,16 +36,7 @@ function Body () {
     }
 
     useEffect (() => {
-        const member = JSON.parse(localStorage.getItem('memberinfo')!);
-        const google = JSON.parse(localStorage.getItem('credentials')!);
         const isLocal = window.location.href.includes('localhost');
-
-        if(!member && !google) {
-            alert('請先登入會員');
-            window.location.href = `${handlepath()}`;
-
-        }
-
         (async function() {
             try {
                 const { data } = await axios.post(`${domain()}/member/isavailable`, {isLocal});

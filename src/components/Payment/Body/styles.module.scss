@@ -195,6 +195,40 @@
         >div:not(.checkbox) {
             margin-top: 10px;
         }
+
+        .address {
+            display: flex;
+            align-items: center;
+            width: 100%;
+
+            >div {
+                width: 100%;
+
+                &:first-of-type {
+                    width: 50%;
+                    margin-right: 5px;
+                }
+            }
+        }
+
+        .addresspng {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+
+            span {
+                &:first-of-type {
+                    display: block;
+                    margin-right: 10px;
+                    height: 35px;
+                    width: 40px;
+                    background-size: 437.5% 441.6666666666667%;
+                    background-position: 3.7037037037037037% 4.878048780487805%;
+                    background-image: url('https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/863cd70b079dd0934735ae66a0d1892d.png');
+                    cursor: pointer;
+                }
+            }
+        }
     }
 }
 

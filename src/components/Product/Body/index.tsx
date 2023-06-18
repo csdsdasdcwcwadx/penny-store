@@ -2,7 +2,7 @@ import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
 import BreadCrumb from "@components/Common/Modules/BreadCrumb";
 import styles from './styles.module.scss';
 import cN from 'classnames';
-import Select from 'react-select'
+import Select from 'react-select';
 import { useDispatch, useSelector } from "react-redux";
 import { call_getdetailproduct } from '@Redux/Product/actions';
 import { RootState } from '@Redux/Product/store';
@@ -91,7 +91,7 @@ function Body() {
                 m_id: member.memberinfo[0].m_id,
                 p_id: chosenItem?.p_id,
                 s_amount: counter,
-                restrict: productdetail.productinfo[0].p_amount,
+                restrict: chosenItem!.p_amount,
             }
 
             try{

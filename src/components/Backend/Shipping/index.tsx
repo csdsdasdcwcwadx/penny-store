@@ -17,13 +17,18 @@ function Shipping() {
     const { orderdetail, isLoading } = useSelector((store: RootState)=>store);
     const dispatch = useDispatch();
     const [ serial, setSerial ] = useState(1);
+    const [listunship, setListunship] = useState(0);
 
     useEffect(() => {
-        dispatch(call_listshipping({pages: serial, frombackend: true}));
-    },[dispatch, serial])
+        dispatch(call_listshipping({pages: serial, frombackend: true, listunship}));
+    },[dispatch, serial, listunship])
 
     return (
         <div className={styles.Shipping}>
+            <div className={styles.listshipping}>
+                <button onClick={() => {setListunship(0);setSerial(1)}}>列出所有訂單</button>
+                <button onClick={() => {setListunship(1);setSerial(1)}}>列出尚未出貨訂單</button>
+            </div>
             <div className={styles.ordertable}>
                 <div className={styles.ordernav}>
                     <nav className={styles.photo}>產品名稱</nav>
@@ -93,7 +98,7 @@ function Orders ({orders, serial}: I_props) {
                 <div>
                     <span><span>收件人姓名：</span><span>{orders[0].o_name}</span></span>
                     <span><span>收件人聯絡方式：</span><span>{orders[0].o_phone}</span></span>
-                    <span><span>收件人地址：</span><span>{orders[0].o_address}</span></span>
+                    <span><span>收件人地址：</span><span>{orders[0].o_address.replace('|', '')}</span></span>
                 </div>
             </div>
             <div className={cN(styles.orders)}>
