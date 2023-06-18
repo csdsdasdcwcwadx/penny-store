@@ -7,6 +7,7 @@ export enum E_RegexType {
     NAME = 'NAME',
     ADDRESS = 'ADDRESS',
     EMAIL = 'EMAIL',
+    NUMBER = 'NUMBER',
 }
 
 interface I_props {
@@ -39,7 +40,7 @@ function InputBar ({title, placeholder, type, value, unnecessary, trigger, maxle
         const RegexNumTypes = /^[0-9]*$/;
         const RegexChineseTypes = /^[^\u4e00-\u9fa5]+$/;
         const RegexPhoneNum = /^09\d{8}$/;
-        const RegexDecimalPoint = /^(\d{0,4})(\.\d{1,2})?$/;
+        const RegexDecimalPoint = /^\d+$/;
         const Regexmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         switch(type) {
@@ -74,6 +75,17 @@ function InputBar ({title, placeholder, type, value, unnecessary, trigger, maxle
                     flag = false;
                     setErrMsg(`${title}必填`);
                 }
+                break;
+            case E_RegexType.NUMBER:
+                if(!RegexDecimalPoint.test(input!)) {
+                    flag = false;
+                    setErrMsg('此欄位只允許數字');
+                }
+                if(!unnecessary && input === '') {
+                    flag = false;
+                    setErrMsg(`${title}必填`);
+                }
+                console.log(input)
                 break;
             default:
                 if(!unnecessary && input === '') {

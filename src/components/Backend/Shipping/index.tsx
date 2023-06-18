@@ -17,13 +17,18 @@ function Shipping() {
     const { orderdetail, isLoading } = useSelector((store: RootState)=>store);
     const dispatch = useDispatch();
     const [ serial, setSerial ] = useState(1);
+    const [listunship, setListunship] = useState(0);
 
     useEffect(() => {
-        dispatch(call_listshipping({pages: serial, frombackend: true}));
-    },[dispatch, serial])
+        dispatch(call_listshipping({pages: serial, frombackend: true, listunship}));
+    },[dispatch, serial, listunship])
 
     return (
         <div className={styles.Shipping}>
+            <div className={styles.listshipping}>
+                <button onClick={() => {setListunship(0);setSerial(1)}}>列出所有訂單</button>
+                <button onClick={() => {setListunship(1);setSerial(1)}}>列出尚未出貨訂單</button>
+            </div>
             <div className={styles.ordertable}>
                 <div className={styles.ordernav}>
                     <nav className={styles.photo}>產品名稱</nav>

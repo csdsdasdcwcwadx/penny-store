@@ -188,6 +188,7 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
     const m_name = useRef<HTMLInputElement>(null);
     const m_phone = useRef<HTMLInputElement>(null);
     const m_address = useRef<HTMLInputElement>(null);
+    const postcal = useRef<HTMLInputElement>(null);
 
     const handleRegistry = useCallback( async () => {
         if(document.getElementsByClassName('error').length === 0) {
@@ -195,7 +196,7 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
                 const google = await signInWithPopup(auth, GoogleProvider);
                 const obj = {
                     m_name: m_name.current?.value,
-                    m_address: m_address.current?.value,
+                    m_address: `${postcal.current?.value}|${m_address.current?.value}`,
                     m_phone: m_phone.current?.value,
                     m_email: google.user.email,
                 }
@@ -249,7 +250,10 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
                                     <div className={styles.title}>會員註冊</div>
                                     <InputBar title='姓名' placeholder='請輸入姓名' type={E_RegexType.NAME} ref={m_name} maxlength={10}/>
                                     <InputBar title='手機' placeholder='請輸入手機' type={E_RegexType.PHONE} ref={m_phone} maxlength={20}/>
-                                    <InputBar title='地址' placeholder='請輸入地址' type={E_RegexType.ADDRESS} ref={m_address} maxlength={255}/>
+                                    <div className={styles.address}>
+                                        <InputBar title='郵遞區號' placeholder='請輸入郵遞區號' type={E_RegexType.NUMBER} ref={postcal} maxlength={5}/>
+                                        <InputBar title='地址' placeholder='請輸入地址' type={E_RegexType.ADDRESS} ref={m_address} maxlength={255}/>
+                                    </div>
                                     <div className={styles.buttonlist}>
                                         <button onClick={handleRegistry}>送出</button>
                                     </div>

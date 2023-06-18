@@ -91,7 +91,7 @@ function Body() {
                 m_id: member.memberinfo[0].m_id,
                 p_id: chosenItem?.p_id,
                 s_amount: counter,
-                restrict: productdetail.productinfo[0].p_amount,
+                restrict: chosenItem!.p_amount,
             }
 
             try{

@@ -32,6 +32,7 @@ function Body() {
     const name = useRef<HTMLInputElement>(null);
     const phone = useRef<HTMLInputElement>(null);
     const address = useRef<HTMLInputElement>(null);
+    const postcal = useRef<HTMLInputElement>(null);
     let total = 0;
 
     useEffect(() => {
@@ -51,15 +52,17 @@ function Body() {
     },[])
 
     useEffect(() => {
-        if(name.current && phone.current && address.current && member) {
+        if(name.current && phone.current && address.current && postcal.current && member) {
             if(checked) {
                 name.current.value = member.memberinfo[0].m_name;
                 phone.current.value = member.memberinfo[0].m_phone;
-                address.current.value = member.memberinfo[0].m_address;
+                postcal.current.value = member.memberinfo[0].m_address.split('|')[0];
+                address.current.value = member.memberinfo[0].m_address.split('|')[1];
             }else {
                 name.current.value = '';
                 phone.current.value = '';
                 address.current.value = '';
+                postcal.current.value = '';
             }
         }
     },[checked])
@@ -70,7 +73,7 @@ function Body() {
             const post = {
                 isSuccess,
                 name: name.current?.value,
-                address: address.current?.value,
+                address: `${postcal.current?.value}|${address.current?.value}`,
                 phone: phone.current?.value,
                 email: member.memberinfo[0].m_email,
                 distributed,
@@ -88,6 +91,10 @@ function Body() {
                 console.error(e);
             }
         }else alert(error[0].textContent);
+    }
+
+    const handdd = async() => {
+        
     }
 
     return (
@@ -155,15 +162,19 @@ function Body() {
 
                                 }}/>
                                 <span className={styles.indicator}> </span>
-                                <span>分批出貨</span>
+                                <span>分批出貨(若有沒有現貨的產品，是否要先寄送有現貨的產品)</span>
                             </div>
                             <InputBar title='姓名' placeholder='請輸入姓名' type={E_RegexType.NAME} ref={name} trigger={checked} maxlength={10}/>
                             <InputBar title='手機' placeholder='請輸入聯絡電話' type={E_RegexType.PHONE} ref={phone} trigger={checked} maxlength={20}/>
-                            <InputBar title='地址' placeholder='請輸入收件地址' type={E_RegexType.ADDRESS} ref={address} trigger={checked} maxlength={255}/>
+                            <div className={styles.address}>
+                                <InputBar title='郵遞區號' placeholder='請輸入郵遞區號' type={E_RegexType.NUMBER} ref={postcal} trigger={checked} maxlength={5}/>
+                                <InputBar title='地址' placeholder='請輸入收件地址' type={E_RegexType.ADDRESS} ref={address} trigger={checked} maxlength={255}/>
+                            </div>
                         </div>
                     </section>
                     <button onClick={() => handlePayment()}>付款測試用(成功)</button>
                     <button onClick={() => handlePayment(false)}>付款測試用(失敗)</button>
+                    <button onClick={() => handdd()}>超商地址測試</button>
                 </>
             }
         </div>
