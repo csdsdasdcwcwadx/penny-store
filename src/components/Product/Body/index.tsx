@@ -2,7 +2,7 @@ import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
 import BreadCrumb from "@components/Common/Modules/BreadCrumb";
 import styles from './styles.module.scss';
 import cN from 'classnames';
-import Select from 'react-select'
+import Select from 'react-select';
 import { useDispatch, useSelector } from "react-redux";
 import { call_getdetailproduct } from '@Redux/Product/actions';
 import { RootState } from '@Redux/Product/store';

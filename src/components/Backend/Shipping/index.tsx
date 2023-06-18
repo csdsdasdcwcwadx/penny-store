@@ -98,7 +98,7 @@ function Orders ({orders, serial}: I_props) {
                 <div>
                     <span><span>收件人姓名：</span><span>{orders[0].o_name}</span></span>
                     <span><span>收件人聯絡方式：</span><span>{orders[0].o_phone}</span></span>
-                    <span><span>收件人地址：</span><span>{orders[0].o_address}</span></span>
+                    <span><span>收件人地址：</span><span>{orders[0].o_address.replace('|', '')}</span></span>
                 </div>
             </div>
             <div className={cN(styles.orders)}>

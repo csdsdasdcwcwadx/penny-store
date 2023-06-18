@@ -85,7 +85,6 @@ function InputBar ({title, placeholder, type, value, unnecessary, trigger, maxle
                     flag = false;
                     setErrMsg(`${title}必填`);
                 }
-                console.log(input)
                 break;
             default:
                 if(!unnecessary && input === '') {

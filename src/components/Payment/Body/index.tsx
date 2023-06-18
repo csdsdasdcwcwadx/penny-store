@@ -1,6 +1,7 @@
 import React, { memo, useEffect, useState, useRef } from 'react';
 import domain, { handlepath } from '@utils/domainByEnv';
 import axios from 'axios';
+import Select from 'react-select'
 import { I_productinfo } from '@Redux/Product/interface';
 import styles from './styles.module.scss';
 import { handleIMG } from '@utils/commonfunction';
@@ -20,22 +21,39 @@ interface I_getshoplist {
     shoplist: Array<I_shoplistinfo>;
 }
 
+const addressingOptions = [
+    {label: '宅配', value: true},
+    {label: '7-11', value: false},
+]
+
+const url = new URL (window.location.href);
+const storename = url.searchParams.get('storename');
+const storeaddress = url.searchParams.get('storeaddress');
+
 const member = JSON.parse(localStorage.getItem('memberinfo')!);
 const google = JSON.parse(localStorage.getItem('credentials')!);
 
 function Body() {
     const [shoplist, setShoplist] = useState<Array<I_shoplistinfo>>([]);
-    const isLocal = window.location.href.includes('localhost');
     const [isOpen, setIsOpen] = useState(false);
     const [checked, setChecked] = useState(false);
+    const [addressing, setAddressing] = useState(true);
+    const [seven, setSeven] = useState<string | null>(null);
     const [distributed, setDistributed] = useState(false);
     const name = useRef<HTMLInputElement>(null);
     const phone = useRef<HTMLInputElement>(null);
     const address = useRef<HTMLInputElement>(null);
     const postcal = useRef<HTMLInputElement>(null);
+    const isLocal = window.location.href.includes('localhost');
     let total = 0;
 
     useEffect(() => {
+        window.history.pushState({}, '', window.location.href.split('?')[0]);
+
+        if(storename && storeaddress) {
+            setAddressing(false);
+            setSeven(`${storename}${storeaddress}`);
+        }
 
         if(!member && !google) {
             alert('會員尚未登入');
@@ -52,6 +70,15 @@ function Body() {
     },[])
 
     useEffect(() => {
+        if(name.current && phone.current && member) {
+            if(checked) {
+                name.current.value = member.memberinfo[0].m_name;
+                phone.current.value = member.memberinfo[0].m_phone;
+            }else {
+                name.current.value = '';
+                phone.current.value = '';
+            }
+        }
         if(name.current && phone.current && address.current && postcal.current && member) {
             if(checked) {
                 name.current.value = member.memberinfo[0].m_name;
@@ -70,31 +97,43 @@ function Body() {
     const handlePayment = async (isSuccess: boolean = true) => {
         const error = document.getElementsByClassName('error');
         if(error.length === 0) {
-            const post = {
-                isSuccess,
-                name: name.current?.value,
-                address: `${postcal.current?.value}|${address.current?.value}`,
-                phone: phone.current?.value,
-                email: member.memberinfo[0].m_email,
-                distributed,
-                account: '123456',
-                money: '10000', 
-                token: 'wufhwdhvl',
-                m_id: member.memberinfo[0].m_id,
-            }
-    
-            try{
-                const {data} = await axios.post(`${domain()}/common/payment`, post);
-                alert(data.message);
-                if(data.status) window.location.href = `${handlepath()}/order${isLocal?'.html':''}`;
-            }catch(e) {
-                console.error(e);
+            if(!addressing && !seven) {
+                alert('請選擇7-11門市');
+            } else {
+                const addressPost = addressing ? `${postcal.current?.value}|${address.current?.value}` : `${seven}(7-11)`
+                const post = {
+                    isSuccess,
+                    name: name.current?.value,
+                    address: addressPost,
+                    phone: phone.current?.value,
+                    email: member.memberinfo[0].m_email,
+                    distributed,
+                    account: '123456',
+                    money: '10000', 
+                    token: 'wufhwdhvl',
+                    m_id: member.memberinfo[0].m_id,
+                }
+        
+                try{
+                    const {data} = await axios.post(`${domain()}/common/payment`, post);
+                    alert(data.message);
+                    if(data.status) window.location.href = `${handlepath()}/order${isLocal?'.html':''}`;
+                }catch(e) {
+                    console.error(e);
+                }
             }
         }else alert(error[0].textContent);
     }
 
-    const handdd = async() => {
-        
+    const handleDirect711 = async() => {
+        switch (process.env.ENV) {
+            case 'prod':
+            case 'rel':
+                window.location.href = (`https://emap.presco.com.tw/c2cemap.ashx?eshopid=870&&servicetype=3&url=https://penny.londoner.tw/common/direct&tempvar=${window.location.href}`);
+                break;
+            default:
+                window.location.href = (`https://emap.presco.com.tw/c2cemap.ashx?eshopid=870&&servicetype=3&url=http://localhost:3638/local/common/direct&tempvar=${window.location.href}`);
+        }
     }
 
     return (
@@ -149,32 +188,41 @@ function Body() {
                         <h2>請填寫收件人資訊</h2>
                         <div className={styles.paymentcontent}>
                             <div className={styles.checkbox}>
-                                <input type='checkbox' onChange={e => {
-                                    setChecked(e.target.checked);
-
-                                }}/>
+                                <input type='checkbox' onChange={e => setChecked(e.target.checked)} 
+                                    checked={checked}/>
                                 <span className={styles.indicator}> </span>
                                 <span>收件人資料同會員資料</span>
                             </div>
                             <div className={cN(styles.checkbox, styles.distributed)}>
                                 <input type='checkbox' onChange={e => {
                                     setDistributed(e.target.checked);
-
                                 }}/>
                                 <span className={styles.indicator}> </span>
                                 <span>分批出貨(若有沒有現貨的產品，是否要先寄送有現貨的產品)</span>
                             </div>
                             <InputBar title='姓名' placeholder='請輸入姓名' type={E_RegexType.NAME} ref={name} trigger={checked} maxlength={10}/>
                             <InputBar title='手機' placeholder='請輸入聯絡電話' type={E_RegexType.PHONE} ref={phone} trigger={checked} maxlength={20}/>
-                            <div className={styles.address}>
-                                <InputBar title='郵遞區號' placeholder='請輸入郵遞區號' type={E_RegexType.NUMBER} ref={postcal} trigger={checked} maxlength={5}/>
-                                <InputBar title='地址' placeholder='請輸入收件地址' type={E_RegexType.ADDRESS} ref={address} trigger={checked} maxlength={255}/>
-                            </div>
+                            <Select 
+                                options={addressingOptions} 
+                                onChange={e=>{
+                                    setAddressing(e?.value!);
+                                    setChecked(false);
+                                }}
+                                defaultValue={addressing ? addressingOptions[0] : addressingOptions[1]}
+                            />
+                            {
+                                addressing ? <div className={styles.address}>
+                                    <InputBar title='郵遞區號' placeholder='請輸入郵遞區號' type={E_RegexType.NUMBER} ref={postcal} trigger={checked} maxlength={5}/>
+                                    <InputBar title='地址' placeholder='請輸入收件地址' type={E_RegexType.ADDRESS} ref={address} trigger={checked} maxlength={255}/>
+                                </div> : <div className={styles.addresspng} onClick={() => handleDirect711()}> 
+                                    <span> </span>
+                                    {seven && <span>{seven}</span>}
+                                </div>
+                            }
                         </div>
                     </section>
                     <button onClick={() => handlePayment()}>付款測試用(成功)</button>
                     <button onClick={() => handlePayment(false)}>付款測試用(失敗)</button>
-                    <button onClick={() => handdd()}>超商地址測試</button>
                 </>
             }
         </div>
