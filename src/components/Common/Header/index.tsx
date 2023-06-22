@@ -112,7 +112,7 @@ function Header() {
                     {/* <a><i className={cN('icon ic-ln toolfroundf', styles.facebook)}/></a> */}
                     <a href="https://www.instagram.com/zllondoner.tw/?igshid=YmMyMTA2M2Y%3D"><img className={styles.instagram} src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png"/></a>
                 </div>
-                    <a 
+                    <span 
                         className={styles.logo}
                         onClick={async () => {
                             try {
@@ -123,7 +123,7 @@ function Header() {
                                 console.error(e);
                             }
                         }}
-                    >LONDONER</a>
+                    >LONDONER</span>
                 <div>
                     {
                         credentials ?
