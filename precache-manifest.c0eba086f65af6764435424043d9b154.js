@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e89f2012dd2d736f473f",
+    "revision": "b6a714485991350d7f56",
     "url": "./app/css/style.css"
   },
   {
-    "revision": "e89f2012dd2d736f473f",
+    "revision": "b6a714485991350d7f56",
     "url": "./app/js/index.js"
   },
   {
@@ -16,11 +16,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./backend.html"
   },
   {
-    "revision": "0803436d0a6ac3ebd640",
+    "revision": "2211e31a8b860c9ae679",
     "url": "./backend/css/style.css"
   },
   {
-    "revision": "0803436d0a6ac3ebd640",
+    "revision": "2211e31a8b860c9ae679",
     "url": "./backend/js/index.js"
   },
   {
@@ -36,11 +36,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./order.html"
   },
   {
-    "revision": "4dff5ba290d7be5a68ec",
+    "revision": "cc1abd56f0141c9f94e4",
     "url": "./order/css/style.css"
   },
   {
-    "revision": "4dff5ba290d7be5a68ec",
+    "revision": "cc1abd56f0141c9f94e4",
     "url": "./order/js/index.js"
   },
   {
@@ -52,11 +52,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./payment.html"
   },
   {
-    "revision": "170365b9e548e2a48d4c",
+    "revision": "846fb6466ea9e60a2546",
     "url": "./payment/css/style.css"
   },
   {
-    "revision": "170365b9e548e2a48d4c",
+    "revision": "846fb6466ea9e60a2546",
     "url": "./payment/js/index.js"
   },
   {
@@ -68,11 +68,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./product.html"
   },
   {
-    "revision": "8933aeee536e4b12af88",
+    "revision": "52c1104a4bdecf45fdc3",
     "url": "./product/css/style.css"
   },
   {
-    "revision": "8933aeee536e4b12af88",
+    "revision": "52c1104a4bdecf45fdc3",
     "url": "./product/js/index.js"
   },
   {
