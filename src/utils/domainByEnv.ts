@@ -19,7 +19,7 @@ export const handlepath = () => {
     switch (process.env.ENV) {
         case 'prod':
         case 'rel':
-            return '/';
+            return 'https://www.londoner.tw';
         default:
             return '/penny-store';
 
