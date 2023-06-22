@@ -61,8 +61,6 @@ function Header() {
         return (
             <>
                 <li onClick={()=>{window.location.href = `${handlepath()}/order${isLocal?'.html':''}`}}>查看歷史訂單</li>
-                <li>查看歷史訂單</li>
-                <li>查看歷史訂單</li>
                 <li onClick={()=>handlepayment()}>前往結賬</li>
             </>
         )
@@ -73,7 +71,7 @@ function Header() {
         (async function() {
             try{
                 // 若有credentials 代表剛註冊完成
-                const credentials = JSON.parse(localStorage.getItem('credentials')!)
+                const credentials = JSON.parse(localStorage.getItem('credentials')!);
                 const loginAPI = await getRedirectResult(auth) || credentials;
                 const obj = {
                     m_email: loginAPI?.user.email,
@@ -111,7 +109,7 @@ function Header() {
                     <span className={cN(styles.show, styles.toolmenu)} onClick={()=>setListOpen(true)}>
                         <i className="icon ic-ln toolmenu"/>
                     </span>
-                    <a><i className={cN('icon ic-ln toolfroundf', styles.facebook)}/></a>
+                    {/* <a><i className={cN('icon ic-ln toolfroundf', styles.facebook)}/></a> */}
                     <a href="https://www.instagram.com/zllondoner.tw/?igshid=YmMyMTA2M2Y%3D"><img className={styles.instagram} src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png"/></a>
                 </div>
                     <a 
@@ -172,7 +170,7 @@ function Header() {
                     }
                     {ListBlock()}
                     <div className={styles.otheroptions}>
-                        <a><i className={cN('icon ic-ln toolfroundf', styles.facebook)}/></a>
+                        {/* <a><i className={cN('icon ic-ln toolfroundf', styles.facebook)}/></a> */}
                         <a><img className={styles.instagram} src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png"/></a>
                     </div>
                     {credentials && <button className={styles.logout} onClick={handlelogout}>登出</button>}
