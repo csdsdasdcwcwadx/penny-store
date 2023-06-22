@@ -14,6 +14,8 @@ import domain, {handlepath} from '@utils/domainByEnv';
 import { SideBar } from "..";
 import Spinner from "@components/Common/Modules/Spinner";
 
+axios.defaults.withCredentials = true;
+
 function Body() {
     const dispatch = useDispatch();
 

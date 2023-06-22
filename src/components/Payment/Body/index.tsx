@@ -33,6 +33,8 @@ const storeaddress = url.searchParams.get('storeaddress');
 const member = JSON.parse(localStorage.getItem('memberinfo')!);
 const google = JSON.parse(localStorage.getItem('credentials')!);
 
+axios.defaults.withCredentials = true;
+
 function Body() {
     const [shoplist, setShoplist] = useState<Array<I_shoplistinfo>>([]);
     const [isOpen, setIsOpen] = useState(false);
