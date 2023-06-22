@@ -6,6 +6,9 @@
     "backend.css": "./backend/css/style.css",
     "backend.js": "./backend/js/index.js",
     "backend.js.map": "./backend/js/index.js.map",
+    "order.css": "./order/css/style.css",
+    "order.js": "./order/js/index.js",
+    "order.js.map": "./order/js/index.js.map",
     "payment.css": "./payment/css/style.css",
     "payment.js": "./payment/js/index.js",
     "payment.js.map": "./payment/js/index.js.map",
@@ -18,10 +21,13 @@
     "backend/css/style.css.map": "./backend/css/style.css.map",
     "backend/js/index.js.LICENSE.txt": "./backend/js/index.js.LICENSE.txt",
     "index.html": "./index.html",
+    "order.html": "./order.html",
+    "order/css/style.css.map": "./order/css/style.css.map",
+    "order/js/index.js.LICENSE.txt": "./order/js/index.js.LICENSE.txt",
     "payment.html": "./payment.html",
     "payment/css/style.css.map": "./payment/css/style.css.map",
     "payment/js/index.js.LICENSE.txt": "./payment/js/index.js.LICENSE.txt",
-    "precache-manifest.ced2675b97686e36c3eaba66987782cc.js": "./precache-manifest.ced2675b97686e36c3eaba66987782cc.js",
+    "precache-manifest.9332229f02793a13297d036c1962c5dd.js": "./precache-manifest.9332229f02793a13297d036c1962c5dd.js",
     "product.html": "./product.html",
     "product/css/style.css.map": "./product/css/style.css.map",
     "product/js/index.js.LICENSE.txt": "./product/js/index.js.LICENSE.txt",
@@ -49,6 +55,11 @@
       "backend/css/style.css",
       "backend/js/index.js",
       "backend/js/index.js.map"
+    ],
+    "order": [
+      "order/css/style.css",
+      "order/js/index.js",
+      "order/js/index.js.map"
     ]
   }
 }

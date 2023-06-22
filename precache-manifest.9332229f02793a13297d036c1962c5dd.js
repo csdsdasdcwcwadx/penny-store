@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "643994b45b934b94422a",
+    "revision": "3c86ccda68477213db7c",
     "url": "./app/css/style.css"
   },
   {
-    "revision": "643994b45b934b94422a",
+    "revision": "3c86ccda68477213db7c",
     "url": "./app/js/index.js"
   },
   {
@@ -16,15 +16,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./backend.html"
   },
   {
-    "revision": "4636a8ac48a4833b78b0",
+    "revision": "d27cc41405f259748277",
     "url": "./backend/css/style.css"
   },
   {
-    "revision": "4636a8ac48a4833b78b0",
+    "revision": "d27cc41405f259748277",
     "url": "./backend/js/index.js"
   },
   {
-    "revision": "f11b2b1f770f2f86b60e97b08b1419f7",
+    "revision": "66a4c89ce06fc29e7b9d14018f0b5385",
     "url": "./backend/js/index.js.LICENSE.txt"
   },
   {
@@ -32,15 +32,31 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./index.html"
   },
   {
+    "revision": "a71b256187df329c81c6da8b7bc4cf28",
+    "url": "./order.html"
+  },
+  {
+    "revision": "09ffe7b2ff81a19b869e",
+    "url": "./order/css/style.css"
+  },
+  {
+    "revision": "09ffe7b2ff81a19b869e",
+    "url": "./order/js/index.js"
+  },
+  {
+    "revision": "0bbfea753012d3f593caeb139fc70332",
+    "url": "./order/js/index.js.LICENSE.txt"
+  },
+  {
     "revision": "18f22aff39e6149644ec6837f3d56a9d",
     "url": "./payment.html"
   },
   {
-    "revision": "e4c1412c9bb04a1fcbcc",
+    "revision": "1494f36ad1072a61075d",
     "url": "./payment/css/style.css"
   },
   {
-    "revision": "e4c1412c9bb04a1fcbcc",
+    "revision": "1494f36ad1072a61075d",
     "url": "./payment/js/index.js"
   },
   {
@@ -52,11 +68,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./product.html"
   },
   {
-    "revision": "f1a67ed7c551e9629227",
+    "revision": "f67ed6a7ec3d7ca3719d",
     "url": "./product/css/style.css"
   },
   {
-    "revision": "f1a67ed7c551e9629227",
+    "revision": "f67ed6a7ec3d7ca3719d",
     "url": "./product/js/index.js"
   },
   {
