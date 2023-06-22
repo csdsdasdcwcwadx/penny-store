@@ -41,7 +41,7 @@ function Body () {
             try {
                 const { data } = await axios.post(`${domain()}/member/isavailable`, {isLocal});
                 if(!data.isadmin) {
-                    window.location.href = `${handlepath()}${data.url}`;
+                    // window.location.href = `${handlepath()}${data.url}`;
                 }else {
                     setIsadmin(true);
                 }
