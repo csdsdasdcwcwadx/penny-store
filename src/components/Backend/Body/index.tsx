@@ -26,6 +26,8 @@ enum E_currentType {
 
 const currentData = localStorage.getItem('currentData');
 
+axios.defaults.withCredentials = true;
+
 function Body () {
     const [current, setCurrent] = useState<E_currentType>(currentData as E_currentType || E_currentType.PRODUCT);
     const [isadmin, setIsadmin] = useState(false);
@@ -41,7 +43,7 @@ function Body () {
             try {
                 const { data } = await axios.post(`${domain()}/member/isavailable`, {isLocal});
                 if(!data.isadmin) {
-                    // window.location.href = `${handlepath()}${data.url}`;
+                    window.location.href = `${handlepath()}${data.url}`;
                 }else {
                     setIsadmin(true);
                 }

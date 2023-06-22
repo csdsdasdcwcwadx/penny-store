@@ -117,8 +117,7 @@ function Header() {
                         onClick={async () => {
                             try {
                                 const { data } = await axios.post(`${domain()}/member/isavailable`, {isLocal});
-                                console.log("點擊頭像", `${handlepath()}${data.url}`)
-                                // window.location.href = `${handlepath()}${data.url}`;
+                                window.location.href = `${handlepath()}${data.url}`;
                             }catch(e) {
                                 console.error(e);
                             }
