@@ -46,12 +46,6 @@ function Body() {
         isLoading ? <Spinner/> :
             <div className={styles.Body}>
                 <div className={styles.title}>{getallproduct && handleNavigator(page)}</div>
-                <button onClick={()=>{
-                    const member = JSON.parse(localStorage.getItem('memberinfo')!);
-                    const google = JSON.parse(localStorage.getItem('credentials')!);
-                    console.log("@@@", member)
-                    console.log("@@@", google)
-                }}>查看登錄狀態</button>
                 <div className={styles.breadcrumb}>
                     <BreadCrumb items={handleBreadCrumb()}/>
                 </div>

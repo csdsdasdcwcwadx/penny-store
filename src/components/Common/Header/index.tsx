@@ -75,24 +75,36 @@ function Header() {
                 const loginAPI = await getRedirectResult(auth) || credentials;
                 const obj = {
                     m_email: loginAPI?.user.email,
+                    hasLogin: Boolean(localStorage.getItem('memberinfo') && localStorage.getItem('credentials')),
                 }
                 try{
                     const { data } = await axios.post(`${domain()}/member/loginmember`, obj);
-                    // 若傳入的email不為空，並且登入失敗，則跳出alert。
-                    if(!data.status && obj.m_email) alert(data.message);
                     // 若回傳結果為true，則將memberinfo寫進去localStorage
                     if(data.status) {
                         localStorage.setItem('memberinfo', JSON.stringify(data));
                         setMemberinfo(data);
                         PubSub.publish('isLogin', data);
+
+                        // 若當前localStorage有credentials，則將此設為狀態。
+                        if(credentials) setCredentials(credentials);
+
                         // google登入完後寫進去狀態
                         if(loginAPI) {
                             localStorage.setItem('credentials', JSON.stringify(loginAPI));
                             setCredentials(loginAPI);
                         }
+                    } else {
+                        if(obj.m_email) {
+                            // if(data.message === '會話已過期') {
+                            //     location.reload();
+                            // }
+                            localStorage.removeItem('memberinfo');
+                            localStorage.removeItem('credentials');
+                            setCredentials(null);
+                            setMemberinfo(undefined);
+                            alert(data.message);
+                        }
                     }
-                    // 若當前localStorage有credentials，則將此設為狀態。
-                    if(credentials) setCredentials(credentials);
                 }catch(err) {
                     console.error('error => ', err);
                 }
@@ -110,7 +122,7 @@ function Header() {
                         <i className="icon ic-ln toolmenu"/>
                     </span>
                     {/* <a><i className={cN('icon ic-ln toolfroundf', styles.facebook)}/></a> */}
-                    <a href="https://www.instagram.com/zllondoner.tw/?igshid=YmMyMTA2M2Y%3D"><img className={styles.instagram} src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png"/></a>
+                    <a href="https://www.instagram.com/londoner.tw/"><img className={styles.instagram} src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png"/></a>
                 </div>
                     <span 
                         className={styles.logo}
