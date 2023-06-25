@@ -204,14 +204,17 @@ function Body() {
                             </div>
                             <InputBar title='姓名' placeholder='請輸入姓名' type={E_RegexType.NAME} ref={name} trigger={checked} maxlength={10}/>
                             <InputBar title='手機' placeholder='請輸入聯絡電話' type={E_RegexType.PHONE} ref={phone} trigger={checked} maxlength={20}/>
-                            <Select 
-                                options={addressingOptions} 
-                                onChange={e=>{
-                                    setAddressing(e?.value!);
-                                    setChecked(false);
-                                }}
-                                defaultValue={addressing ? addressingOptions[0] : addressingOptions[1]}
-                            />
+                            <div className={styles.selectdeliver}>
+                                <span>選擇寄送方式</span>
+                                <Select
+                                    options={addressingOptions} 
+                                    onChange={e=>{
+                                        setAddressing(e?.value!);
+                                        setChecked(false);
+                                    }}
+                                    defaultValue={addressing ? addressingOptions[0] : addressingOptions[1]}
+                                />
+                            </div>
                             {
                                 addressing ? <div className={styles.address}>
                                     <InputBar title='郵遞區號' placeholder='請輸入郵遞區號' type={E_RegexType.NUMBER} ref={postcal} trigger={checked} maxlength={5}/>

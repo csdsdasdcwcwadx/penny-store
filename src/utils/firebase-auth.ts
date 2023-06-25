@@ -2,12 +2,12 @@
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import { getAuth, GoogleAuthProvider, EmailAuthProvider } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, EmailAuthProvider, FacebookAuthProvider } from 'firebase/auth';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCpxm_FeqO6_hFf8H4DZBR-vK-cx6U4klg",
-  authDomain: "penny-store.firebaseapp.com",
+  authDomain: "https://www.londoner.tw",
   projectId: "penny-store",
   storageBucket: "penny-store.appspot.com",
   messagingSenderId: "729566084235",
@@ -19,3 +19,9 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const GoogleProvider = new GoogleAuthProvider();
 export const MailProvider = new EmailAuthProvider();
+export const FacebookProvider = new FacebookAuthProvider();
+
+export enum E_auth {
+  google = 'google',
+  facebook = 'facebook',
+}

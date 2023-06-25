@@ -84,9 +84,12 @@ function Body() {
         return undefined;
     },[productdetail, selectColor, selectSize])
 
-    console.log("@@@", chosenItem)
-
     const handleAddChart = useCallback( async () => {
+
+        if(!chosenItem) {
+            alert('請選擇其他產品尺寸及顏色');
+            return;
+        }
 
         if(productdetail && member) {
             const body = {
@@ -142,9 +145,7 @@ function Body() {
                 console.error(e);
             }
 
-        } else {
-            alert('請先登入會員');
-        }
+        } else alert('請先登入會員');
     },[productdetail, member, chosenItem, counter])
 
     const src = useMemo(() => {

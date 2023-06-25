@@ -332,17 +332,22 @@
                 }
 
                 .buttonlist {
-                    display: flex;
-                    justify-content: center;
                     padding: 0 20px;
 
                     button {
-                        height: 30px;
-                        width: 40%;
+                        display: flex;
+                        align-items: center;
+                        height: 40px;
+                        margin: 0 auto;
                         margin-top: 20px;
                         border: 0;
                         background-color: #ddd;
                         cursor: pointer;
+
+                        img {
+                            height: 30px;
+                            margin-right: 10px;
+                        }
                     }
                 }
             }
