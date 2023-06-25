@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { store } from '@Redux/Product/store';
 import { Provider } from 'react-redux';
-import { Header, Footer, Body } from '@components/Product';
+import { Header, Footer, Body, SideBar } from '@components/Product';
 import './index.scss';
 
 export function Product() {
+    const [trigger, setTrigger] = useState(false);
     return (
         <div className='pages'>
             <div className='topper'>
                 <Header/>
-                <Body/>
+                <Body setTrigger={setTrigger}/>
             </div>
+            <SideBar trigger={trigger}/>
             <Footer/>
         </div>
     )

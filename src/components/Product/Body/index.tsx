@@ -11,12 +11,15 @@ import { handleNavigator } from '@utils/commonfunction';
 import { E_Page } from "@Redux/App/interfaces";
 import axios from "axios";
 import domain, {handlepath} from '@utils/domainByEnv';
-import { SideBar } from "..";
 import Spinner from "@components/Common/Modules/Spinner";
 
 axios.defaults.withCredentials = true;
 
-function Body() {
+interface I_props {
+    setTrigger: Function;
+}
+
+function Body({setTrigger}: I_props) {
     const dispatch = useDispatch();
 
     const [counter, setCounter] = useState<number>(1);
@@ -24,8 +27,6 @@ function Body() {
     const [selectSize, setSelectSize] = useState('');
     // 顏色
     const [selectColor, setselectColor] = useState('');
-    // 設定sidebar產品更改
-    const [trigger, setTrigger] = useState(false);
     const [alertion, setAlertion] = useState(false);
     const [lateAlert, setLateAlert] = useState(false);
     const [message, setMessage] = useState('');
@@ -104,7 +105,7 @@ function Body() {
                 if(data.status) {
                     setMessage(data.message);
                     setAlertion(true);
-                    setTrigger(pre=>!pre);
+                    setTrigger((pre: any)=>!pre);
                     setTimeout(()=>{
                         setLateAlert(true);
                     },40)
@@ -122,7 +123,7 @@ function Body() {
                             if(data.status) {
                                 setMessage(data.message);
                                 setAlertion(true);
-                                setTrigger(pre=>!pre);
+                                setTrigger((pre: any)=>!pre);
                                 setTimeout(()=>{
                                     setLateAlert(true);
                                 },40)
@@ -146,7 +147,7 @@ function Body() {
             }
 
         } else alert('請先登入會員');
-    },[productdetail, member, chosenItem, counter])
+    },[productdetail, member, chosenItem, counter, setTrigger])
 
     const src = useMemo(() => {
         if(productdetail) return handleIMG(productdetail.productinfo[0].p_img);
@@ -214,8 +215,8 @@ function Body() {
                                             borderRadius: 5,
                                             colors: {
                                                 ...theme.colors,
-                                                primary25: "#e6cd9b",
-                                                primary: "#a78a50",
+                                                primary25: "#d4d2c8",
+                                                primary: "#727171"
                                             }
                                         })}
                                     />
@@ -235,8 +236,8 @@ function Body() {
                                         borderRadius: 5,
                                         colors: {
                                             ...theme.colors,
-                                            primary25: "#e6cd9b",
-                                            primary: "#a78a50"
+                                            primary25: "#d4d2c8",
+                                            primary: "#727171"
                                         }
                                     })}
                                 />
@@ -251,8 +252,6 @@ function Body() {
                                 <span className={styles.counter}>{counter}</span>
                                 <span className={cN(styles.add)} 
                                         onClick={()=>setCounter(pre=>{
-                                        // if(pre<productdetail.productinfo[0].p_amount) return pre+1;
-                                        // return pre;
                                         return pre+1;
                                     })}> </span>
                             </div>
@@ -260,7 +259,6 @@ function Body() {
                         </div>
                     </div>
                 </div>
-                <SideBar trigger={trigger}/>
                 <div className={cN(styles.alertion, {[styles.show]: alertion}, {[styles.lateAlert]: lateAlert})}>{message}</div>
                 <div className={styles.desinfo} dangerouslySetInnerHTML={{ __html: productdetail.productinfo[0].p_info }}/>
             </div>

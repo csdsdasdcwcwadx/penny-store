@@ -110,7 +110,7 @@ function Header() {
                     const { data } = await axios.post(`${domain()}/member/loginmember`, obj);
                     // 正確取得資訊後就不需要再做登入
                     if(data.status) {
-                        PubSub.publish('isLogin', data);
+                        PubSub.publish('isLogin', data.status);
                         setCredentials(credentials);
                     } else {
                         if(obj.m_email) {
@@ -197,8 +197,7 @@ function Header() {
                     }
                     {ListBlock()}
                     <div className={styles.otheroptions}>
-                        {/* <a><i className={cN('icon ic-ln toolfroundf', styles.facebook)}/></a> */}
-                        <a><img className={styles.instagram} src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png"/></a>
+                        <a href="https://www.instagram.com/londoner.tw/"><img className={styles.instagram} src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png"/></a>
                     </div>
                     {credentials && <button className={styles.logout} onClick={handlelogout}>登出</button>}
                 </div>
@@ -285,10 +284,10 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
                                             <img src={googleImg}/>
                                             <span>使用Google登入</span>
                                         </button>
-                                        <button onClick={()=>handleLogin(E_auth.facebook)}>
+                                        {/* <button onClick={()=>handleLogin(E_auth.facebook)}>
                                             <img src={facebookImg}/>
                                             <span>使用FaceBook登入</span>
-                                        </button>
+                                        </button> */}
                                     </div>
                                 </div> : 
                                 <div>
@@ -304,10 +303,10 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
                                             <img src={googleImg}/>
                                             <span>使用Google註冊</span>
                                         </button>
-                                        <button onClick={()=>handleRegistry(E_auth.facebook)}>
+                                        {/* <button onClick={()=>handleRegistry(E_auth.facebook)}>
                                             <img src={facebookImg}/>
                                             <span>使用FaceBook註冊</span>
-                                        </button>
+                                        </button> */}
                                     </div>
                                 </div>
                         }
