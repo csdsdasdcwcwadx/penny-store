@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4ab92e3b8ed8d673a2d9",
+    "revision": "e7a90854782c915d302a",
     "url": "./app/css/style.css"
   },
   {
-    "revision": "4ab92e3b8ed8d673a2d9",
+    "revision": "e7a90854782c915d302a",
     "url": "./app/js/index.js"
   },
   {
@@ -16,11 +16,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./backend.html"
   },
   {
-    "revision": "b6bd7dc4d8ddf91986e6",
+    "revision": "683df9b1678280b3721c",
     "url": "./backend/css/style.css"
   },
   {
-    "revision": "b6bd7dc4d8ddf91986e6",
+    "revision": "683df9b1678280b3721c",
     "url": "./backend/js/index.js"
   },
   {
@@ -36,11 +36,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./order.html"
   },
   {
-    "revision": "02056056ceaae07ff23c",
+    "revision": "e20f5868377c97673f75",
     "url": "./order/css/style.css"
   },
   {
-    "revision": "02056056ceaae07ff23c",
+    "revision": "e20f5868377c97673f75",
     "url": "./order/js/index.js"
   },
   {
@@ -52,11 +52,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./payment.html"
   },
   {
-    "revision": "fded40ce411b4ffdc626",
+    "revision": "ef5be6b90b5a73aba4d9",
     "url": "./payment/css/style.css"
   },
   {
-    "revision": "fded40ce411b4ffdc626",
+    "revision": "ef5be6b90b5a73aba4d9",
     "url": "./payment/js/index.js"
   },
   {
@@ -68,20 +68,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./product.html"
   },
   {
-    "revision": "3b0ef9b3b503de1b6eb8",
+    "revision": "093f231df98c381fa8ba",
     "url": "./product/css/style.css"
   },
   {
-    "revision": "3b0ef9b3b503de1b6eb8",
+    "revision": "093f231df98c381fa8ba",
     "url": "./product/js/index.js"
   },
   {
     "revision": "0bbfea753012d3f593caeb139fc70332",
     "url": "./product/js/index.js.LICENSE.txt"
-  },
-  {
-    "revision": "e790c25db5e52838040686612b1a732c",
-    "url": "./static/media/facebook.png"
   },
   {
     "revision": "ea735e62c31af39012853c932d74375a",
