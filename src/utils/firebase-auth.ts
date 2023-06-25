@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import { getAuth, GoogleAuthProvider, EmailAuthProvider } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, EmailAuthProvider, FacebookAuthProvider } from 'firebase/auth';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -19,3 +19,9 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const GoogleProvider = new GoogleAuthProvider();
 export const MailProvider = new EmailAuthProvider();
+export const FacebookProvider = new FacebookAuthProvider();
+
+export enum E_auth {
+  google = 'google',
+  facebook = 'facebook',
+}

@@ -7,6 +7,9 @@ import OrderList from "./OrderList";
 import PageNumber from "@components/Common/PageNumber";
 import { handlepath } from '@utils/domainByEnv';
 import Spinner from "@components/Common/Modules/Spinner";
+import axios from "axios";
+
+axios.defaults.withCredentials = true;
 
 function Body () {
     const [ serial, setSerial ] = useState(1);

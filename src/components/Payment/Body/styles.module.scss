@@ -196,6 +196,26 @@
             margin-top: 10px;
         }
 
+        .selectdeliver {
+
+            >span {
+                display: block;
+                color: #222;
+                margin: 0 0 5px 5px;
+                font-size: 12px;
+            }
+
+            >div {
+                margin: 0px 0 20px 0;
+
+                >div {
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+            }
+        }
+
         .address {
             display: flex;
             align-items: center;

@@ -6,19 +6,48 @@ import { E_Page } from '@Redux/App/interfaces';
 import { handleNavigator } from '@utils/commonfunction';
 import LightBox, { E_direction } from "../Modules/LightBox";
 import '../Modules/ic-ln/css.css';
-import { auth, GoogleProvider, MailProvider } from '@utils/firebase-auth';
-import { signInWithRedirect, getRedirectResult, signInWithPopup, UserCredential, signInWithEmailLink } from 'firebase/auth';
+import { auth, GoogleProvider, FacebookProvider, E_auth } from '@utils/firebase-auth';
+import { createUserWithEmailAndPassword, signInWithPopup, UserCredential } from 'firebase/auth';
 import cN from 'classnames';
 import InputBar, { E_RegexType } from "../Modules/InputBar";
 import axios from "axios";
 import domain, { handlepath } from '@utils/domainByEnv';
 import PubSub from 'pubsub-js';
 import { I_member } from "@Redux/App/interfaces";
+import googleImg from '../../../imgs/google.svg';
+import facebookImg from '../../../imgs/facebook.png';
+
+function storageAvailable(type: any) {
+    let storage: any;
+    try {
+      storage = window[type];
+      const x = "__storage_test__";
+      storage.setItem(x, x);
+      storage.removeItem(x);
+      return true;
+    } catch (e) {
+      return (
+        e instanceof DOMException &&
+        // everything except Firefox
+        (e.code === 22 ||
+          // Firefox
+          e.code === 1014 ||
+          // test name field too, because code might not be present
+          // everything except Firefox
+          e.name === "QuotaExceededError" ||
+          // Firefox
+          e.name === "NS_ERROR_DOM_QUOTA_REACHED") &&
+        // acknowledge QuotaExceededError only if there's something already stored
+        storage &&
+        storage.length !== 0
+      );
+    }
+}
 
 function Header() {
     const [listOpen, setListOpen] = useState<boolean>(false);
     const [loginOpen, setLoginOpen] = useState<boolean>(false);
-    const [memberinfo, setMemberinfo] = useState<I_member | undefined>();
+    // const [memberinfo, setMemberinfo] = useState<I_member | undefined>();
     const [credentials, setCredentials] = useState<UserCredential | null>();
     const isMenu: boolean = !!document.getElementById('menu');
     const isLocal = window.location.href.includes('localhost');
@@ -71,28 +100,26 @@ function Header() {
         (async function() {
             try{
                 // 若有credentials 代表剛註冊完成
+                const memberinfo = JSON.parse(localStorage.getItem('memberinfo')!);
                 const credentials = JSON.parse(localStorage.getItem('credentials')!);
-                const loginAPI = await getRedirectResult(auth) || credentials;
                 const obj = {
-                    m_email: loginAPI?.user.email,
+                    m_email: memberinfo?.memberinfo[0].m_email || null,
+                    hasLogin: Boolean(localStorage.getItem('memberinfo') && localStorage.getItem('credentials')),
                 }
                 try{
                     const { data } = await axios.post(`${domain()}/member/loginmember`, obj);
-                    // 若傳入的email不為空，並且登入失敗，則跳出alert。
-                    if(!data.status && obj.m_email) alert(data.message);
-                    // 若回傳結果為true，則將memberinfo寫進去localStorage
+                    // 正確取得資訊後就不需要再做登入
                     if(data.status) {
-                        localStorage.setItem('memberinfo', JSON.stringify(data));
-                        setMemberinfo(data);
-                        PubSub.publish('isLogin', data);
-                        // google登入完後寫進去狀態
-                        if(loginAPI) {
-                            localStorage.setItem('credentials', JSON.stringify(loginAPI));
-                            setCredentials(loginAPI);
+                        PubSub.publish('isLogin', data.status);
+                        setCredentials(credentials);
+                    } else {
+                        if(obj.m_email) {
+                            localStorage.removeItem('memberinfo');
+                            localStorage.removeItem('credentials');
+                            setCredentials(null);
+                            alert(data.message);
                         }
                     }
-                    // 若當前localStorage有credentials，則將此設為狀態。
-                    if(credentials) setCredentials(credentials);
                 }catch(err) {
                     console.error('error => ', err);
                 }
@@ -110,9 +137,9 @@ function Header() {
                         <i className="icon ic-ln toolmenu"/>
                     </span>
                     {/* <a><i className={cN('icon ic-ln toolfroundf', styles.facebook)}/></a> */}
-                    <a href="https://www.instagram.com/zllondoner.tw/?igshid=YmMyMTA2M2Y%3D"><img className={styles.instagram} src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png"/></a>
+                    <a href="https://www.instagram.com/londoner.tw/"><img className={styles.instagram} src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png"/></a>
                 </div>
-                    <a 
+                    <span 
                         className={styles.logo}
                         onClick={async () => {
                             try {
@@ -122,7 +149,7 @@ function Header() {
                                 console.error(e);
                             }
                         }}
-                    >LONDONER</a>
+                    >LONDONER</span>
                 <div>
                     {
                         credentials ?
@@ -170,8 +197,7 @@ function Header() {
                     }
                     {ListBlock()}
                     <div className={styles.otheroptions}>
-                        {/* <a><i className={cN('icon ic-ln toolfroundf', styles.facebook)}/></a> */}
-                        <a><img className={styles.instagram} src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png"/></a>
+                        <a href="https://www.instagram.com/londoner.tw/"><img className={styles.instagram} src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png"/></a>
                     </div>
                     {credentials && <button className={styles.logout} onClick={handlelogout}>登出</button>}
                 </div>
@@ -188,21 +214,23 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
     const m_address = useRef<HTMLInputElement>(null);
     const postcal = useRef<HTMLInputElement>(null);
 
-    const handleRegistry = useCallback( async () => {
-        if(document.getElementsByClassName('error').length === 0) {
+    const handleRegistry = useCallback( async (authen: E_auth) => {
+        const error = document.getElementsByClassName('error');
+        if(error.length === 0) {
             try {
-                const google = await signInWithPopup(auth, GoogleProvider);
+                const auther = await signInWithPopup(auth, authen === E_auth.google ? GoogleProvider : FacebookProvider);
                 const obj = {
                     m_name: m_name.current?.value,
                     m_address: `${postcal.current?.value}|${m_address.current?.value}`,
                     m_phone: m_phone.current?.value,
-                    m_email: google.user.email,
+                    m_email: auther.user.email,
                 }
                 try{
                     const { data } = await axios.post(`${domain()}/member/registrymember`, obj);
                     alert(data.message);
                     if(data.status) {
-                        localStorage.setItem('credentials', JSON.stringify(google));
+                        localStorage.setItem('credentials', JSON.stringify(auther));
+                        localStorage.setItem('memberinfo', JSON.stringify(data));
                         location.reload();
                     }
                 }catch(e) {
@@ -211,12 +239,23 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
             }catch(err) {
                 console.error('error => ', err);
             }
-        }
+        }else alert(error[0].textContent);
     },[m_name, m_phone, m_address])
 
-    const handleLogin = async () => {
+    const handleLogin = async (authen: E_auth) => {
         try {
-            await signInWithRedirect(auth, GoogleProvider);
+            const loginAPI = await signInWithPopup(auth, authen === E_auth.google ? GoogleProvider : FacebookProvider);
+            const obj = {
+                m_email: loginAPI?.user.email,
+                hasLogin: false,
+            }
+            const { data } = await axios.post(`${domain()}/member/loginmember`, obj);
+            // 登入成功就將資料寫入localStorage
+            if(data.status) {
+                localStorage.setItem('memberinfo', JSON.stringify(data));
+                localStorage.setItem('credentials', JSON.stringify(loginAPI));
+                location.reload();
+            } else alert(data.message);
         }catch(e) {
             console.error('error => ', e);
         }
@@ -241,7 +280,14 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
                                 <div>
                                     <div className={styles.title}>會員登入</div>
                                     <div className={styles.buttonlist}>
-                                        <button onClick={handleLogin}>登入</button>
+                                        <button onClick={()=>handleLogin(E_auth.google)}>
+                                            <img src={googleImg}/>
+                                            <span>使用Google登入</span>
+                                        </button>
+                                        {/* <button onClick={()=>handleLogin(E_auth.facebook)}>
+                                            <img src={facebookImg}/>
+                                            <span>使用FaceBook登入</span>
+                                        </button> */}
                                     </div>
                                 </div> : 
                                 <div>
@@ -253,7 +299,14 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
                                         <InputBar title='地址' placeholder='請輸入地址' type={E_RegexType.ADDRESS} ref={m_address} maxlength={255}/>
                                     </div>
                                     <div className={styles.buttonlist}>
-                                        <button onClick={handleRegistry}>送出</button>
+                                        <button onClick={()=>handleRegistry(E_auth.google)}>
+                                            <img src={googleImg}/>
+                                            <span>使用Google註冊</span>
+                                        </button>
+                                        {/* <button onClick={()=>handleRegistry(E_auth.facebook)}>
+                                            <img src={facebookImg}/>
+                                            <span>使用FaceBook註冊</span>
+                                        </button> */}
                                     </div>
                                 </div>
                         }

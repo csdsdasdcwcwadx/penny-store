@@ -26,6 +26,8 @@ enum E_currentType {
 
 const currentData = localStorage.getItem('currentData');
 
+axios.defaults.withCredentials = true;
+
 function Body () {
     const [current, setCurrent] = useState<E_currentType>(currentData as E_currentType || E_currentType.PRODUCT);
     const [isadmin, setIsadmin] = useState(false);

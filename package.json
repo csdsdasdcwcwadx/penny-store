@@ -15,7 +15,7 @@
         "commit": "cz",
         "lint": "stylelint src/**/*.scss --syntax scss",
         "lint:fix": "stylelint src/**/*.scss --syntax scss --fix",
-        "predeploy": "npm run build",
+        "predeploy": "npm run prod",
         "deploy": "gh-pages -d build"
     },
     "dependencies": {
