@@ -106,6 +106,19 @@
                 }
             }
 
+            .hasPaid {
+                display: flex;
+                align-items: center;
+                color: #ff3001;
+                font-size: 25px;
+
+                i {
+                    position: relative;
+                    display: block;
+                    color: #ff3001;
+                }
+            }
+
             @include only-mobile {
                 flex-direction: column;
                 align-items: unset;

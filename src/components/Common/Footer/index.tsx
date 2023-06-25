@@ -14,7 +14,7 @@ function Footer () {
             <div>
                 <span>聯絡資訊</span>
                 <span>Contact Us</span>
-                <span>nomomarket22@gmail.com</span>
+                <span>pennypeijung@gmail.com</span>
                 <span>Mon-Fri10:00-17:30(假日/例假日OFF)</span>
             </div>
         </footer>

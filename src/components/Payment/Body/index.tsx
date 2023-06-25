@@ -102,26 +102,25 @@ function Body() {
             if(!addressing && !seven) {
                 alert('請選擇7-11門市');
             } else {
-                const addressPost = addressing ? `${postcal.current?.value}|${address.current?.value}` : `${seven}(7-11)`
-                const post = {
-                    isSuccess,
-                    name: name.current?.value,
-                    address: addressPost,
-                    phone: phone.current?.value,
-                    email: member.memberinfo[0].m_email,
-                    distributed,
-                    account: '123456',
-                    money: '10000', 
-                    token: 'wufhwdhvl',
-                    m_id: member.memberinfo[0].m_id,
-                }
-        
-                try{
-                    const {data} = await axios.post(`${domain()}/common/payment`, post);
-                    alert(data.message);
-                    if(data.status) window.location.href = `${handlepath()}/order${isLocal?'.html':''}`;
-                }catch(e) {
-                    console.error(e);
+                if(confirm('金流功能尚未啟用，若欲付款請洽pennypeijung@gmail.com')) {
+                    const addressPost = addressing ? `${postcal.current?.value}|${address.current?.value}` : `${seven}(7-11)`
+                    const post = {
+                        isSuccess,
+                        name: name.current?.value,
+                        address: addressPost,
+                        phone: phone.current?.value,
+                        email: member.memberinfo[0].m_email,
+                        distributed,
+                        m_id: member.memberinfo[0].m_id,
+                    }
+            
+                    try{
+                        const {data} = await axios.post(`${domain()}/common/payment`, post);
+                        alert('訂單已送出');
+                        if(data.status) window.location.href = `${handlepath()}/order${isLocal?'.html':''}`;
+                    }catch(e) {
+                        console.error(e);
+                    }
                 }
             }
         }else alert(error[0].textContent);
@@ -226,8 +225,10 @@ function Body() {
                             }
                         </div>
                     </section>
-                    <button onClick={() => handlePayment()}>付款測試用(成功)</button>
-                    <button onClick={() => handlePayment(false)}>付款測試用(失敗)</button>
+                    <button className={styles.sendpayment} onClick={() => handlePayment()}>送出訂單</button>
+                    <span className={styles.alert}>金流功能尚未啟用，若欲付款請洽pennypeijung@gmail.com</span>
+                    {/* <button onClick={() => handlePayment()}>付款測試用(成功)</button>
+                    <button onClick={() => handlePayment(false)}>付款測試用(失敗)</button> */}
                 </>
             }
         </div>

@@ -82,6 +82,22 @@ function Orders ({orders, serial}: I_props) {
         }
     }
 
+    const changePayment = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, o_dentical: string) => {
+        event.stopPropagation();
+        const body = {
+            o_dentical,
+        }
+        try{
+            const {data} = await axios.post(`${domain()}/order/changepayment`, body);
+            if(data.status) {
+                dispatch(call_listshipping({pages: serial, frombackend: true}));
+            }
+            alert(data.message)
+        }catch (e) {
+            console.error(e);
+        }
+    }
+
     return (
         <div className={cN(styles.orderdatatable, {[styles.isClosed]: !isOpen})}>
             <div className={styles.orderouter} onClick={() => setIsOpen(pre => !pre)}>
@@ -93,6 +109,10 @@ function Orders ({orders, serial}: I_props) {
                     {
                         orders[0].isShip ? <div className={styles.hasShip}><i className="icon ic-ln toolchoosen"/><span>訂單已出貨</span></div> : 
                         <button onClick={e => changeShipment(e, orders[0].o_dentical)}>訂單出貨</button>
+                    }
+                    {
+                        orders[0].o_payment ? <div className={styles.hasPaid}><i className="icon ic-ln toolchoosen"/><span>訂單已付款</span></div> : 
+                        <button onClick={e => changePayment(e, orders[0].o_dentical)}>訂單已付款</button>
                     }
                 </div>
                 <div>
