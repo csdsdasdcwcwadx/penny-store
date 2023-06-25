@@ -7,7 +7,7 @@ import { handleNavigator } from '@utils/commonfunction';
 import LightBox, { E_direction } from "../Modules/LightBox";
 import '../Modules/ic-ln/css.css';
 import { auth, GoogleProvider, FacebookProvider, E_auth } from '@utils/firebase-auth';
-import { signInWithRedirect, getRedirectResult, signInWithPopup, UserCredential } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithPopup, UserCredential } from 'firebase/auth';
 import cN from 'classnames';
 import InputBar, { E_RegexType } from "../Modules/InputBar";
 import axios from "axios";
@@ -43,12 +43,11 @@ function storageAvailable(type: any) {
       );
     }
 }
-  
 
 function Header() {
     const [listOpen, setListOpen] = useState<boolean>(false);
     const [loginOpen, setLoginOpen] = useState<boolean>(false);
-    const [memberinfo, setMemberinfo] = useState<I_member | undefined>();
+    // const [memberinfo, setMemberinfo] = useState<I_member | undefined>();
     const [credentials, setCredentials] = useState<UserCredential | null>();
     const isMenu: boolean = !!document.getElementById('menu');
     const isLocal = window.location.href.includes('localhost');
@@ -98,41 +97,26 @@ function Header() {
 
     // 處理登入資訊
     useEffect(()=>{
-        const userAgent = navigator.userAgent;
-        console.log(userAgent);
         (async function() {
             try{
                 // 若有credentials 代表剛註冊完成
+                const memberinfo = JSON.parse(localStorage.getItem('memberinfo')!);
                 const credentials = JSON.parse(localStorage.getItem('credentials')!);
-                const loginAPI = await getRedirectResult(auth) || credentials;
-                console.log("@@@", loginAPI)
                 const obj = {
-                    m_email: loginAPI?.user.email,
+                    m_email: memberinfo?.memberinfo[0].m_email || null,
                     hasLogin: Boolean(localStorage.getItem('memberinfo') && localStorage.getItem('credentials')),
                 }
-                console.log(loginAPI)
                 try{
                     const { data } = await axios.post(`${domain()}/member/loginmember`, obj);
-                    // 若回傳結果為true，則將memberinfo寫進去localStorage
+                    // 正確取得資訊後就不需要再做登入
                     if(data.status) {
-                        localStorage.setItem('memberinfo', JSON.stringify(data));
-                        setMemberinfo(data);
                         PubSub.publish('isLogin', data);
-
-                        // 若當前localStorage有credentials，則將此設為狀態。
-                        if(credentials) setCredentials(credentials);
-
-                        // google登入完後寫進去狀態
-                        if(loginAPI) {
-                            localStorage.setItem('credentials', JSON.stringify(loginAPI));
-                            setCredentials(loginAPI);
-                        }
+                        setCredentials(credentials);
                     } else {
                         if(obj.m_email) {
                             localStorage.removeItem('memberinfo');
                             localStorage.removeItem('credentials');
                             setCredentials(null);
-                            setMemberinfo(undefined);
                             alert(data.message);
                         }
                     }
@@ -247,6 +231,7 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
                     alert(data.message);
                     if(data.status) {
                         localStorage.setItem('credentials', JSON.stringify(auther));
+                        localStorage.setItem('memberinfo', JSON.stringify(data));
                         location.reload();
                     }
                 }catch(e) {
@@ -260,7 +245,18 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
 
     const handleLogin = async (authen: E_auth) => {
         try {
-            await signInWithRedirect(auth, authen === E_auth.google ? GoogleProvider : FacebookProvider);
+            const loginAPI = await signInWithPopup(auth, authen === E_auth.google ? GoogleProvider : FacebookProvider);
+            const obj = {
+                m_email: loginAPI?.user.email,
+                hasLogin: false,
+            }
+            const { data } = await axios.post(`${domain()}/member/loginmember`, obj);
+            // 登入成功就將資料寫入localStorage
+            if(data.status) {
+                localStorage.setItem('memberinfo', JSON.stringify(data));
+                localStorage.setItem('credentials', JSON.stringify(loginAPI));
+                location.reload();
+            } else alert(data.message);
         }catch(e) {
             console.error('error => ', e);
         }

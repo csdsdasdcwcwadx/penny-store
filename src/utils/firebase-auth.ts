@@ -7,7 +7,7 @@ import { getAuth, GoogleAuthProvider, EmailAuthProvider, FacebookAuthProvider } 
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCpxm_FeqO6_hFf8H4DZBR-vK-cx6U4klg",
-  authDomain: "https://www.londoner.tw",
+  authDomain: "penny-store.firebaseapp.com",
   projectId: "penny-store",
   storageBucket: "penny-store.appspot.com",
   messagingSenderId: "729566084235",
