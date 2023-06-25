@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e7a90854782c915d302a",
+    "revision": "8c5023109f46c64e35e1",
     "url": "./app/css/style.css"
   },
   {
-    "revision": "e7a90854782c915d302a",
+    "revision": "8c5023109f46c64e35e1",
     "url": "./app/js/index.js"
   },
   {
@@ -12,15 +12,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./app/js/index.js.LICENSE.txt"
   },
   {
-    "revision": "9aefaf1b4d9b98399d13dff1224488c1",
+    "revision": "90ea5b6ccb32f0bf95a2a55629eb9bdc",
     "url": "./backend.html"
   },
   {
-    "revision": "683df9b1678280b3721c",
+    "revision": "93f9d469f64bb7e85a8c",
     "url": "./backend/css/style.css"
   },
   {
-    "revision": "683df9b1678280b3721c",
+    "revision": "93f9d469f64bb7e85a8c",
     "url": "./backend/js/index.js"
   },
   {
@@ -28,19 +28,19 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./backend/js/index.js.LICENSE.txt"
   },
   {
-    "revision": "62609056e579823e8db6a2898cc58d64",
+    "revision": "42e42710400f5cc1d76994368d6e59bd",
     "url": "./index.html"
   },
   {
-    "revision": "a71b256187df329c81c6da8b7bc4cf28",
+    "revision": "6450a02f66d55e7af872a51b02681de2",
     "url": "./order.html"
   },
   {
-    "revision": "e20f5868377c97673f75",
+    "revision": "20726fdf3671dd3d8e21",
     "url": "./order/css/style.css"
   },
   {
-    "revision": "e20f5868377c97673f75",
+    "revision": "20726fdf3671dd3d8e21",
     "url": "./order/js/index.js"
   },
   {
@@ -48,15 +48,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./order/js/index.js.LICENSE.txt"
   },
   {
-    "revision": "18f22aff39e6149644ec6837f3d56a9d",
+    "revision": "d3632a736cdd79323a32da3c948a2087",
     "url": "./payment.html"
   },
   {
-    "revision": "ef5be6b90b5a73aba4d9",
+    "revision": "57fddf456486ba7beea8",
     "url": "./payment/css/style.css"
   },
   {
-    "revision": "ef5be6b90b5a73aba4d9",
+    "revision": "57fddf456486ba7beea8",
     "url": "./payment/js/index.js"
   },
   {
@@ -64,15 +64,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./payment/js/index.js.LICENSE.txt"
   },
   {
-    "revision": "1bb41c903f10429d4151b542ccada785",
+    "revision": "da7ca24bb73970ce1216b0b1bc0590a7",
     "url": "./product.html"
   },
   {
-    "revision": "093f231df98c381fa8ba",
+    "revision": "e098d948f9f1663e0790",
     "url": "./product/css/style.css"
   },
   {
-    "revision": "093f231df98c381fa8ba",
+    "revision": "e098d948f9f1663e0790",
     "url": "./product/js/index.js"
   },
   {
