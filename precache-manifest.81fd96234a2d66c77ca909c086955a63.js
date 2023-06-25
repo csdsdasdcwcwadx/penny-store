@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "92fa4739bde9867e8c11",
+    "revision": "84a5a32e20cd2d550cff",
     "url": "./app/css/style.css"
   },
   {
-    "revision": "92fa4739bde9867e8c11",
+    "revision": "84a5a32e20cd2d550cff",
     "url": "./app/js/index.js"
   },
   {
@@ -16,11 +16,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./backend.html"
   },
   {
-    "revision": "e0c2f9814476300beeba",
+    "revision": "8e730ba10ac179b68926",
     "url": "./backend/css/style.css"
   },
   {
-    "revision": "e0c2f9814476300beeba",
+    "revision": "8e730ba10ac179b68926",
     "url": "./backend/js/index.js"
   },
   {
@@ -36,11 +36,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./order.html"
   },
   {
-    "revision": "8c1bbc03f7b6b49337fa",
+    "revision": "fe45629e0c006edaa984",
     "url": "./order/css/style.css"
   },
   {
-    "revision": "8c1bbc03f7b6b49337fa",
+    "revision": "fe45629e0c006edaa984",
     "url": "./order/js/index.js"
   },
   {
@@ -52,11 +52,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./payment.html"
   },
   {
-    "revision": "3bbbf30a2592cbe6805e",
+    "revision": "315c6a9b1245e0575789",
     "url": "./payment/css/style.css"
   },
   {
-    "revision": "3bbbf30a2592cbe6805e",
+    "revision": "315c6a9b1245e0575789",
     "url": "./payment/js/index.js"
   },
   {
@@ -68,16 +68,24 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./product.html"
   },
   {
-    "revision": "e2f71629dfa8ba148103",
+    "revision": "35be006372922d82a196",
     "url": "./product/css/style.css"
   },
   {
-    "revision": "e2f71629dfa8ba148103",
+    "revision": "35be006372922d82a196",
     "url": "./product/js/index.js"
   },
   {
     "revision": "0bbfea753012d3f593caeb139fc70332",
     "url": "./product/js/index.js.LICENSE.txt"
+  },
+  {
+    "revision": "e790c25db5e52838040686612b1a732c",
+    "url": "./static/media/facebook.png"
+  },
+  {
+    "revision": "ea735e62c31af39012853c932d74375a",
+    "url": "./static/media/google.svg"
   },
   {
     "revision": "9c95d36fa90e6bd9cf02a05f1cbee61a",
