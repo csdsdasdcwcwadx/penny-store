@@ -145,6 +145,10 @@
         width: 50%;
         margin: auto;
 
+        @include only-mobile {
+            width: 80%;
+        }
+
         .checkbox {
             line-height: 20px;
             padding-left: calc(20px + 5px);

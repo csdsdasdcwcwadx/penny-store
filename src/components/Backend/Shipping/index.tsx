@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useEffect, useState, useRef } from "react";
 import styles from './styles.module.scss';
 import { useSelector, useDispatch } from "react-redux";
 import { call_listshipping } from '@Redux/Backend/actions';
@@ -18,16 +18,29 @@ function Shipping() {
     const dispatch = useDispatch();
     const [ serial, setSerial ] = useState(1);
     const [listunship, setListunship] = useState(0);
+    const [keyword, setKeyword] = useState<string>();
+    const searchWord = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        dispatch(call_listshipping({pages: serial, frombackend: true, listunship}));
-    },[dispatch, serial, listunship])
+        dispatch(call_listshipping({pages: serial, frombackend: true, listunship, keyword}));
+    },[dispatch, serial, listunship, keyword])
+
+    const clearSearching = () => {
+        setKeyword(undefined);
+        if(searchWord.current) searchWord.current.value = '';
+    }
 
     return (
         <div className={styles.Shipping}>
             <div className={styles.listshipping}>
-                <button onClick={() => {setListunship(0);setSerial(1)}}>列出所有訂單</button>
-                <button onClick={() => {setListunship(1);setSerial(1)}}>列出尚未出貨訂單</button>
+                <button onClick={() => {clearSearching();setListunship(0);setSerial(1)}}>列出所有訂單</button>
+                <button onClick={() => {clearSearching();setListunship(1);setSerial(1)}}>列出尚未出貨訂單</button>
+            </div>
+            <div className={styles.searchbox}>
+                <input placeholder="關鍵字搜尋" type="text" ref={searchWord}/>
+                <button onClick={()=>{setSerial(1);setKeyword(searchWord.current?.value)}}>
+                    <i className="icon ic-ln toolsearch"/>
+                </button>
             </div>
             <div className={styles.ordertable}>
                 <div className={styles.ordernav}>

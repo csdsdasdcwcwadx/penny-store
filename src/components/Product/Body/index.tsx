@@ -200,7 +200,7 @@ function Body({setTrigger}: I_props) {
                                     <span className={styles.productleft}>{chosenItem.p_amount > 0 ? `商品數量剩餘 : ${chosenItem.p_amount}` : '目前尚無現貨，預購天數約15-20個工作天'}</span>
                             }
                         </span>
-                        <span className={styles.productprice}>NT$ {productdetail.productinfo[0].p_price}</span>
+                        <span className={styles.productprice}>NT$ {chosenItem?.p_price || productdetail.productinfo[0].p_price}</span>
                         {
                             productdetail.productinfo[0].p_size && <div className={cN(styles.selection, styles.productsize)}>
                                 <span className={styles.info}>尺寸</span>
@@ -260,7 +260,7 @@ function Body({setTrigger}: I_props) {
                     </div>
                 </div>
                 <div className={cN(styles.alertion, {[styles.show]: alertion}, {[styles.lateAlert]: lateAlert})}>{message}</div>
-                <div className={styles.desinfo} dangerouslySetInnerHTML={{ __html: productdetail.productinfo[0].p_info }}/>
+                <div className={styles.desinfo} dangerouslySetInnerHTML={{ __html: chosenItem?.p_info || productdetail.productinfo[0].p_info }}/>
             </div>
     )
 }

@@ -4,6 +4,28 @@
 .Shipping {
     margin-top: 50px;
 
+    .searchbox {
+        input {
+            padding: 10px;
+            border: 1px solid #bbb;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        button {
+            margin-left: 5px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #727171;
+            cursor: pointer;
+
+            i {
+                color: #fff;
+            }
+        }
+    }
+
     .listshipping {
         padding-bottom: 20px;
 
