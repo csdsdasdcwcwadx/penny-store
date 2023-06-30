@@ -55,6 +55,10 @@ function Header() {
 
     axios.defaults.withCredentials = true;
 
+    PubSub.subscribe('openLogin', () => {
+        setLoginOpen(true);
+    })
+
     // 登出
     const handlelogout = async () => {
         localStorage.removeItem('credentials');
@@ -184,8 +188,11 @@ function Header() {
                         credentials ?
                         <span className={styles.displaymember}>
                             <span className={styles.memberinfo}>
-                                <img src={credentials.user.photoURL!}/>
-                                <span>{credentials.user.displayName} 您好!!</span>
+                                <div>
+                                    <img src={credentials.user.photoURL!}/>
+                                    <span>{credentials.user.displayName} 您好!!</span>
+                                </div>
+                                <button className={styles.logout} onClick={handlelogout}>登出</button>
                             </span>
                             <div>
                                 <ul>
@@ -195,11 +202,11 @@ function Header() {
                         </span>:
                         <span className={styles.loginbut} onClick={()=>{setListOpen(false);setLoginOpen(true)}}>會員登入</span>
                     }
+                    <div className={styles.display}>商品分類</div>
                     {ListBlock()}
                     <div className={styles.otheroptions}>
                         <a href="https://www.instagram.com/londoner.tw/"><img className={styles.instagram} src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png"/></a>
                     </div>
-                    {credentials && <button className={styles.logout} onClick={handlelogout}>登出</button>}
                 </div>
             </LightBox>
             {LoginandRegister(loginOpen, setLoginOpen)}
@@ -219,6 +226,7 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
         if(error.length === 0) {
             try {
                 const auther = await signInWithPopup(auth, authen === E_auth.google ? GoogleProvider : FacebookProvider);
+                console.log(auther)
                 const obj = {
                     m_name: m_name.current?.value,
                     m_address: `${postcal.current?.value}|${m_address.current?.value}`,
@@ -284,10 +292,10 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
                                             <img src={googleImg}/>
                                             <span>使用Google登入</span>
                                         </button>
-                                        {/* <button onClick={()=>handleLogin(E_auth.facebook)}>
+                                        <button onClick={()=>handleLogin(E_auth.facebook)}>
                                             <img src={facebookImg}/>
                                             <span>使用FaceBook登入</span>
-                                        </button> */}
+                                        </button>
                                     </div>
                                 </div> : 
                                 <div>

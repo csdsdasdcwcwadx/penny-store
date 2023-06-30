@@ -66,9 +66,17 @@ function SideBar ({trigger}: I_props) {
         }
     }
 
+    const sideBarAvailable = () => {
+        if(isLogin)setSideListOpen(true);
+        else {
+            alert('請先登入會員');
+            PubSub.publish('openLogin', true);
+        }
+    }
+
     return (
         <div className={styles.SideBar}>
-            <div className={styles.cartframe} onClick={()=>isLogin?setSideListOpen(true):alert('請先登入會員')} data-number={shoplist.length}>
+            <div className={styles.cartframe} onClick={sideBarAvailable} data-number={shoplist.length}>
                 <i className='icon ic-ln toolbuy'/>
             </div>
             <LightBox

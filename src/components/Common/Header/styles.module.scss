@@ -171,15 +171,25 @@
     color: #fff;
     background-color: #504e4a;
 
+    .display {
+        margin: 20px 0 30px 20px;
+        font-size: 25px;
+        cursor: auto;
+    }
+
     .displaymember {
         display: block;
-        margin-left: 20px;
 
         .memberinfo {
             display: flex;
             align-items: center;
-            margin-top: 20px;
-            margin-bottom: 40px;
+            justify-content: space-between;
+            margin: 20px 0 40px 20px;
+
+            >div {
+                display: flex;
+                align-items: center;
+            }
 
             img {
                 position: relative;
@@ -187,16 +197,37 @@
                 height: 40px;
                 border-radius: 50%;
             }
+
+            .logout {
+                width: 30%;
+                margin: 7px;
+                padding: 15px;
+                border-radius: 5px;
+                border: 0;
+                border-top: 1px solid #bbb;
+                color: #222;
+                background-color: #f9f5de;
+                cursor: pointer;
+            }
         }
 
         .memberoptions {
             margin-top: 20px;
         }
+
+        >div {
+            margin-left: 40px;
+        }
     }
 
     .loginbut {
         display: block;
-        padding: 40px;
+        margin: 20px;
+        padding: 18px;
+        width: 40%;
+        background-color: #837653;
+        border-radius: 5px;
+        text-align: center;
         cursor: pointer;
     }
 
@@ -246,18 +277,6 @@
         }
     }
 
-    .logout {
-        position: fixed;
-        bottom: 0;
-        width: 60%;
-        padding: 10px;
-        border: 0;
-        border-top: 1px solid #bbb;
-        color: #222;
-        background-color: #f9f5de;
-        cursor: pointer;
-    }
-
     .otheroptions {
         margin-left: 40px;
     }
@@ -288,6 +307,7 @@
             border-radius: 5px;
 
             @include only-mobile {
+                width: 85%;
                 height: 90%;
             }
 
@@ -311,6 +331,10 @@
 
             >div:not(.buttons) {
                 padding: 40px;
+
+                @include only-mobile {
+                    padding: 15px;
+                }
 
                 .title {
                     margin-bottom: 5px;
@@ -340,6 +364,7 @@
                         height: 40px;
                         margin: 0 auto;
                         margin-top: 20px;
+                        padding: 20px;
                         border: 0;
                         background-color: #ddd;
                         cursor: pointer;
