@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "97d284966379ae478fcb",
+    "revision": "50f603e73f4256462974",
     "url": "./app/css/style.css"
   },
   {
-    "revision": "97d284966379ae478fcb",
+    "revision": "50f603e73f4256462974",
     "url": "./app/js/index.js"
   },
   {
@@ -16,11 +16,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./backend.html"
   },
   {
-    "revision": "1f01dd15293b61df28cd",
+    "revision": "9216c66770c2ba5bd8b6",
     "url": "./backend/css/style.css"
   },
   {
-    "revision": "1f01dd15293b61df28cd",
+    "revision": "9216c66770c2ba5bd8b6",
     "url": "./backend/js/index.js"
   },
   {
@@ -36,11 +36,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./order.html"
   },
   {
-    "revision": "a23b654d5c6bd0503cef",
+    "revision": "bd057be5ba5545ce485a",
     "url": "./order/css/style.css"
   },
   {
-    "revision": "a23b654d5c6bd0503cef",
+    "revision": "bd057be5ba5545ce485a",
     "url": "./order/js/index.js"
   },
   {
@@ -52,11 +52,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./payment.html"
   },
   {
-    "revision": "50c225c04c1f525a76dd",
+    "revision": "58c1088b2af9fa5bae60",
     "url": "./payment/css/style.css"
   },
   {
-    "revision": "50c225c04c1f525a76dd",
+    "revision": "58c1088b2af9fa5bae60",
     "url": "./payment/js/index.js"
   },
   {
@@ -68,11 +68,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./product.html"
   },
   {
-    "revision": "0eb828fc7e407ba3742d",
+    "revision": "c7a84097ff39d9130077",
     "url": "./product/css/style.css"
   },
   {
-    "revision": "0eb828fc7e407ba3742d",
+    "revision": "c7a84097ff39d9130077",
     "url": "./product/js/index.js"
   },
   {
