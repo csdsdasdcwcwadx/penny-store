@@ -13,7 +13,6 @@ import InputBar, { E_RegexType } from "../Modules/InputBar";
 import axios from "axios";
 import domain, { handlepath } from '@utils/domainByEnv';
 import PubSub from 'pubsub-js';
-import { I_member } from "@Redux/App/interfaces";
 import googleImg from '../../../imgs/google.svg';
 import facebookImg from '../../../imgs/facebook.png';
 
@@ -226,12 +225,12 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
         if(error.length === 0) {
             try {
                 const auther = await signInWithPopup(auth, authen === E_auth.google ? GoogleProvider : FacebookProvider);
-                console.log(auther)
                 const obj = {
                     m_name: m_name.current?.value,
                     m_address: `${postcal.current?.value}|${m_address.current?.value}`,
                     m_phone: m_phone.current?.value,
                     m_email: auther.user.email,
+                    apitype: authen,
                 }
                 try{
                     const { data } = await axios.post(`${domain()}/member/registrymember`, obj);
@@ -256,6 +255,7 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
             const obj = {
                 m_email: loginAPI?.user.email,
                 hasLogin: false,
+                apitype: authen,
             }
             const { data } = await axios.post(`${domain()}/member/loginmember`, obj);
             // 登入成功就將資料寫入localStorage
@@ -311,10 +311,10 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
                                             <img src={googleImg}/>
                                             <span>使用Google註冊</span>
                                         </button>
-                                        {/* <button onClick={()=>handleRegistry(E_auth.facebook)}>
+                                        <button onClick={()=>handleRegistry(E_auth.facebook)}>
                                             <img src={facebookImg}/>
                                             <span>使用FaceBook註冊</span>
-                                        </button> */}
+                                        </button>
                                     </div>
                                 </div>
                         }
