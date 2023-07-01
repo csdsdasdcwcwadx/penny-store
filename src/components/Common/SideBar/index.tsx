@@ -88,32 +88,36 @@ function SideBar ({trigger}: I_props) {
             >
                 <div className={cN(styles.sidepage, {[styles.isMobile]: isMobile})}>
                     {
-                        shoplist.map((product) => {
-                            const dollar = product.p_price*product.s_amount;
-                            total += dollar;
-                            return (
-                                <li key={product.p_id}>
-                                    <div className={styles.productlist}>
-                                        <img src={handleIMG(product.p_img)}/>
-                                        <div className={styles.productcontent}>
-                                            <p>{product.p_name}({product.p_color})</p>
-                                            <div className={styles.detailinfo}>
-                                                <span>x {product.s_amount}件 </span>
-                                                <span> 共<span>{dollar}</span>元</span>
-                                                {product.p_size && <span> {product.p_size}號</span>}
+                        shoplist.length !== 0 ? <div>
+                            {
+                                shoplist.map((product) => {
+                                    const dollar = product.p_price*product.s_amount;
+                                    total += dollar;
+                                    return (
+                                        <a key={product.p_id} href={`${handlepath()}/product${isLocal?'.html':''}?p_dentical=${product.p_dentical}`}>
+                                            <div className={styles.productlist}>
+                                                <img src={handleIMG(product.p_img)}/>
+                                                <div className={styles.productcontent}>
+                                                    <p>{product.p_name}({product.p_color})</p>
+                                                    <div className={styles.detailinfo}>
+                                                        <span>x {product.s_amount}件 </span>
+                                                        <span> 共<span>{dollar}</span>元</span>
+                                                        {product.p_size && <span> {product.p_size}號</span>}
+                                                    </div>
+                                                </div>
+                                                <i className='icon ic-ln tool_trash-f' onClick={()=>deleteProduct(product.s_id)}/>
                                             </div>
-                                        </div>
-                                        <i className='icon ic-ln tool_trash-f' onClick={()=>deleteProduct(product.s_id)}/>
-                                    </div>
-                                </li>
-                            );
-                        })
+                                        </a>
+                                    );
+                                })
+                            }
+                            <button onClick={()=>window.location.href = `${handlepath()}/payment${isLocal?'.html':''}`}>
+                                前往結賬 
+                                <div className={styles.producttotal}>小計 
+                                <span>{total}</span> 元</div>
+                            </button>
+                        </div> : <span>尚未選擇商品</span>
                     }
-                    <button onClick={()=>window.location.href = `${handlepath()}/payment${isLocal?'.html':''}`}>
-                        前往結賬 
-                        <div className={styles.producttotal}>小計 
-                        <span>{total}</span> 元</div>
-                    </button>
                 </div>
             </LightBox>
         </div>

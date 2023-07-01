@@ -49,8 +49,14 @@ body {
         color: #fff;
         background-color: #504e4a;
 
-        li {
-            list-style-type: none;
+        a {
+            display: block;
+            color: #fff;
+            text-decoration: auto;
+
+            &:hover {
+                text-decoration: underline;
+            }
 
             .productlist {
                 display: flex;
@@ -102,16 +108,18 @@ body {
             }
 
             &:last-of-type {
-                padding-bottom: 80px;
+                padding-bottom: 50px;
             }
         }
 
         button {
-            position: fixed;
-            bottom: 0;
-            width: 30vw;
+            display: block;
+            width: 80%;
+            margin: auto;
             padding: 10px;
+            border: 0;
             border-top: 1px solid #bbb;
+            border-radius: 5px;
             color: #222;
             background-color: #f9f5de;
             font-size: 16px;
@@ -128,6 +136,15 @@ body {
             button {
                 width: 60vw;
             }
+        }
+
+        >span {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
         }
     }
 }
