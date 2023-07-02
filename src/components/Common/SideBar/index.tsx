@@ -94,20 +94,22 @@ function SideBar ({trigger}: I_props) {
                                     const dollar = product.p_price*product.s_amount;
                                     total += dollar;
                                     return (
-                                        <a key={product.p_id} href={`${handlepath()}/product${isLocal?'.html':''}?p_dentical=${product.p_dentical}`}>
+                                        <li key={product.p_id}>
                                             <div className={styles.productlist}>
-                                                <img src={handleIMG(product.p_img)}/>
-                                                <div className={styles.productcontent}>
-                                                    <p>{product.p_name}({product.p_color})</p>
-                                                    <div className={styles.detailinfo}>
-                                                        <span>x {product.s_amount}件 </span>
-                                                        <span> 共<span>{dollar}</span>元</span>
-                                                        {product.p_size && <span> {product.p_size}號</span>}
+                                                <a href={`${handlepath()}/product${isLocal?'.html':''}?p_dentical=${product.p_dentical}`}>
+                                                    <img src={handleIMG(product.p_img)}/>
+                                                    <div className={styles.productcontent}>
+                                                        <p>{product.p_name}({product.p_color})</p>
+                                                        <div className={styles.detailinfo}>
+                                                            <span>x {product.s_amount}件 </span>
+                                                            <span> 共<span>{dollar}</span>元</span>
+                                                            {product.p_size && <span> {product.p_size}號</span>}
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </a>
                                                 <i className='icon ic-ln tool_trash-f' onClick={()=>deleteProduct(product.s_id)}/>
                                             </div>
-                                        </a>
+                                        </li>
                                     );
                                 })
                             }

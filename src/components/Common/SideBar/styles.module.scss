@@ -49,13 +49,18 @@ body {
         color: #fff;
         background-color: #504e4a;
 
-        a {
-            display: block;
-            color: #fff;
-            text-decoration: auto;
+        li {
+            list-style-type: none;
 
-            &:hover {
-                text-decoration: underline;
+            a {
+                display: flex;
+                align-items: center;
+                color: #fff;
+                text-decoration: auto;
+
+                &:hover {
+                    text-decoration: underline;
+                }
             }
 
             .productlist {
