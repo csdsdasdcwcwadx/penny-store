@@ -7,7 +7,7 @@ import { handleNavigator } from '@utils/commonfunction';
 import LightBox, { E_direction } from "../Modules/LightBox";
 import '../Modules/ic-ln/css.css';
 import { auth, GoogleProvider, FacebookProvider, E_auth } from '@utils/firebase-auth';
-import { createUserWithEmailAndPassword, signInWithPopup, UserCredential } from 'firebase/auth';
+import { signInWithPopup, UserCredential } from 'firebase/auth';
 import cN from 'classnames';
 import InputBar, { E_RegexType } from "../Modules/InputBar";
 import axios from "axios";
@@ -92,6 +92,7 @@ function Header() {
     const userBlock = () => {
         return (
             <>
+                <li>修改個人資料</li>
                 <li onClick={()=>{window.location.href = `${handlepath()}/order${isLocal?'.html':''}`}}>查看歷史訂單</li>
                 <li onClick={()=>handlepayment()}>前往結賬</li>
             </>
