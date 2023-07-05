@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "bedad23e1a36a5830e68",
+    "revision": "88cf276c7fe6d28221ca",
     "url": "./app/css/style.css"
   },
   {
-    "revision": "bedad23e1a36a5830e68",
+    "revision": "88cf276c7fe6d28221ca",
     "url": "./app/js/index.js"
   },
   {
@@ -16,11 +16,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./backend.html"
   },
   {
-    "revision": "f3661c77a53755ce6e61",
+    "revision": "da3aad2a7e7412810949",
     "url": "./backend/css/style.css"
   },
   {
-    "revision": "f3661c77a53755ce6e61",
+    "revision": "da3aad2a7e7412810949",
     "url": "./backend/js/index.js"
   },
   {
@@ -32,15 +32,31 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./index.html"
   },
   {
+    "revision": "a7cbc56aa71c463f01e59a67414f4d0c",
+    "url": "./note.html"
+  },
+  {
+    "revision": "6bda111df9768501a499",
+    "url": "./note/css/style.css"
+  },
+  {
+    "revision": "6bda111df9768501a499",
+    "url": "./note/js/index.js"
+  },
+  {
+    "revision": "0bbfea753012d3f593caeb139fc70332",
+    "url": "./note/js/index.js.LICENSE.txt"
+  },
+  {
     "revision": "09e1156ffe0c9c633f894a6ff4d33c16",
     "url": "./order.html"
   },
   {
-    "revision": "45b0eba7359036d39beb",
+    "revision": "579c0e1d40829431eb95",
     "url": "./order/css/style.css"
   },
   {
-    "revision": "45b0eba7359036d39beb",
+    "revision": "579c0e1d40829431eb95",
     "url": "./order/js/index.js"
   },
   {
@@ -52,11 +68,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./payment.html"
   },
   {
-    "revision": "d03bc0c7cb155bc10677",
+    "revision": "b898c33941fac6e0a870",
     "url": "./payment/css/style.css"
   },
   {
-    "revision": "d03bc0c7cb155bc10677",
+    "revision": "b898c33941fac6e0a870",
     "url": "./payment/js/index.js"
   },
   {
@@ -64,20 +80,40 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./payment/js/index.js.LICENSE.txt"
   },
   {
+    "revision": "562ff9cec8f391738cfebde94ee4e1b6",
+    "url": "./privacy.html"
+  },
+  {
+    "revision": "f0594a38871da08d9b2a",
+    "url": "./privacy/css/style.css"
+  },
+  {
+    "revision": "f0594a38871da08d9b2a",
+    "url": "./privacy/js/index.js"
+  },
+  {
+    "revision": "0bbfea753012d3f593caeb139fc70332",
+    "url": "./privacy/js/index.js.LICENSE.txt"
+  },
+  {
     "revision": "1216e9480e060da31d0b10198f2d0543",
     "url": "./product.html"
   },
   {
-    "revision": "611c34d2d83547ac7bef",
+    "revision": "46d018935e56d7783203",
     "url": "./product/css/style.css"
   },
   {
-    "revision": "611c34d2d83547ac7bef",
+    "revision": "46d018935e56d7783203",
     "url": "./product/js/index.js"
   },
   {
     "revision": "0bbfea753012d3f593caeb139fc70332",
     "url": "./product/js/index.js.LICENSE.txt"
+  },
+  {
+    "revision": "cf5af2f31d24d5854e7755caadb7e63b",
+    "url": "./static/media/IMG_2932.png"
   },
   {
     "revision": "e790c25db5e52838040686612b1a732c",
