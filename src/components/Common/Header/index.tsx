@@ -15,6 +15,7 @@ import domain, { handlepath } from '@utils/domainByEnv';
 import PubSub from 'pubsub-js';
 import googleImg from '../../../imgs/google.svg';
 import facebookImg from '../../../imgs/facebook.png';
+import LOGO from '../../../imgs/IMG_2932.png';
 
 function storageAvailable(type: any) {
     let storage: any;
@@ -153,7 +154,7 @@ function Header() {
                                 console.error(e);
                             }
                         }}
-                    >LONDONER</span>
+                    ><img src={LOGO}/></span>
                 <div>
                     {
                         credentials ?

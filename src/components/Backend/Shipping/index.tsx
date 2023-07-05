@@ -61,7 +61,7 @@ function Shipping() {
                         })
                     }
                     {
-                        orderdetail && <PageNumber serial={serial} setSerial={setSerial} maxpage={orderdetail.pages}/>
+                        orderdetail && <PageNumber serial={serial} setSerial={setSerial} maxpage={orderdetail.pages} typeIn={true}/>
                     }
                 </div>
             }

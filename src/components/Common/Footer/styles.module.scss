@@ -19,8 +19,10 @@
         display: flex;
         flex-direction: column;
 
-        span {
+        a {
             padding-top: 10px;
+            color: #727171;
+            text-decoration: none;
             cursor: pointer;
 
             &:hover {

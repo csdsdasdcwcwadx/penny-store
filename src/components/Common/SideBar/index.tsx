@@ -34,6 +34,10 @@ function SideBar ({trigger}: I_props) {
     const isLocal = window.location.href.includes('localhost');
     let total = 0;
 
+    PubSub.subscribe('opensidebar', ()=>{
+        setSideListOpen(true);
+    })
+
     useEffect(() => {
         PubSub.subscribe('isLogin', ()=>{
             setIsLogin(true);

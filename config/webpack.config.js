@@ -160,6 +160,8 @@ module.exports = function (webpackEnv) {
             payment: paths.appPaymentJs,
             backend: paths.appBackendJs,
             order: paths.appOrderJs,
+            privacy: paths.appPrivacyJs,
+            note: paths.appNoteJs,
         },
         output: {
             // The build folder.
@@ -661,7 +663,60 @@ module.exports = function (webpackEnv) {
                         : undefined
                 )
             ),
-
+            new HtmlWebpackPlugin(
+                Object.assign(
+                    {},
+                    {
+                        inject: true,
+                        filename: 'privacy.html',
+                        template: paths.appPrivacyHtml,
+                        chunks: ['privacy'],
+                    },
+                    isEnvProduction
+                        ? {
+                              minify: {
+                                  removeComments: true,
+                                  collapseWhitespace: true,
+                                  removeRedundantAttributes: true,
+                                  useShortDoctype: true,
+                                  removeEmptyAttributes: true,
+                                  removeStyleLinkTypeAttributes: true,
+                                  keepClosingSlash: true,
+                                  minifyJS: true,
+                                  minifyCSS: true,
+                                  minifyURLs: true,
+                              },
+                          }
+                        : undefined
+                )
+            ),
+            new HtmlWebpackPlugin(
+                Object.assign(
+                    {},
+                    {
+                        inject: true,
+                        filename: 'note.html',
+                        template: paths.appNoteHtml,
+                        chunks: ['note'],
+                    },
+                    isEnvProduction
+                        ? {
+                              minify: {
+                                  removeComments: true,
+                                  collapseWhitespace: true,
+                                  removeRedundantAttributes: true,
+                                  useShortDoctype: true,
+                                  removeEmptyAttributes: true,
+                                  removeStyleLinkTypeAttributes: true,
+                                  keepClosingSlash: true,
+                                  minifyJS: true,
+                                  minifyCSS: true,
+                                  minifyURLs: true,
+                              },
+                          }
+                        : undefined
+                )
+            ),
             // Inlines the webpack runtime script. This script is too small to warrant
             // a network request.
             // https://github.com/facebook/create-react-app/issues/5358

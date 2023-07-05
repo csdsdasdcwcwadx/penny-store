@@ -1,0 +1,41 @@
+.privacy {
+    padding: 0 50px 50px;
+
+    h1 {
+        text-align: center;
+    }
+
+    ul {
+        li.title {
+            padding-bottom: 15px;
+        }
+
+        &:first-of-type li.title {
+            list-style-type: "ㄧ、";
+        }
+
+        &:nth-of-type(2) li.title {
+            list-style-type: "二、";
+        }
+
+        &:nth-of-type(3) li.title {
+            list-style-type: "三、";
+        }
+
+        &:nth-of-type(4) li.title {
+            list-style-type: "四、";
+        }
+
+        &:nth-of-type(5) li.title {
+            list-style-type: "五、";
+        }
+
+        &:nth-of-type(6) li.title {
+            list-style-type: "六、";
+        }
+
+        &:nth-of-type(7) li.title {
+            list-style-type: "七、";
+        }
+    }
+}

@@ -7,9 +7,10 @@ interface I_props {
     maxpage: number;
     serial: number;
     setSerial: Function;
+    typeIn?: boolean;
 }
 
-function PageNumber ({setSerial, maxpage, serial}: I_props) {
+function PageNumber ({setSerial, maxpage, serial, typeIn}: I_props) {
     const page = useRef<HTMLInputElement>(null);
 
     return (
@@ -23,15 +24,17 @@ function PageNumber ({setSerial, maxpage, serial}: I_props) {
                 <div>......</div>
                 <Nums num={maxpage} click={setSerial} maxpage={maxpage}/>
             </div>
-            <div>
-                <input type="text" placeholder="請輸入頁碼" ref={page} onKeyUp={e=>{
-                    if(e.code !== "Enter") return;
-                    if(isNaN(parseInt(page.current?.value!)))return;
-                    if(parseInt(page.current?.value!) <= 0 || parseInt(page.current?.value!) > maxpage) return;
-                    setSerial(parseInt(page.current?.value!));
-                    // if(page.current) page.current.value = '';
-                }}/>
-            </div>
+            {
+                typeIn && <div>
+                    <input type="text" placeholder="請輸入頁碼" ref={page} onKeyUp={e=>{
+                        if(e.code !== "Enter") return;
+                        if(isNaN(parseInt(page.current?.value!))) return;
+                        if(parseInt(page.current?.value!) <= 0 || parseInt(page.current?.value!) > maxpage) return;
+                        setSerial(parseInt(page.current?.value!));
+                        // if(page.current) page.current.value = '';
+                    }}/>
+                </div>
+            }
         </div>
     )
 }
