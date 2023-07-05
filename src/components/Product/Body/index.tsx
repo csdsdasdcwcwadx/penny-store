@@ -10,8 +10,10 @@ import { handleIMG } from '@utils/commonfunction';
 import { handleNavigator } from '@utils/commonfunction';
 import { E_Page } from "@Redux/App/interfaces";
 import axios from "axios";
-import domain, {handlepath} from '@utils/domainByEnv';
+import domain, { handlepath } from '@utils/domainByEnv';
 import Spinner from "@components/Common/Modules/Spinner";
+import { useMediaQuery } from 'react-responsive';
+import PubSub from 'pubsub-js';
 
 axios.defaults.withCredentials = true;
 
@@ -30,8 +32,12 @@ function Body({setTrigger}: I_props) {
     const [alertion, setAlertion] = useState(false);
     const [lateAlert, setLateAlert] = useState(false);
     const [message, setMessage] = useState('');
+    // 設定購買提示
+    const [goBuy, setGoBuy] = useState(false);
     const { productdetail } = useSelector((store: RootState)=>store);
     const member = JSON.parse(localStorage.getItem('memberinfo')!);
+    const isMobile = useMediaQuery({ query: '(max-width: 980px)' });
+    const isLocal = window.location.href.includes('localhost');
 
     const sizeOptions = useMemo(() => {
         const options = [{label: '請選擇', value: '', isDisabled: true, id: ''}];
@@ -59,6 +65,12 @@ function Body({setTrigger}: I_props) {
         }
         return options;
     },[productdetail])
+
+    useEffect(() => {
+        goBuy && setTimeout(() => {
+            setGoBuy(false);
+        }, 10000)
+    }, [goBuy])
 
     useEffect (() => {
         const url = new URL (window.location.href);
@@ -103,6 +115,8 @@ function Body({setTrigger}: I_props) {
             try{
                 const { data } = await axios.post(`${domain()}/shoplist/addshoplist`, body);
                 if(data.status) {
+                    isMobile && PubSub.publish('opensidebar', data.status);
+                    setGoBuy(true);
                     setMessage(data.message);
                     setAlertion(true);
                     setTrigger((pre: any)=>!pre);
@@ -121,6 +135,8 @@ function Body({setTrigger}: I_props) {
                         if(confirm('此商品目前現貨不足，是否要等候預購(約15-20個工作天)')) {
                             const { data } = await axios.post(`${domain()}/shoplist/addshoplist`, {...body, pass: true});
                             if(data.status) {
+                                isMobile && PubSub.publish('opensidebar', data.status);
+                                setGoBuy(true);
                                 setMessage(data.message);
                                 setAlertion(true);
                                 setTrigger((pre: any)=>!pre);
@@ -147,7 +163,7 @@ function Body({setTrigger}: I_props) {
             }
 
         } else alert('請先登入會員');
-    },[productdetail, member, chosenItem, counter, setTrigger])
+    },[productdetail, member, chosenItem, counter, setTrigger, isMobile])
 
     const src = useMemo(() => {
         if(productdetail) return handleIMG(productdetail.productinfo[0].p_img);
@@ -259,6 +275,13 @@ function Body({setTrigger}: I_props) {
                         </div>
                     </div>
                 </div>
+                <aside className={cN(styles.goBuy, {[styles.show]: goBuy})}>
+                    <span>商品已加入購物車</span>
+                    <div>
+                        <button onClick={()=>setGoBuy(false)}>繼續購買</button>
+                        <button onClick={()=>window.location.href = `${handlepath()}/payment${isLocal?'.html':''}`}>前去購買</button>
+                    </div>
+                </aside>
                 <div className={cN(styles.alertion, {[styles.show]: alertion}, {[styles.lateAlert]: lateAlert})}>{message}</div>
                 <div className={styles.desinfo} dangerouslySetInnerHTML={{ __html: chosenItem?.p_info || productdetail.productinfo[0].p_info }}/>
             </div>
