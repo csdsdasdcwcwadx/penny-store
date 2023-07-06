@@ -12,7 +12,6 @@ import PubSub from 'pubsub-js';
 
 interface I_shoplistinfo extends I_productinfo {
     s_amount: number;
-    m_id: string;
     s_id: string;
 }
 
@@ -49,7 +48,7 @@ function SideBar ({trigger}: I_props) {
         isLogin && (async function(){
             setIsLogin(true);
             try {
-                const {data} = await axios.post<I_getshoplist>(`${domain()}/shoplist/getshoplist`, {m_id: member.memberinfo[0].m_id});
+                const {data} = await axios.post<I_getshoplist>(`${domain()}/shoplist/getshoplist`);
                 setShoplist(data.shoplist);
             }catch(e) {
                 console.error(e);
