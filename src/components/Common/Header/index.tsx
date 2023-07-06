@@ -93,7 +93,7 @@ function Header() {
     const userBlock = () => {
         return (
             <>
-                <li>修改個人資料</li>
+                <li onClick={()=>window.location.href = `${handlepath()}/personal${isLocal?'.html':''}`}>修改個人資料</li>
                 <li onClick={()=>{window.location.href = `${handlepath()}/order${isLocal?'.html':''}`}}>查看歷史訂單</li>
                 <li onClick={()=>handlepayment()}>前往結賬</li>
             </>
@@ -141,20 +141,19 @@ function Header() {
                     <span className={cN(styles.show, styles.toolmenu)} onClick={()=>setListOpen(true)}>
                         <i className="icon ic-ln toolmenu"/>
                     </span>
-                    {/* <a><i className={cN('icon ic-ln toolfroundf', styles.facebook)}/></a> */}
                     <a href="https://www.instagram.com/londoner.tw/"><img className={styles.instagram} src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png"/></a>
                 </div>
-                    <span 
-                        className={styles.logo}
-                        onClick={async () => {
-                            try {
-                                const { data } = await axios.post(`${domain()}/member/isavailable`, {isLocal});
-                                window.location.href = `${handlepath()}${data.url}`;
-                            }catch(e) {
-                                console.error(e);
-                            }
-                        }}
-                    ><img src={LOGO}/></span>
+                <span
+                    className={styles.logo}
+                    onClick={async () => {
+                        try {
+                            const { data } = await axios.post(`${domain()}/member/isavailable`, {isLocal});
+                            window.location.href = `${handlepath()}${data.url}`;
+                        }catch(e) {
+                            console.error(e);
+                        }
+                    }}
+                ><img src={LOGO}/></span>
                 <div>
                     {
                         credentials ?
@@ -178,11 +177,12 @@ function Header() {
             <div className={styles.Navigator}>
                 {ListBlock()}
             </div>
-            <LightBox 
+            <LightBox
                 isOpen={listOpen} 
                 handleDispatch={setListOpen}
                 direction={E_direction.LEFT}
                 theName={styles.block}
+                isOverflow={true}
             >
                 <div className={styles.block}>
                     {

@@ -8,7 +8,7 @@ import cN from 'classnames';
 import { handleIMG, handleShipment } from "@utils/commonfunction";
 import '@components/Common/Modules/ic-ln/css.css';
 import { handlePayment, handleDate } from "@utils/commonfunction";
-// import { SlideToggle } from '@todys/react-slide-toggle';
+import { useMediaQuery } from 'react-responsive';
 
 interface I_props1 {
     orders: Array<I_orderinfo>;
@@ -17,6 +17,7 @@ interface I_props1 {
 function OrderList({orders}: I_props1) {
     const dispatch = useDispatch();
     const { openDetail } = useSelector((store: RootState)=>store);
+    const isMobile = useMediaQuery({ query: '(max-width: 980px)' });
     let total = 0;
     const isActive = useMemo(() => {
         return openDetail === orders[0].o_dentical;
@@ -33,10 +34,18 @@ function OrderList({orders}: I_props1) {
                         <div className={styles.status}>付款狀態 : {handlePayment(orders[0].o_payment)}</div>
                         <div className={styles.status}>出貨狀態 : {handleShipment(orders[0].isShip)}</div>
                     </div>
-                    <a onClick={()=>dispatch(set_opendetail(orders[0].o_dentical))} className={styles.checkout}>
-                        <span>查看訂單明細</span>
-                        <i className="icon ic-ln planearrowoneway"/>
-                    </a>
+                    {
+                        !isActive && <a onClick={()=>dispatch(set_opendetail(orders[0].o_dentical))} className={styles.checkout}>
+                            <span>查看訂單明細</span>
+                            <i className="icon ic-ln planearrowoneway"/>
+                        </a>
+                    }
+                    {
+                        isActive && !isMobile && <a onClick={()=>dispatch(set_opendetail(undefined))} className={cN(styles.checkout, styles.close)}>
+                            <span>收回</span>
+                            <i className="icon ic-ln planearrowoneway"/>
+                        </a>
+                    }
                 </div>
                 <div className={cN({[styles.isHide]: !isActive}, styles.ordercontent)}>
                     <div className={styles.ordernav}>
@@ -66,6 +75,9 @@ interface I_props2 {
 }
 
 function Order({order, total}: I_props2) {
+    const dispatch = useDispatch();
+    const isMobile = useMediaQuery({ query: '(max-width: 980px)' });
+
     return (
         <>
             <div className={styles.orderitem}>
@@ -97,6 +109,7 @@ function Order({order, total}: I_props2) {
                 <div> </div>
                 <div>共{total}元</div>
             </div>
+            { isMobile && <aside onClick={()=>dispatch(set_opendetail(undefined))}><span>收回</span><i className="icon ic-ln planearrowoneway"/></aside> }
         </>
     )
 }

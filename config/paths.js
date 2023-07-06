@@ -68,6 +68,8 @@ module.exports = {
     appPrivacyJs: resolveModule(resolveApp, 'src/pages/privacy/index'),
     appNoteHtml: resolveApp('public/note.html'),
     appNoteJs: resolveModule(resolveApp, 'src/pages/note/index'),
+    appPersonalHtml: resolveApp('public/personal.html'),
+    appPersonalJs: resolveModule(resolveApp, 'src/pages/personal/index'),
     appPackageJson: resolveApp('package.json'),
     appSrc: resolveApp('src'),
     appTsConfig: resolveApp('tsconfig.json'),

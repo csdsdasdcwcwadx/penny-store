@@ -23,7 +23,7 @@ function Body () {
             alert('會員尚未登入');
             window.location.href = `${handlepath()}`;
         }
-        dispatch(call_listshipping({m_id: member.memberinfo[0].m_id, pages: serial}));
+        dispatch(call_listshipping({pages: serial}));
     },[dispatch, serial])
 
     return (

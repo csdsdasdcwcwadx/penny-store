@@ -45,6 +45,12 @@
                         text-align: center;
                     }
                 }
+
+                &.close {
+                    i {
+                        transform: rotate(270deg);
+                    }
+                }
             }
         }
 
@@ -95,6 +101,24 @@
 
                 .ordersum:not(:last-of-type) {
                     display: none;
+                }
+
+                aside {
+                    display: flex;
+                    justify-content: center;
+                    padding-top: 20px;
+                    font-weight: 600;
+                    cursor: pointer;
+
+                    i {
+                        display: block;
+                        margin-left: 5px;
+                        transform: rotate(270deg);
+                    }
+
+                    &:not(:last-of-type) {
+                        display: none;
+                    }
                 }
             }
         }

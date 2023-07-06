@@ -106,7 +106,6 @@ function Body({setTrigger}: I_props) {
 
         if(productdetail && member) {
             const body = {
-                m_id: member.memberinfo[0].m_id,
                 p_id: chosenItem?.p_id,
                 s_amount: counter,
                 restrict: chosenItem!.p_amount,
@@ -166,7 +165,10 @@ function Body({setTrigger}: I_props) {
     },[productdetail, member, chosenItem, counter, setTrigger, isMobile])
 
     const src = useMemo(() => {
-        if(productdetail) return handleIMG(productdetail.productinfo[0].p_img);
+        if(productdetail) {
+            document.title = productdetail.productinfo[0].p_name || '佩尼商城';
+            return handleIMG(productdetail.productinfo[0].p_img);
+        }
     },[productdetail])
 
     return (
@@ -210,7 +212,7 @@ function Body({setTrigger}: I_props) {
                     </div>
                     <div className={styles.description}>
                         <span className={styles.productname}>
-                            {productdetail.productinfo[0].p_name}
+                            <h1>{productdetail.productinfo[0].p_name}</h1>
                             {
                                 chosenItem && chosenItem.p_amount <= 5 && 
                                     <span className={styles.productleft}>{chosenItem.p_amount > 0 ? `商品數量剩餘 : ${chosenItem.p_amount}` : '目前尚無現貨，預購天數約15-20個工作天'}</span>

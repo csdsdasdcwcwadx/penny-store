@@ -63,7 +63,7 @@ function Body() {
         }
         member && (async function(){
             try {
-                const {data} = await axios.post<I_getshoplist>(`${domain()}/shoplist/getshoplist`, {m_id: member.memberinfo[0].m_id});
+                const {data} = await axios.post<I_getshoplist>(`${domain()}/shoplist/getshoplist`);
                 setShoplist(data.shoplist);
             }catch(e) {
                 console.error(e);
@@ -111,7 +111,6 @@ function Body() {
                         phone: phone.current?.value,
                         email: member.memberinfo[0].m_email,
                         distributed,
-                        m_id: member.memberinfo[0].m_id,
                     }
             
                     try{

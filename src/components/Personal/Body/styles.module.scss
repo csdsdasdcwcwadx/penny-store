@@ -1,0 +1,133 @@
+@import '../../../commonStyles/variables.scss';
+@import '../../../commonStyles/mixins.scss';
+
+.personal {
+    padding: 0 50px;
+
+    @include only-mobile {
+        padding: 0 30px;
+    }
+
+    h1 {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    ul {
+        margin: 0 auto;
+
+        li {
+            list-style-type: none;
+            padding: 20px 0;
+            border-top: 1px solid #bbb;
+            font-size: 12px;
+            color: #847c7c;
+            cursor: pointer;
+
+            &:last-of-type {
+                border-bottom: 1px solid #bbb;
+            }
+
+            @include only-pc {
+                display: flex;
+            }
+
+            div {
+                display: flex;
+                font-size: 15px;
+                color: #222;
+
+                @include only-pc {
+                    position: absolute;
+                    right: 15%;
+                    align-items: center;
+                }
+
+                @include only-mobile {
+                    justify-content: space-between;
+                }
+
+                &:after {
+                    content: '';
+                    display: block;
+                    width: 0;
+                    height: 0;
+                    margin-left: 30px;
+                    border-style: solid;
+                    border-width: 5px 0 5px 10px;
+                    border-color: transparent transparent transparent #1a2633;
+                }
+            }
+        }
+    }
+
+    .updateinfo {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        border-radius: 5px;
+        height: 15vh;
+        width: 500px;
+        background-color: #fff;
+
+        @include only-mobile {
+            flex-direction: column;
+            width: 50vw;
+            height: 20vh;
+        }
+
+        >div:last-of-type {
+            width: 80%;
+
+            @include only-mobile {
+                width: 100%;
+            }
+        }
+
+        button {
+            margin-left: 10px;
+            padding: 10px;
+            border: 0;
+            border-radius: 5px;
+            background-color: #ddd;
+            cursor: pointer;
+        }
+
+        &.updatename,
+        &.updatephone,
+        &.updateaddress {
+            display: flex;
+        }
+
+        &.updateaddress {
+            @include only-mobile {
+                height: 35vh;
+            }
+
+            >div {
+                width: 100%;
+
+                @include only-pc {
+                    width: calc(20% - 10px);
+                }
+            }
+
+            >div:last-of-type {
+                width: 100%;
+                margin-left: 10px;
+
+                @include only-pc {
+                    width: 60%;
+                }
+            }
+        }
+    }
+
+    >div {
+        border-radius: 7px;
+
+        i {
+            color: #222;
+        }
+    }
+}

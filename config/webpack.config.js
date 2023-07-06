@@ -162,6 +162,7 @@ module.exports = function (webpackEnv) {
             order: paths.appOrderJs,
             privacy: paths.appPrivacyJs,
             note: paths.appNoteJs,
+            personal: paths.appPersonalJs,
         },
         output: {
             // The build folder.
@@ -698,6 +699,33 @@ module.exports = function (webpackEnv) {
                         filename: 'note.html',
                         template: paths.appNoteHtml,
                         chunks: ['note'],
+                    },
+                    isEnvProduction
+                        ? {
+                              minify: {
+                                  removeComments: true,
+                                  collapseWhitespace: true,
+                                  removeRedundantAttributes: true,
+                                  useShortDoctype: true,
+                                  removeEmptyAttributes: true,
+                                  removeStyleLinkTypeAttributes: true,
+                                  keepClosingSlash: true,
+                                  minifyJS: true,
+                                  minifyCSS: true,
+                                  minifyURLs: true,
+                              },
+                          }
+                        : undefined
+                )
+            ),
+            new HtmlWebpackPlugin(
+                Object.assign(
+                    {},
+                    {
+                        inject: true,
+                        filename: 'personal.html',
+                        template: paths.appPersonalHtml,
+                        chunks: ['personal'],
                     },
                     isEnvProduction
                         ? {
