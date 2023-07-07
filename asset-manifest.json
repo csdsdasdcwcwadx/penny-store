@@ -15,6 +15,9 @@
     "payment.css": "./payment/css/style.css",
     "payment.js": "./payment/js/index.js",
     "payment.js.map": "./payment/js/index.js.map",
+    "personal.css": "./personal/css/style.css",
+    "personal.js": "./personal/js/index.js",
+    "personal.js.map": "./personal/js/index.js.map",
     "privacy.css": "./privacy/css/style.css",
     "privacy.js": "./privacy/js/index.js",
     "privacy.js.map": "./privacy/js/index.js.map",
@@ -36,7 +39,10 @@
     "payment.html": "./payment.html",
     "payment/css/style.css.map": "./payment/css/style.css.map",
     "payment/js/index.js.LICENSE.txt": "./payment/js/index.js.LICENSE.txt",
-    "precache-manifest.1e6d9d2fa9056d5fae2d770c76562f83.js": "./precache-manifest.1e6d9d2fa9056d5fae2d770c76562f83.js",
+    "personal.html": "./personal.html",
+    "personal/css/style.css.map": "./personal/css/style.css.map",
+    "personal/js/index.js.LICENSE.txt": "./personal/js/index.js.LICENSE.txt",
+    "precache-manifest.6735ec06e91dbe9cad2fb15763fcac44.js": "./precache-manifest.6735ec06e91dbe9cad2fb15763fcac44.js",
     "privacy.html": "./privacy.html",
     "privacy/css/style.css.map": "./privacy/css/style.css.map",
     "privacy/js/index.js.LICENSE.txt": "./privacy/js/index.js.LICENSE.txt",
@@ -85,6 +91,11 @@
       "note/css/style.css",
       "note/js/index.js",
       "note/js/index.js.map"
+    ],
+    "personal": [
+      "personal/css/style.css",
+      "personal/js/index.js",
+      "personal/js/index.js.map"
     ]
   }
 }
