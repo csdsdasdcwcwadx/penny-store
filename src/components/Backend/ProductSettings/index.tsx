@@ -32,6 +32,7 @@ function ProductSettings () {
     const p_info = useRef<HTMLInputElement>(null);
     const p_color = useRef<HTMLInputElement>(null);
     const [p_img, setP_img] = useState<File>();
+    const [p_img2, setP_img2] = useState<File>();
 
     // 修改產品所需要用到的參數
     const fix_p_name = useRef<HTMLInputElement>(null);
@@ -43,6 +44,7 @@ function ProductSettings () {
     const fix_p_info = useRef<HTMLInputElement>(null);
     const fix_p_color = useRef<HTMLInputElement>(null);
     const [fix_p_img, setFix_p_img] = useState<File>();
+    const [fix_p_img2, setFix_p_img2] = useState<File>();
 
     const handle_off = async (product: I_productinfo) => {
         if(confirm(`是否要將此產品${handleIsOff(product.p_isoff, true)}`)) {
@@ -84,6 +86,7 @@ function ProductSettings () {
             formData.append('p_amount', p_amount.current?.value!);
             formData.append('p_type', p_type.current?.value!);
             formData.append('p_img', p_img!);
+            formData.append('p_img2', p_img2!);
             formData.append('p_size', p_size.current?.value!);
             formData.append('p_color', p_color.current?.value!);
             formData.append('p_info', p_info.current?.value!);
@@ -102,7 +105,7 @@ function ProductSettings () {
                 console.error(err);
             }
         }else alert(error[0].textContent);
-    },[p_img])
+    },[p_img, p_img2])
 
     const addingBlock = useCallback(() => {
         return (
@@ -126,15 +129,25 @@ function ProductSettings () {
                             <select placeholder="請選擇商品種類" ref={p_type}>
                                 {
                                     Object.values(E_Page).map((obj, ind) => {
-                                        return <option key={ind} value={obj}>{handleNavigator(obj as E_Page)}</option>
+                                        return obj !== E_Page.HOME && <option key={ind} value={obj}>{handleNavigator(obj as E_Page)}</option>
                                     })
                                 }
                             </select>
                         </div>
-                        <input type="file" onChange={e => {
-                            const file = e.target.files![0];
-                            setP_img(file);
-                        }}/>
+                        <div>
+                            <span>產品圖片1</span>
+                            <input type="file" onChange={e => {
+                                const file = e.target.files![0];
+                                setP_img(file);
+                            }}/>
+                        </div>
+                        <div>
+                            <span>產品圖片2</span>
+                            <input type="file" onChange={e => {
+                                const file = e.target.files![0];
+                                setP_img2(file);
+                            }}/>
+                        </div>
                     </div>
                     <div className={styles.buttongroup}>
                         <button onClick={handle_add}>確認</button>
@@ -159,6 +172,7 @@ function ProductSettings () {
                 formData.append('p_amount', fix_p_amount.current?.value!);
                 formData.append('p_type', fix_p_type.current?.value!);
                 formData.append('p_img', fix_p_img!);
+                formData.append('p_img2', fix_p_img2!);
                 formData.append('p_size', fix_p_size.current?.value!);
                 formData.append('p_color', fix_p_color.current?.value!);
                 formData.append('p_info', fix_p_info.current?.value!);
@@ -181,7 +195,7 @@ function ProductSettings () {
         }else {
             alert(error?.textContent);
         }
-    },[dispatch, fixItem, fix_p_img, serial])
+    },[dispatch, fixItem, fix_p_img, serial, fix_p_img2])
 
     const fixBlock = useCallback(() => {
         if(fixItem) {
@@ -258,10 +272,20 @@ function ProductSettings () {
                                     }
                                 </select>
                             </div>
-                            <input type="file" onChange={e => {
-                                const file = e.target.files![0];
-                                setFix_p_img(file);
-                            }}/>
+                            <div>
+                                <span>產品圖片1</span>
+                                <input type="file" onChange={e => {
+                                    const file = e.target.files![0];
+                                    setFix_p_img(file);
+                                }}/>
+                            </div>
+                            <div>
+                                <span>產品圖片2</span>
+                                <input type="file" onChange={e => {
+                                    const file = e.target.files![0];
+                                    setFix_p_img2(file);
+                                }}/>
+                            </div>
                         </div>
                         <div className={styles.buttongroup}>
                             <button onClick={e=>handle_fix(e)}>確認</button>
@@ -292,6 +316,7 @@ function ProductSettings () {
                         <li key={product.p_id} className={cN(styles.product, {[styles.isoff]: product.p_isoff === 1})}>
                             <div className={styles.img}>
                                 <img src={handleIMG(product.p_img)}/>
+                                <img src={handleIMG(product.p_img2)}/>
                                 <span>{handleIsOff(product.p_isoff)}</span>
                             </div>
                             <span>商品編號：{product.p_dentical}</span>

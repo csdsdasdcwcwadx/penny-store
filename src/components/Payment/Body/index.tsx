@@ -103,6 +103,7 @@ function Body() {
                 alert('請選擇7-11門市');
             } else {
                 if(confirm('金流功能尚未啟用，若欲付款請洽pennypeijung@gmail.com')) {
+                    window.open("https://www.instagram.com/londoner.tw/");
                     const addressPost = addressing ? `${postcal.current?.value}|${address.current?.value}` : `${seven}(7-11)`
                     const post = {
                         isSuccess,
@@ -225,7 +226,7 @@ function Body() {
                         </div>
                     </section>
                     <button className={styles.sendpayment} onClick={() => handlePayment()}>送出訂單</button>
-                    <span className={styles.alert}>金流功能尚未啟用，若欲付款請洽pennypeijung@gmail.com</span>
+                    <span className={styles.alert}>金流功能尚未啟用，若欲付款請洽 instagram : <a href="https://www.instagram.com/londoner.tw/">Londoner</a></span>
                     {/* <button onClick={() => handlePayment()}>付款測試用(成功)</button>
                     <button onClick={() => handlePayment(false)}>付款測試用(失敗)</button> */}
                 </>

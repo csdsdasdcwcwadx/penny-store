@@ -95,7 +95,7 @@ function Header() {
             <>
                 <li onClick={()=>window.location.href = `${handlepath()}/personal${isLocal?'.html':''}`}>修改個人資料</li>
                 <li onClick={()=>{window.location.href = `${handlepath()}/order${isLocal?'.html':''}`}}>查看歷史訂單</li>
-                <li onClick={()=>handlepayment()}>前往結賬</li>
+                <li onClick={()=>handlepayment()}>前往結帳</li>
             </>
         )
     }

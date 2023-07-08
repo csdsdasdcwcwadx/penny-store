@@ -280,8 +280,8 @@ function Body({setTrigger}: I_props) {
                 <aside className={cN(styles.goBuy, {[styles.show]: goBuy})}>
                     <span>商品已加入購物車</span>
                     <div>
-                        <button onClick={()=>setGoBuy(false)}>繼續購買</button>
-                        <button onClick={()=>window.location.href = `${handlepath()}/payment${isLocal?'.html':''}`}>前去購買</button>
+                        <button onClick={()=>setGoBuy(false)}>繼續逛逛</button>
+                        <button onClick={()=>window.location.href = `${handlepath()}/payment${isLocal?'.html':''}`}>前往結帳</button>
                     </div>
                 </aside>
                 <div className={cN(styles.alertion, {[styles.show]: alertion}, {[styles.lateAlert]: lateAlert})}>{message}</div>

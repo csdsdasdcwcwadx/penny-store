@@ -117,7 +117,7 @@ function SideBar ({trigger}: I_props) {
                                 })
                             }
                             <button onClick={()=>window.location.href = `${handlepath()}/payment${isLocal?'.html':''}`}>
-                                前往結賬 
+                                前往結帳
                                 <div className={styles.producttotal}>小計 
                                 <span>{total}</span> 元</div>
                             </button>

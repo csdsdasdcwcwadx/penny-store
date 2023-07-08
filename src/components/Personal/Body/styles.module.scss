@@ -59,6 +59,24 @@
                 }
             }
         }
+
+        button {
+            display: block;
+            margin: 0 auto;
+            margin-top: 20px;
+            border: 1.5px solid #ff2b2b;
+            border-radius: 5px;
+            padding: 15px 20px;
+            color: #ff2b2b;
+            background-color: #fff;
+            cursor: pointer;
+            font-weight: 600;
+
+            &:hover {
+                color: #fff;
+                background-color: #ff2b2b;
+            }
+        }
     }
 
     .updateinfo {
@@ -118,6 +136,11 @@
 
                 @include only-pc {
                     width: 60%;
+                }
+
+                @include only-mobile {
+                    position: relative;
+                    right: 5px;
                 }
             }
         }
