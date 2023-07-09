@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "02f65f7ee83586349326",
+    "revision": "30ed284d895119f9272c",
     "url": "./app/css/style.css"
   },
   {
-    "revision": "02f65f7ee83586349326",
+    "revision": "30ed284d895119f9272c",
     "url": "./app/js/index.js"
   },
   {
@@ -12,15 +12,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./app/js/index.js.LICENSE.txt"
   },
   {
-    "revision": "8d1a05ac203748b0ee1655265c1bdb9b",
+    "revision": "52af87f4da6db081c35e3c152a4ce86b",
     "url": "./backend.html"
   },
   {
-    "revision": "4152c913e15c344f89c3",
+    "revision": "f73548410bc8e29bbd38",
     "url": "./backend/css/style.css"
   },
   {
-    "revision": "4152c913e15c344f89c3",
+    "revision": "f73548410bc8e29bbd38",
     "url": "./backend/js/index.js"
   },
   {
@@ -28,19 +28,19 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./backend/js/index.js.LICENSE.txt"
   },
   {
-    "revision": "ae844fff12e0c50dc47a56a40e313a28",
+    "revision": "52ec3aa81503440f9f9878b5d13af62a",
     "url": "./index.html"
   },
   {
-    "revision": "c86ff86c916904c6652d8b6b25f02422",
+    "revision": "ccb8b0251d70861cfaaa2ef347535fc5",
     "url": "./note.html"
   },
   {
-    "revision": "21230b4f73bacd0c7947",
+    "revision": "fe522eb08ea4217b30f5",
     "url": "./note/css/style.css"
   },
   {
-    "revision": "21230b4f73bacd0c7947",
+    "revision": "fe522eb08ea4217b30f5",
     "url": "./note/js/index.js"
   },
   {
@@ -48,15 +48,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./note/js/index.js.LICENSE.txt"
   },
   {
-    "revision": "54be0957c8899b473c23c180a69e2b16",
+    "revision": "d9bb36323117f1ed821d80361a2aa1f1",
     "url": "./order.html"
   },
   {
-    "revision": "b94e46235c34a43ff985",
+    "revision": "348b480a6cedac7b2a1b",
     "url": "./order/css/style.css"
   },
   {
-    "revision": "b94e46235c34a43ff985",
+    "revision": "348b480a6cedac7b2a1b",
     "url": "./order/js/index.js"
   },
   {
@@ -64,15 +64,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./order/js/index.js.LICENSE.txt"
   },
   {
-    "revision": "89ca188cf0961d3a267b8236c26731ec",
+    "revision": "2a8e8b9df7bf210f4e3f2c9632ee235a",
     "url": "./payment.html"
   },
   {
-    "revision": "3700de12d4dbf82cb223",
+    "revision": "09f761297dd1b94fe207",
     "url": "./payment/css/style.css"
   },
   {
-    "revision": "3700de12d4dbf82cb223",
+    "revision": "09f761297dd1b94fe207",
     "url": "./payment/js/index.js"
   },
   {
@@ -80,15 +80,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./payment/js/index.js.LICENSE.txt"
   },
   {
-    "revision": "7227130201746cc483e84590d62632da",
+    "revision": "8f3a9d1b47f5c785ae782faa80812edd",
     "url": "./personal.html"
   },
   {
-    "revision": "ae1171d90c0bcfabb8a9",
+    "revision": "f170f768988f52d7a545",
     "url": "./personal/css/style.css"
   },
   {
-    "revision": "ae1171d90c0bcfabb8a9",
+    "revision": "f170f768988f52d7a545",
     "url": "./personal/js/index.js"
   },
   {
@@ -96,15 +96,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./personal/js/index.js.LICENSE.txt"
   },
   {
-    "revision": "563d211df284db93cbf0ccde0ad93400",
+    "revision": "5a4568ab8d112a42f188b99b2882ac4e",
     "url": "./privacy.html"
   },
   {
-    "revision": "b167d8f3ea604b61decb",
+    "revision": "d9f9b939232dafdafa84",
     "url": "./privacy/css/style.css"
   },
   {
-    "revision": "b167d8f3ea604b61decb",
+    "revision": "d9f9b939232dafdafa84",
     "url": "./privacy/js/index.js"
   },
   {
@@ -112,15 +112,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./privacy/js/index.js.LICENSE.txt"
   },
   {
-    "revision": "8cc76fbb20985ffe65bfbbb1c9db2fe0",
+    "revision": "6506a8c7b8ab420f442f91d491b3745d",
     "url": "./product.html"
   },
   {
-    "revision": "5486dcacb3af1d48fc03",
+    "revision": "170b30f8033fd80486f6",
     "url": "./product/css/style.css"
   },
   {
-    "revision": "5486dcacb3af1d48fc03",
+    "revision": "170b30f8033fd80486f6",
     "url": "./product/js/index.js"
   },
   {
