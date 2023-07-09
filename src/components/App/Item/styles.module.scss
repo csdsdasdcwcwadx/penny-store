@@ -7,20 +7,35 @@
     cursor: pointer;
 
     .frame {
+        position: relative;
         overflow: hidden;
         margin: 0 auto;
         max-height: 360px;
         margin-bottom: auto;
 
-        img,
-        div {
+        img {
+            position: relative;
             width: 100%;
             height: inherit;
             object-fit: cover;
-            transition: all 0.5s ease;
+            transition: all .5s ease-in-out;
+            opacity: 1;
+        }
 
-            &:hover {
-                transform: scale(1.2);
+        img:last-of-type {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+
+        &:hover {
+            img:first-of-type {
+                opacity: 0;
+            }
+
+            img:last-of-type {
+                opacity: 1;
             }
         }
     }
