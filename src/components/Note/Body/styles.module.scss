@@ -1,5 +1,12 @@
+@import '../../../commonStyles/variables.scss';
+@import '../../../commonStyles/mixins.scss';
+
 .note {
     padding: 0 100px 50px;
+
+    @include only-mobile {
+        padding: 0 50px 50px;
+    }
 
     h1 {
         text-align: center;

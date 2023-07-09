@@ -16,6 +16,10 @@
     ul {
         margin: 0 auto;
 
+        @include only-mobile {
+            padding-left: 0;
+        }
+
         li {
             list-style-type: none;
             padding: 20px 0;
@@ -30,6 +34,10 @@
 
             @include only-pc {
                 display: flex;
+            }
+
+            @include only-mobile {
+                padding: 20px 15px;
             }
 
             div {
