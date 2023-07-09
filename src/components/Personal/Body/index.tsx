@@ -5,9 +5,11 @@ import LightBox, { E_direction } from "@components/Common/Modules/LightBox";
 import InputBar, { E_RegexType } from "@components/Common/Modules/InputBar";
 import cN from 'classnames';
 import axios from "axios";
+import { auth, GoogleProvider } from "@utils/firebase-auth";
+import { User, deleteUser, UserCredential, reauthenticateWithCredential } from "firebase/auth";
 
 const member = JSON.parse(localStorage.getItem('memberinfo')!);
-const google = JSON.parse(localStorage.getItem('credentials')!);
+const credentials: UserCredential = JSON.parse(localStorage.getItem('credentials')!);
 
 function Body () {
     const [openLightBox_name, setOpenLightBox_name] = useState(false);
@@ -19,10 +21,10 @@ function Body () {
     const postcal = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        if(!member && !google) {
+        if(!member && !credentials) {
             alert('會員尚未登入');
             window.location.href = `${handlepath()}`;
-        }
+        } else document.title = member.memberinfo[0].m_name;
     },[])
 
     const handleClick = async () => {
@@ -36,6 +38,7 @@ function Body () {
             try {
                 const { data } = await axios.post(`${domain()}/member/infoupdatemember`, obj);
                 if(data.status) {
+                    alert(data.message);
                     window.localStorage.setItem('memberinfo', JSON.stringify(data));
                     location.reload();
                 }
@@ -45,14 +48,31 @@ function Body () {
         }else alert(error[0].textContent);
     }
 
+    const deleteMember = async () => {
+        if(confirm('確認要刪除此用戶 ? ')) {
+            try {
+                const { data } = await axios.post(`${domain()}/member/deletemember`);
+                if(data.status) {
+                    window.localStorage.removeItem('memberinfo');
+                    window.localStorage.removeItem('credentials');
+                    await deleteUser(credentials.user as User);
+                }
+                location.reload();
+            }catch(e) {
+                console.error(e);
+            }
+        }
+    }
+
     return (
         <div className={styles.personal}>
             <h1>個人資料修改</h1>
             {
-                member && google && <ul>
+                member && credentials && <ul>
                     <li onClick={()=>setOpenLightBox_name(true)}>姓名 <div>{member.memberinfo[0].m_name}</div></li>
                     <li onClick={()=>setOpenLightBox_phone(true)}>電話<div>{member.memberinfo[0].m_phone}</div></li>
                     <li onClick={()=>setOpenLightBox_address(true)}>地址<div>{member.memberinfo[0].m_address.replace('|', '')}</div></li>
+                    <button onClick={deleteMember}>刪除用戶</button>
                 </ul>
             }
             <LightBox

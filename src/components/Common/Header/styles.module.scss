@@ -153,7 +153,8 @@
     >ul {
         display: flex;
         justify-content: space-evenly;
-        padding: 10px 30px;
+        margin-top: 0;
+        padding: 0 30px;
         height: 40px;
 
         @include only-mobile {
@@ -161,17 +162,20 @@
         }
 
         >li {
-            padding-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
             min-width: 100px;
-            text-align: center;
             color: #504e4a;
             list-style-type: none;
             vertical-align: middle;
             cursor: pointer;
 
             &:hover {
-                color: $mainColor;
-                border-bottom: 2px solid $mainColor;
+                color: #fff;
+                background-color: #d4d2c8;
+                // border-bottom: 2px solid #fff;
             }
         }
     }

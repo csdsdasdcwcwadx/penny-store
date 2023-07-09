@@ -12,6 +12,7 @@ export enum E_Page {
     BOTTOM = 'BOTTOM',
     SKIRT = 'SKIRT',
     ACCESSORIES = 'ACCESSORIES',
+    LUXURY = 'LUXURY',
 }
 
 export interface I_getallproduct {

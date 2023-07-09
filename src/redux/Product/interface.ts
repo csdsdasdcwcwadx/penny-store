@@ -18,6 +18,10 @@ export interface I_productinfo {
         data: Array<any>;
         type: string;
     };
+    p_img2: {
+        data: Array<any>;
+        type: string;
+    };
     p_type: string;
     p_size: string;
     p_dentical: string;
