@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from '@Redux/Backend/store';
 import { call_getallproduct } from '@Redux/Backend/actions';
 import styles from './styles.module.scss';
-import { handleNavigator, handleIMG, handleIsOff } from "@utils/commonfunction";
+import { handleNavigator, handleIsOff } from "@utils/commonfunction";
 import LightBox, { E_direction } from "@components/Common/Modules/LightBox";
 import domain from '@utils/domainByEnv';
 import axios from "axios";
@@ -13,6 +13,7 @@ import { I_productinfo, I_productdetail } from "@Redux/Product/interface";
 import PageNumber from '@components/Common/PageNumber';
 import Spinner from "@components/Common/Modules/Spinner";
 import cN from 'classnames';
+import OptimizedImage from "@components/Common/OptimizedImage";
 
 function ProductSettings () {
     const dispatch = useDispatch();
@@ -315,8 +316,8 @@ function ProductSettings () {
                     return (
                         <li key={product.p_id} className={cN(styles.product, {[styles.isoff]: product.p_isoff === 1})}>
                             <div className={styles.img}>
-                                <img src={handleIMG(product.p_img)}/>
-                                <img src={handleIMG(product.p_img2)}/>
+                                <OptimizedImage imageData={product.p_img}/>
+                                <OptimizedImage imageData={product.p_img2}/>
                                 <span>{handleIsOff(product.p_isoff)}</span>
                             </div>
                             <span>商品編號：{product.p_dentical}</span>

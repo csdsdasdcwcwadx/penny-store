@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { call_listshipping } from '@Redux/Backend/actions';
 import { RootState } from '@Redux/Backend/store';
 import PageNumber from '@components/Common/PageNumber';
-import { handleIMG } from "@utils/commonfunction";
 import { I_orderinfo } from "@Redux/Order/interfaces";
 import cN from 'classnames';
 import { handlePayment, handleDate, handleDistribution } from "@utils/commonfunction";
@@ -12,6 +11,7 @@ import domain from '@utils/domainByEnv';
 import axios from "axios";
 import '@components/Common/Modules/ic-ln/css.css';
 import Spinner from "@components/Common/Modules/Spinner";
+import OptimizedImage from "@components/Common/OptimizedImage";
 
 function Shipping() {
     const { orderdetail, isLoading } = useSelector((store: RootState)=>store);
@@ -142,7 +142,7 @@ function Orders ({orders, serial}: I_props) {
                         return (
                             <div key={order.o_id} className={styles.order}>
                                 <div className={styles.photo}>
-                                    <img src={handleIMG(order.o_img)}/>
+                                    <OptimizedImage imageData={order.o_img}/>
                                     <span>{order.op_name}</span>
                                 </div>
                                 <div data-title='產品價格'>

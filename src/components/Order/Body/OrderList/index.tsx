@@ -5,10 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from '@Redux/Order/store';
 import { set_opendetail } from '@Redux/Order/actions';
 import cN from 'classnames';
-import { handleIMG, handleShipment } from "@utils/commonfunction";
+import { handleShipment } from "@utils/commonfunction";
 import '@components/Common/Modules/ic-ln/css.css';
 import { handlePayment, handleDate } from "@utils/commonfunction";
 import { useMediaQuery } from 'react-responsive';
+import OptimizedImage from "@components/Common/OptimizedImage";
 
 interface I_props1 {
     orders: Array<I_orderinfo>;
@@ -82,7 +83,7 @@ function Order({order, total}: I_props2) {
         <>
             <div className={styles.orderitem}>
                 <div className={styles.photo}>
-                    <img src={handleIMG(order.o_img)}/>
+                    <OptimizedImage imageData={order.o_img}/>
                     <span>{order.op_name}</span>
                 </div>
                 <div data-title='產品價格'>
