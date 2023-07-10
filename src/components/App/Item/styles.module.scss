@@ -1,3 +1,6 @@
+@import '../../../commonStyles/variables.scss';
+@import '../../../commonStyles/mixins.scss';
+
 .Item {
     display: flex;
     flex-direction: column;
@@ -13,6 +16,7 @@
         max-height: 360px;
         margin-bottom: auto;
 
+        canvas,
         img {
             position: relative;
             width: 100%;
@@ -22,6 +26,7 @@
             opacity: 1;
         }
 
+        canvas:last-of-type,
         img:last-of-type {
             position: absolute;
             top: 0;
@@ -29,13 +34,18 @@
             opacity: 0;
         }
 
-        &:hover {
-            img:first-of-type {
-                opacity: 0;
-            }
+        @include only-pc {
+            &:hover {
 
-            img:last-of-type {
-                opacity: 1;
+                canvas:first-of-type,
+                img:first-of-type {
+                    opacity: 0;
+                }
+
+                canvas:last-of-type,
+                img:last-of-type {
+                    opacity: 1;
+                }
             }
         }
     }

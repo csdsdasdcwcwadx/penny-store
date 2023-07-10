@@ -7,11 +7,19 @@
     justify-content: space-between;
     padding: 5px 20px 0;
     border-bottom: 1.5px solid #ddd;
-    // background-color: #d4d2c8;
+
+    @include only-mobile {
+        justify-content: center;
+    }
 
     .toolmenu {
         padding-top: 3px;
         font-size: 25px;
+
+        @include only-mobile {
+            position: absolute;
+            left: 0;
+        }
 
         @include small-m {
             padding: 10px 20px 5px;

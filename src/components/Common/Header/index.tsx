@@ -153,12 +153,12 @@ function Header() {
                             console.error(e);
                         }
                     }}
-                ><img src={LOGO}/></span>
+                ><img src={LOGO} alt="台灣推薦精品代購"/></span>
                 <div>
                     {
                         credentials ?
                         <span className={styles.displaymember}>
-                            <img src={credentials.user.photoURL!}/>
+                            <img src={credentials.user.photoURL!} alt={credentials.user.displayName!}/>
                             <span>{credentials.user.displayName} 您好!!</span>
                             <div className={styles.memberoptions}>
                                 <ul>
@@ -190,7 +190,7 @@ function Header() {
                         <span className={styles.displaymember}>
                             <span className={styles.memberinfo}>
                                 <div>
-                                    <img src={credentials.user.photoURL!}/>
+                                    <img src={credentials.user.photoURL!} alt={credentials.user.displayName!}/>
                                     <span>{credentials.user.displayName} 您好!!</span>
                                 </div>
                                 <button className={styles.logout} onClick={handlelogout}>登出</button>
@@ -206,7 +206,7 @@ function Header() {
                     <div className={styles.display}>商品分類</div>
                     {ListBlock()}
                     <div className={styles.otheroptions}>
-                        <a href="https://www.instagram.com/londoner.tw/"><img className={styles.instagram} src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png"/></a>
+                        <a href="https://www.instagram.com/londoner.tw/"><img className={styles.instagram} src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png" alt="instagram"/></a>
                     </div>
                 </div>
             </LightBox>
@@ -291,11 +291,11 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
                                     <div className={styles.title}>會員登入</div>
                                     <div className={styles.buttonlist}>
                                         <button onClick={()=>handleLogin(E_auth.google)}>
-                                            <img src={googleImg}/>
+                                            <img src={googleImg} alt="google"/>
                                             <span>使用Google登入</span>
                                         </button>
                                         <button onClick={()=>handleLogin(E_auth.facebook)}>
-                                            <img src={facebookImg}/>
+                                            <img src={facebookImg} alt="facebook"/>
                                             <span>使用FaceBook登入</span>
                                         </button>
                                     </div>
@@ -310,11 +310,11 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
                                     </div>
                                     <div className={styles.buttonlist}>
                                         <button onClick={()=>handleRegistry(E_auth.google)}>
-                                            <img src={googleImg}/>
+                                            <img src={googleImg} alt="google"/>
                                             <span>使用Google註冊</span>
                                         </button>
                                         <button onClick={()=>handleRegistry(E_auth.facebook)}>
-                                            <img src={facebookImg}/>
+                                            <img src={facebookImg} alt="facebook"/>
                                             <span>使用FaceBook註冊</span>
                                         </button>
                                     </div>
