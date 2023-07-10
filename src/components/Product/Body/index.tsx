@@ -6,7 +6,6 @@ import Select from 'react-select';
 import { useDispatch, useSelector } from "react-redux";
 import { call_getdetailproduct } from '@Redux/Product/actions';
 import { RootState } from '@Redux/Product/store';
-import { handleIMG } from '@utils/commonfunction';
 import { handleNavigator } from '@utils/commonfunction';
 import { E_Page } from "@Redux/App/interfaces";
 import axios from "axios";
@@ -14,6 +13,7 @@ import domain, { handlepath } from '@utils/domainByEnv';
 import Spinner from "@components/Common/Modules/Spinner";
 import { useMediaQuery } from 'react-responsive';
 import PubSub from 'pubsub-js';
+import OptimizedImage from "@components/Common/OptimizedImage";
 
 axios.defaults.withCredentials = true;
 
@@ -167,7 +167,7 @@ function Body({setTrigger}: I_props) {
     const src = useMemo(() => {
         if(productdetail) {
             document.title = productdetail.productinfo[0].p_name || '佩尼商城';
-            return handleIMG(productdetail.productinfo[0].p_img);
+            return <OptimizedImage imageData={productdetail.productinfo[0].p_img}/>
         }
     },[productdetail])
 
@@ -208,7 +208,7 @@ function Body({setTrigger}: I_props) {
                             child.style.scale = '1';
                         }
                     }}>
-                        <img src={src}/>
+                        {src}
                     </div>
                     <div className={styles.description}>
                         <span className={styles.productname}>

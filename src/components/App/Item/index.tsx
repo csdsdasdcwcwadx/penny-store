@@ -1,10 +1,10 @@
-import React, { memo, useState } from "react";
+import React, { memo } from "react";
 import styles from './styles.module.scss';
 import { I_productinfo } from '@Redux/Product/interface';
-import { handleIMG } from "@utils/commonfunction"; 
 import { handlepath } from "@utils/domainByEnv";
 import axios from "axios";
 import domain from '@utils/domainByEnv';
+import OptimizedImage from "@components/Common/OptimizedImage";
 
 interface I_props {
     info: I_productinfo
@@ -12,7 +12,7 @@ interface I_props {
 
 function Item(props: I_props) {
     const { info } = props;
-    const { p_id, p_name, p_img, p_img2, p_dentical } = info;
+    const { p_id, p_name, p_img, p_img2, p_dentical, p_info } = info;
     const isLocal = window.location.href.includes('localhost');
 
     const handleClick = async () => {
@@ -26,8 +26,8 @@ function Item(props: I_props) {
     return (
         <a className={styles.Item} href={`${handlepath()}/product${isLocal?'.html':''}?p_dentical=${p_dentical}`} onClick={handleClick}>
             <div className={styles.frame}>
-                <img src={handleIMG(p_img)}/>
-                <img src={handleIMG(p_img2)}/>
+                <OptimizedImage imageData={p_img}/>
+                <OptimizedImage imageData={p_img2}/>
             </div>
             <span className={styles.itemname}>{p_name}</span>
         </a>

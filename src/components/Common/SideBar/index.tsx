@@ -5,10 +5,10 @@ import '../Modules/ic-ln/css.css';
 import domain, {handlepath} from '@utils/domainByEnv';
 import axios from 'axios';
 import { I_productinfo } from '@Redux/Product/interface';
-import { handleIMG } from '@utils/commonfunction';
 import { useMediaQuery } from 'react-responsive';
 import cN from 'classnames';
 import PubSub from 'pubsub-js';
+import OptimizedImage from '../OptimizedImage';
 
 interface I_shoplistinfo extends I_productinfo {
     s_amount: number;
@@ -100,7 +100,7 @@ function SideBar ({trigger}: I_props) {
                                         <li key={product.p_id}>
                                             <div className={styles.productlist}>
                                                 <a href={`${handlepath()}/product${isLocal?'.html':''}?p_dentical=${product.p_dentical}`}>
-                                                    <img src={handleIMG(product.p_img)}/>
+                                                    <OptimizedImage imageData={product.p_img}/>
                                                     <div className={styles.productcontent}>
                                                         <p>{product.p_name}({product.p_color})</p>
                                                         <div className={styles.detailinfo}>

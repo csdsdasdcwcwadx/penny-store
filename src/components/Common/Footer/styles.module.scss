@@ -12,7 +12,7 @@
     @include only-mobile {
         display: block;
         padding: 20px 0 20px 50px;
-        font-size: 13px;
+        font-size: 15px;
     }
 
     >div {
@@ -20,7 +20,7 @@
         flex-direction: column;
 
         a {
-            padding-top: 10px;
+            padding-top: 15px;
             color: #727171;
             text-decoration: none;
             cursor: pointer;

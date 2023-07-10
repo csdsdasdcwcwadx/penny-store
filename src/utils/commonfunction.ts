@@ -1,11 +1,6 @@
 import notFoundIMG from '../imgs/notfound.jpg';
 import { E_Page } from '@Redux/App/interfaces';
 
-export const handleIMG = (img: {data: Array<any>, type: string} | null) => {
-    if(img) return URL.createObjectURL(new Blob([Buffer.from(img.data)], { type: 'image/jpeg' }));
-    else return notFoundIMG;
-}
-
 export const handleNavigator = (type: E_Page) => {
     switch(type) {
 

@@ -4,10 +4,10 @@ import axios from 'axios';
 import Select from 'react-select'
 import { I_productinfo } from '@Redux/Product/interface';
 import styles from './styles.module.scss';
-import { handleIMG } from '@utils/commonfunction';
 import InputBar, { E_RegexType } from '@components/Common/Modules/InputBar';
 import cN from 'classnames';
 import '@components/Common/Modules/ic-ln/css.css';
+import OptimizedImage from '@components/Common/OptimizedImage';
 
 interface I_shoplistinfo extends I_productinfo {
     s_amount: number;
@@ -102,7 +102,7 @@ function Body() {
             if(!addressing && !seven) {
                 alert('請選擇7-11門市');
             } else {
-                if(confirm('金流功能尚未啟用，若欲付款請洽pennypeijung@gmail.com')) {
+                if(confirm('金流功能尚未啟用，若欲付款請洽 ingtagram 或 londoner.tw2020@gmail.com')) {
                     window.open("https://www.instagram.com/londoner.tw/");
                     const addressPost = addressing ? `${postcal.current?.value}|${address.current?.value}` : `${seven}(7-11)`
                     const post = {
@@ -158,7 +158,7 @@ function Body() {
                                 return (
                                     <li key={product.p_id}>
                                         <span className={styles.name}>
-                                            <img src={handleIMG(product.p_img)}/>
+                                            <OptimizedImage imageData={product.p_img}/>
                                             {product.p_name}
                                         </span>
                                         <span className={styles.price} data-title='單件價格'>{product.p_price}元</span>
