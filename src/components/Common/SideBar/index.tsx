@@ -44,7 +44,6 @@ function SideBar ({trigger}: I_props) {
     },[])
 
     useEffect(() => {
-        const member = JSON.parse(localStorage.getItem('memberinfo')!);
         isLogin && (async function(){
             setIsLogin(true);
             try {

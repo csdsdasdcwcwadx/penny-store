@@ -35,7 +35,7 @@ function Body({setTrigger}: I_props) {
     // 設定購買提示
     const [goBuy, setGoBuy] = useState(false);
     const { productdetail } = useSelector((store: RootState)=>store);
-    const member = JSON.parse(localStorage.getItem('memberinfo')!);
+    const member = localStorage.getItem('token');
     const isMobile = useMediaQuery({ query: '(max-width: 980px)' });
     const isLocal = window.location.href.includes('localhost');
 
