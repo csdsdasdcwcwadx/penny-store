@@ -240,8 +240,9 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
                     alert(data.message);
                     if(data.status) {
                         localStorage.setItem('credentials', JSON.stringify(auther));
-                        localStorage.setItem('token', data.token);
-                        localStorage.setItem('refresh', data.refresh);
+                        localStorage.setItem('token', data.accessToken);
+                        localStorage.setItem('refresh', data.refreshToken);
+                        location.reload();
                     }
                 }catch(e) {
                     console.error('error => ', e);
