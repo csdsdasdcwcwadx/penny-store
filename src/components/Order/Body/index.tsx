@@ -17,7 +17,7 @@ function Body () {
     const { ordershipping, isLoading } = useSelector((store: RootState)=>store);
 
     useEffect(() =>{
-        const member = JSON.parse(localStorage.getItem('memberinfo')!);
+        const member = localStorage.getItem('token');
         const google = JSON.parse(localStorage.getItem('credentials')!);
         if(!member && !google) {
             alert('會員尚未登入');

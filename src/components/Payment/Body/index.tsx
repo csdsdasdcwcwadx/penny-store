@@ -8,6 +8,7 @@ import InputBar, { E_RegexType } from '@components/Common/Modules/InputBar';
 import cN from 'classnames';
 import '@components/Common/Modules/ic-ln/css.css';
 import OptimizedImage from '@components/Common/OptimizedImage';
+import { parseJwt } from '@utils/commonfunction';
 
 interface I_shoplistinfo extends I_productinfo {
     s_amount: number;
@@ -30,7 +31,7 @@ const url = new URL (window.location.href);
 const storename = url.searchParams.get('storename');
 const storeaddress = url.searchParams.get('storeaddress');
 
-const member = JSON.parse(localStorage.getItem('memberinfo')!);
+const member = parseJwt(localStorage.getItem('token')!);
 const google = JSON.parse(localStorage.getItem('credentials')!);
 
 axios.defaults.withCredentials = true;
@@ -74,8 +75,8 @@ function Body() {
     useEffect(() => {
         if(name.current && phone.current && member) {
             if(checked) {
-                name.current.value = member.memberinfo[0].m_name;
-                phone.current.value = member.memberinfo[0].m_phone;
+                name.current.value = member.m_name;
+                phone.current.value = member.m_phone;
             }else {
                 name.current.value = '';
                 phone.current.value = '';
@@ -83,10 +84,10 @@ function Body() {
         }
         if(name.current && phone.current && address.current && postcal.current && member) {
             if(checked) {
-                name.current.value = member.memberinfo[0].m_name;
-                phone.current.value = member.memberinfo[0].m_phone;
-                postcal.current.value = member.memberinfo[0].m_address.split('|')[0];
-                address.current.value = member.memberinfo[0].m_address.split('|')[1];
+                name.current.value = member.m_name;
+                phone.current.value = member.m_phone;
+                postcal.current.value = member.m_address.split('|')[0];
+                address.current.value = member.m_address.split('|')[1];
             }else {
                 name.current.value = '';
                 phone.current.value = '';
@@ -110,7 +111,7 @@ function Body() {
                         name: name.current?.value,
                         address: addressPost,
                         phone: phone.current?.value,
-                        email: member.memberinfo[0].m_email,
+                        email: member.m_email,
                         distributed,
                     }
             

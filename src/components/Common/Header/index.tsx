@@ -47,8 +47,8 @@ function storageAvailable(type: any) {
 function Header() {
     const [listOpen, setListOpen] = useState<boolean>(false);
     const [loginOpen, setLoginOpen] = useState<boolean>(false);
-    // const [memberinfo, setMemberinfo] = useState<I_member | undefined>();
     const [credentials, setCredentials] = useState<UserCredential | null>();
+    const [reference, setReference] = useState(`${handlepath()}?page_id=`);
     const isMenu: boolean = !!document.getElementById('menu');
     const isLocal = window.location.href.includes('localhost');
     const dispatch = useDispatch();
@@ -61,9 +61,11 @@ function Header() {
 
     // 登出
     const handlelogout = async () => {
+        const refreshToken = localStorage.getItem('refresh');
+        await axios.post(`${domain()}/member/logout`, {refreshToken});
+        localStorage.removeItem('token');
         localStorage.removeItem('credentials');
-        localStorage.removeItem('memberinfo');
-        await axios.get(`${domain()}/member/logout`);
+        localStorage.removeItem('refresh');
         location.reload();
     }
 
@@ -105,34 +107,40 @@ function Header() {
         (async function() {
             try{
                 // 若有credentials 代表剛註冊完成
-                const memberinfo = JSON.parse(localStorage.getItem('memberinfo')!);
+                const token = "Bearer " + localStorage.getItem('token');
                 const credentials = JSON.parse(localStorage.getItem('credentials')!);
-                const obj = {
-                    m_email: memberinfo?.memberinfo[0].m_email || null,
-                    hasLogin: Boolean(localStorage.getItem('memberinfo') && localStorage.getItem('credentials')),
+                const refreshToken = localStorage.getItem('refresh');
+                const headers = {
+                    Authorization: token,
                 }
-                try{
-                    const { data } = await axios.post(`${domain()}/member/loginmember`, obj);
-                    // 正確取得資訊後就不需要再做登入
+                const { data } = await axios.post(`${domain()}/member/verify`, {},{headers});
+                if(data.status) {
+                    // accessToken還有效直接進行登入
+                    PubSub.publish('isLogin', data.status);
+                    setReference(`${handlepath()}${data.href}${isLocal?'.html':''}`);
+                    setCredentials(credentials);
+                    return;
+                }
+                if(refreshToken) {
+                    // accessToken 無效，刷新accessToken
+                    const { data } = await axios.post(`${domain()}/member/refresh`, {refreshToken});
                     if(data.status) {
-                        PubSub.publish('isLogin', data.status);
-                        setCredentials(credentials);
-                    } else {
-                        if(obj.m_email) {
-                            localStorage.removeItem('memberinfo');
-                            localStorage.removeItem('credentials');
-                            setCredentials(null);
-                            alert(data.message);
-                        }
+                        localStorage.setItem('token', data.accessToken);
+                        alert('登入已過期，請重新整理');
+                        location.reload();
+                        return;
                     }
-                }catch(err) {
-                    console.error('error => ', err);
+                    alert(data.message);
                 }
+                // 登入失敗
+                localStorage.removeItem('credentials');
+                localStorage.removeItem('refresh');
+                localStorage.removeItem('token');
             }catch (e) {
                 console.error('error => ', e);
             }
         })()
-    },[])
+    },[isLocal])
 
     return (
         <>
@@ -143,17 +151,10 @@ function Header() {
                     </span>
                     <a href="https://www.instagram.com/londoner.tw/"><img className={styles.instagram} src="https://static.cdninstagram.com/rsrc.php/v3/yt/r/30PrGfR3xhB.png"/></a>
                 </div>
-                <span
+                <a
                     className={styles.logo}
-                    onClick={async () => {
-                        try {
-                            const { data } = await axios.post(`${domain()}/member/isavailable`, {isLocal});
-                            window.location.href = `${handlepath()}${data.url}`;
-                        }catch(e) {
-                            console.error(e);
-                        }
-                    }}
-                ><img src={LOGO} alt="台灣推薦精品代購"/></span>
+                    href={`${reference}`}
+                ><img src={LOGO} alt="台灣推薦精品代購"/></a>
                 <div>
                     {
                         credentials ?
@@ -233,13 +234,15 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
                     m_phone: m_phone.current?.value,
                     m_email: auther.user.email,
                     apitype: authen,
+                    uid: auther?.user.uid,
                 }
                 try{
                     const { data } = await axios.post(`${domain()}/member/registrymember`, obj);
                     alert(data.message);
                     if(data.status) {
                         localStorage.setItem('credentials', JSON.stringify(auther));
-                        localStorage.setItem('memberinfo', JSON.stringify(data));
+                        localStorage.setItem('token', data.accessToken);
+                        localStorage.setItem('refresh', data.refreshToken);
                         location.reload();
                     }
                 }catch(e) {
@@ -256,13 +259,14 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
             const loginAPI = await signInWithPopup(auth, authen === E_auth.google ? GoogleProvider : FacebookProvider);
             const obj = {
                 m_email: loginAPI?.user.email,
-                hasLogin: false,
                 apitype: authen,
+                uid: loginAPI?.user.uid,
             }
             const { data } = await axios.post(`${domain()}/member/loginmember`, obj);
             // 登入成功就將資料寫入localStorage
             if(data.status) {
-                localStorage.setItem('memberinfo', JSON.stringify(data));
+                localStorage.setItem('token', data.accessToken);
+                localStorage.setItem('refresh', data.refreshToken);
                 localStorage.setItem('credentials', JSON.stringify(loginAPI));
                 location.reload();
             } else alert(data.message);
