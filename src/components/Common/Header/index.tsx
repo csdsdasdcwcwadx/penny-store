@@ -117,7 +117,7 @@ function Header() {
                 if(data.status) {
                     // accessToken還有效直接進行登入
                     PubSub.publish('isLogin', data.status);
-                    setReference(`${handlepath()}${data.href}${isLocal?'.html':''}`)
+                    setReference(`${handlepath()}${data.href}${isLocal?'.html':''}`);
                     setCredentials(credentials);
                     return;
                 }
@@ -234,6 +234,7 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
                     m_phone: m_phone.current?.value,
                     m_email: auther.user.email,
                     apitype: authen,
+                    uid: auther?.user.uid,
                 }
                 try{
                     const { data } = await axios.post(`${domain()}/member/registrymember`, obj);
@@ -259,6 +260,7 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
             const obj = {
                 m_email: loginAPI?.user.email,
                 apitype: authen,
+                uid: loginAPI?.user.uid,
             }
             const { data } = await axios.post(`${domain()}/member/loginmember`, obj);
             // 登入成功就將資料寫入localStorage

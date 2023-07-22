@@ -97,7 +97,7 @@ function Body({setTrigger}: I_props) {
         return undefined;
     },[productdetail, selectColor, selectSize])
 
-    const handleAddChart = useCallback( async () => {
+    const handleAddChart = useCallback( async (buyImm: boolean) => {
 
         if(!chosenItem) {
             alert('請選擇其他產品尺寸及顏色');
@@ -129,6 +129,7 @@ function Body({setTrigger}: I_props) {
                         setAlertion(false);
                     },2000)
                     setCounter(1);
+                    if(buyImm) window.location.href = `${handlepath()}/payment${isLocal?'.html':''}`;
                 }else{
                     if(data.message === null) {
                         if(confirm('此商品目前現貨不足，是否要等候預購(約15-20個工作天)')) {
@@ -149,6 +150,7 @@ function Body({setTrigger}: I_props) {
                                     setAlertion(false);
                                 },2000)
                                 setCounter(1);
+                                if(buyImm) window.location.href = `${handlepath()}/payment${isLocal?'.html':''}`;
                             } else {
                                 alert(data.message);
                             }
@@ -162,11 +164,11 @@ function Body({setTrigger}: I_props) {
             }
 
         } else alert('請先登入會員');
-    },[productdetail, member, chosenItem, counter, setTrigger, isMobile])
+    },[productdetail, member, chosenItem, counter, setTrigger, isMobile, isLocal])
 
     const src = useMemo(() => {
         if(productdetail) {
-            document.title = productdetail.productinfo[0].p_name || '佩尼商城';
+            document.title = productdetail.productinfo[0].p_name || 'Londoner';
             return <OptimizedImage imageData={productdetail.productinfo[0].p_img}/>
         }
     },[productdetail])
@@ -273,7 +275,8 @@ function Body({setTrigger}: I_props) {
                                         return pre+1;
                                     })}> </span>
                             </div>
-                            <button onClick={handleAddChart}>加入購物車</button>
+                            <button onClick={()=>handleAddChart(false)}>加入購物車</button>
+                            <a onClick={()=>handleAddChart(true)}>直接購買</a>
                         </div>
                     </div>
                 </div>
