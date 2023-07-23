@@ -163,7 +163,10 @@ function Body({setTrigger}: I_props) {
                 console.error(e);
             }
 
-        } else alert('請先登入會員');
+        } else {
+            alert('請先登入會員');
+            PubSub.publish('openLogin', true);
+        }
     },[productdetail, member, chosenItem, counter, setTrigger, isMobile, isLocal])
 
     const src = useMemo(() => {
@@ -276,7 +279,7 @@ function Body({setTrigger}: I_props) {
                                     })}> </span>
                             </div>
                             <button onClick={()=>handleAddChart(false)}>加入購物車</button>
-                            <a onClick={()=>handleAddChart(true)}>直接購買</a>
+                            <button onClick={()=>handleAddChart(true)}>直接購買</button>
                         </div>
                     </div>
                 </div>

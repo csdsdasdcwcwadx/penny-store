@@ -186,28 +186,19 @@
                     border-radius: 3px;
                     cursor: pointer;
 
+                    &:last-of-type {
+                        margin-left: 15px;
+                        background-color: #d4d2c8;
+
+                        @include small-m {
+                            margin-top: 15px;
+                            margin-left: 0;
+                        }
+                    }
+
                     @include small-m {
                         width: 100%;
                         margin-top: 20px;
-                    }
-                }
-
-                a {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: 50%;
-                    height: 35px;
-                    margin-left: 15px;
-                    border-radius: 3px;
-                    color: #fff;
-                    background-color: aqua;
-                    text-decoration: none;
-
-                    @include small-m {
-                        width: 100%;
-                        margin-top: 15px;
-                        margin-left: 0;
                     }
                 }
             }

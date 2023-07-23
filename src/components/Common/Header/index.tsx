@@ -62,6 +62,7 @@ function Header() {
     // 登出
     const handlelogout = async () => {
         const refreshToken = localStorage.getItem('refresh');
+        auth.signOut();
         await axios.post(`${domain()}/member/logout`, {refreshToken});
         localStorage.removeItem('token');
         localStorage.removeItem('credentials');
@@ -240,7 +241,9 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
                     const { data } = await axios.post(`${domain()}/member/registrymember`, obj);
                     alert(data.message);
                     if(data.status) {
-                        localStorage.setItem('credentials', JSON.stringify(auther));
+                        const mutableObj = auther as { [key: string]: any };
+                        delete mutableObj.user.uid;
+                        localStorage.setItem('credentials', JSON.stringify(mutableObj));
                         localStorage.setItem('token', data.accessToken);
                         localStorage.setItem('refresh', data.refreshToken);
                         location.reload();
@@ -267,7 +270,9 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
             if(data.status) {
                 localStorage.setItem('token', data.accessToken);
                 localStorage.setItem('refresh', data.refreshToken);
-                localStorage.setItem('credentials', JSON.stringify(loginAPI));
+                const mutableObj = loginAPI as { [key: string]: any };
+                delete mutableObj.user.uid;
+                localStorage.setItem('credentials', JSON.stringify(mutableObj));
                 location.reload();
             } else alert(data.message);
         }catch(e) {
