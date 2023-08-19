@@ -114,7 +114,7 @@ function Header() {
                 const headers = {
                     Authorization: token,
                 }
-                const { data } = await axios.post(`${domain()}/member/verify`, {},{headers});
+                const { data } = await axios.post(`${domain()}/member/verify`, {}, {headers});
                 if(data.status) {
                     // accessToken還有效直接進行登入
                     PubSub.publish('isLogin', data.status);
@@ -134,6 +134,7 @@ function Header() {
                     alert(data.message);
                 }
                 // 登入失敗
+                auth.signOut();
                 localStorage.removeItem('credentials');
                 localStorage.removeItem('refresh');
                 localStorage.removeItem('token');
