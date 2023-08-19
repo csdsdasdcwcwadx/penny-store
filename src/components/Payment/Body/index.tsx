@@ -103,7 +103,7 @@ function Body() {
             if(!addressing && !seven) {
                 alert('請選擇7-11門市');
             } else {
-                if(confirm('金流功能尚未啟用，若欲付款請洽 ingtagram 或 londoner.tw2020@gmail.com')) {
+                if(confirm('金流功能尚未啟用，若欲付款請洽 ingtagram')) {
                     window.open("https://www.instagram.com/londoner.tw/");
                     const addressPost = addressing ? `${postcal.current?.value}|${address.current?.value}` : `${seven}(7-11)`
                     const post = {
