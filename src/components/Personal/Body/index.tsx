@@ -5,10 +5,10 @@ import LightBox, { E_direction } from "@components/Common/Modules/LightBox";
 import InputBar, { E_RegexType } from "@components/Common/Modules/InputBar";
 import cN from 'classnames';
 import axios from "axios";
-import { auth, GoogleProvider } from "@utils/firebase-auth";
-import { User, deleteUser, UserCredential, reauthenticateWithCredential } from "firebase/auth";
+import { User, deleteUser, UserCredential } from "firebase/auth";
+import { parseJwt } from "@utils/commonfunction";
 
-const member = JSON.parse(localStorage.getItem('memberinfo')!);
+const member = parseJwt(localStorage.getItem('token')!);
 const credentials: UserCredential = JSON.parse(localStorage.getItem('credentials')!);
 
 function Body () {
@@ -24,7 +24,7 @@ function Body () {
         if(!member && !credentials) {
             alert('會員尚未登入');
             window.location.href = `${handlepath()}`;
-        } else document.title = member.memberinfo[0].m_name;
+        } else document.title = member.m_name;
     },[])
 
     const handleClick = async () => {
@@ -39,7 +39,7 @@ function Body () {
                 const { data } = await axios.post(`${domain()}/member/infoupdatemember`, obj);
                 if(data.status) {
                     alert(data.message);
-                    window.localStorage.setItem('memberinfo', JSON.stringify(data));
+                    localStorage.setItem('token', data.token);
                     location.reload();
                 }
             }catch(e) {
@@ -53,7 +53,6 @@ function Body () {
             try {
                 const { data } = await axios.post(`${domain()}/member/deletemember`);
                 if(data.status) {
-                    window.localStorage.removeItem('memberinfo');
                     window.localStorage.removeItem('credentials');
                     await deleteUser(credentials.user as User);
                 }
@@ -69,9 +68,9 @@ function Body () {
             <h1>個人資料修改</h1>
             {
                 member && credentials && <ul>
-                    <li onClick={()=>setOpenLightBox_name(true)}>姓名 <div>{member.memberinfo[0].m_name}</div></li>
-                    <li onClick={()=>setOpenLightBox_phone(true)}>電話<div>{member.memberinfo[0].m_phone}</div></li>
-                    <li onClick={()=>setOpenLightBox_address(true)}>地址<div>{member.memberinfo[0].m_address.replace('|', '')}</div></li>
+                    <li onClick={()=>setOpenLightBox_name(true)}>姓名 <div>{member.m_name}</div></li>
+                    <li onClick={()=>setOpenLightBox_phone(true)}>電話<div>{member.m_phone}</div></li>
+                    <li onClick={()=>setOpenLightBox_address(true)}>地址<div>{member.m_address.replace('|', '')}</div></li>
                     <button onClick={deleteMember}>刪除用戶</button>
                 </ul>
             }

@@ -54,3 +54,17 @@ export function getRandomColor() {
 export const handleDistribution = (distribute: number) => {
     return distribute === 0 ? '同時出貨': '分批出貨'
 }
+
+export const parseJwt = (token: string) => {
+    try {
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const decoded = atob(base64);
+      const decodedString = decodeURIComponent(escape(decoded));
+      const userInfo = JSON.parse(decodedString);
+      return userInfo;
+    } catch (error) {
+      console.error('Failed to parse JWT:', error);
+      return null;
+    }
+};

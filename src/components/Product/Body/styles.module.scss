@@ -178,7 +178,7 @@
                 }
 
                 button {
-                    width: 100%;
+                    width: 50%;
                     height: 35px;
                     color: #fff;
                     background-color: #727171;
@@ -186,7 +186,18 @@
                     border-radius: 3px;
                     cursor: pointer;
 
+                    &:last-of-type {
+                        margin-left: 15px;
+                        background-color: #d4d2c8;
+
+                        @include small-m {
+                            margin-top: 15px;
+                            margin-left: 0;
+                        }
+                    }
+
                     @include small-m {
+                        width: 100%;
                         margin-top: 20px;
                     }
                 }
@@ -209,7 +220,7 @@
         text-align: center;
         color: #000;
         opacity: 0;
-        transition: all .5s ease-in-out;
+        transition: all .8s ease-in-out;
 
         div {
             display: flex;

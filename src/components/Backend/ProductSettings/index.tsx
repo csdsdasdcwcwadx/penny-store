@@ -268,7 +268,7 @@ function ProductSettings () {
                                     ref={fix_p_type}>
                                     {
                                         Object.values(E_Page).map((obj, ind) => {
-                                            return <option key={ind} value={obj}>{handleNavigator(obj as E_Page)}</option>
+                                            return obj !== E_Page.HOME && <option key={ind} value={obj}>{handleNavigator(obj as E_Page)}</option>
                                         })
                                     }
                                 </select>
