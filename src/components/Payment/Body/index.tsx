@@ -118,7 +118,7 @@ function Body() {
                     try{
                         const {data} = await axios.post(`${domain()}/common/payment`, post);
                         alert('訂單已送出');
-                        if(data.status) window.location.href = `${handlepath()}/order${isLocal?'.html':''}`;
+                        if(data.status) window.location.href = `${handlepath()}/order.html`;
                     }catch(e) {
                         console.error(e);
                     }
@@ -131,10 +131,10 @@ function Body() {
         switch (process.env.ENV) {
             case 'prod':
             case 'rel':
-                window.location.href = (`https://emap.presco.com.tw/c2cemap.ashx?eshopid=870&&servicetype=3&url=https://penny.londoner.tw/common/direct&tempvar=${window.location.href}`);
+                window.location.href = `https://emap.presco.com.tw/c2cemap.ashx?eshopid=870&servicetype=3&url=https://${window.location.hostname}/common/direct&tempvar=${window.location.href}`;
                 break;
             default:
-                window.location.href = (`https://emap.presco.com.tw/c2cemap.ashx?eshopid=870&&servicetype=3&url=http://localhost:3638/local/common/direct&tempvar=${window.location.href}`);
+                window.location.href = `https://emap.presco.com.tw/c2cemap.ashx?eshopid=870&servicetype=3&url=http://localhost:3638/local/common/direct&tempvar=${window.location.href}`;
         }
     }
 
@@ -219,7 +219,7 @@ function Body() {
                                 addressing ? <div className={styles.address}>
                                     <InputBar title='郵遞區號' placeholder='請輸入郵遞區號' type={E_RegexType.NUMBER} ref={postcal} trigger={checked} maxlength={5}/>
                                     <InputBar title='地址' placeholder='請輸入收件地址' type={E_RegexType.ADDRESS} ref={address} trigger={checked} maxlength={255}/>
-                                </div> : <div className={styles.addresspng} onClick={() => handleDirect711()}> 
+                                </div> : <div className={styles.addresspng} onClick={handleDirect711}> 
                                     <span> </span>
                                     {seven && <span>{seven}</span>}
                                 </div>

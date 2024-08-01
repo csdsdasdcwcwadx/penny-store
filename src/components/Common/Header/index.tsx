@@ -72,7 +72,7 @@ function Header() {
 
     // 前往結賬
     const handlepayment = () => {
-        window.location.href = `${handlepath()}/payment${isLocal?'.html':''}`;
+        window.location.href = `${handlepath()}/payment.html`;
     }
 
     const ListBlock = ()=>{
@@ -96,8 +96,8 @@ function Header() {
     const userBlock = () => {
         return (
             <>
-                <li onClick={()=>window.location.href = `${handlepath()}/personal${isLocal?'.html':''}`}>修改個人資料</li>
-                <li onClick={()=>{window.location.href = `${handlepath()}/order${isLocal?'.html':''}`}}>查看歷史訂單</li>
+                <li onClick={()=>window.location.href = `${handlepath()}/personal.html`}>修改個人資料</li>
+                <li onClick={()=>{window.location.href = `${handlepath()}/order.html`}}>查看歷史訂單</li>
                 <li onClick={()=>handlepayment()}>前往結帳</li>
             </>
         )
@@ -118,7 +118,7 @@ function Header() {
                 if(data.status) {
                     // accessToken還有效直接進行登入
                     PubSub.publish('isLogin', data.status);
-                    setReference(`${handlepath()}${data.href}${isLocal?'.html':''}`);
+                    setReference(`${handlepath()}${data.href}${data.href.includes('/') ? '.html' : ''}`);
                     setCredentials(credentials);
                     return;
                 }
