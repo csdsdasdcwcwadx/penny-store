@@ -9,8 +9,8 @@ function Footer () {
         <footer className={styles.Footer}>
             <div>
                 <a>About Us</a>
-                <a href={`${handlepath()}/privacy${isLocal?'.html':''}`}>隱私權政策</a>
-                <a href={`${handlepath()}/note${isLocal?'.html':''}`}>購物須知 | NOTICE</a>
+                <a href={`${handlepath()}/privacy.html`}>隱私權政策</a>
+                <a href={`${handlepath()}/note.html`}>購物須知 | NOTICE</a>
             </div>
             <div>
                 <a href="https://www.instagram.com/londoner.tw/">Contact Us</a>

@@ -98,7 +98,7 @@ function SideBar ({trigger}: I_props) {
                                     return (
                                         <li key={product.p_id}>
                                             <div className={styles.productlist}>
-                                                <a href={`${handlepath()}/product${isLocal?'.html':''}?p_dentical=${product.p_dentical}`}>
+                                                <a href={`${handlepath()}/product.html?p_dentical=${product.p_dentical}`}>
                                                     <OptimizedImage imageData={product.p_img}/>
                                                     <div className={styles.productcontent}>
                                                         <p>{product.p_name}({product.p_color})</p>
@@ -115,7 +115,7 @@ function SideBar ({trigger}: I_props) {
                                     );
                                 })
                             }
-                            <button onClick={()=>window.location.href = `${handlepath()}/payment${isLocal?'.html':''}`}>
+                            <button onClick={()=>window.location.href = `${handlepath()}/payment.html`}>
                                 前往結帳
                                 <div className={styles.producttotal}>小計 
                                 <span>{total}</span> 元</div>

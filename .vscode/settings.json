@@ -9,7 +9,7 @@
     "git.ignoreLimitWarning": true,
     "typescript.tsdk": "node_modules\\typescript\\lib",
     "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": false
+        "source.fixAll.eslint": "never"
     },
     "todohighlight.keywords": ["@todo"],
     "todo-tree.general.tags": ["TODO", "FIXME", "@todo"],

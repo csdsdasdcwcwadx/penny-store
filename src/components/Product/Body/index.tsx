@@ -129,7 +129,7 @@ function Body({setTrigger}: I_props) {
                         setAlertion(false);
                     },2000)
                     setCounter(1);
-                    if(buyImm) window.location.href = `${handlepath()}/payment${isLocal?'.html':''}`;
+                    if(buyImm) window.location.href = `${handlepath()}/payment.html`;
                 }else{
                     if(data.message === null) {
                         if(confirm('此商品目前現貨不足，是否要等候預購(約15-20個工作天)')) {
@@ -150,7 +150,7 @@ function Body({setTrigger}: I_props) {
                                     setAlertion(false);
                                 },2000)
                                 setCounter(1);
-                                if(buyImm) window.location.href = `${handlepath()}/payment${isLocal?'.html':''}`;
+                                if(buyImm) window.location.href = `${handlepath()}/payment.html`;
                             } else {
                                 alert(data.message);
                             }
@@ -167,7 +167,7 @@ function Body({setTrigger}: I_props) {
             alert('請先登入會員');
             PubSub.publish('openLogin', true);
         }
-    },[productdetail, member, chosenItem, counter, setTrigger, isMobile, isLocal])
+    },[productdetail, member, chosenItem, counter, setTrigger, isMobile])
 
     const src = useMemo(() => {
         if(productdetail) {
@@ -287,7 +287,7 @@ function Body({setTrigger}: I_props) {
                     <span>商品已加入購物車</span>
                     <div>
                         <button onClick={()=>setGoBuy(false)}>繼續逛逛</button>
-                        <button onClick={()=>window.location.href = `${handlepath()}/payment${isLocal?'.html':''}`}>前往結帳</button>
+                        <button onClick={()=>window.location.href = `${handlepath()}/payment.html`}>前往結帳</button>
                     </div>
                 </aside>
                 <div className={cN(styles.alertion, {[styles.show]: alertion}, {[styles.lateAlert]: lateAlert})}>{message}</div>

@@ -24,7 +24,7 @@ function Item(props: I_props) {
     }
 
     return (
-        <a className={styles.Item} href={`${handlepath()}/product${isLocal?'.html':''}?p_dentical=${p_dentical}`} onClick={handleClick}>
+        <a className={styles.Item} href={`${handlepath()}/product.html?p_dentical=${p_dentical}`} onClick={handleClick}>
             <div className={styles.frame}>
                 <OptimizedImage imageData={p_img}/>
                 <OptimizedImage imageData={p_img2}/>
