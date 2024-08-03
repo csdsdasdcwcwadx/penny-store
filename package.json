@@ -16,7 +16,8 @@
         "lint": "stylelint src/**/*.scss --syntax scss",
         "lint:fix": "stylelint src/**/*.scss --syntax scss --fix",
         "predeploy": "npm run prod",
-        "deploy": "gh-pages -d build"
+        "deploy": "gh-pages -d build",
+        "copy": "cp -r ./build ../back/src/Views"
     },
     "dependencies": {
         "@n8tb1t/use-scroll-position": "^2.0.3",
