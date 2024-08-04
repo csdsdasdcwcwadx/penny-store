@@ -142,7 +142,7 @@ function Orders ({orders, serial}: I_props) {
                         return (
                             <div key={order.o_id} className={styles.order}>
                                 <div className={styles.photo}>
-                                    <OptimizedImage imageData={order.o_img}/>
+                                    <OptimizedImage src={order.o_img}/>
                                     <span>{order.op_name}</span>
                                 </div>
                                 <div data-title='產品價格'>

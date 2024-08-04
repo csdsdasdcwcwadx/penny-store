@@ -26,10 +26,7 @@ export interface I_orderinfo {
     o_name: string;
     o_phone: string;
     o_address: string;
-    o_img: {
-        data: Array<any>;
-        type: string;
-    };
+    o_img: string;
     o_size: string;
     op_name: string;
     o_color: string;

@@ -99,7 +99,7 @@ function SideBar ({trigger}: I_props) {
                                         <li key={product.p_id}>
                                             <div className={styles.productlist}>
                                                 <a href={`${handlepath()}/product.html?p_dentical=${product.p_dentical}`}>
-                                                    <OptimizedImage imageData={product.p_img}/>
+                                                    <OptimizedImage src={product.p_img}/>
                                                     <div className={styles.productcontent}>
                                                         <p>{product.p_name}({product.p_color})</p>
                                                         <div className={styles.detailinfo}>

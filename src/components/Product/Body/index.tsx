@@ -172,7 +172,7 @@ function Body({setTrigger}: I_props) {
     const src = useMemo(() => {
         if(productdetail) {
             document.title = productdetail.productinfo[0].p_name || 'Londoner';
-            return <OptimizedImage imageData={productdetail.productinfo[0].p_img}/>
+            return <OptimizedImage src={productdetail.productinfo[0].p_img}/>
         }
     },[productdetail])
 

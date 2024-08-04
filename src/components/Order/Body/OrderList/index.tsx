@@ -83,7 +83,7 @@ function Order({order, total}: I_props2) {
         <>
             <div className={styles.orderitem}>
                 <div className={styles.photo}>
-                    <OptimizedImage imageData={order.o_img}/>
+                    <OptimizedImage src={order.o_img}/>
                     <span>{order.op_name}</span>
                 </div>
                 <div data-title='產品價格'>
