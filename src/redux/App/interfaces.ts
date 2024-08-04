@@ -8,11 +8,9 @@ export interface I_AppState {
 
 export enum E_Page {
     HOME = '',
-    TOPPING = 'TOPPING',
-    BOTTOM = 'BOTTOM',
-    SKIRT = 'SKIRT',
+    SHOES = 'SHOES',
+    PURSE = 'PURSE',
     ACCESSORIES = 'ACCESSORIES',
-    LUXURY = 'LUXURY',
 }
 
 export interface I_getallproduct {

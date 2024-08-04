@@ -8,14 +8,10 @@ export const handleNavigator = (type: E_Page) => {
             return "配件 ACCESSORIES";
         case E_Page.HOME:
             return "全部商品";
-        case E_Page.TOPPING:
-            return "上身 TOP";
-        case E_Page.BOTTOM:
-            return "下著 BOTTOM";
-        case E_Page.SKIRT:
-            return "洋裝 DRESS";
-        case E_Page.LUXURY:
-            return "精品 LUXURIES";
+        case E_Page.SHOES:
+            return "鞋子 SHOES";
+        case E_Page.PURSE:
+            return "皮夾 PURSE";
         default:
             return "找不到名稱";
     }
