@@ -14,14 +14,8 @@ export interface I_productinfo {
     p_name: string;
     p_price: number;
     p_amount: number;
-    p_img: {
-        data: Array<any>;
-        type: string;
-    };
-    p_img2: {
-        data: Array<any>;
-        type: string;
-    };
+    p_img: string;
+    p_img2: string;
     p_type: string;
     p_size: string;
     p_dentical: string;

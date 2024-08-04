@@ -159,7 +159,7 @@ function Body() {
                                 return (
                                     <li key={product.p_id}>
                                         <span className={styles.name}>
-                                            <OptimizedImage imageData={product.p_img}/>
+                                            <OptimizedImage src={product.p_img}/>
                                             {product.p_name}
                                         </span>
                                         <span className={styles.price} data-title='單件價格'>{product.p_price}元</span>

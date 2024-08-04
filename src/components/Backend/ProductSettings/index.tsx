@@ -66,7 +66,7 @@ function ProductSettings () {
         const result = confirm('是否確認要刪除此產品 ? ');
         if(result) {
             try{
-                const { data } = await axios.post<I_productdetail>(`${domain()}/product/removeproduct`, {p_id: product.p_id});
+                const { data } = await axios.post<I_productdetail>(`${domain()}/product/removeproduct`, {p_id: product.p_id, p_dentical: product.p_dentical});
                 data.message && alert(data.message);
                 if(data.status) {
                     dispatch(call_getallproduct({p_type: '', currpage: serial, frombackend: true}));
@@ -316,8 +316,8 @@ function ProductSettings () {
                     return (
                         <li key={product.p_id} className={cN(styles.product, {[styles.isoff]: product.p_isoff === 1})}>
                             <div className={styles.img}>
-                                <OptimizedImage imageData={product.p_img}/>
-                                <OptimizedImage imageData={product.p_img2}/>
+                                <OptimizedImage src={product.p_img}/>
+                                <OptimizedImage src={product.p_img2}/>
                                 <span>{handleIsOff(product.p_isoff)}</span>
                             </div>
                             <span>商品編號：{product.p_dentical}</span>

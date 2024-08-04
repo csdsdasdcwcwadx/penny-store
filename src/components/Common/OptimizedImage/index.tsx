@@ -1,46 +1,46 @@
 import React, { useRef, useEffect } from 'react';
 import defaultImage from '../../../imgs/notfound.jpg';
+import domain from '@utils/domainByEnv';
+import notFoundImg from '../../../imgs/notfound.jpg';
 
-const OptimizedImage: React.FC<{ imageData?: { type: string, data: any[] } }> = ({ imageData }) => {
+interface OptimizedImageProps {
+  src: string;
+}
+
+const OptimizedImage: React.FC<OptimizedImageProps> = ({ src }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    if (!imageData) {
-      // 若 imageData 為 undefined，則直接顯示預設圖片
-      const canvas = canvasRef.current;
-      const context = canvas?.getContext('2d');
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-      if (canvas && context) {
-        const image = new Image();
-        image.src = defaultImage;
+    const context = canvas.getContext('2d');
+    if (!context) return;
 
-        image.onload = () => {
-          canvas.width = image.width;
-          canvas.height = image.height;
-          context.drawImage(image, 0, 0);
-        };
-      }
-    } else {
-      // 若 imageData 不為 undefined，則處理優化後的圖片顯示
-      const canvas = canvasRef.current;
-      const context = canvas?.getContext('2d');
+    const image = new Image();
 
-      if (canvas && context) {
-        const image = new Image();
-        image.onload = () => {
-          canvas.width = image.width;
-          canvas.height = image.height;
-          context.drawImage(image, 0, 0);
-          URL.revokeObjectURL(image.src);
-        };
+    const drawImage = (imgSrc: string) => {
+      const img = new Image();
+      img.src = imgSrc;
+      img.onload = () => {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        context.drawImage(img, 0, 0);
+      };
+    };
 
-        const blob = new Blob([Buffer.from(imageData.data)], { type: 'image/jpeg' });
-        image.src = URL.createObjectURL(blob);
-      }
-    }
-  }, [imageData]);
+    image.onload = () => {
+      drawImage(`${domain()}${src}`);
+    };
 
-  return <canvas ref={canvasRef} />;
+    image.onerror = () => {
+      drawImage(notFoundImg);
+    };
+
+    image.src = `${domain()}${src}`;
+  }, [src]);
+
+  return <canvas ref={canvasRef}/>;
 };
 
 export default OptimizedImage;
