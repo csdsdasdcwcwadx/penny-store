@@ -4,6 +4,11 @@
 .Body {
     background-color: $backColor;
 
+    @include only-pc {
+        width: 80%;
+        margin: 0 auto;
+    }
+
     >div {
         text-align: center;
     }
@@ -32,10 +37,6 @@
 
         span {
             font-size: small;
-
-            &:last-of-type {
-                cursor: pointer;
-            }
         }
     }
 

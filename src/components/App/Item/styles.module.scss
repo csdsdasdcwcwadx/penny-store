@@ -13,7 +13,6 @@
         position: relative;
         overflow: hidden;
         margin: 0 auto;
-        max-height: 360px;
         margin-bottom: auto;
 
         canvas,
@@ -24,6 +23,7 @@
             object-fit: cover;
             transition: all .5s ease-in-out;
             opacity: 1;
+            aspect-ratio: 1;
         }
 
         canvas:last-of-type,
