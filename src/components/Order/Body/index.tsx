@@ -17,9 +17,8 @@ function Body () {
     const { ordershipping, isLoading } = useSelector((store: RootState)=>store);
 
     useEffect(() =>{
-        const member = localStorage.getItem('token');
         const google = JSON.parse(localStorage.getItem('credentials')!);
-        if(!member && !google) {
+        if(!google) {
             alert('會員尚未登入');
             window.location.href = `${handlepath()}`;
         }

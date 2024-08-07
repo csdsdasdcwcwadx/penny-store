@@ -39,7 +39,6 @@ function Body () {
                 const { data } = await axios.post(`${domain()}/member/infoupdatemember`, obj);
                 if(data.status) {
                     alert(data.message);
-                    localStorage.setItem('token', data.token);
                     location.reload();
                 }
             }catch(e) {

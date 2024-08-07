@@ -61,12 +61,9 @@ function Header() {
 
     // 登出
     const handlelogout = async () => {
-        const refreshToken = localStorage.getItem('refresh');
         auth.signOut();
-        await axios.post(`${domain()}/member/logout`, {refreshToken});
-        localStorage.removeItem('token');
+        await axios.post(`${domain()}/member/logout`);
         localStorage.removeItem('credentials');
-        localStorage.removeItem('refresh');
         location.reload();
     }
 
@@ -108,36 +105,24 @@ function Header() {
         (async function() {
             try{
                 // 若有credentials 代表剛註冊完成
-                const token = "Bearer " + localStorage.getItem('token');
                 const credentials = JSON.parse(localStorage.getItem('credentials')!);
-                const refreshToken = localStorage.getItem('refresh');
-                const headers = {
-                    Authorization: token,
-                }
-                const { data } = await axios.post(`${domain()}/member/verify`, {}, {headers});
+                const { data } = await axios.post(`${domain()}/member/verify`, {});
                 if(data.status) {
                     // accessToken還有效直接進行登入
                     PubSub.publish('isLogin', data.status);
                     setReference(`${handlepath()}${data.href}${data.href.includes('/') ? '.html' : ''}`);
                     setCredentials(credentials);
                     return;
-                }
-                if(refreshToken) {
-                    // accessToken 無效，刷新accessToken
-                    const { data } = await axios.post(`${domain()}/member/refresh`, {refreshToken});
-                    if(data.status) {
-                        localStorage.setItem('token', data.accessToken);
-                        alert('登入已過期，請重新整理');
+                } else {
+                    if(data.message) alert(data.message);
+                    if(data.reset) {
                         location.reload();
                         return;
                     }
-                    alert(data.message);
                 }
                 // 登入失敗
                 auth.signOut();
                 localStorage.removeItem('credentials');
-                localStorage.removeItem('refresh');
-                localStorage.removeItem('token');
             }catch (e) {
                 console.error('error => ', e);
             }
@@ -245,8 +230,6 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
                         const mutableObj = auther as { [key: string]: any };
                         delete mutableObj.user.uid;
                         localStorage.setItem('credentials', JSON.stringify(mutableObj));
-                        localStorage.setItem('token', data.accessToken);
-                        localStorage.setItem('refresh', data.refreshToken);
                         location.reload();
                     }
                 }catch(e) {
@@ -269,8 +252,6 @@ function LoginandRegister (loginOpen: boolean, setLoginOpen: Function) {
             const { data } = await axios.post(`${domain()}/member/loginmember`, obj);
             // 登入成功就將資料寫入localStorage
             if(data.status) {
-                localStorage.setItem('token', data.accessToken);
-                localStorage.setItem('refresh', data.refreshToken);
                 const mutableObj = loginAPI as { [key: string]: any };
                 delete mutableObj.user.uid;
                 localStorage.setItem('credentials', JSON.stringify(mutableObj));

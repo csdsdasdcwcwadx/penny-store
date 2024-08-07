@@ -58,11 +58,11 @@ function Body() {
             setSeven(`${storename}${storeaddress}`);
         }
 
-        if(!member && !google) {
+        if(!google) {
             alert('會員尚未登入');
             window.location.href = `${handlepath()}`;
         }
-        member && (async function(){
+        (async function(){
             try {
                 const {data} = await axios.post<I_getshoplist>(`${domain()}/shoplist/getshoplist`);
                 setShoplist(data.shoplist);
