@@ -30,7 +30,6 @@ function SideBar ({trigger}: I_props) {
     const [shoplist, setShoplist] = useState<Array<I_shoplistinfo>>([]);
     const [isLogin, setIsLogin] = useState<boolean>(false);
     const isMobile = useMediaQuery({ query: '(max-width: 980px)' });
-    const isLocal = window.location.href.includes('localhost');
     let total = 0;
 
     PubSub.subscribe('opensidebar', ()=>{

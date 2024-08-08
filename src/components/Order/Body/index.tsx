@@ -13,18 +13,25 @@ axios.defaults.withCredentials = true;
 
 function Body () {
     const [ serial, setSerial ] = useState(1);
+    const [isLogin, setIsLogin] = useState<boolean>(false);
     const dispatch = useDispatch();
     const { ordershipping, isLoading } = useSelector((store: RootState)=>store);
 
+    useEffect(() => {
+        PubSub.subscribe('isLogin', ()=>{
+            setIsLogin(true);
+        })
+    },[])
+
     useEffect(() =>{
-        const member = localStorage.getItem('token');
         const google = JSON.parse(localStorage.getItem('credentials')!);
-        if(!member && !google) {
+        if(!google && !isLogin) {
             alert('會員尚未登入');
             window.location.href = `${handlepath()}`;
+        } else {
+            dispatch(call_listshipping({pages: serial}));
         }
-        dispatch(call_listshipping({pages: serial}));
-    },[dispatch, serial])
+    },[dispatch, serial, isLogin])
 
     return (
         <div className={styles.paymentSuccess}>

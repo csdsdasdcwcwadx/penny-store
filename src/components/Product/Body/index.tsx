@@ -16,6 +16,7 @@ import PubSub from 'pubsub-js';
 import OptimizedImage from "@components/Common/OptimizedImage";
 
 axios.defaults.withCredentials = true;
+const google = JSON.parse(localStorage.getItem('credentials')!);
 
 interface I_props {
     setTrigger: Function;
@@ -23,7 +24,7 @@ interface I_props {
 
 function Body({setTrigger}: I_props) {
     const dispatch = useDispatch();
-
+    const [isLogin, setIsLogin] = useState<boolean>(false);
     const [counter, setCounter] = useState<number>(1);
     // 尺寸
     const [selectSize, setSelectSize] = useState('');
@@ -35,9 +36,7 @@ function Body({setTrigger}: I_props) {
     // 設定購買提示
     const [goBuy, setGoBuy] = useState(false);
     const { productdetail } = useSelector((store: RootState)=>store);
-    const member = localStorage.getItem('token');
     const isMobile = useMediaQuery({ query: '(max-width: 980px)' });
-    const isLocal = window.location.href.includes('localhost');
 
     const sizeOptions = useMemo(() => {
         const options = [{label: '請選擇', value: '', isDisabled: true, id: ''}];
@@ -73,6 +72,10 @@ function Body({setTrigger}: I_props) {
     }, [goBuy])
 
     useEffect (() => {
+        PubSub.subscribe('isLogin', ()=>{
+            setIsLogin(true);
+        })
+
         const url = new URL (window.location.href);
         dispatch(call_getdetailproduct({p_dentical: url.searchParams.get('p_dentical')}));
     },[dispatch])
@@ -97,14 +100,13 @@ function Body({setTrigger}: I_props) {
         return undefined;
     },[productdetail, selectColor, selectSize])
 
-    const handleAddChart = useCallback( async (buyImm: boolean) => {
+    const handleAddChart = useCallback(async (buyImm: boolean) => {
 
         if(!chosenItem) {
             alert('請選擇其他產品尺寸及顏色');
             return;
         }
-
-        if(productdetail && member) {
+        if(productdetail && isLogin) {
             const body = {
                 p_id: chosenItem?.p_id,
                 s_amount: counter,
@@ -167,7 +169,7 @@ function Body({setTrigger}: I_props) {
             alert('請先登入會員');
             PubSub.publish('openLogin', true);
         }
-    },[productdetail, member, chosenItem, counter, setTrigger, isMobile])
+    },[productdetail, chosenItem, counter, setTrigger, isMobile, isLogin])
 
     const src = useMemo(() => {
         if(productdetail) {

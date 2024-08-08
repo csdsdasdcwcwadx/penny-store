@@ -8,7 +8,7 @@ import InputBar, { E_RegexType } from '@components/Common/Modules/InputBar';
 import cN from 'classnames';
 import '@components/Common/Modules/ic-ln/css.css';
 import OptimizedImage from '@components/Common/OptimizedImage';
-import { parseJwt } from '@utils/commonfunction';
+import { I_memberinfo } from '@Redux/App/interfaces';
 
 interface I_shoplistinfo extends I_productinfo {
     s_amount: number;
@@ -30,8 +30,6 @@ const addressingOptions = [
 const url = new URL (window.location.href);
 const storename = url.searchParams.get('storename');
 const storeaddress = url.searchParams.get('storeaddress');
-
-const member = parseJwt(localStorage.getItem('token')!);
 const google = JSON.parse(localStorage.getItem('credentials')!);
 
 axios.defaults.withCredentials = true;
@@ -43,26 +41,31 @@ function Body() {
     const [addressing, setAddressing] = useState(true);
     const [seven, setSeven] = useState<string | null>(null);
     const [distributed, setDistributed] = useState(false);
+    const [member, setMember] = useState<I_memberinfo | null>(null);
+
     const name = useRef<HTMLInputElement>(null);
     const phone = useRef<HTMLInputElement>(null);
     const address = useRef<HTMLInputElement>(null);
     const postcal = useRef<HTMLInputElement>(null);
-    const isLocal = window.location.href.includes('localhost');
     let total = 0;
 
     useEffect(() => {
         window.history.pushState({}, '', window.location.href.split('?')[0]);
+
+        PubSub.subscribe('isLogin', (msg, info)=>{
+            setMember(info);
+        })
 
         if(storename && storeaddress) {
             setAddressing(false);
             setSeven(`${storename}${storeaddress}`);
         }
 
-        if(!member && !google) {
+        if(!google) {
             alert('會員尚未登入');
             window.location.href = `${handlepath()}`;
         }
-        member && (async function(){
+        (async function(){
             try {
                 const {data} = await axios.post<I_getshoplist>(`${domain()}/shoplist/getshoplist`);
                 setShoplist(data.shoplist);
@@ -95,7 +98,7 @@ function Body() {
                 postcal.current.value = '';
             }
         }
-    },[checked])
+    },[checked, member])
 
     const handlePayment = async (isSuccess: boolean = true) => {
         const error = document.getElementsByClassName('error');
@@ -111,7 +114,7 @@ function Body() {
                         name: name.current?.value,
                         address: addressPost,
                         phone: phone.current?.value,
-                        email: member.m_email,
+                        email: member?.m_email,
                         distributed,
                     }
             
