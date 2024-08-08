@@ -24,7 +24,7 @@ interface I_props {
 
 function Body({setTrigger}: I_props) {
     const dispatch = useDispatch();
-
+    const [isLogin, setIsLogin] = useState<boolean>(false);
     const [counter, setCounter] = useState<number>(1);
     // 尺寸
     const [selectSize, setSelectSize] = useState('');
@@ -72,6 +72,10 @@ function Body({setTrigger}: I_props) {
     }, [goBuy])
 
     useEffect (() => {
+        PubSub.subscribe('isLogin', ()=>{
+            setIsLogin(true);
+        })
+
         const url = new URL (window.location.href);
         dispatch(call_getdetailproduct({p_dentical: url.searchParams.get('p_dentical')}));
     },[dispatch])
@@ -96,13 +100,13 @@ function Body({setTrigger}: I_props) {
         return undefined;
     },[productdetail, selectColor, selectSize])
 
-    const handleAddChart = useCallback( async (buyImm: boolean) => {
+    const handleAddChart = useCallback(async (buyImm: boolean) => {
 
         if(!chosenItem) {
             alert('請選擇其他產品尺寸及顏色');
             return;
         }
-        if(productdetail && google) {
+        if(productdetail && isLogin) {
             const body = {
                 p_id: chosenItem?.p_id,
                 s_amount: counter,
@@ -165,7 +169,7 @@ function Body({setTrigger}: I_props) {
             alert('請先登入會員');
             PubSub.publish('openLogin', true);
         }
-    },[productdetail, chosenItem, counter, setTrigger, isMobile])
+    },[productdetail, chosenItem, counter, setTrigger, isMobile, isLogin])
 
     const src = useMemo(() => {
         if(productdetail) {

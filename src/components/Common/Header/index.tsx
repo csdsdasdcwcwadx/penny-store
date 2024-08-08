@@ -17,33 +17,6 @@ import googleImg from '../../../imgs/google.svg';
 import facebookImg from '../../../imgs/facebook.png';
 import LOGO from '../../../imgs/IMG_2932.png';
 
-function storageAvailable(type: any) {
-    let storage: any;
-    try {
-      storage = window[type];
-      const x = "__storage_test__";
-      storage.setItem(x, x);
-      storage.removeItem(x);
-      return true;
-    } catch (e) {
-      return (
-        e instanceof DOMException &&
-        // everything except Firefox
-        (e.code === 22 ||
-          // Firefox
-          e.code === 1014 ||
-          // test name field too, because code might not be present
-          // everything except Firefox
-          e.name === "QuotaExceededError" ||
-          // Firefox
-          e.name === "NS_ERROR_DOM_QUOTA_REACHED") &&
-        // acknowledge QuotaExceededError only if there's something already stored
-        storage &&
-        storage.length !== 0
-      );
-    }
-}
-
 function Header() {
     const [listOpen, setListOpen] = useState<boolean>(false);
     const [loginOpen, setLoginOpen] = useState<boolean>(false);
@@ -109,7 +82,7 @@ function Header() {
                 const { data } = await axios.post(`${domain()}/member/verify`, {});
                 if(data.status) {
                     // accessToken還有效直接進行登入
-                    PubSub.publish('isLogin', data.status);
+                    PubSub.publish('isLogin', data.memberinfo);
                     setReference(`${handlepath()}${data.href}${data.href.includes('/') ? '.html' : ''}`);
                     setCredentials(credentials);
                     return;

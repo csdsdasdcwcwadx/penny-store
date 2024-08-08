@@ -6,26 +6,32 @@ import InputBar, { E_RegexType } from "@components/Common/Modules/InputBar";
 import cN from 'classnames';
 import axios from "axios";
 import { User, deleteUser, UserCredential } from "firebase/auth";
-import { parseJwt } from "@utils/commonfunction";
+import { I_memberinfo } from '@Redux/App/interfaces';
 
-const member = parseJwt(localStorage.getItem('token')!);
 const credentials: UserCredential = JSON.parse(localStorage.getItem('credentials')!);
 
 function Body () {
     const [openLightBox_name, setOpenLightBox_name] = useState(false);
     const [openLightBox_phone, setOpenLightBox_phone] = useState(false);
     const [openLightBox_address, setOpenLightBox_address] = useState(false);
+    const [member, setMember] = useState<I_memberinfo | null>(null);
     const m_name = useRef<HTMLInputElement>(null);
     const m_phone = useRef<HTMLInputElement>(null);
     const m_address = useRef<HTMLInputElement>(null);
     const postcal = useRef<HTMLInputElement>(null);
 
+    useEffect(()  => {
+        PubSub.subscribe('isLogin', (msg, info)=>{
+            setMember(info);
+        })
+    }, [])
+
     useEffect(() => {
         if(!member && !credentials) {
             alert('會員尚未登入');
             window.location.href = `${handlepath()}`;
-        } else document.title = member.m_name;
-    },[])
+        } else document.title = member?.m_name || '';
+    },[member])
 
     const handleClick = async () => {
         const error = document.getElementsByClassName('error');
