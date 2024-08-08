@@ -28,8 +28,9 @@ function Body () {
         if(!google && !isLogin) {
             alert('會員尚未登入');
             window.location.href = `${handlepath()}`;
+        } else {
+            dispatch(call_listshipping({pages: serial}));
         }
-        dispatch(call_listshipping({pages: serial}));
     },[dispatch, serial, isLogin])
 
     return (
