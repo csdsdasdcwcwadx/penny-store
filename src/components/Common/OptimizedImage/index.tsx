@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import defaultImage from '../../../imgs/notfound.jpg';
-import domain from '@utils/domainByEnv';
+import { handleImagePath } from '@utils/domainByEnv';
 import notFoundImg from '../../../imgs/notfound.jpg';
 
 interface OptimizedImageProps {
@@ -30,14 +29,14 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({ src }) => {
     };
 
     image.onload = () => {
-      drawImage(`${domain()}${src}`);
+      drawImage(`${handleImagePath()}${src}`);
     };
 
     image.onerror = () => {
       drawImage(notFoundImg);
     };
 
-    image.src = `${domain()}${src}`;
+    image.src = `${handleImagePath()}${src}`;
   }, [src]);
 
   return <canvas ref={canvasRef}/>;

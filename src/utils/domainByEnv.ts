@@ -25,3 +25,7 @@ export const handlepath = () => {
 
     }
 }
+
+export const handleImagePath = () => {
+    return 'http://res.cloudinary.com/dnq3jtwv6/image/upload/v1728153674';
+}
